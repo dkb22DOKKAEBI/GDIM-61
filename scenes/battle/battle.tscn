@@ -13,24 +13,13 @@
 size = Vector2(18, 26)
 
 [node name="battle" type="Node2D"]
-metadata/_edit_lock_ = true
 
 [node name="background" type="Sprite2D" parent="."]
 modulate = Color(0.65834, 0.65834, 0.65834, 1)
 z_index = -3
-scale = Vector2(1.00782, 1.00694)
+scale = Vector2(1, 1)
 texture = ExtResource("1_7gynk")
 centered = false
-
-[node name="Cardslot" parent="." instance=ExtResource("2_pll4o")]
-position = Vector2(87, 80)
-script = ExtResource("3_py4tk")
-
-[node name="Cardslot2" parent="." instance=ExtResource("2_pll4o")]
-position = Vector2(59, 93)
-
-[node name="Cardslot3" parent="." instance=ExtResource("2_pll4o")]
-position = Vector2(60, 64)
 
 [node name="CardManager" type="Node2D" parent="."]
 position = Vector2(15, 126)
@@ -67,3 +56,15 @@ text = "0"
 
 [node name="InputManager" type="Node2D" parent="."]
 script = ExtResource("7_fisqk")
+
+[node name="Cardslot" parent="." instance=ExtResource("2_pll4o")]
+position = Vector2(84, 79)
+script = ExtResource("3_py4tk")
+
+[node name="Cardslot2" parent="." instance=ExtResource("2_pll4o")]
+position = Vector2(58, 96)
+script = ExtResource("3_py4tk")
+
+[node name="Cardslot3" parent="." instance=ExtResource("2_pll4o")]
+position = Vector2(58, 65)
+script = ExtResource("3_py4tk")
