@@ -22,6 +22,7 @@ centered = false
 [node name="Cardslot" parent="." instance=ExtResource("2_pll4o")]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(227, 89)
 script = ExtResource("3_py4tk")
 
 [node name="Card Manager" type="Node2D" parent="."]
