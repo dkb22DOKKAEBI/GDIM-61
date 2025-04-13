@@ -14,7 +14,7 @@ func _ready()->void:
 	screen_size = get_viewport_rect().size
 	player_hand_reference = $"../PlayerHand"
 	$"../InputManager".connect("left_mouse_button_released", on_left_clicked_released)
-
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -115,3 +115,5 @@ func get_card_with_highest_z_index(cards):
 			highest_z_card = current_card
 			highest_z_index = current_card.z_index
 	return highest_z_card
+
+#HAHAHAHAHAHAHAHAHA LEO
