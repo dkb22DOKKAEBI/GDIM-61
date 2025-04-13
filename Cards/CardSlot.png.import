@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbkob58iwxl0b"
-path="res://.godot/imported/Sandwich_knight2.0.png-888cfbba729121adf643e44245856321.ctex"
+uid="uid://cvmypg70g5akh"
+path="res://.godot/imported/CardSlot.png-3a49c6b78e21fc3c47432dae32c0fb62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sandwich_knight2.0.png"
-dest_files=["res://.godot/imported/Sandwich_knight2.0.png-888cfbba729121adf643e44245856321.ctex"]
+source_file="res://Cards/CardSlot.png"
+dest_files=["res://.godot/imported/CardSlot.png-3a49c6b78e21fc3c47432dae32c0fb62.ctex"]
 
 [params]
 
