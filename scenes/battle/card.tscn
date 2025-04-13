@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ibj8aersgrg6"]
+[gd_scene load_steps=4 format=3 uid="uid://ibj8aersgrg6"]
 
+[ext_resource type="Script" uid="uid://c1cynw2nfshih" path="res://scenes/battle/card.gd" id="1_12e7e"]
 [ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://Cards/Sandwich_knight2.0.png" id="1_kikvd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(38, 54)
 
 [node name="Card" type="Node2D"]
+scale = Vector2(0.475, 0.475)
+script = ExtResource("1_12e7e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

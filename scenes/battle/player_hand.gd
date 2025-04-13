@@ -1,15 +1,15 @@
 extends Node2D
 
 
-const CARD_WIDTH = 200
-const HAND_Y_POSITION = 515
+const CARD_WIDTH = 20
+const HAND_Y_POSITION = 1
 const DEFAULT_CARD_MOVE_SPEED = 0.1
 
 var player_hand = []
 var center_screen_x
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	center_screen_x = get_viewport().size.x / 2
+	center_screen_x = get_viewport().size.x / 16
 
 
 func add_card_to_hand(card, speed):
