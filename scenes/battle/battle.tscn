@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvnymbjn7jspr"]
+[gd_scene load_steps=5 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
+[ext_resource type="Script" uid="uid://bsudwj1dke25f" path="res://scenes/battle/card_manager.gd" id="2_0yh6x"]
+[ext_resource type="PackedScene" uid="uid://bbfh3ei4bepur" path="res://card.tscn" id="3_h0kxc"]
+[ext_resource type="Script" uid="uid://eg412ibjdhuh" path="res://card.gd" id="4_fh7rg"]
 
 [node name="battle" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -10,3 +13,13 @@ modulate = Color(0.65834, 0.65834, 0.65834, 1)
 texture = ExtResource("1_7gynk")
 centered = false
 metadata/_edit_lock_ = true
+
+[node name="Card Manager" type="Node2D" parent="."]
+script = ExtResource("2_0yh6x")
+
+[node name="Card" parent="Card Manager" instance=ExtResource("3_h0kxc")]
+position = Vector2(73, 112)
+script = ExtResource("4_fh7rg")
+
+[node name="Card2" parent="Card Manager" instance=ExtResource("3_h0kxc")]
+position = Vector2(124, 111)
