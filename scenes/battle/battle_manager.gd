@@ -4,7 +4,7 @@ const STARTING_HEALTH = 10
 
 var max_cool_down := 4
 var curr_cool_down := 4
-var player_cards_on_battlefield: Array[Card] = []
+var player_cards_on_battlefield # Dictionary
 
 var player_health
 var boss_health
@@ -24,6 +24,8 @@ func _ready() ->void:
 	
 	boss_health = STARTING_HEALTH
 	$"../BossHealth".text = str(boss_health)
+	
+	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
 	
 	$"../BossAttack".text = str(boss_damage)
 	$"../InputManager".connect("select_placed_card", _player_select_placed_card)
@@ -61,8 +63,9 @@ func _on_end_turn_button_pressed() -> void:
 
 func reset_cards_attack():
 	print("Clear function reached")
-	for card in player_cards_on_battlefield:
-		card.attacked_this_turn = false
+	for key in player_cards_on_battlefield:
+		if player_cards_on_battlefield[key]:
+			player_cards_on_battlefield[key].attacked_this_turn = false
 
 
 func opponent_turn():
