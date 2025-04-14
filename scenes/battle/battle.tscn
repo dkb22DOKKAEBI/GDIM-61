@@ -67,3 +67,14 @@ script = ExtResource("3_py4tk")
 [node name="Cardslot3" parent="." instance=ExtResource("2_pll4o")]
 position = Vector2(58, 65)
 script = ExtResource("3_py4tk")
+
+[node name="EndTurnButton" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 89.0
+offset_right = 167.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "End Turn
+"
