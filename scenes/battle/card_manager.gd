@@ -51,7 +51,7 @@ func finish_drag():
 func connect_card_signals(card):
 	card.connect("hovered", on_hovered_over_card)
 	card.connect("hovered_off", on_hovered_off_card)
-	
+
 
 
 func on_left_clicked_released():
@@ -75,12 +75,14 @@ func on_hovered_off_card(card):
 			is_hovering_on_card = false
 
 func highlight_card(card, hovered):
-	if hovered:
-		card.scale = Vector2(0.5, 0.5)
-		card.z_index = 2
-	else:
-		card.scale = Vector2(0.475, 0.475)
-		card.z_index = 1
+	#if hovered:
+		#card.scale = Vector2(1, 1)
+		#card.z_index = 2
+	#else:
+		#card.scale = Vector2(0.475, 0.475)
+		#card.z_index = 1
+	pass 
+	# function deadass dont do nothin
 
 func raycast_check_for_card_slot():
 	var space_state = get_world_2d().direct_space_state
