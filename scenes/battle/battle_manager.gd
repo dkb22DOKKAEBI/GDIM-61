@@ -7,7 +7,7 @@ var player_cards_on_battlefield = []
 
 var player_health = 3
 var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 2, "Block": 2, "Kill": 10}}
-var monster_cards = {"Sandwich Knight": {"HP":5, "Attack": 1}}
+var monster_cards = {"Sandwich Knight": {"HP":5, "Attack": 1}, "Pizza Ninja": {"HP":5, "Attack": 1} }
 
 
 @onready var battle_timer: Timer = $"../BattleTimer"
@@ -50,6 +50,11 @@ func opponent_turn():
 	start_player_turn()
 
 func start_player_turn():
+	#maybe whenever card is played add it to an dictionary so that the new dictionary
+	#can keep track of the cards on the field rather than the original
+	#I still do not know how to copy a variable from another dictionary into a new dictionary -kai
+	#the dictionary would look something like this
+	#var playing_field = {cardslot_1 : {}, cardslot_2: {}, cardslot_3: {}}
 	#player chooses card to play
 	#card attacks
 	var chosen_card
