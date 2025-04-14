@@ -4,6 +4,11 @@ var max_cool_down := 3
 var curr_cool_down := 3
 @onready var battle_timer: Timer = $"../BattleTimer"
 
+@onready var cardslot_1: Node2D = $"../Cardslot"
+@onready var cardslot_2: Node2D = $"../Cardslot2"
+@onready var cardslot_3: Node2D = $"../Cardslot3"
+
+
 
 func _on_end_turn_button_pressed() -> void:
 	opponent_turn()
@@ -45,18 +50,36 @@ func opponent_move():
 	
 	# Decide which skill to use
 	var skill = randi() % available_skills
+	var target = choose_target()
 	match skill:
 		0:
-			print("Attack")
-			choose_target()
+			opponent_attack()
 		1:
-			print("Get Shield")
+			opponent_defend()
 		2:
-			print("Eliminate")
-			choose_target()
+			opponent_eliminate()
 		_:
 			print("Skill out of range")
 
 
-func choose_target():
-	pass
+func choose_target() -> Cardslot:
+	if cardslot_1.card_in_slot:
+		return cardslot_1
+	
+	# Calculate turn numbers needed to kill player
+	# and that the cards can kill the enemy
+	# to decide which target to choose
+	
+	return null # Means the target is the player
+
+
+func opponent_attack():
+	print("Opponent Attack")
+
+
+func opponent_defend():
+	print("Opponent Defend")
+
+
+func opponent_eliminate():
+	print("Opponent Eliminate")
