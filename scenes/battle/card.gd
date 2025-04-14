@@ -7,6 +7,7 @@ signal hovered_off
 var starting_position
 var placed := false
 var attacked_this_turn := false
+var card_slot_on: Cardslot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,5 +40,13 @@ func get_health() -> int:
 	return int($Health.text)
 
 
-func set_health(new_health: int) -> void:
+func take_damage(dmg: int) -> void:
+	var new_health = max(0, get_health() - dmg)
 	$Health.text = str(new_health)
+	if (new_health == 0):
+		die()
+
+
+func die():
+	card_slot_on.card_in_slot = false
+	queue_free()

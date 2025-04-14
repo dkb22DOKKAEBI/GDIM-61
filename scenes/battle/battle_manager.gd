@@ -4,7 +4,7 @@ const STARTING_HEALTH = 10
 
 var max_cool_down := 4
 var curr_cool_down := 4
-var player_cards_on_battlefield: Array[Card] = []
+var player_cards_on_battlefield # Dictionary
 
 var player_health
 var boss_health
@@ -24,6 +24,8 @@ func _ready() ->void:
 	
 	boss_health = STARTING_HEALTH
 	$"../BossHealth".text = str(boss_health)
+	
+	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
 	
 	$"../BossAttack".text = str(boss_damage)
 	$"../InputManager".connect("select_placed_card", _player_select_placed_card)
@@ -61,8 +63,9 @@ func _on_end_turn_button_pressed() -> void:
 
 func reset_cards_attack():
 	print("Clear function reached")
-	for card in player_cards_on_battlefield:
-		card.attacked_this_turn = false
+	for key in player_cards_on_battlefield:
+		if player_cards_on_battlefield[key]:
+			player_cards_on_battlefield[key].attacked_this_turn = false
 
 
 func opponent_turn():
@@ -103,7 +106,7 @@ func opponent_move():
 	
 	match skill:
 		0:
-			opponent_attack(target, "boss")
+			opponent_attack(target)
 		1:
 			opponent_defend()
 		2:
@@ -116,10 +119,6 @@ func choose_target() -> Cardslot:
 	#for now this is how it will target cards
 	if cardslot_1.card_in_slot:
 		return cardslot_1
-	elif cardslot_2.card_in_slot:
-		return cardslot_2
-	elif cardslot_3.card_in_slot:
-		return cardslot_3
 	
 	# Calculate turn numbers needed to kill player
 	# and that the cards can kill the enemy
@@ -128,12 +127,15 @@ func choose_target() -> Cardslot:
 	return null # Means the target is the player
 
 
-func opponent_attack(target, attacker):
-	if attacker == "boss":
-		var boss_attack = boss1_stats["Vacuum"]["Attack"]
+func opponent_attack(target):
+	var boss_attack = boss1_stats["Vacuum"]["Attack"]
+	if not target:
 		player_health = max(0, player_health - boss_attack)
 		$"../PlayerHealth".text = str(player_health)
-		print("Opponent Attack")
+	else:
+		player_cards_on_battlefield[target].take_damage(boss_attack)
+		
+	print("Opponent Attack")
 
 
 func opponent_defend():
@@ -143,5 +145,6 @@ func opponent_defend():
 
 
 func opponent_eliminate(target):
-	var boss_attack = boss1_stats["Vacuum"]["Kill"]
+	if target:
+		player_cards_on_battlefield[target].die()
 	print("Opponent Eliminate")
