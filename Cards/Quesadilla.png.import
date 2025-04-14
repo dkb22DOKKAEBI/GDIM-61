@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbkob58iwxl0b"
-path="res://.godot/imported/KnightCard.png-101bafabf7a4cc0a4a40c9e5fd36a4ac.ctex"
+uid="uid://c75tgs8ekjcun"
+path="res://.godot/imported/Quesadilla.png-f87dce21a2ef2f7b3818af0a506dcf6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/KnightCard.png"
-dest_files=["res://.godot/imported/KnightCard.png-101bafabf7a4cc0a4a40c9e5fd36a4ac.ctex"]
+source_file="res://Cards/Quesadilla.png"
+dest_files=["res://.godot/imported/Quesadilla.png-f87dce21a2ef2f7b3818af0a506dcf6d.ctex"]
 
 [params]
 
