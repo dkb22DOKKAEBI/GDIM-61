@@ -4,14 +4,14 @@ const STARTING_HEALTH = 10
 
 var max_cool_down := 4
 var curr_cool_down := 4
-var opponent_health = 10
-var player_cards_on_battlefield = []
+var player_cards_on_battlefield: Array[Card] = []
 
 var player_health
 var boss_health
 var boss_damage = 2
 var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 2, "Block": 2, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
+var selected_card_in_slot: Card
 
 @onready var battle_timer: Timer = $"../BattleTimer"
 @onready var cardslot_1: Node2D = $"../Cardslot"
@@ -26,10 +26,41 @@ func _ready() ->void:
 	$"../BossHealth".text = str(boss_health)
 	
 	$"../BossAttack".text = str(boss_damage)
+	$"../InputManager".connect("select_placed_card", _player_select_placed_card)
+	$"../InputManager".connect("player_attack", _on_player_attack)
+
+
+func _player_select_placed_card(card: Card):
+	if selected_card_in_slot:
+		selected_card_in_slot.selected_label_vis(false)
+	selected_card_in_slot = card
+	selected_card_in_slot.selected_label_vis(true)
+
+
+func _on_player_attack():
+	if not selected_card_in_slot:
+		return
 	
+	if not selected_card_in_slot.attacked_this_turn:
+		selected_card_in_slot.attacked_this_turn = true
+		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
+		$"../BossHealth".text = str(boss_health)
+
+
+func player_win():
+	pass
+
 
 func _on_end_turn_button_pressed() -> void:
+	selected_card_in_slot = null
+	reset_cards_attack()
 	opponent_turn()
+
+
+func reset_cards_attack():
+	print("Clear function reached")
+	for card in player_cards_on_battlefield:
+		card.attacked_this_turn = false
 
 
 func opponent_turn():
