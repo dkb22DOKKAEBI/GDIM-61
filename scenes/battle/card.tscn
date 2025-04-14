@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://c1cynw2nfshih" path="res://scenes/battle/card.gd" id="1_12e7e"]
-[ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://Cards/Sandwich_knight2.0.png" id="1_kikvd"]
+[ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://Cards/KnightCard.png" id="1_kikvd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(38, 54)
@@ -18,3 +18,21 @@ texture = ExtResource("1_kikvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_xd4uy")
+
+[node name="Attack" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -15.0
+offset_top = -25.0
+offset_right = 10.0
+scale = Vector2(0.25, 0.25)
+text = "1"
+
+[node name="Health" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 10.5263
+offset_top = -25.2632
+offset_right = 31.5263
+offset_bottom = -0.263159
+scale = Vector2(0.25, 0.25)
+text = "1"
+horizontal_alignment = 1
