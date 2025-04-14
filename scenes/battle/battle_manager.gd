@@ -49,6 +49,7 @@ func _on_player_attack():
 		$"../BossHealth".text = str(boss_health)
 		if boss_health == 0:
 			player_win()
+		selected_card_in_slot.selected_label_vis(false)
 
 
 func player_win():
