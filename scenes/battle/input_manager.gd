@@ -2,6 +2,8 @@ extends Node2D
 
 signal left_mouse_button_clicked
 signal left_mouse_button_released
+signal select_placed_card(card: Card)
+signal player_attack
 
 const COLLISION_MASK_CARD = 1
 const COLLISION_MASK_DECK = 4
@@ -20,6 +22,9 @@ func _input(event):
 			raycast_at_cursor()
 		else:
 			emit_signal("left_mouse_button_released")
+	
+	if Input.is_key_pressed(KEY_SPACE):
+		player_attack.emit()
 
 
 
@@ -35,7 +40,10 @@ func raycast_at_cursor():
 			#Card Clicked
 			var card_found = result[0].collider.get_parent()
 			if card_found:
-				card_manager_reference.start_drag(card_found)
+				if not card_found.placed:
+					card_manager_reference.start_drag(card_found)
+				else:
+					select_placed_card.emit(card_found)
 		elif result_collision_mask == COLLISION_MASK_DECK:
 			#Deck Clicked
 			deck_reference.draw_card()

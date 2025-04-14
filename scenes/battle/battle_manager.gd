@@ -4,14 +4,14 @@ const STARTING_HEALTH = 10
 
 var max_cool_down := 4
 var curr_cool_down := 4
-var opponent_health = 10
-var player_cards_on_battlefield = []
+var player_cards_on_battlefield: Array[Card] = []
 
 var player_health
 var boss_health
 var boss_damage = 2
 var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 2, "Block": 2, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
+var selected_card_in_slot: Card
 
 @onready var battle_timer: Timer = $"../BattleTimer"
 @onready var cardslot_1: Node2D = $"../Cardslot"
@@ -26,17 +26,48 @@ func _ready() ->void:
 	$"../BossHealth".text = str(boss_health)
 	
 	$"../BossAttack".text = str(boss_damage)
+	$"../InputManager".connect("select_placed_card", _player_select_placed_card)
+	$"../InputManager".connect("player_attack", _on_player_attack)
+
+
+func _player_select_placed_card(card: Card):
+	if selected_card_in_slot:
+		selected_card_in_slot.selected_label_vis(false)
+	selected_card_in_slot = card
+	selected_card_in_slot.selected_label_vis(true)
+
+
+func _on_player_attack():
+	if not selected_card_in_slot:
+		return
 	
+	if not selected_card_in_slot.attacked_this_turn:
+		selected_card_in_slot.attacked_this_turn = true
+		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
+		$"../BossHealth".text = str(boss_health)
+		if boss_health == 0:
+			player_win()
+
+
+func player_win():
+	$"../Win".visible = true
+
 
 func _on_end_turn_button_pressed() -> void:
+	selected_card_in_slot = null
+	reset_cards_attack()
 	opponent_turn()
+
+
+func reset_cards_attack():
+	print("Clear function reached")
+	for card in player_cards_on_battlefield:
+		card.attacked_this_turn = false
 
 
 func opponent_turn():
 	$"../EndTurnButton".disabled = true
 	$"../EndTurnButton".visible = false
-	
-	#Check boss hp if zero end game
 	
 	# Enemy Turn
 	print("Enemy Turn")
@@ -46,10 +77,6 @@ func opponent_turn():
 	print("Enemy Move") # Need implementation
 	curr_cool_down -= 1
 	opponent_move()
-	
-	
-	
-	
 	
 	if curr_cool_down == 0:
 		curr_cool_down = max_cool_down
@@ -66,23 +93,6 @@ func start_player_turn():
 	$"../Deck".reset_draw()
 	$"../EndTurnButton".disabled = false
 	$"../EndTurnButton".visible = true
-	
-		#maybe whenever card is played add it to an dictionary so that the new dictionary
-	#can keep track of the cards on the field rather than the original
-	#I still do not know how to copy a variable from another dictionary into a new dictionary -kai
-	#the dictionary would look something like this
-	#var playing_field = {cardslot_1 : {}, cardslot_2: {}, cardslot_3: {}}
-	#player chooses card to play
-	#card attacks
-	var chosen_card
-	var player_card_attacker = chosen_card
-	opponent_attack("Boss", "player") #adjust boss so that it attacks the boss card
-	#make it so played card cannot be played against, 
-	#(possibly by storing the cardslots that have already attacked into an array and 
-	#preventing them from being played again)
-	
-	#create an if function that checks boss's health at the end of the turn as if it is zero then the player has won
-
 
 
 func opponent_move():
@@ -124,16 +134,10 @@ func opponent_attack(target, attacker):
 		player_health = max(0, player_health - boss_attack)
 		$"../PlayerHealth".text = str(player_health)
 		print("Opponent Attack")
-	elif attacker == "player":
-		var player_attack = monster_cards[attacker]["Attack"]
-		#attacker needs to reference the cards in CardDatabase.gd
-		boss_health = max(0, boss_health - player_attack)
-		$"../BossHealth".text = str(boss_health)
-		print("Player Attack")
 
 
 func opponent_defend():
-	boss_health = max(boss_health + 2, 10)
+	boss_health = min(boss_health + 2, 10)
 	$"../BossHealth".text = str(boss_health)
 	print("Opponent Defend")
 
