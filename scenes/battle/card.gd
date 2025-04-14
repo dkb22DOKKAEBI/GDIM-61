@@ -39,5 +39,12 @@ func get_health() -> int:
 	return int($Health.text)
 
 
-func set_health(new_health: int) -> void:
+func take_damage(dmg: int) -> void:
+	var new_health = max(0, get_health() - dmg)
 	$Health.text = str(new_health)
+	if (new_health == 0):
+		die()
+
+
+func die():
+	queue_free()
