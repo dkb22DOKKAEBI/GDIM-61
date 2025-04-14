@@ -42,6 +42,7 @@ func finish_drag():
 			#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
 			card_being_dragged.placed = true
 			card_slot_found.card_in_slot = true
+			card_being_dragged.card_slot_on = card_slot_found
 			$"../BattleManager".player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
 		player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED)

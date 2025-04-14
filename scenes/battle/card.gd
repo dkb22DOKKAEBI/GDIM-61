@@ -7,6 +7,7 @@ signal hovered_off
 var starting_position
 var placed := false
 var attacked_this_turn := false
+var card_slot_on: Cardslot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,4 +48,5 @@ func take_damage(dmg: int) -> void:
 
 
 func die():
+	card_slot_on.card_in_slot = false
 	queue_free()
