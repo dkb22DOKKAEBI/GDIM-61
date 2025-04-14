@@ -44,13 +44,11 @@ func end_opponent_turn():
 
 
 func opponent_move():
-	var available_skills := 2
+	var skill = randi() % 2
 	if curr_cool_down == 0:
-		available_skills += 1
-	
-	# Decide which skill to use
-	var skill = randi() % available_skills
+		skill = 2
 	var target = choose_target()
+	
 	match skill:
 		0:
 			opponent_attack()
