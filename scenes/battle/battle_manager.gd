@@ -2,12 +2,12 @@ extends Node
 
 var max_cool_down := 3
 var curr_cool_down := 3
-@onready var battle_timer: Timer = $"../BattleTimer"
+var opponent_health = 10
 
+@onready var battle_timer: Timer = $"../BattleTimer"
 @onready var cardslot_1: Node2D = $"../Cardslot"
 @onready var cardslot_2: Node2D = $"../Cardslot2"
 @onready var cardslot_3: Node2D = $"../Cardslot3"
-
 
 
 func _on_end_turn_button_pressed() -> void:
