@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
-[ext_resource type="Texture2D" uid="uid://brsnqw1uton8m" path="res://Cards/Cheesecake.png" id="1_oiw7q"]
+[ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://Vacuum_boss.png" id="1_oiw7q"]
 [ext_resource type="Script" uid="uid://bsudwj1dke25f" path="res://scenes/battle/card_manager.gd" id="2_0yh6x"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/battle/cardslot.tscn" id="2_pll4o"]
 [ext_resource type="Script" uid="uid://wrkrwvu00sun" path="res://scenes/battle/cardslot.gd" id="3_py4tk"]
@@ -17,8 +17,8 @@ size = Vector2(18, 26)
 [node name="battle" type="Node2D"]
 
 [node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(215, 78)
-scale = Vector2(0.1, 0.1)
+position = Vector2(214.5, 77)
+scale = Vector2(0.125, 0.120438)
 texture = ExtResource("1_oiw7q")
 
 [node name="background" type="Sprite2D" parent="."]
