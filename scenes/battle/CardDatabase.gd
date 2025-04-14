@@ -1,5 +1,7 @@
 const CARDS = { #attack, health
-	"Knight" : 	[2, 3],
-	"Archer" : 	[1, 1],
-	"Demon" : 	[5, 7]
+	"Quesadilla" 	: [2, 3],
+	"Cheesecake" 	: [1, 1],
+	"Sandwich"	 	: [5, 7],
+	"Trashcan"		: [0, 2],
+	"Pizza"			: [5, 15]
 }
