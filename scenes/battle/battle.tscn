@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvnymbjn7jspr"]
+[gd_scene load_steps=11 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
 [ext_resource type="Script" uid="uid://bsudwj1dke25f" path="res://scenes/battle/card_manager.gd" id="2_0yh6x"]
@@ -8,11 +8,15 @@
 [ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://scenes/battle/deck.gd" id="6_oiw7q"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scenes/battle/input_manager.gd" id="7_fisqk"]
 [ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://Cards/Deck.png" id="7_py4tk"]
+[ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scenes/battle/battle_manager.gd" id="9_agsc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxe8n"]
 size = Vector2(18, 26)
 
 [node name="battle" type="Node2D"]
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(215, 78)
 
 [node name="background" type="Sprite2D" parent="."]
 modulate = Color(0.65834, 0.65834, 0.65834, 1)
@@ -67,3 +71,22 @@ script = ExtResource("3_py4tk")
 [node name="Cardslot3" parent="." instance=ExtResource("2_pll4o")]
 position = Vector2(58, 65)
 script = ExtResource("3_py4tk")
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("9_agsc7")
+
+[node name="EndTurnButton" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 89.0
+offset_right = 167.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "End Turn
+"
+
+[node name="BattleTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]

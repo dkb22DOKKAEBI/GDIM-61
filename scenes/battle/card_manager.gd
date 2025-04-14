@@ -15,7 +15,6 @@ func _ready()->void:
 	screen_size = get_viewport_rect().size
 	player_hand_reference = $"../PlayerHand"
 	$"../InputManager".connect("left_mouse_button_released", on_left_clicked_released)
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,11 +25,10 @@ func _process(_delta: float)-> void:
 		clamp(mouse_pos.y, 0, screen_size.y))
 
 
-
-
 func start_drag(card):
 	card_being_dragged = card
 	card.scale = Vector2(0.45, 0.45)
+
 
 func finish_drag():
 	card_being_dragged.scale = Vector2(0.475, 0.475)
@@ -53,15 +51,16 @@ func connect_card_signals(card):
 	card.connect("hovered_off", on_hovered_off_card)
 
 
-
 func on_left_clicked_released():
 	if card_being_dragged:
 		finish_drag()
+
 
 func on_hovered_over_card(card):
 	if !is_hovering_on_card:
 		is_hovering_on_card = true
 		highlight_card(card, true)
+
 
 func on_hovered_off_card(card):
 	if !card_being_dragged:
@@ -74,6 +73,7 @@ func on_hovered_off_card(card):
 		else:
 			is_hovering_on_card = false
 
+
 func highlight_card(card, hovered):
 	#if hovered:
 		#card.scale = Vector2(1, 1)
@@ -83,6 +83,7 @@ func highlight_card(card, hovered):
 		#card.z_index = 1
 	pass 
 	# function deadass dont do nothin
+
 
 func raycast_check_for_card_slot():
 	var space_state = get_world_2d().direct_space_state
@@ -121,4 +122,6 @@ func get_card_with_highest_z_index(cards):
 			highest_z_index = current_card.z_index
 	return highest_z_card
 
-#HAHAHAHAHAHAHAHAHA LEO
+
+func reset_played():
+	played_card_this_turn = false
