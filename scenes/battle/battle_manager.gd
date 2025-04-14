@@ -45,10 +45,12 @@ func _on_player_attack():
 		selected_card_in_slot.attacked_this_turn = true
 		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
 		$"../BossHealth".text = str(boss_health)
+		if boss_health == 0:
+			player_win()
 
 
 func player_win():
-	pass
+	$"../Win".visible = true
 
 
 func _on_end_turn_button_pressed() -> void:
@@ -67,8 +69,6 @@ func opponent_turn():
 	$"../EndTurnButton".disabled = true
 	$"../EndTurnButton".visible = false
 	
-	#Check boss hp if zero end game
-	
 	# Enemy Turn
 	print("Enemy Turn")
 	battle_timer.start()
@@ -77,10 +77,6 @@ func opponent_turn():
 	print("Enemy Move") # Need implementation
 	curr_cool_down -= 1
 	opponent_move()
-	
-	
-	
-	
 	
 	if curr_cool_down == 0:
 		curr_cool_down = max_cool_down
@@ -97,25 +93,6 @@ func start_player_turn():
 	$"../Deck".reset_draw()
 	$"../EndTurnButton".disabled = false
 	$"../EndTurnButton".visible = true
-	
-		#maybe whenever card is played add it to an dictionary so that the new dictionary
-	#can keep track of the cards on the field rather than the original
-	#I still do not know how to copy a variable from another dictionary into a new dictionary -kai
-	#the dictionary would look something like this
-	#var playing_field = {cardslot_1 : {}, cardslot_2: {}, cardslot_3: {}}
-	#player chooses card to play
-	#card attacks
-	var chosen_card
-	var player_card_attacker = chosen_card
-	opponent_attack("Boss", "player") #adjust boss so that it attacks the boss card
-	#make it so played card cannot be played against, 
-	#(possibly by storing the cardslots that have already attacked into an array and 
-	#preventing them from being played again)
-	
-	#create an if function that checks boss's health at the end of the turn as if it is zero then the player has won
-
-
-
 
 
 func opponent_move():
@@ -157,12 +134,6 @@ func opponent_attack(target, attacker):
 		player_health = max(0, player_health - boss_attack)
 		$"../PlayerHealth".text = str(player_health)
 		print("Opponent Attack")
-	#elif attacker == "player":
-		#var player_attack = monster_cards[attacker]["Attack"]
-		##attacker needs to reference the cards in CardDatabase.gd
-		#boss_health = max(0, boss_health - player_attack)
-		#$"../BossHealth".text = str(boss_health)
-		#print("Player Attack")
 
 
 func opponent_defend():
