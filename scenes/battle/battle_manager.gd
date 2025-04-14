@@ -85,6 +85,8 @@ func start_player_turn():
 
 
 
+
+
 func opponent_move():
 	var skill = randi() % 2
 	if curr_cool_down == 0:
@@ -124,16 +126,16 @@ func opponent_attack(target, attacker):
 		player_health = max(0, player_health - boss_attack)
 		$"../PlayerHealth".text = str(player_health)
 		print("Opponent Attack")
-	elif attacker == "player":
-		var player_attack = monster_cards[attacker]["Attack"]
-		#attacker needs to reference the cards in CardDatabase.gd
-		boss_health = max(0, boss_health - player_attack)
-		$"../BossHealth".text = str(boss_health)
-		print("Player Attack")
+	#elif attacker == "player":
+		#var player_attack = monster_cards[attacker]["Attack"]
+		##attacker needs to reference the cards in CardDatabase.gd
+		#boss_health = max(0, boss_health - player_attack)
+		#$"../BossHealth".text = str(boss_health)
+		#print("Player Attack")
 
 
 func opponent_defend():
-	boss_health = max(boss_health + 2, 10)
+	boss_health = min(boss_health + 2, 10)
 	$"../BossHealth".text = str(boss_health)
 	print("Opponent Defend")
 
