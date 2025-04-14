@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvnymbjn7jspr"]
+[gd_scene load_steps=12 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
+[ext_resource type="Texture2D" uid="uid://brsnqw1uton8m" path="res://Cards/Cheesecake.png" id="1_oiw7q"]
 [ext_resource type="Script" uid="uid://bsudwj1dke25f" path="res://scenes/battle/card_manager.gd" id="2_0yh6x"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/battle/cardslot.tscn" id="2_pll4o"]
 [ext_resource type="Script" uid="uid://wrkrwvu00sun" path="res://scenes/battle/cardslot.gd" id="3_py4tk"]
@@ -17,6 +18,8 @@ size = Vector2(18, 26)
 
 [node name="Enemy" type="Sprite2D" parent="."]
 position = Vector2(215, 78)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_oiw7q")
 
 [node name="background" type="Sprite2D" parent="."]
 modulate = Color(0.65834, 0.65834, 0.65834, 1)
@@ -88,5 +91,31 @@ text = "End Turn
 
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlayerHealth" type="RichTextLabel" parent="."]
+offset_left = 4.0
+offset_top = 43.0
+offset_right = 44.0
+offset_bottom = 83.0
+text = "0"
+
+[node name="BossAttack" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 196.0
+offset_top = 48.0
+offset_right = 217.0
+offset_bottom = 73.0
+scale = Vector2(0.25, 0.25)
+text = "0"
+horizontal_alignment = 1
+
+[node name="BossHealth" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 230.0
+offset_top = 48.0
+offset_right = 255.0
+offset_bottom = 73.0
+scale = Vector2(0.25, 0.25)
+text = "0"
 
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
