@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvnymbjn7jspr"]
+[gd_scene load_steps=13 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
 [ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://Vacuum_boss.png" id="1_oiw7q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scenes/battle/input_manager.gd" id="7_fisqk"]
 [ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://Cards/Deck.png" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scenes/battle/battle_manager.gd" id="9_agsc7"]
+[ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scenes/battle/cooking_mechanic.gd" id="11_fisqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxe8n"]
 size = Vector2(18, 26)
@@ -129,5 +130,8 @@ offset_right = 255.0
 offset_bottom = 73.0
 scale = Vector2(0.25, 0.25)
 text = "0"
+
+[node name="CookingMechanic" type="Node" parent="."]
+script = ExtResource("11_fisqk")
 
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
