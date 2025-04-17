@@ -4,7 +4,7 @@ const CARD_SCENE_PATH = "res://scenes/battle/card.tscn"
 const CARD_DRAW_SPEED = 1
 const STARTING_HAND_SIZE = 1
 
-var player_deck = ["Cheesecake", "Pizza", "Quesadilla", "Sandwich", "Trashcan"]
+var player_deck = ["Cheesecake", "Pizza", "Quesadilla", "Sandwich", "Trashcan", "Trashcan"]
 var card_database_reference
 var drawn_card_this_turn := false
 
