@@ -1,9 +1,9 @@
 extends Node
 
 const STARTING_HEALTH = 10
+const max_cool_down := 3
 
-var max_cool_down := 4
-var curr_cool_down := 4
+var curr_cool_down := 3
 var player_cards_on_battlefield # Dictionary
 
 var player_health
@@ -54,6 +54,10 @@ func _on_player_attack():
 
 func player_win():
 	$"../Win".visible = true
+	
+
+func player_lose():
+	$"../Lose".visible = true
 
 
 func _on_end_turn_button_pressed() -> void:
@@ -113,7 +117,7 @@ func opponent_move():
 		2:
 			opponent_defend()
 		3:
-			opponent_eliminate(target)
+			opponent_eliminate()
 		_:
 			print("Skill out of range")
 
@@ -143,6 +147,8 @@ func opponent_attack(target):
 	if not target:
 		player_health = max(0, player_health - boss_attack)
 		$"../PlayerHealth".text = str(player_health)
+		if player_health == 0:
+			player_lose()
 	else:
 		player_cards_on_battlefield[target].take_damage(boss_attack)
 		
@@ -150,12 +156,22 @@ func opponent_attack(target):
 
 
 func opponent_defend():
-	boss_health = min(boss_health + 2, 20)
+	boss_health = min(boss_health + 3, 20)
 	$"../BossHealth".text = str(boss_health)
 	print("Opponent Defend")
 
 
-func opponent_eliminate(target):
-	if target:
-		player_cards_on_battlefield[target].die()
+func opponent_eliminate():
+	if cardslot_1.card_in_slot:
+		player_cards_on_battlefield[cardslot_1].die()
+	elif cardslot_2.card_in_slot:
+		player_cards_on_battlefield[cardslot_2].die()
+	elif cardslot_3.card_in_slot:
+		player_cards_on_battlefield[cardslot_3].die()
 	print("Opponent Eliminate")
+
+func check_field():
+	if not cardslot_1.card_in_slot and not cardslot_2.card_in_slot and not cardslot_3.card_in_slot:
+		return true
+	else:
+		false
