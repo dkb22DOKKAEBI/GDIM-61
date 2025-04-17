@@ -156,9 +156,13 @@ func opponent_attack(target):
 
 
 func opponent_defend():
-	boss_health = min(boss_health + 3, 20)
-	$"../BossHealth".text = str(boss_health)
-	print("Opponent Defend")
+	if boss_health == 20:
+		var target = choose_target()
+		opponent_attack(target)
+	else:
+		boss_health = min(boss_health + 3, 20)
+		$"../BossHealth".text = str(boss_health)
+		print("Opponent Defend")
 
 
 func opponent_eliminate():
@@ -168,6 +172,8 @@ func opponent_eliminate():
 		player_cards_on_battlefield[cardslot_2].die()
 	elif cardslot_3.card_in_slot:
 		player_cards_on_battlefield[cardslot_3].die()
+	else:
+		opponent_attack(null)
 	print("Opponent Eliminate")
 
 func check_field():
