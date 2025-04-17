@@ -8,8 +8,8 @@ var player_cards_on_battlefield # Dictionary
 
 var player_health
 var boss_health
-var boss_damage = 2
-var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 2, "Block": 2, "Kill": 10}}
+var boss_damage = 4
+var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 4, "Block": 3, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
 
@@ -22,7 +22,7 @@ func _ready() ->void:
 	player_health = STARTING_HEALTH
 	$"../PlayerHealth".text = str(player_health)
 	
-	boss_health = STARTING_HEALTH
+	boss_health = 20
 	$"../BossHealth".text = str(boss_health)
 	
 	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
@@ -100,17 +100,19 @@ func start_player_turn():
 
 
 func opponent_move():
-	var skill = randi() % 2
+	var skill = randi() % 3
 	if curr_cool_down == 0:
-		skill = 2
+		skill = 3
 	var target = choose_target()
 	
 	match skill:
-		0:
+		0 :
 			opponent_attack(target)
 		1:
-			opponent_defend()
+			opponent_attack(target)
 		2:
+			opponent_defend()
+		3:
 			opponent_eliminate(target)
 		_:
 			print("Skill out of range")
@@ -120,6 +122,14 @@ func choose_target() -> Cardslot:
 	#for now this is how it will target cards
 	if cardslot_1.card_in_slot:
 		return cardslot_1
+	elif cardslot_2.card_in_slot and cardslot_3.card_in_slot:
+		var target = randi() % 2
+		if target == 0:
+			return cardslot_2
+		else:
+			return cardslot_3
+	else:
+		return 
 	
 	# Calculate turn numbers needed to kill player
 	# and that the cards can kill the enemy
@@ -140,7 +150,7 @@ func opponent_attack(target):
 
 
 func opponent_defend():
-	boss_health = min(boss_health + 2, 10)
+	boss_health = min(boss_health + 2, 20)
 	$"../BossHealth".text = str(boss_health)
 	print("Opponent Defend")
 
