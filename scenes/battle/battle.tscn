@@ -17,24 +17,27 @@ size = Vector2(18, 26)
 
 [node name="battle" type="Node2D"]
 
-[node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(214.5, 77)
-scale = Vector2(0.125, 0.120438)
-texture = ExtResource("1_oiw7q")
+[node name="Player" type="Node" parent="."]
 
-[node name="background" type="Sprite2D" parent="."]
+[node name="PlayerHand" type="Node2D" parent="Player"]
+position = Vector2(15, 126)
+script = ExtResource("5_agsc7")
+
+[node name="InputManager" type="Node2D" parent="Player"]
+script = ExtResource("7_fisqk")
+
+[node name="PlayerHealth" type="RichTextLabel" parent="Player"]
+offset_left = 4.0
+offset_top = 43.0
+offset_right = 44.0
+offset_bottom = 83.0
+text = "0"
+
+[node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.65834, 0.65834, 0.65834, 1)
 z_index = -3
 texture = ExtResource("1_7gynk")
 centered = false
-
-[node name="CardManager" type="Node2D" parent="."]
-position = Vector2(15, 126)
-script = ExtResource("2_0yh6x")
-
-[node name="PlayerHand" type="Node2D" parent="."]
-position = Vector2(15, 126)
-script = ExtResource("5_agsc7")
 
 [node name="Deck" type="Node2D" parent="."]
 position = Vector2(15, 126)
@@ -61,20 +64,35 @@ offset_right = 36.0
 offset_bottom = 28.0
 text = "0"
 
-[node name="InputManager" type="Node2D" parent="."]
-script = ExtResource("7_fisqk")
+[node name="Cardslots" type="Node" parent="."]
 
-[node name="Cardslot" parent="." instance=ExtResource("2_pll4o")]
+[node name="Cardslot" parent="Cardslots" instance=ExtResource("2_pll4o")]
 position = Vector2(84, 79)
 script = ExtResource("3_py4tk")
 
-[node name="Cardslot2" parent="." instance=ExtResource("2_pll4o")]
+[node name="Cardslot2" parent="Cardslots" instance=ExtResource("2_pll4o")]
 position = Vector2(58, 96)
 script = ExtResource("3_py4tk")
 
-[node name="Cardslot3" parent="." instance=ExtResource("2_pll4o")]
+[node name="Cardslot3" parent="Cardslots" instance=ExtResource("2_pll4o")]
 position = Vector2(58, 65)
 script = ExtResource("3_py4tk")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(214.5, 77)
+scale = Vector2(0.125, 0.120438)
+texture = ExtResource("1_oiw7q")
+
+[node name="EndTurnButton" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 89.0
+offset_right = 167.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "End Turn
+"
 
 [node name="Win" type="Label" parent="."]
 visible = false
@@ -100,30 +118,6 @@ text = "YOU  LOSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BattleManager" type="Node" parent="."]
-script = ExtResource("9_agsc7")
-
-[node name="EndTurnButton" type="Button" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 89.0
-offset_right = 167.0
-offset_bottom = 31.0
-grow_horizontal = 2
-text = "End Turn
-"
-
-[node name="BattleTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="PlayerHealth" type="RichTextLabel" parent="."]
-offset_left = 4.0
-offset_top = 43.0
-offset_right = 44.0
-offset_bottom = 83.0
-text = "0"
-
 [node name="BossAttack" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)
 offset_left = 196.0
@@ -145,5 +139,15 @@ text = "0"
 
 [node name="CookingMechanic" type="Node" parent="."]
 script = ExtResource("11_fisqk")
+
+[node name="BattleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CardManager" type="Node2D" parent="."]
+position = Vector2(15, 126)
+script = ExtResource("2_0yh6x")
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("9_agsc7")
 
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]

@@ -7,14 +7,13 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1
 var card_being_dragged
 var screen_size
 var is_hovering_on_card
-var player_hand_reference
+@onready var player_hand_reference: Node2D = $"../Player/PlayerHand"
 var played_card_this_turn := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready()->void:
 	screen_size = get_viewport_rect().size
-	player_hand_reference = $"../PlayerHand"
-	$"../InputManager".connect("left_mouse_button_released", on_left_clicked_released)
+	$"../Player/InputManager".connect("left_mouse_button_released", on_left_clicked_released)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
