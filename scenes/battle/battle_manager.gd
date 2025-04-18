@@ -14,13 +14,13 @@ var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attac
 var selected_card_in_slot: Card
 
 @onready var battle_timer: Timer = $"../BattleTimer"
-@onready var cardslot_1: Node2D = $"../Cardslot"
-@onready var cardslot_2: Node2D = $"../Cardslot2"
-@onready var cardslot_3: Node2D = $"../Cardslot3"
+@onready var cardslot_1: Node2D = $"../Cardslots/Cardslot"
+@onready var cardslot_2: Node2D = $"../Cardslots/Cardslot2"
+@onready var cardslot_3: Node2D = $"../Cardslots/Cardslot3"
 
 func _ready() ->void:
 	player_health = STARTING_HEALTH
-	$"../PlayerHealth".text = str(player_health)
+	$"../Player/PlayerHealth".text = str(player_health)
 	
 	boss_health = 20
 	$"../BossHealth".text = str(boss_health)
@@ -28,8 +28,8 @@ func _ready() ->void:
 	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
 	
 	$"../BossAttack".text = str(boss_damage)
-	$"../InputManager".connect("select_placed_card", _player_select_placed_card)
-	$"../InputManager".connect("player_attack", _on_player_attack)
+	$"../Player/InputManager".connect("select_placed_card", _player_select_placed_card)
+	$"../Player/InputManager".connect("player_attack", _on_player_attack)
 
 
 func _player_select_placed_card(card: Card):
@@ -146,7 +146,7 @@ func opponent_attack(target):
 	var boss_attack = boss1_stats["Vacuum"]["Attack"]
 	if not target:
 		player_health = max(0, player_health - boss_attack)
-		$"../PlayerHealth".text = str(player_health)
+		$"../Player/PlayerHealth".text = str(player_health)
 		if player_health == 0:
 			player_lose()
 	else:

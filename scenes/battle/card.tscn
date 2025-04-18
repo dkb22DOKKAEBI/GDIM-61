@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c1cynw2nfshih" path="res://scenes/battle/card.gd" id="1_12e7e"]
 [ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://Cards/KnightCard.png" id="1_kikvd"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(38, 54)
 

@@ -42,7 +42,7 @@ func draw_card():
 	new_card.get_node("Health").text = str(card_database_reference.CARDS[card_drawn_name][1])
 	$"../CardManager".add_child(new_card)
 	new_card.name = "Card"
-	$"../PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
+	$"../Player/PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
 
 
 func reset_draw():
