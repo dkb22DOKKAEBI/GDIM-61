@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvnymbjn7jspr"]
+[gd_scene load_steps=14 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
 [ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://Vacuum_boss.png" id="1_oiw7q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scenes/battle/input_manager.gd" id="7_fisqk"]
 [ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://Cards/Deck.png" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scenes/battle/battle_manager.gd" id="9_agsc7"]
+[ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://pixel_theme.tres" id="9_mxe8n"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scenes/battle/cooking_mechanic.gd" id="11_fisqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxe8n"]
@@ -87,10 +88,13 @@ texture = ExtResource("1_oiw7q")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 89.0
-offset_right = 167.0
-offset_bottom = 31.0
+offset_left = 209.0
+offset_top = 114.0
+offset_right = 253.0
+offset_bottom = 128.0
 grow_horizontal = 2
+theme = ExtResource("9_mxe8n")
+theme_override_font_sizes/font_size = 6
 text = "End Turn
 "
 
