@@ -89,13 +89,27 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 209.0
-offset_top = 114.0
+offset_top = 127.0
 offset_right = 253.0
-offset_bottom = 128.0
+offset_bottom = 141.0
 grow_horizontal = 2
 theme = ExtResource("9_mxe8n")
 theme_override_font_sizes/font_size = 6
 text = "End Turn
+"
+
+[node name="CookButton" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 209.0
+offset_top = 111.0
+offset_right = 253.0
+offset_bottom = 125.0
+grow_horizontal = 2
+theme = ExtResource("9_mxe8n")
+theme_override_font_sizes/font_size = 6
+text = "Cook
 "
 
 [node name="Win" type="Label" parent="."]
