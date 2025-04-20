@@ -161,7 +161,7 @@ script = ExtResource("11_fisqk")
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="CardManager" type="Node2D" parent="."]
+[node name="IngredientCardManager" type="Node2D" parent="."]
 position = Vector2(15, 126)
 script = ExtResource("2_0yh6x")
 
