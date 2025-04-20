@@ -1,6 +1,6 @@
 extends Node2D
 
-const CARD_SCENE_PATH = "res://scenes/battle/card.tscn"
+const CARD_SCENE_PATH = "res://scenes/card/card.tscn"
 const CARD_DRAW_SPEED = 1
 const STARTING_HAND_SIZE = 1
 
@@ -12,7 +12,7 @@ var drawn_card_this_turn := false
 func _ready():
 	player_deck.shuffle()
 	$RichTextLabel.text = str(player_deck.size())
-	card_database_reference = preload("res://scenes/battle/CardDatabase.gd")
+	card_database_reference = preload("res://scenes/card/CardDatabase.gd")
 	# Draw initial hand
 	for i in range(STARTING_HAND_SIZE):
 		draw_card()
