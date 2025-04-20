@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ibj8aersgrg6"]
 
-[ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scenes/card/monster_card.gd" id="1_imta7"]
+[ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scenes/card/monster_card/monster_card.gd" id="1_imta7"]
 [ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://cards/KnightCard.png" id="2_bclmf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
