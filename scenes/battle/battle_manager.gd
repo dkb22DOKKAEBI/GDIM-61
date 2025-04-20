@@ -97,7 +97,7 @@ func opponent_turn():
 
 
 func start_player_turn():
-	$"../CardManager".reset_played()
+	$"../IngredientCardManager".reset_played()
 	$"../Deck".reset_draw()
 	$"../EndTurnButton".disabled = false
 	$"../EndTurnButton".visible = true

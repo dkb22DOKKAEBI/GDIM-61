@@ -8,7 +8,7 @@ signal player_attack
 const COLLISION_MASK_CARD = 1
 const COLLISION_MASK_DECK = 4
 
-@onready var card_manager_reference: Node2D = $"../../CardManager"
+@onready var card_manager_reference: Node2D = $"../../IngredientCardManager"
 @onready var deck_reference: Node2D = $"../../Deck"
 
 func _ready() -> void:
