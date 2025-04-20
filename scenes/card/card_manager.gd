@@ -1,7 +1,9 @@
+class_name CardManager
 extends Node2D
 
 const COLLISION_MASK_CARD = 1
 const COLLISION_MASK_CARD_SLOT = 2
+const COLLISION_MASK_INGREDIENT_CARD = 3
 const DEFAULT_CARD_MOVE_SPEED = 0.1
 
 var card_being_dragged
