@@ -1,6 +1,6 @@
 extends Node2D
 
-const CARD_SCENE_PATH = "res://scenes/card/card.tscn"
+const CARD_SCENE_PATH = "res://scenes/card/monster_card/card.tscn"
 const CARD_DRAW_SPEED = 1
 const STARTING_HAND_SIZE = 1
 
