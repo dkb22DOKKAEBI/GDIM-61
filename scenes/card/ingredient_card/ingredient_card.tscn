@@ -43,3 +43,15 @@ theme = ExtResource("2_6i1cw")
 text = "Ingredient"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SelectedLabel" type="Label" parent="."]
+visible = false
+offset_left = -16.8421
+offset_top = -37.8947
+offset_right = 16.1579
+offset_bottom = -18.8947
+theme = ExtResource("2_6i1cw")
+theme_override_colors/font_color = Color(0.341176, 0.72549, 0.478431, 1)
+text = "Selected"
+horizontal_alignment = 1
+vertical_alignment = 1
