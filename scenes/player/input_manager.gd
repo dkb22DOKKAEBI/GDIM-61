@@ -39,12 +39,12 @@ func raycast_at_cursor():
 		var result_collision_mask = result[0].collider.collision_mask
 		if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 			#Card Clicked
-			var card_found = result[0].collider.get_parent()
-			if card_found:
-				if not card_found.placed and not player_hand.on_ingredient_hand:
-					card_manager_reference.start_drag(card_found)
+			var monster_card_found = result[0].collider.get_parent()
+			if monster_card_found:
+				if not monster_card_found.placed and not player_hand.on_ingredient_hand:
+					card_manager_reference.start_drag(monster_card_found)
 				else:
-					select_placed_card.emit(card_found)
+					select_placed_card.emit(monster_card_found)
 		elif result_collision_mask == COLLISION_MASK_DECK:
 			#Deck Clicked
 			deck_reference.draw_card()
