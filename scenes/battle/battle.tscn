@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvnymbjn7jspr"]
+[gd_scene load_steps=15 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
 [ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://Vacuum_boss.png" id="1_oiw7q"]
-[ext_resource type="Script" uid="uid://bsudwj1dke25f" path="res://scenes/card/card_manager.gd" id="2_0yh6x"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="2_pll4o"]
 [ext_resource type="Script" uid="uid://wrkrwvu00sun" path="res://scenes/card/cardslot.gd" id="3_py4tk"]
 [ext_resource type="Script" uid="uid://bcy143bfyrruo" path="res://scenes/player/player_hand.gd" id="5_agsc7"]
@@ -12,6 +11,8 @@
 [ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scenes/battle/battle_manager.gd" id="9_agsc7"]
 [ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://pixel_theme.tres" id="9_mxe8n"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scenes/card/cooking_mechanic.gd" id="11_fisqk"]
+[ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://scenes/card/ingredient_card/ingredient_card_manager.gd" id="11_icoan"]
+[ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://scenes/card/monster_card/monster_card_manager.gd" id="12_icoan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxe8n"]
 size = Vector2(18, 26)
@@ -163,7 +164,12 @@ one_shot = true
 
 [node name="IngredientCardManager" type="Node2D" parent="."]
 position = Vector2(15, 126)
-script = ExtResource("2_0yh6x")
+script = ExtResource("11_icoan")
+
+[node name="MonsterCardManager" type="Node2D" parent="."]
+visible = false
+position = Vector2(15, 126)
+script = ExtResource("12_icoan")
 
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("9_agsc7")
