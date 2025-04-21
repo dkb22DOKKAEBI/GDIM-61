@@ -6,8 +6,8 @@ signal select_placed_card(card: Card)
 signal player_attack
 
 const COLLISION_MASK_CARD = 1
-const COLLISION_MASK_INGREDIENT_CARD = 3
 const COLLISION_MASK_DECK = 4
+const COLLISION_MASK_INGREDIENT_CARD = 8
 
 @onready var card_manager_reference: Node2D = $"../../IngredientCardManager"
 @onready var deck_reference: Node2D = $"../../Deck"
