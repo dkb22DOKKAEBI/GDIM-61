@@ -17,8 +17,9 @@ func _on_cook() -> void:
 	# Instantiate monster
 	var card_scene = preload(MONSTER_CARD_SCENE_PATH)
 	var new_card: Node2D = card_scene.instantiate()
-	var card_image_path = str("res://cards/" + result_monster + ".png")
-	new_card.get_node("CardImage").texture = load(card_image_path)
+	var card_image_path = str("res://Cards/" + result_monster + ".png")
+	#new_card.get_node("CardImage").texture = load(card_image_path)
+	new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 	new_card.get_node("Attack").text = str(card_database_reference.CARDS[result_monster][0])
 	new_card.get_node("Health").text = str(card_database_reference.CARDS[result_monster][1])
 	$"../MonsterCardManager".add_child(new_card)
