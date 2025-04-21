@@ -31,6 +31,8 @@ func add_card_to_hand(card, speed, flag: int):
 		update_hand_positions(speed, target_hand)
 	else:
 		animate_card_to_position(card, card.starting_position, DEFAULT_CARD_MOVE_SPEED)
+	print("Ingredient hand size: " + str(player_ingredient_hand.size()))
+	print("Monster hand size: " + str(player_monster_hand.size()))
 
 
 func update_hand_positions(speed, target_hand: Array):
