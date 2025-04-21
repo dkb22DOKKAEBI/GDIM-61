@@ -11,6 +11,9 @@ func _ready():
 
 
 func _on_cook() -> void:
+	if PlayerHand.selected_ingredients.size() == 0:
+		return
+	
 	# Decide monster
 	var result_monster = ingredient_check(get_ingredient_string_list(PlayerHand.selected_ingredients))
 	
