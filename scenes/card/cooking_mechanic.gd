@@ -57,7 +57,6 @@ func ingredient_check(list: Array) -> String:
 			return "Sandwich"
 	elif list.has("Tortilla"):
 		if list.has("Cheese"):
-			if list.has("Ham"):
-				return "Quesadilla"
+			return "Quesadilla"
 	
 	return "Trashcan"
