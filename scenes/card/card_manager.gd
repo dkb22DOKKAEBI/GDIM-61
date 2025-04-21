@@ -10,7 +10,6 @@ var card_being_dragged
 var screen_size
 var is_hovering_on_card
 @onready var player_hand_reference: Node2D = $"../Player/PlayerHand"
-var played_card_this_turn := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready()->void:

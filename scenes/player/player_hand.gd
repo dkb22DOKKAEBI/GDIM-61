@@ -31,6 +31,9 @@ func add_card_to_hand(card, speed, flag: int):
 		update_hand_positions(speed, target_hand)
 	else:
 		animate_card_to_position(card, card.starting_position, DEFAULT_CARD_MOVE_SPEED)
+
+
+func test():
 	print("Ingredient hand size: " + str(player_ingredient_hand.size()))
 	print("Monster hand size: " + str(player_monster_hand.size()))
 
@@ -55,7 +58,8 @@ func animate_card_to_position(card, new_position, speed):
 
 
 func remove_card_from_hand(card, flag: int):
+	print("On remove_card_from_hand start")
 	var target_hand = get_target_hand(flag)
 	if card in target_hand:
-		player_ingredient_hand.erase(card)
+		target_hand.erase(card)
 		update_hand_positions(DEFAULT_CARD_MOVE_SPEED, target_hand)

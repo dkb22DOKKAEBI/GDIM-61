@@ -1,6 +1,9 @@
 extends CardManager
 
 
+var played_card_this_turn := false
+
+
 func _ready():
 	super._ready()
 	$"../Player/InputManager".connect("left_mouse_button_released", on_left_clicked_released)
@@ -39,20 +42,25 @@ func on_left_clicked_released():
 func finish_drag():
 	card_being_dragged.scale = Vector2(0.475, 0.475)
 	var card_slot_found = raycast_check_for_card_slot()
+
 	if card_slot_found and not card_slot_found.card_in_slot and not played_card_this_turn:
-			played_card_this_turn = true
-			is_hovering_on_card = false
-			player_hand_reference.remove_card_from_hand(card_being_dragged, 1)
-			#Card dropped in empty card slot
-			card_being_dragged.global_position = card_slot_found.global_position
-			#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
-			card_being_dragged.placed = true
-			card_slot_found.card_in_slot = true
-			card_being_dragged.card_slot_on = card_slot_found
-			$"../BattleManager".player_cards_on_battlefield[card_slot_found] = card_being_dragged
+		played_card_this_turn = true
+		is_hovering_on_card = false
+		player_hand_reference.remove_card_from_hand(card_being_dragged, 1)
+		
+		#Card dropped in empty card slot
+		card_being_dragged.global_position = card_slot_found.global_position
+		
+		#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
+		card_being_dragged.placed = true
+		card_slot_found.card_in_slot = true
+		card_being_dragged.card_slot_on = card_slot_found
+		$"../BattleManager".player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
 		player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
 	card_being_dragged = null
+	player_hand_reference.test()
+	print("On finish drag end")
 
 
 func raycast_check_for_card_slot():
