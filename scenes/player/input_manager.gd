@@ -54,4 +54,5 @@ func raycast_at_cursor():
 				ingredient_card_found.ingredient_card_selected()
 		elif result_collision_mask == COLLISION_MASK_DECK:
 			#Deck Clicked
-			deck_reference.draw_card()
+			#deck_reference.draw_card()
+			print("Deck click detected")

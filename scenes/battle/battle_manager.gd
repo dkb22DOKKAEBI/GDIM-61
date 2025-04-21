@@ -2,6 +2,7 @@ extends Node
 
 const STARTING_HEALTH = 10
 const max_cool_down := 3
+const STARTING_HAND_SIZE = 3
 
 var curr_cool_down := 3
 var player_cards_on_battlefield # Dictionary
@@ -30,6 +31,10 @@ func _ready() ->void:
 	$"../BossAttack".text = str(boss_damage)
 	$"../Player/InputManager".connect("select_placed_card", _player_select_placed_card)
 	$"../Player/InputManager".connect("player_attack", _on_player_attack)
+	
+	# Draw initial hand
+	for i in range(STARTING_HAND_SIZE):
+		$"../Deck".draw_card()
 
 
 func _player_select_placed_card(card: Card):
@@ -99,9 +104,12 @@ func opponent_turn():
 
 func start_player_turn():
 	$"../MonsterCardManager".reset_played()
-	$"../Deck".reset_draw()
 	$"../EndTurnButton".disabled = false
 	$"../EndTurnButton".visible = true
+	
+	# Draw 2 ingredients card on the start of the player turn
+	for i in range(2):
+		$"../Deck".draw_card()
 
 
 func opponent_move():
