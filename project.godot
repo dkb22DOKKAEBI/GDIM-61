@@ -15,6 +15,10 @@ run/main_scene="uid://cvnymbjn7jspr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bxwcx7stx52lk"
 
+[autoload]
+
+CookingMechanic="*res://scenes/card/cooking_mechanic.gd"
+
 [display]
 
 window/size/viewport_width=256
