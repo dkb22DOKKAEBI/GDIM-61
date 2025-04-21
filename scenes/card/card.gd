@@ -28,5 +28,5 @@ func _on_area_2d_mouse_exited():
 	emit_signal("hovered_off", self)
 
 
-func selected_label_vis():
-	$SelectedLabel.visible = !$SelectedLabel.visible
+func selected_label_vis(flag: bool):
+	$SelectedLabel.visible = flag

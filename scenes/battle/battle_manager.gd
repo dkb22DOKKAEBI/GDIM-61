@@ -38,11 +38,16 @@ func _ready() ->void:
 
 
 func _player_select_placed_card(card: Card):
-	card.selected_label_vis()
 	if selected_card_in_slot:
-		if selected_card_in_slot.visible == true:
-			selected_card_in_slot.selected_label_vis()
+		selected_card_in_slot.selected_label_vis(false)
 	selected_card_in_slot = card
+	selected_card_in_slot.selected_label_vis(true)
+	
+	#card.selected_label_vis()
+	#if selected_card_in_slot:
+		#if selected_card_in_slot.visible == true:
+			#selected_card_in_slot.selected_label_vis()
+	#selected_card_in_slot = card
 
 
 func _on_player_attack():
@@ -55,7 +60,7 @@ func _on_player_attack():
 		$"../BossHealth".text = str(boss_health)
 		if boss_health == 0:
 			player_win()
-		selected_card_in_slot.selected_label_vis()
+		selected_card_in_slot.selected_label_vis(false)
 
 
 func player_win():
