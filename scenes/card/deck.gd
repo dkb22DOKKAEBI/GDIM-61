@@ -14,6 +14,7 @@ func _ready():
 	# Draw initial hand
 	for i in range(STARTING_HAND_SIZE):
 		draw_card()
+		drawn_card_this_turn = false
 	drawn_card_this_turn = false
 
 
@@ -34,11 +35,7 @@ func draw_card():
 	
 	# Instantiate ingredient card
 	var card_scene = preload(INGREDIENT_CARD_SCENE_PATH)
-	var new_card = card_scene.instantiate()
-	#var card_image_path = str("res://Cards/" + card_drawn_name + ".png")
-	#new_card.get_node("CardImage").texture = load(card_image_path)
-	#new_card.get_node("Attack").text = str(card_database_reference.CARDS[card_drawn_name][0])
-	#new_card.get_node("Health").text = str(card_database_reference.CARDS[card_drawn_name][1])
+	var new_card: Node2D = card_scene.instantiate()
 	$"../IngredientCardManager".add_child(new_card)
 	new_card.name = "IngredientCard"
 	new_card.ingredient_name = ingredient_name
