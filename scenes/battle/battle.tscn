@@ -95,6 +95,7 @@ offset_top = 127.0
 offset_right = 255.0
 offset_bottom = 141.0
 grow_horizontal = 2
+focus_mode = 0
 theme = ExtResource("9_mxe8n")
 theme_override_font_sizes/font_size = 6
 text = "End Turn
@@ -109,6 +110,7 @@ offset_top = 111.0
 offset_right = 255.0
 offset_bottom = 125.0
 grow_horizontal = 2
+focus_mode = 0
 theme = ExtResource("9_mxe8n")
 theme_override_font_sizes/font_size = 6
 text = "Cook
@@ -168,6 +170,7 @@ offset_left = 25.0
 offset_top = 130.0
 offset_right = 41.0
 offset_bottom = 144.0
+focus_mode = 0
 theme = ExtResource("9_mxe8n")
 theme_override_font_sizes/font_size = 6
 text = "SH"
@@ -188,4 +191,4 @@ script = ExtResource("12_icoan")
 script = ExtResource("9_agsc7")
 
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
-[connection signal="pressed" from="SwitchHand" to="SwitchHand" method="_on_switch_hand"]
+[connection signal="button_down" from="SwitchHand" to="SwitchHand" method="_on_switch_hand"]

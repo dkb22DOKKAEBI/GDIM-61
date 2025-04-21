@@ -58,7 +58,6 @@ func animate_card_to_position(card, new_position, speed):
 
 
 func remove_card_from_hand(card, flag: int):
-	print("On remove_card_from_hand start")
 	var target_hand = get_target_hand(flag)
 	if card in target_hand:
 		target_hand.erase(card)
