@@ -41,8 +41,8 @@ func draw_card():
 	#new_card.get_node("Attack").text = str(card_database_reference.CARDS[card_drawn_name][0])
 	#new_card.get_node("Health").text = str(card_database_reference.CARDS[card_drawn_name][1])
 	$"../IngredientCardManager".add_child(new_card)
-	new_card.name = "Card"
-	$"../Player/PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED)
+	new_card.name = "IngredientCard"
+	$"../Player/PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)
 
 
 func reset_draw():

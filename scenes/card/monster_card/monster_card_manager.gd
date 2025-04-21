@@ -3,6 +3,7 @@ extends CardManager
 
 func _ready():
 	$"../Player/InputManager".connect("left_mouse_button_released", on_left_clicked_released)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
