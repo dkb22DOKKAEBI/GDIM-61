@@ -19,15 +19,16 @@ func draw_card():
 		$Sprite2D.visible = false
 		$RichTextLabel.visible = false
 	
-	var ingredient_name = player_deck[0]
-	player_deck.erase(ingredient_name)
-	$RichTextLabel.text = str(player_deck.size())
-	
-	# Instantiate ingredient card
-	var card_scene = preload(INGREDIENT_CARD_SCENE_PATH)
-	var new_card: Node2D = card_scene.instantiate()
-	$"../IngredientCardManager".add_child(new_card)
-	new_card.name = "IngredientCard"
-	new_card.ingredient_name = ingredient_name
-	new_card.ingredient_name_label.text = ingredient_name
-	$"../Player/PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)
+	if player_deck.size() > 0:
+		var ingredient_name = player_deck[0]
+		player_deck.erase(ingredient_name)
+		$RichTextLabel.text = str(player_deck.size())
+		
+		# Instantiate ingredient card
+		var card_scene = preload(INGREDIENT_CARD_SCENE_PATH)
+		var new_card: Node2D = card_scene.instantiate()
+		$"../IngredientCardManager".add_child(new_card)
+		new_card.name = "IngredientCard"
+		new_card.ingredient_name = ingredient_name
+		new_card.ingredient_name_label.text = ingredient_name
+		$"../Player/PlayerHand".add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)
