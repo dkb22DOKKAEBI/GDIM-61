@@ -1,18 +1,23 @@
 extends Node2D
 
+
 signal left_mouse_button_clicked
 signal left_mouse_button_released
 signal select_placed_card(card: Card)
 signal player_attack
 
-const COLLISION_MASK_CARD = 1
+const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
+const COLLISION_MASK_INGREDIENT_CARD = 8
 
-@onready var card_manager_reference: Node2D = $"../../CardManager"
+@onready var card_manager_reference: Node2D = $"../../MonsterCardManager"
 @onready var deck_reference: Node2D = $"../../Deck"
+@export var player_hand: Node2D
+
 
 func _ready() -> void:
 	pass
+
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -35,14 +40,19 @@ func raycast_at_cursor():
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
 		var result_collision_mask = result[0].collider.collision_mask
-		if result_collision_mask == COLLISION_MASK_CARD:
+		if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 			#Card Clicked
-			var card_found = result[0].collider.get_parent()
-			if card_found:
-				if not card_found.placed:
-					card_manager_reference.start_drag(card_found)
-				else:
-					select_placed_card.emit(card_found)
+			var monster_card_found = result[0].collider.get_parent()
+			if monster_card_found:
+				if not monster_card_found.placed and not player_hand.on_ingredient_hand:
+					card_manager_reference.start_drag(monster_card_found)
+				elif monster_card_found.placed:
+					select_placed_card.emit(monster_card_found)
+		elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
+			if player_hand.on_ingredient_hand:
+				var ingredient_card_found = result[0].collider.get_parent()
+				ingredient_card_found.ingredient_card_selected()
 		elif result_collision_mask == COLLISION_MASK_DECK:
 			#Deck Clicked
-			deck_reference.draw_card()
+			#deck_reference.draw_card()
+			print("Deck click detected")

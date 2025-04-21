@@ -1,18 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ibj8aersgrg6"]
+[gd_scene load_steps=5 format=3 uid="uid://ibj8aersgrg6"]
 
-[ext_resource type="Script" uid="uid://c1cynw2nfshih" path="res://scenes/card/card.gd" id="1_yw14s"]
-[ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://cards/KnightCard.png" id="2_bclmf"]
+[ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scenes/card/monster_card/monster_card.gd" id="1_fxvx8"]
+[ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://cards/KnightCard.png" id="2_odoga"]
+[ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://pixel_theme.tres" id="3_odoga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(38, 54)
 
 [node name="Card" type="Node2D"]
 scale = Vector2(0.475, 0.475)
-script = ExtResource("1_yw14s")
+script = ExtResource("1_fxvx8")
 
 [node name="CardImage" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_bclmf")
+texture = ExtResource("2_odoga")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -40,8 +41,12 @@ horizontal_alignment = 1
 
 [node name="SelectedLabel" type="Label" parent="."]
 visible = false
-offset_left = -31.5789
-offset_top = -46.3158
-offset_right = 34.4211
-offset_bottom = -23.3158
+offset_left = -16.8421
+offset_top = -42.1053
+offset_right = 19.1579
+offset_bottom = -30.1053
+theme = ExtResource("3_odoga")
+theme_override_colors/font_color = Color(0.339407, 0.726599, 0.479536, 1)
 text = "Selected"
+horizontal_alignment = 1
+vertical_alignment = 1

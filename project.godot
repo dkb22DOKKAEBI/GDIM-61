@@ -15,6 +15,11 @@ run/main_scene="uid://cvnymbjn7jspr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bxwcx7stx52lk"
 
+[autoload]
+
+CookingMechanic="*res://scenes/card/cooking_mechanic.gd"
+PlayerHand="*res://scenes/player/player_hand.gd"
+
 [display]
 
 window/size/viewport_width=256
@@ -37,5 +42,6 @@ config/icon="res://icon.svg"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
