@@ -51,6 +51,8 @@ func raycast_at_cursor():
 		elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
 			if player_hand.on_ingredient_hand:
 				print("Ingredient card detected")
+				var ingredient_card_found = result[0].collider.get_parent()
+				ingredient_card_found.ingredient_card_selected()
 		elif result_collision_mask == COLLISION_MASK_DECK:
 			#Deck Clicked
 			deck_reference.draw_card()
