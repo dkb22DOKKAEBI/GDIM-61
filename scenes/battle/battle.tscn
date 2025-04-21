@@ -26,8 +26,9 @@ size = Vector2(18, 26)
 position = Vector2(15, 126)
 script = ExtResource("5_agsc7")
 
-[node name="InputManager" type="Node2D" parent="Player"]
+[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("player_hand")]
 script = ExtResource("7_fisqk")
+player_hand = NodePath("../PlayerHand")
 
 [node name="PlayerHealth" type="RichTextLabel" parent="Player"]
 offset_left = 4.0
@@ -165,7 +166,7 @@ script = ExtResource("11_fisqk")
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="SwitchHand" type="Button" parent="." node_paths=PackedStringArray("ingredient_card_manager", "monster_card_manager")]
+[node name="SwitchHand" type="Button" parent="." node_paths=PackedStringArray("ingredient_card_manager", "monster_card_manager", "player_hand")]
 offset_left = 25.0
 offset_top = 130.0
 offset_right = 41.0
@@ -177,6 +178,7 @@ text = "SH"
 script = ExtResource("13_kd6yx")
 ingredient_card_manager = NodePath("../IngredientCardManager")
 monster_card_manager = NodePath("../MonsterCardManager")
+player_hand = NodePath("../Player/PlayerHand")
 
 [node name="IngredientCardManager" type="Node2D" parent="."]
 position = Vector2(15, 126)

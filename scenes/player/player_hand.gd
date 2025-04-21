@@ -7,6 +7,7 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1
 var player_monster_hand = []
 var player_ingredient_hand = []
 var center_screen_x
+var on_ingredient_hand = true
 
 
 # Called when the node enters the scene tree for the first time.

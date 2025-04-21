@@ -11,6 +11,7 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 
 @onready var card_manager_reference: Node2D = $"../../MonsterCardManager"
 @onready var deck_reference: Node2D = $"../../Deck"
+@export var player_hand: Node2D
 
 func _ready() -> void:
 	pass
@@ -40,7 +41,7 @@ func raycast_at_cursor():
 			#Card Clicked
 			var card_found = result[0].collider.get_parent()
 			if card_found:
-				if not card_found.placed:
+				if not card_found.placed and not player_hand.on_ingredient_hand:
 					card_manager_reference.start_drag(card_found)
 				else:
 					select_placed_card.emit(card_found)
