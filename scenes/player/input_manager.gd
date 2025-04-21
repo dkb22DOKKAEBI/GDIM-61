@@ -39,20 +39,21 @@ func raycast_at_cursor():
 	parameters.collide_with_areas = true
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
-		var result_collision_mask = result[0].collider.collision_mask
-		if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
-			#Card Clicked
-			var monster_card_found = result[0].collider.get_parent()
-			if monster_card_found:
-				if not monster_card_found.placed and not player_hand.on_ingredient_hand:
-					card_manager_reference.start_drag(monster_card_found)
-				elif monster_card_found.placed:
-					select_placed_card.emit(monster_card_found)
-		elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
-			if player_hand.on_ingredient_hand:
-				var ingredient_card_found = result[0].collider.get_parent()
-				ingredient_card_found.ingredient_card_selected()
-		elif result_collision_mask == COLLISION_MASK_DECK:
-			#Deck Clicked
-			#deck_reference.draw_card()
-			print("Deck click detected")
+		for point in result:
+			var result_collision_mask = point.collider.collision_mask
+			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
+				#Card Clicked
+				var monster_card_found = point.collider.get_parent()
+				if monster_card_found:
+					if not monster_card_found.placed and not player_hand.on_ingredient_hand:
+						card_manager_reference.start_drag(monster_card_found)
+					elif monster_card_found.placed:
+						select_placed_card.emit(monster_card_found)
+			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
+				if player_hand.on_ingredient_hand:
+					var ingredient_card_found = point.collider.get_parent()
+					ingredient_card_found.ingredient_card_selected()
+			elif result_collision_mask == COLLISION_MASK_DECK:
+				#Deck Clicked
+				#deck_reference.draw_card()
+				print("Deck click detected")

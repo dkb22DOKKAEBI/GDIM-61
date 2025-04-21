@@ -4,18 +4,10 @@ const MONSTER_CARD_SCENE_PATH = "res://scenes/card/monster_card/card.tscn"
 
 var card_database_reference
 var recipe = []
-#var selected_ingredients: Array
 
 
 func _ready():
 	card_database_reference = preload("res://scenes/card/CardDatabase.gd")
-
-
-#func update_selected_ingredients(card: IngredientCard) -> void:
-	#if selected_ingredients.has(card):
-		#selected_ingredients.erase(card)
-	#else:
-		#selected_ingredients.append(card)
 
 
 func _on_cook() -> void:
