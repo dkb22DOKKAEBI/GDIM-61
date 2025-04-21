@@ -5,7 +5,10 @@ var selected_ingredients: Array
 
 
 func update_selected_ingredients(card: IngredientCard) -> void:
-	print("Selected ingredient array updated")
+	if selected_ingredients.has(card):
+		selected_ingredients.erase(card)
+	else:
+		selected_ingredients.append(card)
 
 
 # Get name of the food to cook
