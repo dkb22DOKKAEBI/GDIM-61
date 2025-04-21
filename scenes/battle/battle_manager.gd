@@ -37,17 +37,19 @@ func _ready() ->void:
 		$"../Deck".draw_card()
 
 
-func _player_select_placed_card(card: Card):
+func _player_select_placed_card(card: Card) -> void:
+	# Check if it is the same card being clicked
+	if selected_card_in_slot and selected_card_in_slot.visible == true:
+		selected_card_in_slot.selected_label_vis(false)
+		selected_card_in_slot = null
+		return
+	
+	# Disable selected label for previous card
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 	selected_card_in_slot = card
-	selected_card_in_slot.selected_label_vis(true)
 	
-	#card.selected_label_vis()
-	#if selected_card_in_slot:
-		#if selected_card_in_slot.visible == true:
-			#selected_card_in_slot.selected_label_vis()
-	#selected_card_in_slot = card
+	selected_card_in_slot.selected_label_vis(true)
 
 
 func _on_player_attack():
