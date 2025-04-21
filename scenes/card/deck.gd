@@ -5,14 +5,12 @@ const CARD_DRAW_SPEED = 1
 const STARTING_HAND_SIZE = 3
 
 var player_deck = ["Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Ham", "Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Ham"]
-var card_database_reference
 var drawn_card_this_turn := false
 
 #Called when the node enters the scene tree for the first time.
 func _ready():
 	player_deck.shuffle()
 	$RichTextLabel.text = str(player_deck.size())
-	card_database_reference = preload("res://scenes/card/CardDatabase.gd")
 	# Draw initial hand
 	for i in range(STARTING_HAND_SIZE):
 		draw_card()

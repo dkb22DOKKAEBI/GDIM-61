@@ -196,4 +196,5 @@ script = ExtResource("11_fisqk")
 script = ExtResource("9_agsc7")
 
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
+[connection signal="button_down" from="CookButton" to="CookingMechanic" method="_on_cook"]
 [connection signal="button_down" from="SwitchHand" to="SwitchHand" method="_on_switch_hand"]
