@@ -9,8 +9,8 @@ var player_cards_on_battlefield # Dictionary
 
 var player_health
 var boss_health
-var boss_damage = 4
-var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 4, "Block": 3, "Kill": 10}}
+var boss_damage = 3
+var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 3, "Block": 3, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
 
@@ -23,7 +23,7 @@ func _ready() ->void:
 	player_health = STARTING_HEALTH
 	$"../Player/PlayerHealth".text = str(player_health)
 	
-	boss_health = 20
+	boss_health = STARTING_HEALTH
 	$"../BossHealth".text = str(boss_health)
 	
 	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
