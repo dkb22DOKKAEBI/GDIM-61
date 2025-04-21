@@ -89,9 +89,9 @@ texture = ExtResource("1_oiw7q")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 209.0
+offset_left = 211.0
 offset_top = 127.0
-offset_right = 253.0
+offset_right = 255.0
 offset_bottom = 141.0
 grow_horizontal = 2
 theme = ExtResource("9_mxe8n")
@@ -103,9 +103,9 @@ text = "End Turn
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 209.0
+offset_left = 211.0
 offset_top = 111.0
-offset_right = 253.0
+offset_right = 255.0
 offset_bottom = 125.0
 grow_horizontal = 2
 theme = ExtResource("9_mxe8n")
@@ -170,6 +170,15 @@ script = ExtResource("11_icoan")
 visible = false
 position = Vector2(15, 126)
 script = ExtResource("12_icoan")
+
+[node name="SwitchHand" type="Button" parent="."]
+offset_left = 25.0
+offset_top = 130.0
+offset_right = 41.0
+offset_bottom = 144.0
+theme = ExtResource("9_mxe8n")
+theme_override_font_sizes/font_size = 6
+text = "SH"
 
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("9_agsc7")
