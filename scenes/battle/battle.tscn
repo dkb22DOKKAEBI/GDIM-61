@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bcy143bfyrruo" path="res://scenes/player/player_hand.gd" id="5_agsc7"]
 [ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://scenes/card/deck.gd" id="6_oiw7q"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scenes/player/input_manager.gd" id="7_fisqk"]
-[ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://cards/Deck.png" id="7_py4tk"]
+[ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://Cards/Deck.png" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scenes/battle/battle_manager.gd" id="9_agsc7"]
 [ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://pixel_theme.tres" id="9_mxe8n"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scenes/card/cooking_mechanic.gd" id="11_fisqk"]
