@@ -5,7 +5,7 @@ signal left_mouse_button_released
 signal select_placed_card(card: Card)
 signal player_attack
 
-const COLLISION_MASK_CARD = 1
+const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
 
@@ -36,7 +36,7 @@ func raycast_at_cursor():
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
 		var result_collision_mask = result[0].collider.collision_mask
-		if result_collision_mask == COLLISION_MASK_CARD:
+		if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 			#Card Clicked
 			var card_found = result[0].collider.get_parent()
 			if card_found:

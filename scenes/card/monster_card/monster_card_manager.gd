@@ -49,6 +49,8 @@ func finish_drag():
 		player_hand_reference.remove_card_from_hand(card_being_dragged, 1)
 		
 		#Card dropped in empty card slot
+		card_being_dragged.get_parent().remove_child(card_being_dragged)
+		card_slot_found.add_child(card_being_dragged)
 		card_being_dragged.global_position = card_slot_found.global_position
 		
 		#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
