@@ -1,4 +1,12 @@
+class_name MonsterCard
 extends Card
+
+@export var selected_label: Label
+
+
+func get_label_vis() -> bool:
+	return selected_label.visible
+
 
 func get_attack() -> int:
 	return int($Attack.text)
