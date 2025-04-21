@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scenes/card/monster_card/monster_card.gd" id="1_fxvx8"]
 [ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://cards/KnightCard.png" id="2_odoga"]
-[ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://pixel_theme.tres" id="3_odoga"]
+[ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://custom_resources/pixel_theme.tres" id="3_odoga"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(38, 54)

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1tx3ipc0rtl6"
-path="res://.godot/imported/Vacuum_boss.png-13a12d2ae9160490d262742fac81a43a.ctex"
+path="res://.godot/imported/Vacuum_boss.png-fb338f9b10666dfb27831b338ce703aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vacuum_boss.png"
-dest_files=["res://.godot/imported/Vacuum_boss.png-13a12d2ae9160490d262742fac81a43a.ctex"]
+source_file="res://cards/Vacuum_boss.png"
+dest_files=["res://.godot/imported/Vacuum_boss.png-fb338f9b10666dfb27831b338ce703aa.ctex"]
 
 [params]
 
