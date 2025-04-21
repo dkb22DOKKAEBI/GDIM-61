@@ -1,5 +1,6 @@
 extends Node2D
 
+
 signal left_mouse_button_clicked
 signal left_mouse_button_released
 signal select_placed_card(card: Card)
@@ -13,8 +14,10 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 @onready var deck_reference: Node2D = $"../../Deck"
 @export var player_hand: Node2D
 
+
 func _ready() -> void:
 	pass
+
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -43,8 +46,11 @@ func raycast_at_cursor():
 			if monster_card_found:
 				if not monster_card_found.placed and not player_hand.on_ingredient_hand:
 					card_manager_reference.start_drag(monster_card_found)
-				else:
+				elif monster_card_found.placed:
 					select_placed_card.emit(monster_card_found)
+		elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
+			if player_hand.on_ingredient_hand:
+				print("Ingredient card detected")
 		elif result_collision_mask == COLLISION_MASK_DECK:
 			#Deck Clicked
 			deck_reference.draw_card()

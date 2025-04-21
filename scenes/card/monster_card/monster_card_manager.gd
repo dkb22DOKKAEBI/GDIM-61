@@ -1,6 +1,5 @@
 extends CardManager
 
-
 var played_card_this_turn := false
 
 
@@ -29,7 +28,6 @@ func _process(_delta: float)-> void:
 
 
 func start_drag(card):
-	print("Drag Start")
 	card_being_dragged = card
 	card.scale = Vector2(0.45, 0.45)
 
@@ -61,8 +59,6 @@ func finish_drag():
 	else:
 		player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
 	card_being_dragged = null
-	player_hand_reference.test()
-	print("On finish drag end")
 
 
 func raycast_check_for_card_slot():

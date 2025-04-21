@@ -1,6 +1,5 @@
 extends Card
 
-
 func get_attack() -> int:
 	return int($Attack.text)
 
