@@ -8,9 +8,15 @@ var opponent_health = 10
 var player_cards_on_battlefield = []
 
 var player_health
+<<<<<<< Updated upstream
 var boss_health
 var boss_damage = 2
 var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 2, "Block": 2, "Kill": 10}}
+=======
+var boss_health = 10
+var boss_damage = 3
+var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 3, "Block": 2, "Kill": 10}}
+>>>>>>> Stashed changes
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 
 @onready var battle_timer: Timer = $"../BattleTimer"
@@ -97,7 +103,11 @@ func opponent_move():
 		1:
 			opponent_defend()
 		2:
+<<<<<<< Updated upstream
 			opponent_eliminate(target)
+=======
+			opponent_eliminate()
+>>>>>>> Stashed changes
 		_:
 			print("Skill out of range")
 
@@ -133,9 +143,19 @@ func opponent_attack(target, attacker):
 
 
 func opponent_defend():
+<<<<<<< Updated upstream
 	boss_health = max(boss_health + 2, 10)
 	$"../BossHealth".text = str(boss_health)
 	print("Opponent Defend")
+=======
+	if boss_health == 20:
+		var target = choose_target()
+		opponent_attack(target)
+	else:
+		boss_health = min(boss_health + 3, 15)
+		$"../BossHealth".text = str(boss_health)
+		print("Opponent Defend")
+>>>>>>> Stashed changes
 
 
 func opponent_eliminate(target):

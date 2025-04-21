@@ -74,7 +74,7 @@ func on_hovered_off_card(card):
 			is_hovering_on_card = false
 
 
-func highlight_card(card, hovered):
+func highlight_card(_card, _hovered):
 	#if hovered:
 		#card.scale = Vector2(1, 1)
 		#card.z_index = 2
