@@ -11,7 +11,7 @@ func _on_switch_hand() -> void:
 	# Toggel visibility
 	ingredient_card_manager.visible = player_hand.on_ingredient_hand
 	for card in ingredient_card_manager.get_children():
-		card.set_card_z_index(int(player_hand.on_ingredient_hand))
+		card.get_child(1).get_child(0).disabled = int(!player_hand.on_ingredient_hand)
 	monster_card_manager.visible = !player_hand.on_ingredient_hand
 	for card in monster_card_manager.get_children():
-		card.set_card_z_index(int(!player_hand.on_ingredient_hand))
+		card.get_child(1).get_child(0).disabled = int(player_hand.on_ingredient_hand)

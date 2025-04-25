@@ -68,10 +68,7 @@ func finish_drag():
 	var new_card_hovered = raycast_check_for_card()
 	card_being_dragged = null
 	if new_card_hovered:
-		print("YES")
 		super.highlight_card(new_card_hovered, true)
-	else:
-		print("NO")
 
 
 func raycast_check_for_card_slot():
@@ -106,9 +103,7 @@ func raycast_check_for_card():
 	# Get rid of dragged card for raycast check
 	if cards.has(card_being_dragged):
 		cards.erase(card_being_dragged)
-		print("Erased card being dragged")
 	if cards.size() > 0:
-		print("Size: " + str(cards.size()))
 		return get_card_with_highest_z_index(cards)
 	return null
 
