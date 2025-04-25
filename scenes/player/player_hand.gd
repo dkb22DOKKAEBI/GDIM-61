@@ -7,7 +7,7 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1
 var player_monster_hand: Array[Card] = []
 var player_ingredient_hand: Array[Card] = []
 var center_screen_x
-var on_ingredient_hand = true
+var on_ingredient_hand: bool = true
 var selected_ingredients: Array[Card]
 
 

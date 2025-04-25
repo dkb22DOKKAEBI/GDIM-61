@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://3pelcrvpowxh" path="res://scenes/card/ingredient_card/ingredient_card.gd" id="1_6i1cw"]
 [ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://custom_resources/pixel_theme.tres" id="2_6i1cw"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
-size = Vector2(38, 54)
+size = Vector2(37.9474, 52.2632)
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("ingredient_name_label", "selected_label")]
 scale = Vector2(0.475, 0.475)
@@ -28,6 +27,7 @@ offset_right = 189.5
 offset_bottom = 272.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.744184, 0.709883, 0.770173, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -35,6 +35,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.0263157, 0.868421)
 shape = SubResource("RectangleShape2D_xd4uy")
 
 [node name="IngredientNameLabel" type="Label" parent="."]
@@ -58,3 +59,6 @@ theme_override_colors/font_color = Color(0.341176, 0.72549, 0.478431, 1)
 text = "Selected"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

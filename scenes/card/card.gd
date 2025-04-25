@@ -28,5 +28,10 @@ func _on_area_2d_mouse_exited():
 	emit_signal("hovered_off", self)
 
 
+func set_card_z_index(index: int) -> void:
+	self.z_index = index
+	get_child(1).get_child(0).z_index = index
+
+
 func selected_label_vis(flag: bool):
 	$SelectedLabel.visible = flag

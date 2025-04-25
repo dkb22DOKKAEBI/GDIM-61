@@ -26,3 +26,7 @@ func take_damage(dmg: int) -> void:
 func die():
 	card_slot_on.card_in_slot = false
 	queue_free()
+
+
+func test():
+	print("Monster card hovered over")

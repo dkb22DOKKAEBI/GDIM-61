@@ -13,5 +13,3 @@ func ingredient_card_selected():
 		PlayerHand.selected_ingredients.erase(self)
 	else:
 		PlayerHand.selected_ingredients.append(self)
-	
-	print(PlayerHand.selected_ingredients.size())

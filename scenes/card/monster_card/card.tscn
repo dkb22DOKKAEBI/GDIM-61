@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scenes/card/monster_card/monster_card.gd" id="1_fxvx8"]
-[ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://cards/KnightCard.png" id="2_odoga"]
+[ext_resource type="Texture2D" uid="uid://dbkob58iwxl0b" path="res://Cards/KnightCard.png" id="2_odoga"]
 [ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://custom_resources/pixel_theme.tres" id="3_odoga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
@@ -51,3 +51,6 @@ theme_override_colors/font_color = Color(0.339407, 0.726599, 0.479536, 1)
 text = "Selected"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

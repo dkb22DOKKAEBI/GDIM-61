@@ -18,6 +18,10 @@ func _ready():
 	$"../MonsterCardManager".add_child(new_card)
 	new_card.name = "MonsterCard"
 	$"../Player/PlayerHand".add_card_to_hand(new_card, 1, 1)
+	if $"../MonsterCardManager".visible:
+		new_card.set_card_z_index(1)
+	else:
+		new_card.set_card_z_index(0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +34,7 @@ func _process(_delta: float)-> void:
 
 func start_drag(card):
 	card_being_dragged = card
-	card.scale = Vector2(0.45, 0.45)
+	card.scale = Vector2(0.475, 0.475)
 
 
 func on_left_clicked_released():
@@ -41,10 +45,10 @@ func on_left_clicked_released():
 func finish_drag():
 	card_being_dragged.scale = Vector2(0.475, 0.475)
 	var card_slot_found = raycast_check_for_card_slot()
-
+	
+	# Check whether card goes into  cardslot or goes back to hand
 	if card_slot_found and not card_slot_found.card_in_slot and not played_card_this_turn:
 		played_card_this_turn = true
-		is_hovering_on_card = false
 		player_hand_reference.remove_card_from_hand(card_being_dragged, 1)
 		
 		#Card dropped in empty card slot
@@ -59,7 +63,12 @@ func finish_drag():
 		$"../BattleManager".player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
 		player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
+	
+	# Check if mouse hovering on any card
+	var new_card_hovered = raycast_check_for_card()
 	card_being_dragged = null
+	if new_card_hovered:
+		super.highlight_card(new_card_hovered, true)
 
 
 func raycast_check_for_card_slot():
@@ -76,3 +85,38 @@ func raycast_check_for_card_slot():
 
 func reset_played():
 	played_card_this_turn = false
+
+
+func raycast_check_for_card():
+	var space_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = get_global_mouse_position()
+	parameters.collide_with_areas = true
+	parameters.collision_mask = COLLISION_MASK_CARD + COLLISION_MASK_INGREDIENT_CARD
+	var result = space_state.intersect_point(parameters)
+	
+	# Turn collider array into Card array
+	var cards: Array[Card]
+	for col in result:
+		cards.append(col.collider.get_parent())
+	
+	# Get rid of dragged card for raycast check
+	if cards.has(card_being_dragged):
+		cards.erase(card_being_dragged)
+	if cards.size() > 0:
+		return get_card_with_highest_z_index(cards)
+	return null
+
+
+func get_card_with_highest_z_index(cards):
+	#Assume the first card in cards array has the highest z index
+	var highest_z_card = cards[0]
+	var highest_z_index = highest_z_card.z_index
+	
+	#Loop through the rest of the cards checking for higher z index
+	for i in range(1, cards.size()):
+		var current_card = cards[i]
+		if current_card.z_index > highest_z_index:
+			highest_z_card = current_card
+			highest_z_index = current_card.z_index
+	return highest_z_card
