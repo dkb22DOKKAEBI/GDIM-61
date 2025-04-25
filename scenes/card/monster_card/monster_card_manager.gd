@@ -48,7 +48,6 @@ func finish_drag():
 
 	if card_slot_found and not card_slot_found.card_in_slot and not played_card_this_turn:
 		played_card_this_turn = true
-		is_hovering_on_card = false
 		player_hand_reference.remove_card_from_hand(card_being_dragged, 1)
 		
 		#Card dropped in empty card slot

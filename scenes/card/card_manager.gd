@@ -6,9 +6,9 @@ const COLLISION_MASK_CARD_SLOT = 2
 const COLLISION_MASK_INGREDIENT_CARD = 8
 const DEFAULT_CARD_MOVE_SPEED = 0.1
 
-var card_being_dragged
+var card_being_dragged # Card type
 var screen_size
-var is_hovering_on_card
+#var is_hovering_on_card
 @onready var player_hand_reference: Node2D = $"../Player/PlayerHand"
 
 # Called when the node enters the scene tree for the first time.
@@ -22,21 +22,19 @@ func connect_card_signals(card):
 
 
 func on_hovered_over_card(card):
-	if !is_hovering_on_card:
-		is_hovering_on_card = true
+	if not card_being_dragged:
+		print("Card Hovered")
 		highlight_card(card, true)
 
 
 func on_hovered_off_card(card):
-	if !card_being_dragged:
+	if not card_being_dragged:
 		#if not dragging
 		highlight_card(card, false)
 		#Check if hovered off card straight on to another card
 		var new_card_hovered = raycast_check_for_card()
 		if new_card_hovered:
 			highlight_card(new_card_hovered, true)
-		else:
-			is_hovering_on_card = false
 
 
 func highlight_card(card, hovered):
@@ -53,7 +51,7 @@ func raycast_check_for_card():
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_CARD
+	parameters.collision_mask = COLLISION_MASK_CARD + COLLISION_MASK_INGREDIENT_CARD
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
 		return get_card_with_highest_z_index(result)
