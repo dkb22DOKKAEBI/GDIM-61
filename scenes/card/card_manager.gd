@@ -22,7 +22,6 @@ func connect_card_signals(card):
 
 
 func on_hovered_over_card(card):
-	print("On Hovered Over Card")
 	if !is_hovering_on_card:
 		is_hovering_on_card = true
 		highlight_card(card, true)
@@ -41,13 +40,10 @@ func on_hovered_off_card(card):
 
 
 func highlight_card(card, hovered):
-	print("On Highlighting Over Card")
 	if hovered:
-		print("Hovered in highlight_card")
 		card.scale = Vector2(1, 1)
 		card.z_index = 2
 	else:
-		print("Not hovered in highlight_card")
 		card.scale = Vector2(0.475, 0.475)
 		card.z_index = 1
 
