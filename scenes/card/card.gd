@@ -22,7 +22,6 @@ func _process(_delta):
 
 func _on_area_2d_mouse_entered():
 	if self.visible:
-		print("hovered over")
 		emit_signal("hovered", self)
 
 
