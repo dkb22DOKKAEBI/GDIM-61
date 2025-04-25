@@ -41,12 +41,11 @@ func on_hovered_off_card(card):
 
 func highlight_card(card, hovered):
 	if hovered:
-		print("Hovered over")
 		card.scale = Vector2(0.6, 0.6)
-		card.z_index = 2
+		card.set_card_z_index(2)
 	else:
 		card.scale = Vector2(0.475, 0.475)
-		card.z_index = 1
+		card.set_card_z_index(1)
 
 
 func raycast_check_for_card():

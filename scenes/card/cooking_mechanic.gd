@@ -26,6 +26,10 @@ func _on_cook() -> void:
 	new_card.get_node("Attack").text = str(card_database_reference.CARDS[result_monster][0])
 	new_card.get_node("Health").text = str(card_database_reference.CARDS[result_monster][1])
 	$"../MonsterCardManager".add_child(new_card)
+	if $"../MonsterCardManager".visible:
+		new_card.set_card_z_index(1)
+	else:
+		new_card.set_card_z_index(0)
 	new_card.name = "MonsterCard"
 	$"../Player/PlayerHand".add_card_to_hand(new_card, 1, 1)
 	

@@ -18,6 +18,10 @@ func _ready():
 	$"../MonsterCardManager".add_child(new_card)
 	new_card.name = "MonsterCard"
 	$"../Player/PlayerHand".add_card_to_hand(new_card, 1, 1)
+	if $"../MonsterCardManager".visible:
+		new_card.set_card_z_index(1)
+	else:
+		new_card.set_card_z_index(0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
