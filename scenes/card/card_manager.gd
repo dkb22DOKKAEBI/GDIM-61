@@ -30,10 +30,6 @@ func on_hovered_off_card(card):
 	if not card_being_dragged:
 		#if not dragging
 		highlight_card(card, false)
-		#Check if hovered off card straight on to another card
-		#var new_card_hovered = raycast_check_for_card()
-		#if new_card_hovered:
-			#highlight_card(new_card_hovered, true)
 
 
 func highlight_card(card, hovered):
@@ -43,29 +39,3 @@ func highlight_card(card, hovered):
 	else:
 		card.scale = Vector2(0.475, 0.475)
 		card.set_card_z_index(1)
-
-
-func raycast_check_for_card():
-	var space_state = get_world_2d().direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_global_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_CARD + COLLISION_MASK_INGREDIENT_CARD
-	var result = space_state.intersect_point(parameters)
-	if result.size() > 0:
-		return get_card_with_highest_z_index(result)
-	return null
-
-
-func get_card_with_highest_z_index(cards):
-	#Assume the first card in cards array has the highest z index
-	var highest_z_card = cards[0].collider.get_parent()
-	var highest_z_index = highest_z_card.z_index
-	
-	#Loop through the rest of the cards checking for higher z index
-	for i in range(1, cards.size()):
-		var current_card = cards[i].collider.get_parent()
-		if current_card.z_index > highest_z_index:
-			highest_z_card = current_card
-			highest_z_index = current_card.z_index
-	return highest_z_card
