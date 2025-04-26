@@ -13,6 +13,7 @@ var boss_damage = 3
 var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 3, "Block": 3, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
+var is_on_player_turn: bool = true
 
 @onready var battle_timer: Timer = $"../BattleTimer"
 @onready var cardslot_1: Node2D = $"../Cardslots/Cardslot"
@@ -86,14 +87,20 @@ func player_lose():
 	$"../Lose".visible = true
 
 
+# End player turn and opponent turn starts
 func _on_end_turn_button_pressed() -> void:
-	selected_card_in_slot = null
-	reset_cards_attack()
+	print("Not On Player Turn")
+	# Dis-select card selected in battlefield
+	if selected_card_in_slot:
+		selected_card_in_slot.selected_label_vis(false)
+		selected_card_in_slot = null
+	is_on_player_turn = false
+	
+	# Opponent Turn
 	opponent_turn()
 
 
 func reset_cards_attack():
-	print("Clear function reached")
 	for key in player_cards_on_battlefield:
 		if player_cards_on_battlefield[key]:
 			player_cards_on_battlefield[key].attacked_this_turn = false
@@ -103,12 +110,11 @@ func opponent_turn():
 	$"../EndTurnButton".disabled = true
 	$"../EndTurnButton".visible = false
 	
-	# Enemy Turn
-	print("Enemy Turn")
+	# Opponent Turn Starts
 	battle_timer.start()
 	await battle_timer.timeout
 	
-	print("Enemy Move") # Need implementation
+	# Opponent Move
 	curr_cool_down -= 1
 	opponent_move()
 	
@@ -118,7 +124,7 @@ func opponent_turn():
 	battle_timer.start()
 	await battle_timer.timeout
 	
-	# End Turn
+	# Opponent Turn Ends
 	start_player_turn()
 
 
@@ -130,6 +136,10 @@ func start_player_turn():
 	# Draw 2 ingredients card on the start of the player turn
 	for i in range(2):
 		$"../Deck".draw_card()
+	
+	reset_cards_attack()
+	is_on_player_turn = true
+	print("On Player Turn")
 
 
 func opponent_move():
