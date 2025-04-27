@@ -81,6 +81,9 @@ func _on_player_attack():
 
 func player_win():
 	$"../Win".visible = true
+	$"../Enemy".visible = false
+	$"../BossAttack".visible = false
+	$"../BossHealth".visible = false
 	
 
 func player_lose():
@@ -184,33 +187,85 @@ func choose_target() -> Cardslot:
 func opponent_attack(target):
 	var boss_attack = boss1_stats["Vacuum"]["Attack"]
 	if not target:
+		boss_attack_player_anim()
+		await wait(0.5)
+		
 		player_health = max(0, player_health - boss_attack)
 		$"../Player/PlayerHealth".text = str(player_health)
+		boss_return_pos_anim()
 		if player_health == 0:
 			player_lose()
 	else:
+		boss_attack_monster_anim(target)
+		await wait(0.5)
 		player_cards_on_battlefield[target].take_damage(boss_attack)
+		boss_return_pos_anim()
 		
 	print("Opponent Attack")
 
+func boss_attack_player_anim():
+	var new_pos_x = 25
+	var new_pos = Vector2(new_pos_x, $"../Enemy".position.y)
+	$"../Enemy".z_index = 5
+	$"../BossAttack".visible = false
+	$"../BossHealth".visible = false
+	var tween = get_tree().create_tween()
+	tween.tween_property($"../Enemy", "position", new_pos, 0.5)
+
+func boss_attack_monster_anim(target):
+	var new_pos_x = target.position.x
+	var new_pos_y = target.position.y
+	var new_pos = Vector2(new_pos_x, new_pos_y)
+	$"../Enemy".z_index = 5
+	$"../BossAttack".visible = false
+	$"../BossHealth".visible = false
+	var tween = get_tree().create_tween()
+	tween.tween_property($"../Enemy", "position", new_pos, 0.5)
+
+
+
+func boss_return_pos_anim():
+	var old_pos_x = 214.5
+	var old_pos_y = 77
+	var old_pos = Vector2(old_pos_x, old_pos_y)
+	$"../Enemy".z_index = 0
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property($"../Enemy", "position", old_pos, 0.5)
+	await wait(0.5)
+	$"../BossAttack".visible = true
+	$"../BossHealth".visible = true
+
+func wait(wait_time):
+	battle_timer.wait_time = wait_time
+	battle_timer.start()
+	await battle_timer.timeout
 
 func opponent_defend():
 	if boss_health == 20:
 		var target = choose_target()
 		opponent_attack(target)
 	else:
-		boss_health = min(boss_health + 3, 20)
+		boss_health = min(boss_health + 3, 10)
 		$"../BossHealth".text = str(boss_health)
 		print("Opponent Defend")
 
 
 func opponent_eliminate():
 	if cardslot_1.card_in_slot:
+		boss_attack_monster_anim(cardslot_1)
+		await wait(0.5)
 		player_cards_on_battlefield[cardslot_1].die()
+		boss_return_pos_anim()
 	elif cardslot_2.card_in_slot:
+		boss_attack_monster_anim(cardslot_2)
+		await wait(0.5)
 		player_cards_on_battlefield[cardslot_2].die()
+		boss_return_pos_anim()
 	elif cardslot_3.card_in_slot:
+		boss_attack_monster_anim(cardslot_3)
+		await wait(0.5)
 		player_cards_on_battlefield[cardslot_3].die()
+		boss_return_pos_anim()
 	else:
 		opponent_attack(null)
 	print("Opponent Eliminate")
