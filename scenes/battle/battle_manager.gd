@@ -72,12 +72,30 @@ func _on_player_attack():
 	
 	if not selected_card_in_slot.attacked_this_turn:
 		selected_card_in_slot.attacked_this_turn = true
+		
+		monster_attack_boss_anim(selected_card_in_slot)
 		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
 		$"../BossHealth".text = str(boss_health)
 		if boss_health == 0:
 			player_win()
 		selected_card_in_slot.selected_label_vis(false)
 
+func monster_attack_boss_anim(card):
+	var new_pos_x = 145
+	var new_pos_y = 0
+	var old_pos_x = card.position.x
+	var old_pos_y = card.position.y
+	var new_pos = Vector2(new_pos_x, new_pos_y)
+	card.z_index = 5
+	var tween = get_tree().create_tween()
+	tween.tween_property(card, "position", new_pos, 0.5)
+	await wait(0.5)
+	var old_pos = Vector2(old_pos_x, old_pos_y)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(card, "position", old_pos, 0.5)
+	card.z_index = 1
+	await wait(0.5)
+	
 
 func player_win():
 	$"../Win".visible = true
