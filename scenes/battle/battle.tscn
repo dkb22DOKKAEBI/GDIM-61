@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvnymbjn7jspr"]
+[gd_scene load_steps=17 format=3 uid="uid://cvnymbjn7jspr"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_7gynk"]
 [ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://Cards/Vacuum_boss.png" id="1_oiw7q"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://scenes/card/ingredient_card/ingredient_card_manager.gd" id="11_icoan"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://scenes/card/monster_card/monster_card_manager.gd" id="12_icoan"]
 [ext_resource type="Script" uid="uid://nrqhns78ljqf" path="res://scenes/battle/switch_hand.gd" id="13_kd6yx"]
+[ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/battle/recipe_book.tscn" id="15_n6gaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxe8n"]
 size = Vector2(18, 26)
@@ -197,6 +198,22 @@ script = ExtResource("11_fisqk")
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("9_agsc7")
 
+[node name="RecipeBookButton" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 66.0
+offset_bottom = 36.0
+scale = Vector2(0.67, 0.67)
+text = "RECIPE"
+
+[node name="RecipeBook" parent="." instance=ExtResource("15_n6gaa")]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 126.0
+offset_top = 72.0
+offset_right = 126.0
+offset_bottom = 72.0
+
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="button_down" from="CookButton" to="CookingMechanic" method="_on_cook"]
 [connection signal="button_down" from="SwitchHand" to="SwitchHand" method="_on_switch_hand"]
+[connection signal="pressed" from="RecipeBookButton" to="RecipeBook" method="_on_recipe_book_button_pressed"]
