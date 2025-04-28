@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtsfva43g4fhy"
-path="res://.godot/imported/Drawing-2.sketchpad.png-cad0cd6064849e4ef392d4c1a79df37d.ctex"
+uid="uid://cj5m63t60k1ld"
+path="res://.godot/imported/Drawing-2.sketchpad(2).png-260149c9ae2d1aa736e95515d3fa61ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ingredients/Drawing-2.sketchpad.png"
-dest_files=["res://.godot/imported/Drawing-2.sketchpad.png-cad0cd6064849e4ef392d4c1a79df37d.ctex"]
+source_file="res://Ingredients/Drawing-2.sketchpad(2).png"
+dest_files=["res://.godot/imported/Drawing-2.sketchpad(2).png-260149c9ae2d1aa736e95515d3fa61ad.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cddrlenmm4hcd"]
 
 [ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://scenes/battle/recipe_book.gd" id="1_wjb6r"]
-[ext_resource type="Texture2D" uid="uid://dtsfva43g4fhy" path="res://Ingredients/Drawing-2.sketchpad.png" id="2_cr4yr"]
+[ext_resource type="Texture2D" uid="uid://cj5m63t60k1ld" path="res://Ingredients/Drawing-2.sketchpad(2).png" id="2_cr4yr"]
 
 [node name="RecipeBook" type="Control"]
 process_mode = 3
