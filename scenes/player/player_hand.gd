@@ -61,3 +61,7 @@ func remove_card_from_hand(card: Card, flag: int):
 	if target_hand.has(card):
 		target_hand.erase(card)
 		update_hand_positions(DEFAULT_CARD_MOVE_SPEED, target_hand)
+
+
+func _on_recipe_book_button_pressed() -> void:
+	pass # Replace with function body.

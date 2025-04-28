@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://cddrlenmm4hcd"]
+
+[ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://scenes/battle/recipe_book.gd" id="1_wjb6r"]
+[ext_resource type="Texture2D" uid="uid://cj5m63t60k1ld" path="res://Ingredients/Drawing-2.sketchpad(2).png" id="2_cr4yr"]
+
+[node name="RecipeBook" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wjb6r")
+
+[node name="RecipeBookVisible" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.5
+anchor_right = 0.498
+anchor_bottom = 0.5
+offset_left = -109.488
+offset_top = -57.0
+offset_right = 110.772
+offset_bottom = 58.295
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="RecipeBookVisible"]
+layout_mode = 2
+
+[node name="seperator" type="Control" parent="RecipeBookVisible/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RecipeBookVisible/VBoxContainer2"]
+layout_mode = 2
+text = "Recipe Book"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="RecipeBookVisible/VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="RecipeBookVisible/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_cr4yr")
+expand_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RecipeBookVisible"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipeBookVisible/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control" type="Control" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitBook" type="Button" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Exit
+"
+
+[node name="Control" type="Control" parent="RecipeBookVisible/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="RecipeBookVisible/HBoxContainer/VBoxContainer/ExitBook" to="." method="_on_exit_book_pressed"]
