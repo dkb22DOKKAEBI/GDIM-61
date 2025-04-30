@@ -74,6 +74,7 @@ func _on_player_attack():
 		selected_card_in_slot.attacked_this_turn = true
 		
 		monster_attack_boss_anim(selected_card_in_slot)
+		await wait(0.5)
 		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
 		$"../BossHealth".text = str(boss_health)
 		
@@ -97,9 +98,13 @@ func monster_attack_boss_anim(card):
 	var old_pos_y = card.position.y
 	var new_pos = Vector2(new_pos_x, new_pos_y)
 	card.z_index = 5
+	
+	# Monster go attacking
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "position", new_pos, 0.5)
 	await wait(0.5)
+	
+	# Monster Returning to original position
 	var old_pos = Vector2(old_pos_x, old_pos_y)
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(card, "position", old_pos, 0.5)
