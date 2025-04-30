@@ -229,6 +229,7 @@ func opponent_attack(target):
 		
 	print("Opponent Attack")
 
+
 func boss_attack_player_anim():
 	var new_pos_x = 25
 	var new_pos = Vector2(new_pos_x, $"../Enemy".position.y)
@@ -249,7 +250,6 @@ func boss_attack_monster_anim(target):
 	tween.tween_property($"../Enemy", "position", new_pos, 0.5)
 
 
-
 func boss_return_pos_anim():
 	var old_pos_x = 214.5
 	var old_pos_y = 77
@@ -261,10 +261,12 @@ func boss_return_pos_anim():
 	$"../BossAttack".visible = true
 	$"../BossHealth".visible = true
 
+
 func wait(wait_time):
 	battle_timer.wait_time = wait_time
 	battle_timer.start()
 	await battle_timer.timeout
+
 
 func opponent_defend():
 	if boss_health == 20:
@@ -273,6 +275,16 @@ func opponent_defend():
 	else:
 		boss_health = min(boss_health + 3, 10)
 		$"../BossHealth".text = str(boss_health)
+		
+		# Change font to double size and green
+		$"../BossHealth".add_theme_font_size_override("normal_font_size", 40)
+		$"../BossHealth".modulate = Color.GREEN
+	
+		# Play animation for health change
+		var tween = get_tree().create_tween()
+		tween.tween_property($"../BossHealth", "theme_override_font_sizes/normal_font_size", 16, 1)
+		tween.tween_property($"../BossHealth", "modulate", Color.BLACK, 1)
+		
 		print("Opponent Defend")
 
 
