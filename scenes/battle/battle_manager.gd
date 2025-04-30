@@ -74,8 +74,19 @@ func _on_player_attack():
 		selected_card_in_slot.attacked_this_turn = true
 		
 		monster_attack_boss_anim(selected_card_in_slot)
+		await wait(0.5)
 		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
 		$"../BossHealth".text = str(boss_health)
+		
+		# Change font to double size and red
+		$"../BossHealth".add_theme_font_size_override("normal_font_size", 40)
+		$"../BossHealth".modulate = Color.RED
+	
+		# Play animation for health change
+		var tween = get_tree().create_tween()
+		tween.tween_property($"../BossHealth", "theme_override_font_sizes/normal_font_size", 16, 1)
+		tween.tween_property($"../BossHealth", "modulate", Color.BLACK, 1)
+		
 		if boss_health == 0:
 			player_win()
 		selected_card_in_slot.selected_label_vis(false)
@@ -87,9 +98,13 @@ func monster_attack_boss_anim(card):
 	var old_pos_y = card.position.y
 	var new_pos = Vector2(new_pos_x, new_pos_y)
 	card.z_index = 5
+	
+	# Monster go attacking
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "position", new_pos, 0.5)
 	await wait(0.5)
+	
+	# Monster Returning to original position
 	var old_pos = Vector2(old_pos_x, old_pos_y)
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(card, "position", old_pos, 0.5)
@@ -110,7 +125,6 @@ func player_lose():
 
 # End player turn and opponent turn starts
 func _on_end_turn_button_pressed() -> void:
-	print("Not On Player Turn")
 	# Dis-select card selected in battlefield
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
@@ -160,7 +174,6 @@ func start_player_turn():
 	
 	reset_cards_attack()
 	is_on_player_turn = true
-	print("On Player Turn")
 
 
 func opponent_move():
@@ -221,6 +234,7 @@ func opponent_attack(target):
 		
 	print("Opponent Attack")
 
+
 func boss_attack_player_anim():
 	var new_pos_x = 25
 	var new_pos = Vector2(new_pos_x, $"../Enemy".position.y)
@@ -241,7 +255,6 @@ func boss_attack_monster_anim(target):
 	tween.tween_property($"../Enemy", "position", new_pos, 0.5)
 
 
-
 func boss_return_pos_anim():
 	var old_pos_x = 214.5
 	var old_pos_y = 77
@@ -253,10 +266,12 @@ func boss_return_pos_anim():
 	$"../BossAttack".visible = true
 	$"../BossHealth".visible = true
 
+
 func wait(wait_time):
 	battle_timer.wait_time = wait_time
 	battle_timer.start()
 	await battle_timer.timeout
+
 
 func opponent_defend():
 	if boss_health == 20:
@@ -265,6 +280,16 @@ func opponent_defend():
 	else:
 		boss_health = min(boss_health + 3, 10)
 		$"../BossHealth".text = str(boss_health)
+		
+		# Change font to double size and green
+		$"../BossHealth".add_theme_font_size_override("normal_font_size", 40)
+		$"../BossHealth".modulate = Color.GREEN
+	
+		# Play animation for health change
+		var tween = get_tree().create_tween()
+		tween.tween_property($"../BossHealth", "theme_override_font_sizes/normal_font_size", 16, 1)
+		tween.tween_property($"../BossHealth", "modulate", Color.BLACK, 1)
+		
 		print("Opponent Defend")
 
 

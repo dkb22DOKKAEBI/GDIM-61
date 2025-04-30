@@ -159,12 +159,14 @@ horizontal_alignment = 1
 
 [node name="BossHealth" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = 230.0
-offset_top = 48.0
-offset_right = 255.0
-offset_bottom = 73.0
+offset_left = 224.0
+offset_top = 43.0
+offset_right = 284.0
+offset_bottom = 103.0
 scale = Vector2(0.25, 0.25)
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
