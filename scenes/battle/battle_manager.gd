@@ -76,6 +76,16 @@ func _on_player_attack():
 		monster_attack_boss_anim(selected_card_in_slot)
 		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
 		$"../BossHealth".text = str(boss_health)
+		
+		# Change font to double size and red
+		$"../BossHealth".add_theme_font_size_override("normal_font_size", 40)
+		$"../BossHealth".modulate = Color.RED
+	
+		# Play animation for health change
+		var tween = get_tree().create_tween()
+		tween.tween_property($"../BossHealth", "theme_override_font_sizes/normal_font_size", 16, 1)
+		tween.tween_property($"../BossHealth", "modulate", Color.BLACK, 1)
+		
 		if boss_health == 0:
 			player_win()
 		selected_card_in_slot.selected_label_vis(false)
@@ -110,7 +120,6 @@ func player_lose():
 
 # End player turn and opponent turn starts
 func _on_end_turn_button_pressed() -> void:
-	print("Not On Player Turn")
 	# Dis-select card selected in battlefield
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
@@ -160,7 +169,6 @@ func start_player_turn():
 	
 	reset_cards_attack()
 	is_on_player_turn = true
-	print("On Player Turn")
 
 
 func opponent_move():

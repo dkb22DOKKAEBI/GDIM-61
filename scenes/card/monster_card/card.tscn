@@ -35,9 +35,9 @@ vertical_alignment = 1
 
 [node name="Health" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = 6.31579
+offset_left = 8.42105
 offset_top = -33.6842
-offset_right = 57.3158
+offset_right = 59.4211
 offset_bottom = 24.3158
 scale = Vector2(0.25, 0.25)
 theme_override_font_sizes/normal_font_size = 16
