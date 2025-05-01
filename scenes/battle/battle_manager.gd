@@ -14,6 +14,7 @@ var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 3, "Block": 3, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
+var player_is_attacking: bool = false
 
 @onready var battle_timer: Timer = $"../BattleTimer"
 @onready var cardslot_1: Node2D = $"../Cardslots/Cardslot"
@@ -70,6 +71,8 @@ func _on_player_attack():
 	if not selected_card_in_slot:
 		return
 	
+	player_is_attacking = true
+	
 	if not selected_card_in_slot.attacked_this_turn:
 		selected_card_in_slot.attacked_this_turn = true
 		
@@ -89,6 +92,9 @@ func _on_player_attack():
 		
 		if boss_health == 0:
 			player_win()
+		
+		# Player attack end
+		player_is_attacking = false;
 		selected_card_in_slot.selected_label_vis(false)
 
 func monster_attack_boss_anim(card):
@@ -125,6 +131,10 @@ func player_lose():
 
 # End player turn and opponent turn starts
 func _on_end_turn_button_pressed() -> void:
+	# Check whether the player is attacking
+	if player_is_attacking:
+		return
+	
 	# Dis-select card selected in battlefield
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
