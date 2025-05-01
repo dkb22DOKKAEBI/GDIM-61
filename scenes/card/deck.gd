@@ -4,8 +4,8 @@ const INGREDIENT_CARD_SCENE_PATH = "res://scenes/card/ingredient_card/ingredient
 const CARD_DRAW_SPEED = 1
 
 var player_deck = ["Tortilla", "Dough", "Cheese", 
-"Tomato", "Sugar", "Ham", "Tortilla", "Dough", 
-"Cheese", "Tomato", "Sugar", "Ham"]
+"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
+"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce"]
 
 
 #Called when the node enters the scene tree for the first time.
