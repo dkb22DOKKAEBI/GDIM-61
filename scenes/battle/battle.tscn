@@ -210,6 +210,7 @@ text = "RECIPE"
 
 [node name="RecipeBook" parent="." instance=ExtResource("15_n6gaa")]
 self_modulate = Color(0, 0, 0, 1)
+z_index = 5
 offset_left = 126.0
 offset_top = 72.0
 offset_right = 126.0

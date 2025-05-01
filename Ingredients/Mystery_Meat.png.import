@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crbshv2xbok0l"
-path="res://.godot/imported/Sugar.png-450d96b244693ad93ed791ce18ce6af7.ctex"
+uid="uid://daugm8a1s36aw"
+path="res://.godot/imported/Mystery_Meat.png-d5b02e9d2ec48ed41d5ffbd43f6f085e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ingredients/Sugar.png"
-dest_files=["res://.godot/imported/Sugar.png-450d96b244693ad93ed791ce18ce6af7.ctex"]
+source_file="res://Ingredients/Mystery_Meat.png"
+dest_files=["res://.godot/imported/Mystery_Meat.png-d5b02e9d2ec48ed41d5ffbd43f6f085e.ctex"]
 
 [params]
 

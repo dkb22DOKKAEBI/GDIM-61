@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crbshv2xbok0l"
-path="res://.godot/imported/Sugar.png-450d96b244693ad93ed791ce18ce6af7.ctex"
+uid="uid://ctnl58orbqlsb"
+path="res://.godot/imported/Salad.png-22113d75693edf95ce322e7385a3a6b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ingredients/Sugar.png"
-dest_files=["res://.godot/imported/Sugar.png-450d96b244693ad93ed791ce18ce6af7.ctex"]
+source_file="res://Cards/Salad.png"
+dest_files=["res://.godot/imported/Salad.png-22113d75693edf95ce322e7385a3a6b7.ctex"]
 
 [params]
 
