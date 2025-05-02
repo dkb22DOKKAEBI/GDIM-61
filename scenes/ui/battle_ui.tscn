@@ -7,3 +7,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ViewportContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopScreen" type="MarginContainer" parent="ViewportContainer"]
+custom_minimum_size = Vector2(960, 425)
+layout_mode = 2
+
+[node name="SidebarUIContainer" type="HBoxContainer" parent="ViewportContainer/TopScreen"]
+layout_mode = 2
+
+[node name="SidebarUI" type="MarginContainer" parent="ViewportContainer/TopScreen/SidebarUIContainer"]
+custom_minimum_size = Vector2(210, 425)
+layout_mode = 2
+
+[node name="PlayerHand" type="MarginContainer" parent="ViewportContainer"]
+custom_minimum_size = Vector2(960, 175)
+layout_mode = 2
