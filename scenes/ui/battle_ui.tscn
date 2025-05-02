@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://do6s602x65ika"]
+[gd_scene load_steps=2 format=3 uid="uid://do6s602x65ika"]
 
-[node name="BattleUi" type="Control"]
+[ext_resource type="Texture2D" uid="uid://dpfbxdp1j7swl" path="res://art/ui_element/Default/Border/panel-border-015.png" id="1_2hywk"]
+
+[node name="BattleUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -8,7 +10,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ViewportContainer" type="VBoxContainer" parent="."]
+[node name="BackgroundColor" type="ColorRect" parent="."]
+modulate = Color(0.870588, 0.870588, 0.870588, 0.14902)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,17 +19,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopScreen" type="MarginContainer" parent="ViewportContainer"]
-custom_minimum_size = Vector2(960, 425)
+[node name="PlayerHandContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="PlayerHand" type="MarginContainer" parent="PlayerHandContainer"]
+custom_minimum_size = Vector2(960, 150)
 layout_mode = 2
 
-[node name="SidebarUIContainer" type="HBoxContainer" parent="ViewportContainer/TopScreen"]
+[node name="NinePatchRect" type="NinePatchRect" parent="PlayerHandContainer/PlayerHand"]
+layout_mode = 2
+texture = ExtResource("1_2hywk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="CardInfoContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 210.0
+offset_bottom = -144.0
+grow_vertical = 2
+
+[node name="CardInfo" type="MarginContainer" parent="CardInfoContainer"]
+custom_minimum_size = Vector2(210, 452)
 layout_mode = 2
 
-[node name="SidebarUI" type="MarginContainer" parent="ViewportContainer/TopScreen/SidebarUIContainer"]
-custom_minimum_size = Vector2(210, 425)
+[node name="NinePatchRect" type="NinePatchRect" parent="CardInfoContainer/CardInfo"]
+layout_mode = 2
+texture = ExtResource("1_2hywk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="PotContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 275.0
+
+[node name="Pot" type="MarginContainer" parent="PotContainer"]
+custom_minimum_size = Vector2(210, 275)
 layout_mode = 2
 
-[node name="PlayerHand" type="MarginContainer" parent="ViewportContainer"]
-custom_minimum_size = Vector2(960, 175)
+[node name="NinePatchRect" type="NinePatchRect" parent="PotContainer/Pot"]
 layout_mode = 2
+texture = ExtResource("1_2hywk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
