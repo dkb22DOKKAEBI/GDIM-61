@@ -10,7 +10,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundColor" type="ColorRect" parent="Background"]
 modulate = Color(0.870588, 0.870588, 0.870588, 0.14902)
 layout_mode = 1
 anchors_preset = 15
@@ -19,40 +27,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerHandContainer" type="VBoxContainer" parent="."]
+[node name="BackgroundBorder" type="NinePatchRect" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 2
-
-[node name="PlayerHand" type="MarginContainer" parent="PlayerHandContainer"]
-custom_minimum_size = Vector2(960, 150)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="PlayerHandContainer/PlayerHand"]
-layout_mode = 2
 texture = ExtResource("1_2hywk")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="CardInfoContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
+[node name="CardInfo" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(210, 427)
+layout_mode = 2
 offset_right = 210.0
-offset_bottom = -144.0
-grow_vertical = 2
+offset_bottom = 427.0
 
-[node name="CardInfo" type="MarginContainer" parent="CardInfoContainer"]
-custom_minimum_size = Vector2(210, 452)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CardInfoContainer/CardInfo"]
+[node name="CardInfoBorder" type="NinePatchRect" parent="CardInfo"]
 layout_mode = 2
 texture = ExtResource("1_2hywk")
 patch_margin_left = 20
@@ -60,16 +54,28 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="PotContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="Pot" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(210, 275)
+layout_mode = 2
 offset_right = 210.0
 offset_bottom = 275.0
 
-[node name="Pot" type="MarginContainer" parent="PotContainer"]
-custom_minimum_size = Vector2(210, 275)
+[node name="PotBorder" type="NinePatchRect" parent="Pot"]
 layout_mode = 2
+texture = ExtResource("1_2hywk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
-[node name="NinePatchRect" type="NinePatchRect" parent="PotContainer/Pot"]
+[node name="PlayerHand" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(960, 175)
+layout_mode = 2
+offset_top = 425.0
+offset_right = 960.0
+offset_bottom = 600.0
+
+[node name="PlayerHandBorder" type="NinePatchRect" parent="PlayerHand"]
 layout_mode = 2
 texture = ExtResource("1_2hywk")
 patch_margin_left = 20
