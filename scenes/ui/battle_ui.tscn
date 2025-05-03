@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://do6s602x65ika"]
-
-[ext_resource type="Texture2D" uid="uid://dpfbxdp1j7swl" path="res://art/ui_element/Default/Border/panel-border-015.png" id="1_2hywk"]
+[gd_scene format=3 uid="uid://do6s602x65ika"]
 
 [node name="BattleUI" type="Control"]
 layout_mode = 3
@@ -34,7 +32,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_2hywk")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
@@ -48,7 +45,6 @@ offset_bottom = 427.0
 
 [node name="CardInfoBorder" type="NinePatchRect" parent="CardInfo"]
 layout_mode = 2
-texture = ExtResource("1_2hywk")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
@@ -62,7 +58,6 @@ offset_bottom = 275.0
 
 [node name="PotBorder" type="NinePatchRect" parent="Pot"]
 layout_mode = 2
-texture = ExtResource("1_2hywk")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
@@ -77,7 +72,6 @@ offset_bottom = 600.0
 
 [node name="PlayerHandBorder" type="NinePatchRect" parent="PlayerHand"]
 layout_mode = 2
-texture = ExtResource("1_2hywk")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
