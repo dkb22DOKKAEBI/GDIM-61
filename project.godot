@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GDIM 61"
-run/main_scene="uid://cvnymbjn7jspr"
+run/main_scene="uid://bebj6ltb2dusn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bxwcx7stx52lk"
 
@@ -28,6 +28,11 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 window/canvas_textures/default_texture_filter=0
+
+[editor]
+
+export/size/window_height_override=1080
+export/size/window_width_override=1920
 
 [input]
 

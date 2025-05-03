@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=2 format=3 uid="uid://bebj6ltb2dusn"]
+
+[ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="1_he44v"]
 
 [node name="NewBattle" type="Node2D"]
+
+[node name="UIParent" type="Control" parent="."]
+custom_minimum_size = Vector2(960, 600)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 960.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 300)
+
+[node name="BattleUI" parent="UIParent" instance=ExtResource("1_he44v")]
+layout_mode = 1
