@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://do6s602x65ika"]
+[gd_scene load_steps=2 format=3 uid="uid://do6s602x65ika"]
+
+[ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="1_2hywk"]
 
 [node name="BattleUI" type="Control"]
 layout_mode = 3
@@ -37,42 +39,63 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="CardInfo" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(210, 427)
-layout_mode = 2
-offset_right = 210.0
-offset_bottom = 427.0
-
-[node name="CardInfoBorder" type="NinePatchRect" parent="CardInfo"]
-layout_mode = 2
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
-
-[node name="Pot" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(210, 275)
-layout_mode = 2
-offset_right = 210.0
-offset_bottom = 275.0
-
-[node name="PotBorder" type="NinePatchRect" parent="Pot"]
-layout_mode = 2
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
-
 [node name="PlayerHand" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(960, 175)
 layout_mode = 2
 offset_top = 425.0
 offset_right = 960.0
 offset_bottom = 600.0
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
 
 [node name="PlayerHandBorder" type="NinePatchRect" parent="PlayerHand"]
 layout_mode = 2
+texture = ExtResource("1_2hywk")
+region_rect = Rect2(64, 112, 64, 64)
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Pot" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(210, 175)
+layout_mode = 2
+offset_top = 250.0
+offset_right = 210.0
+offset_bottom = 425.0
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_bottom = -18
+
+[node name="PotBorder" type="NinePatchRect" parent="Pot"]
+layout_mode = 2
+texture = ExtResource("1_2hywk")
+region_rect = Rect2(64, 112, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CardInfo" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(210, 250)
+layout_mode = 2
+offset_right = 210.0
+offset_bottom = 250.0
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_bottom = -18
+
+[node name="CardInfoBorder" type="NinePatchRect" parent="CardInfo"]
+layout_mode = 2
+texture = ExtResource("1_2hywk")
+region_rect = Rect2(64, 112, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
