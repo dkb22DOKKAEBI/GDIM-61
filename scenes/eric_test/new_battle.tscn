@@ -163,10 +163,10 @@ mouse_filter = 2
 [node name="EndTurnButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 834.0
-offset_top = 409.0
-offset_right = 953.0
-offset_bottom = 446.0
+offset_left = 837.0
+offset_top = 410.0
+offset_right = 947.0
+offset_bottom = 447.0
 focus_mode = 0
 theme = ExtResource("3_wrfy3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -180,6 +180,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_50odi")
@@ -316,6 +317,6 @@ text = "YOU LOSE !!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="button_down" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
-[connection signal="button_down" from="UI/Buttons/SwitchHandButton" to="UI/Buttons/SwitchHandButton" method="_on_switch_hand"]
-[connection signal="button_down" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
+[connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/SwitchHandButton" to="UI/Buttons/SwitchHandButton" method="_on_switch_hand"]
+[connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
