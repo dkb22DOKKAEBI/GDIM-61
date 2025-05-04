@@ -1,25 +1,70 @@
-[gd_scene load_steps=6 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=15 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="1_he44v"]
 [ext_resource type="Script" uid="uid://bcy143bfyrruo" path="res://scenes/player/player_hand.gd" id="1_qh1ha"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="2_5dbsp"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scenes/player/input_manager.gd" id="2_a5syj"]
+[ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://scenes/card/deck.gd" id="3_scp0m"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_wrfy3"]
+[ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://Cards/Deck.png" id="4_0ysdp"]
+[ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://scenes/card/monster_card/monster_card_manager.gd" id="4_ftm0q"]
+[ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://scenes/card/ingredient_card/ingredient_card_manager.gd" id="5_0ysdp"]
+[ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scenes/battle/battle_manager.gd" id="7_50odi"]
+[ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://Cards/Vacuum_boss.png" id="7_ftm0q"]
+[ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scenes/card/cooking_mechanic.gd" id="11_sus8o"]
+[ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_50odi"]
+[ext_resource type="Script" uid="uid://nrqhns78ljqf" path="res://scenes/battle/switch_hand.gd" id="13_gt826"]
 
 [node name="NewBattle" type="Node2D"]
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="PlayerHand" type="Node2D" parent="Player"]
+[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("battle_manager", "card_manager_reference", "deck_reference")]
+script = ExtResource("2_a5syj")
+battle_manager = NodePath("../../BattleManager")
+card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
+deck_reference = NodePath("../../PlayerHand/Deck")
+
+[node name="PlayerHand" type="Node2D" parent="."]
 script = ExtResource("1_qh1ha")
 
-[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("player_hand")]
-script = ExtResource("2_a5syj")
-player_hand = NodePath("../PlayerHand")
+[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager", "player_hand")]
+position = Vector2(910, 524)
+script = ExtResource("3_scp0m")
+deck_left_num_text = NodePath("DeckLeftNum")
+deck_sprite = NodePath("DeckSprite2D")
+ingredient_card_manager = NodePath("../IngredientCardManager")
+player_hand = NodePath("..")
+
+[node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
+z_index = 1
+scale = Vector2(0.383333, 0.383333)
+texture = ExtResource("4_0ysdp")
+
+[node name="DeckLeftNum" type="RichTextLabel" parent="PlayerHand/Deck"]
+z_index = 2
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 29.0
+offset_bottom = 28.0
+theme = ExtResource("3_wrfy3")
+theme_override_font_sizes/normal_font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "player_hand")]
+script = ExtResource("4_ftm0q")
+input_manager = NodePath("../../Player/InputManager")
+player_hand = NodePath("..")
+
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand"]
+script = ExtResource("5_0ysdp")
 
 [node name="BattleField" type="Node2D" parent="."]
 
 [node name="Cardslots" type="Node2D" parent="BattleField"]
+z_index = 1
 
 [node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
 position = Vector2(308, 138)
@@ -29,6 +74,51 @@ position = Vector2(310, 297)
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
 position = Vector2(438, 222)
+
+[node name="Enemy" type="Node2D" parent="BattleField"]
+
+[node name="EnemySprite2D" type="Sprite2D" parent="BattleField/Enemy"]
+z_index = 1
+position = Vector2(821, 220)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("7_ftm0q")
+
+[node name="EnemyHealth" type="RichTextLabel" parent="BattleField/Enemy"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 856.0
+offset_top = 111.0
+offset_right = 896.0
+offset_bottom = 151.0
+theme = ExtResource("3_wrfy3")
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyAttack" type="RichTextLabel" parent="BattleField/Enemy"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 747.0
+offset_top = 112.0
+offset_right = 787.0
+offset_bottom = 152.0
+theme = ExtResource("3_wrfy3")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "cardslot_1", "cardslot_2", "cardslot_3")]
+script = ExtResource("7_50odi")
+battle_timer = NodePath("BattleTimer")
+cardslot_1 = NodePath("../BattleField/Cardslots/Cardslot1")
+cardslot_2 = NodePath("../BattleField/Cardslots/Cardslot2")
+cardslot_3 = NodePath("../BattleField/Cardslots/Cardslot3")
+
+[node name="BattleTimer" type="Timer" parent="BattleManager"]
+one_shot = true
+
+[node name="CookingMechanic" type="Node2D" parent="."]
+script = ExtResource("11_sus8o")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -42,11 +132,169 @@ layout_mode = 1
 
 [node name="PlayerHealth" type="RichTextLabel" parent="UI"]
 layout_mode = 0
-offset_left = 227.0
+offset_left = 343.0
 offset_top = 1.0
-offset_right = 405.0
+offset_right = 521.0
 offset_bottom = 30.0
 theme = ExtResource("3_wrfy3")
 theme_override_font_sizes/normal_font_size = 20
 text = "Player Health: 10"
+vertical_alignment = 1
+
+[node name="Buttons" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndTurnButton" type="Button" parent="UI/Buttons"]
+z_index = 2
+layout_mode = 0
+offset_left = 834.0
+offset_top = 409.0
+offset_right = 953.0
+offset_bottom = 446.0
+theme = ExtResource("3_wrfy3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "End Turn"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/EndTurnButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_50odi")
+region_rect = Rect2(114, 4, 44, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="SwitchHandButton" type="Button" parent="UI/Buttons"]
+z_index = 2
+layout_mode = 0
+offset_left = 226.0
+offset_top = 464.0
+offset_right = 269.0
+offset_bottom = 504.0
+theme = ExtResource("3_wrfy3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Switch
+Hand"
+flat = true
+script = ExtResource("13_gt826")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/SwitchHandButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_50odi")
+region_rect = Rect2(114, 4, 44, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="CookButton" type="Button" parent="UI/Buttons"]
+z_index = 2
+layout_mode = 0
+offset_left = 90.0
+offset_top = 548.0
+offset_right = 209.0
+offset_bottom = 585.0
+theme = ExtResource("3_wrfy3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Cook"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/CookButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_50odi")
+region_rect = Rect2(114, 4, 44, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="RecipeButton" type="Button" parent="UI/Buttons"]
+z_index = 2
+layout_mode = 0
+offset_left = 18.0
+offset_top = 548.0
+offset_right = 81.0
+offset_bottom = 585.0
+theme = ExtResource("3_wrfy3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Recipe"
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/RecipeButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_50odi")
+region_rect = Rect2(114, 4, 44, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="GameConditions" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WinCondition" type="RichTextLabel" parent="UI/GameConditions"]
+visible = false
+z_index = 100
+layout_mode = 0
+offset_left = 125.0
+offset_top = 189.0
+offset_right = 885.0
+offset_bottom = 379.0
+theme = ExtResource("3_wrfy3")
+theme_override_colors/default_color = Color(0.690196, 0.788235, 0, 1)
+theme_override_font_sizes/normal_font_size = 130
+text = "YOU WIN !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoseCondition" type="RichTextLabel" parent="UI/GameConditions"]
+visible = false
+z_index = 100
+layout_mode = 0
+offset_left = 125.0
+offset_top = 189.0
+offset_right = 885.0
+offset_bottom = 379.0
+theme = ExtResource("3_wrfy3")
+theme_override_colors/default_color = Color(0.690196, 0.247059, 0, 1)
+theme_override_font_sizes/normal_font_size = 130
+text = "YOU LOSE !!!"
+horizontal_alignment = 1
 vertical_alignment = 1

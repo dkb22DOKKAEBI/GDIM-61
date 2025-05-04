@@ -1,11 +1,12 @@
 extends CardManager
 
 var played_card_this_turn := false
-
+@export var input_manager: Node2D
+@export var player_hand: Node2D
 
 func _ready():
 	super._ready()
-	$"../Player/InputManager".connect("left_mouse_button_released", on_left_clicked_released)
+	input_manager.connect("left_mouse_button_released", on_left_clicked_released)
 	
 	# TEST ONLY
 	var card_scene = preload("res://scenes/card/monster_card/card.tscn")
@@ -15,10 +16,10 @@ func _ready():
 	new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 	new_card.get_node("Attack").text = str(3)
 	new_card.get_node("Health").text = str(2)
-	$"../MonsterCardManager".add_child(new_card)
+	self.add_child(new_card)
 	new_card.name = "MonsterCard"
-	$"../Player/PlayerHand".add_card_to_hand(new_card, 1, 1)
-	if $"../MonsterCardManager".visible:
+	player_hand.add_card_to_hand(new_card, 1, 1)
+	if self.visible:
 		new_card.set_card_z_index(1)
 	else:
 		new_card.set_card_z_index(0)
