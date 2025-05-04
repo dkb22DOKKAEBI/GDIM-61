@@ -33,6 +33,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="RecipeBookVisible/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("2_udx60")
+theme_override_font_sizes/font_size = 36
 text = "Recipe Book"
 horizontal_alignment = 1
 
@@ -60,7 +61,7 @@ layout_mode = 2
 [node name="ExitBook" type="Button" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_udx60")
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 30
 text = "Exit
 "
 
