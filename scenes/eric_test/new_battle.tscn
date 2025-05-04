@@ -81,7 +81,7 @@ z_index = 1
 position = Vector2(308, 138)
 
 [node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
-position = Vector2(310, 297)
+position = Vector2(309, 306)
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
 position = Vector2(438, 222)
@@ -97,10 +97,10 @@ texture = ExtResource("7_ftm0q")
 [node name="EnemyHealth" type="RichTextLabel" parent="BattleField/Enemy"]
 modulate = Color(0, 0, 0, 1)
 z_index = 2
-offset_left = 856.0
-offset_top = 111.0
-offset_right = 896.0
-offset_bottom = 151.0
+offset_left = 847.0
+offset_top = 101.0
+offset_right = 906.0
+offset_bottom = 160.0
 theme = ExtResource("3_wrfy3")
 text = "10"
 horizontal_alignment = 1

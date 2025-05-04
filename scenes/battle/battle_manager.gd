@@ -112,7 +112,7 @@ func _on_player_attack():
 		selected_card_in_slot.selected_label_vis(false)
 
 func monster_attack_boss_anim(card):
-	var new_pos_x = 145
+	var new_pos_x = 440
 	var new_pos_y = 0
 	var old_pos_x = card.position.x
 	var old_pos_y = card.position.y
