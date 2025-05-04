@@ -10,7 +10,6 @@ var player_deck = ["Tortilla", "Dough", "Cheese",
 @export var deck_left_num_text: RichTextLabel
 @export var deck_sprite: Sprite2D
 @export var ingredient_card_manager: Node2D
-@export var player_hand: Node2D
 
 
 #Called when the node enters the scene tree for the first time.
@@ -41,4 +40,4 @@ func draw_card():
 		new_card.name = "IngredientCard"
 		new_card.ingredient_name = ingredient_name
 		new_card.ingredient_name_label.text = ingredient_name
-		player_hand.add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)
+		PlayerHand.add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)

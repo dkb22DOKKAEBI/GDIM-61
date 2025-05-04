@@ -14,7 +14,6 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 @export var battle_manager: Node2D
 @export var card_manager_reference: Node2D
 @export var deck_reference: Node2D
-@export var player_hand: Node2D
 
 
 func _ready() -> void:
@@ -46,14 +45,14 @@ func raycast_at_cursor():
 			# Select monster cards
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
-				if $"../../BattleManager".is_on_player_turn and monster_card_found:
-					if not monster_card_found.placed and not player_hand.on_ingredient_hand:
+				if battle_manager.is_on_player_turn and monster_card_found:
+					if not monster_card_found.placed and not PlayerHand.on_ingredient_hand:
 						card_manager_reference.start_drag(monster_card_found)
 					elif monster_card_found.placed:
 						select_placed_card.emit(monster_card_found)
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
-				if player_hand.on_ingredient_hand:
+				if PlayerHand.on_ingredient_hand:
 					var ingredient_card_found = point.collider.get_parent()
 					ingredient_card_found.ingredient_card_selected()
 			elif result_collision_mask == COLLISION_MASK_DECK:

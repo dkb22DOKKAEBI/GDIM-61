@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=14 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="1_he44v"]
-[ext_resource type="Script" uid="uid://bcy143bfyrruo" path="res://scenes/player/player_hand.gd" id="1_qh1ha"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="2_5dbsp"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scenes/player/input_manager.gd" id="2_a5syj"]
 [ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://scenes/card/deck.gd" id="3_scp0m"]
@@ -25,16 +24,25 @@ battle_manager = NodePath("../../BattleManager")
 card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
 deck_reference = NodePath("../../PlayerHand/Deck")
 
-[node name="PlayerHand" type="Node2D" parent="."]
-script = ExtResource("1_qh1ha")
+[node name="PlayerHealth" type="RichTextLabel" parent="Player"]
+z_index = 1
+offset_left = 343.0
+offset_top = 1.0
+offset_right = 521.0
+offset_bottom = 30.0
+theme = ExtResource("3_wrfy3")
+theme_override_font_sizes/normal_font_size = 20
+text = "Player Health: 10"
+vertical_alignment = 1
 
-[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager", "player_hand")]
+[node name="PlayerHand" type="Node2D" parent="."]
+
+[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
 position = Vector2(910, 524)
 script = ExtResource("3_scp0m")
 deck_left_num_text = NodePath("DeckLeftNum")
 deck_sprite = NodePath("DeckSprite2D")
 ingredient_card_manager = NodePath("../IngredientCardManager")
-player_hand = NodePath("..")
 
 [node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
 z_index = 1
@@ -53,12 +61,15 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "player_hand")]
+[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager")]
+visible = false
+z_index = 1
 script = ExtResource("4_ftm0q")
 input_manager = NodePath("../../Player/InputManager")
-player_hand = NodePath("..")
+battle_manager = NodePath("../../BattleManager")
 
 [node name="IngredientCardManager" type="Node2D" parent="PlayerHand"]
+z_index = 1
 script = ExtResource("5_0ysdp")
 
 [node name="BattleField" type="Node2D" parent="."]
@@ -107,12 +118,17 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "cardslot_1", "cardslot_2", "cardslot_3")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "cardslot_1", "cardslot_2", "cardslot_3", "input_manager", "enemy", "enemy_health_text", "enemy_attack_text", "player_health_text")]
 script = ExtResource("7_50odi")
 battle_timer = NodePath("BattleTimer")
 cardslot_1 = NodePath("../BattleField/Cardslots/Cardslot1")
 cardslot_2 = NodePath("../BattleField/Cardslots/Cardslot2")
 cardslot_3 = NodePath("../BattleField/Cardslots/Cardslot3")
+input_manager = NodePath("../Player/InputManager")
+enemy = NodePath("../BattleField/Enemy")
+enemy_health_text = NodePath("../BattleField/Enemy/EnemyHealth")
+enemy_attack_text = NodePath("../BattleField/Enemy/EnemyAttack")
+player_health_text = NodePath("../Player/PlayerHealth")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
 one_shot = true
@@ -130,17 +146,6 @@ pivot_offset = Vector2(480, 300)
 [node name="BattleUI" parent="UI" instance=ExtResource("1_he44v")]
 layout_mode = 1
 
-[node name="PlayerHealth" type="RichTextLabel" parent="UI"]
-layout_mode = 0
-offset_left = 343.0
-offset_top = 1.0
-offset_right = 521.0
-offset_bottom = 30.0
-theme = ExtResource("3_wrfy3")
-theme_override_font_sizes/normal_font_size = 20
-text = "Player Health: 10"
-vertical_alignment = 1
-
 [node name="Buttons" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
@@ -156,6 +161,7 @@ offset_left = 834.0
 offset_top = 409.0
 offset_right = 953.0
 offset_bottom = 446.0
+focus_mode = 0
 theme = ExtResource("3_wrfy3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -177,13 +183,14 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="SwitchHandButton" type="Button" parent="UI/Buttons"]
+[node name="SwitchHandButton" type="Button" parent="UI/Buttons" node_paths=PackedStringArray("ingredient_card_manager", "monster_card_manager")]
 z_index = 2
 layout_mode = 0
 offset_left = 226.0
 offset_top = 464.0
 offset_right = 269.0
 offset_bottom = 504.0
+focus_mode = 0
 theme = ExtResource("3_wrfy3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
@@ -191,6 +198,8 @@ text = "Switch
 Hand"
 flat = true
 script = ExtResource("13_gt826")
+ingredient_card_manager = NodePath("../../../PlayerHand/IngredientCardManager")
+monster_card_manager = NodePath("../../../PlayerHand/MonsterCardManager")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/SwitchHandButton"]
 z_index = -1
@@ -214,6 +223,7 @@ offset_left = 90.0
 offset_top = 548.0
 offset_right = 209.0
 offset_bottom = 585.0
+focus_mode = 0
 theme = ExtResource("3_wrfy3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -242,6 +252,7 @@ offset_left = 18.0
 offset_top = 548.0
 offset_right = 81.0
 offset_bottom = 585.0
+focus_mode = 0
 theme = ExtResource("3_wrfy3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
@@ -298,3 +309,7 @@ theme_override_font_sizes/normal_font_size = 130
 text = "YOU LOSE !!!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_down" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
+[connection signal="button_down" from="UI/Buttons/SwitchHandButton" to="UI/Buttons/SwitchHandButton" method="_on_switch_hand"]
+[connection signal="button_down" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]

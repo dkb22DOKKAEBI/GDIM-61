@@ -25,22 +25,32 @@ var player_is_attacking: bool = false
 @export var cardslot_2: Node2D
 @export var cardslot_3: Node2D
 
+@export var input_manager: Node2D
+@export var monster_card_manager: Node2D
+
+@export var enemy: Node2D
+@export var enemy_health_text: RichTextLabel
+@export var enemy_attack_text: RichTextLabel
+@export var player_health_text: RichTextLabel
+var player_health_text_prefix: String = "Player Health: "
+
+
 func _ready() ->void:
 	player_health = STARTING_HEALTH
-	$"../Player/PlayerHealth".text = str(player_health)
+	player_health_text.text = player_health_text_prefix + str(player_health)
 	
 	boss_health = STARTING_HEALTH
-	$"../BossHealth".text = str(boss_health)
+	enemy_health_text.text = str(boss_health)
 	
 	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
 	
-	$"../BossAttack".text = str(boss_damage)
-	$"../Player/InputManager".connect("select_placed_card", _player_select_placed_card)
-	$"../Player/InputManager".connect("player_attack", _on_player_attack)
+	enemy_attack_text.text = str(boss_damage)
+	input_manager.connect("select_placed_card", _player_select_placed_card)
+	input_manager.connect("player_attack", _on_player_attack)
 	
 	# Draw initial hand
 	for i in range(STARTING_HAND_SIZE):
-		$"../Deck".draw_card()
+		$"../PlayerHand/Deck".draw_card()
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
@@ -83,16 +93,16 @@ func _on_player_attack():
 		monster_attack_boss_anim(selected_card_in_slot)
 		await wait(0.5)
 		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
-		$"../BossHealth".text = str(boss_health)
+		enemy_health_text.text = str(boss_health)
 		
 		# Change font to double size and red
-		$"../BossHealth".add_theme_font_size_override("normal_font_size", 40)
-		$"../BossHealth".modulate = Color.RED
+		enemy_health_text.add_theme_font_size_override("normal_font_size", 40)
+		enemy_health_text.modulate = Color.RED
 	
 		# Play animation for health change
 		var tween = get_tree().create_tween()
-		tween.tween_property($"../BossHealth", "theme_override_font_sizes/normal_font_size", 16, 1)
-		tween.tween_property($"../BossHealth", "modulate", Color.BLACK, 1)
+		tween.tween_property(enemy_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
+		tween.tween_property(enemy_health_text, "modulate", Color.BLACK, 1)
 		
 		if boss_health == 0:
 			player_win()
@@ -123,14 +133,11 @@ func monster_attack_boss_anim(card):
 	
 
 func player_win():
-	$"../Win".visible = true
-	$"../Enemy".visible = false
-	$"../BossAttack".visible = false
-	$"../BossHealth".visible = false
-	
+	$"../UI/GameConditions/WinCondition".visible = true
+	enemy.visible = false
 
 func player_lose():
-	$"../Lose".visible = true
+	$"../UI/GameConditions/LoseCondition".visible = true
 
 
 # End player turn and opponent turn starts
@@ -156,8 +163,8 @@ func reset_cards_attack():
 
 
 func opponent_turn():
-	$"../EndTurnButton".disabled = true
-	$"../EndTurnButton".visible = false
+	$"../UI/Buttons/EndTurnButton".disabled = true
+	$"../UI/Buttons/EndTurnButton".visible = false
 	
 	# Opponent Turn Starts
 	battle_timer.start()
@@ -178,9 +185,9 @@ func opponent_turn():
 
 
 func start_player_turn():
-	$"../MonsterCardManager".reset_played()
-	$"../EndTurnButton".disabled = false
-	$"../EndTurnButton".visible = true
+	monster_card_manager.reset_played()
+	$"../UI/Buttons/EndTurnButton".disabled = false
+	$"../UI/Buttons/EndTurnButton".visible = true
 	
 	# Draw 2 ingredients card on the start of the player turn
 	for i in range(2):
@@ -236,7 +243,7 @@ func opponent_attack(target):
 		await wait(0.5)
 		
 		player_health = max(0, player_health - boss_attack)
-		$"../Player/PlayerHealth".text = str(player_health)
+		player_health_text.text = player_health_text_prefix + str(player_health)
 		boss_return_pos_anim()
 		if player_health == 0:
 			player_lose()
@@ -251,34 +258,34 @@ func opponent_attack(target):
 
 func boss_attack_player_anim():
 	var new_pos_x = 25
-	var new_pos = Vector2(new_pos_x, $"../Enemy".position.y)
-	$"../Enemy".z_index = 5
-	$"../BossAttack".visible = false
-	$"../BossHealth".visible = false
+	var new_pos = Vector2(new_pos_x, enemy.position.y)
+	enemy.z_index = 5
+	enemy_attack_text.visible = false
+	enemy_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property($"../Enemy", "position", new_pos, 0.5)
+	tween.tween_property(enemy, "position", new_pos, 0.5)
 
 func boss_attack_monster_anim(target):
 	var new_pos_x = target.position.x
 	var new_pos_y = target.position.y
 	var new_pos = Vector2(new_pos_x, new_pos_y)
-	$"../Enemy".z_index = 5
-	$"../BossAttack".visible = false
-	$"../BossHealth".visible = false
+	enemy.z_index = 5
+	enemy_attack_text.visible = false
+	enemy_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property($"../Enemy", "position", new_pos, 0.5)
+	tween.tween_property(enemy, "position", new_pos, 0.5)
 
 
 func boss_return_pos_anim():
 	var old_pos_x = 214.5
 	var old_pos_y = 77
 	var old_pos = Vector2(old_pos_x, old_pos_y)
-	$"../Enemy".z_index = 0
+	enemy.z_index = 0
 	var tween2 = get_tree().create_tween()
-	tween2.tween_property($"../Enemy", "position", old_pos, 0.5)
+	tween2.tween_property(enemy, "position", old_pos, 0.5)
 	await wait(0.5)
-	$"../BossAttack".visible = true
-	$"../BossHealth".visible = true
+	enemy_attack_text.visible = true
+	enemy_health_text.visible = true
 
 
 func wait(wait_time):
@@ -293,16 +300,16 @@ func opponent_defend():
 		opponent_attack(target)
 	else:
 		boss_health = min(boss_health + 3, 10)
-		$"../BossHealth".text = str(boss_health)
+		enemy_health_text.text = str(boss_health)
 		
 		# Change font to double size and green
-		$"../BossHealth".add_theme_font_size_override("normal_font_size", 40)
-		$"../BossHealth".modulate = Color.GREEN
+		enemy_health_text.add_theme_font_size_override("normal_font_size", 40)
+		enemy_health_text.modulate = Color.GREEN
 	
 		# Play animation for health change
 		var tween = get_tree().create_tween()
-		tween.tween_property($"../BossHealth", "theme_override_font_sizes/normal_font_size", 16, 1)
-		tween.tween_property($"../BossHealth", "modulate", Color.BLACK, 1)
+		tween.tween_property(enemy_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
+		tween.tween_property(enemy_health_text, "modulate", Color.BLACK, 1)
 		
 		print("Opponent Defend")
 
@@ -331,4 +338,4 @@ func check_field():
 	if not cardslot_1.card_in_slot and not cardslot_2.card_in_slot and not cardslot_3.card_in_slot:
 		return true
 	else:
-		false
+		return false

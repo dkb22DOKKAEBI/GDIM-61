@@ -2,7 +2,7 @@ extends CardManager
 
 var played_card_this_turn := false
 @export var input_manager: Node2D
-@export var player_hand: Node2D
+@export var battle_manager: Node2D
 
 func _ready():
 	super._ready()
@@ -18,7 +18,7 @@ func _ready():
 	new_card.get_node("Health").text = str(2)
 	self.add_child(new_card)
 	new_card.name = "MonsterCard"
-	player_hand.add_card_to_hand(new_card, 1, 1)
+	PlayerHand.add_card_to_hand(new_card, 1, 1)
 	if self.visible:
 		new_card.set_card_z_index(1)
 	else:
@@ -50,7 +50,7 @@ func finish_drag():
 	# Check whether card goes into  cardslot or goes back to hand
 	if card_slot_found and not card_slot_found.card_in_slot and not played_card_this_turn:
 		played_card_this_turn = true
-		player_hand_reference.remove_card_from_hand(card_being_dragged, 1)
+		PlayerHand.remove_card_from_hand(card_being_dragged, 1)
 		
 		#Card dropped in empty card slot
 		card_being_dragged.get_parent().remove_child(card_being_dragged)
@@ -61,9 +61,9 @@ func finish_drag():
 		card_being_dragged.placed = true
 		card_slot_found.card_in_slot = true
 		card_being_dragged.card_slot_on = card_slot_found
-		$"../BattleManager".player_cards_on_battlefield[card_slot_found] = card_being_dragged
+		battle_manager.player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
-		player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
+		PlayerHand.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
 	
 	# Check if mouse hovering on any card
 	var new_card_hovered = raycast_check_for_card()

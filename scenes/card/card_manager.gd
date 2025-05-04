@@ -9,7 +9,6 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1
 var card_being_dragged # Card type
 var screen_size
 #var is_hovering_on_card
-@onready var player_hand_reference: Node2D = $"../Player/PlayerHand"
 
 # Called when the node enters the scene tree for the first time.
 func _ready()->void:
