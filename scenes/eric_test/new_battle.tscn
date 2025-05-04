@@ -1,21 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=6 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="1_he44v"]
+[ext_resource type="Script" uid="uid://bcy143bfyrruo" path="res://scenes/player/player_hand.gd" id="1_qh1ha"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="2_5dbsp"]
+[ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scenes/player/input_manager.gd" id="2_a5syj"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_wrfy3"]
 
 [node name="NewBattle" type="Node2D"]
 
-[node name="BattleUI" parent="." instance=ExtResource("1_he44v")]
+[node name="Player" type="Node2D" parent="."]
+
+[node name="PlayerHand" type="Node2D" parent="Player"]
+script = ExtResource("1_qh1ha")
+
+[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("player_hand")]
+script = ExtResource("2_a5syj")
+player_hand = NodePath("../PlayerHand")
 
 [node name="BattleField" type="Node2D" parent="."]
 
 [node name="Cardslots" type="Node2D" parent="BattleField"]
 
 [node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
-position = Vector2(331, 149)
+position = Vector2(308, 138)
 
 [node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
-position = Vector2(331, 299)
+position = Vector2(310, 297)
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
-position = Vector2(459, 235)
+position = Vector2(438, 222)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 600.0
+pivot_offset = Vector2(480, 300)
+
+[node name="BattleUI" parent="UI" instance=ExtResource("1_he44v")]
+layout_mode = 1
+
+[node name="PlayerHealth" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 1.0
+offset_right = 405.0
+offset_bottom = 30.0
+theme = ExtResource("3_wrfy3")
+theme_override_font_sizes/normal_font_size = 20
+text = "Player Health: 10"
+vertical_alignment = 1
