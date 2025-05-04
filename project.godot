@@ -17,7 +17,7 @@ config/icon="uid://bxwcx7stx52lk"
 
 [autoload]
 
-PlayerHand="*res://scenes/player/player_hand.gd"
+PlayerHand="*res://scripts/player/player_hand.gd"
 
 [display]
 

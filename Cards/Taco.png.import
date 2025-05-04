@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dstdwn80cmnrr"
-path="res://.godot/imported/Taco.png-cb72f81d0222565e7c66ae9c1515fb6d.ctex"
+path="res://.godot/imported/Taco.png-5fa54ee429fb8cba79641fbbe1eb6e8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/Taco.png"
-dest_files=["res://.godot/imported/Taco.png-cb72f81d0222565e7c66ae9c1515fb6d.ctex"]
+source_file="res://cards/Taco.png"
+dest_files=["res://.godot/imported/Taco.png-5fa54ee429fb8cba79641fbbe1eb6e8c.ctex"]
 
 [params]
 
