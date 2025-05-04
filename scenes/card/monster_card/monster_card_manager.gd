@@ -5,7 +5,6 @@ var played_card_this_turn := false
 @export var battle_manager: Node2D
 
 func _ready():
-	print("Monster Card Manager")
 	super._ready()
 	input_manager.connect("left_mouse_button_released", on_left_clicked_released)
 	
@@ -36,7 +35,7 @@ func _process(_delta: float)-> void:
 
 func start_drag(card):
 	card_being_dragged = card
-	card.scale = Vector2(0.475, 0.475)
+	card.scale = Vector2(1, 1)
 
 
 func on_left_clicked_released():
@@ -45,7 +44,7 @@ func on_left_clicked_released():
 
 
 func finish_drag():
-	card_being_dragged.scale = Vector2(0.475, 0.475)
+	card_being_dragged.scale = Vector2(1, 1)
 	var card_slot_found = raycast_check_for_card_slot()
 	
 	# Check whether card goes into  cardslot or goes back to hand

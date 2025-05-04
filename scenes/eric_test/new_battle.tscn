@@ -140,11 +140,13 @@ battle_manager = NodePath("../BattleManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 
 [node name="UI" type="Control" parent="."]
+z_index = -10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 960.0
 offset_bottom = 600.0
 pivot_offset = Vector2(480, 300)
+mouse_filter = 2
 
 [node name="BattleUI" parent="UI" instance=ExtResource("1_he44v")]
 layout_mode = 1
@@ -156,6 +158,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="EndTurnButton" type="Button" parent="UI/Buttons"]
 z_index = 2
@@ -279,9 +282,9 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="GameConditions" type="Control" parent="UI"]
+visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="WinCondition" type="RichTextLabel" parent="UI/GameConditions"]
 visible = false
