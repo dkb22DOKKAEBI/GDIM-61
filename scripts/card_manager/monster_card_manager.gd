@@ -11,7 +11,7 @@ func _ready():
 	# TEST ONLY
 	var card_scene = preload("res://scenes/card/card.tscn")
 	var new_card = card_scene.instantiate()
-	var card_image_path = str("res://Cards/" + "Pizza" + ".png")
+	var card_image_path = str("res://cards/" + "Pizza" + ".png")
 	#new_card.get_node("CardImage").texture = load(card_image_path)
 	new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 	new_card.get_node("Attack").text = str(3)

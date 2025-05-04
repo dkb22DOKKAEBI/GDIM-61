@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnjhpu3rmqom4"
-path="res://.godot/imported/Tortilla.png-a2bfcba982f631385bdf0acce35ca884.ctex"
+path="res://.godot/imported/Tortilla.png-667b8c80f1d2f5d5b31e463d2d87c544.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ingredients/Tortilla.png"
-dest_files=["res://.godot/imported/Tortilla.png-a2bfcba982f631385bdf0acce35ca884.ctex"]
+source_file="res://ingredients/Tortilla.png"
+dest_files=["res://.godot/imported/Tortilla.png-667b8c80f1d2f5d5b31e463d2d87c544.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scripts/card/monster_card.gd" id="1_vtcvk"]
-[ext_resource type="Texture2D" uid="uid://brsnqw1uton8m" path="res://Cards/Cheesecake.png" id="2_g65cd"]
+[ext_resource type="Texture2D" uid="uid://brsnqw1uton8m" path="res://cards/Cheesecake.png" id="2_g65cd"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
