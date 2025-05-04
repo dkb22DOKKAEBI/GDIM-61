@@ -2,6 +2,7 @@ extends Node
 
 const MONSTER_CARD_SCENE_PATH = "res://scenes/card/monster_card/card.tscn"
 
+var card_starting_position: Vector2 = Vector2(100, 525)
 var card_database_reference
 var recipe = []
 
@@ -35,6 +36,7 @@ func _on_cook() -> void:
 		else:
 			new_card.set_card_z_index(0)
 		new_card.name = "MonsterCard"
+		new_card.position = card_starting_position
 		PlayerHand.add_card_to_hand(new_card, 1, 1)
 		
 		# Clear used ingredients

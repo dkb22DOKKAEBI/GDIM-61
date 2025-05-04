@@ -18,6 +18,8 @@ func _ready():
 	new_card.get_node("Health").text = str(2)
 	self.add_child(new_card)
 	new_card.name = "MonsterCard"
+	new_card.position = Vector2(100, 525)
+	new_card.scale = Vector2(1, 1)
 	PlayerHand.add_card_to_hand(new_card, 1, 1)
 	if self.visible:
 		new_card.set_card_z_index(1)
