@@ -10,4 +10,6 @@ In this game, players explore food recipes with different combinations of food i
 and actions, players beat as many robot enemies as they can.
 
 ### Credits
-- [Kenney](https://kenney.nl)'s tiny dungeon asset pack
+- [Tiny Dungeon](https://kenney.nl/assets/tiny-dungeon) aseet pack by Kenney
+- [Cryo's Mini GUI](https://paperhatlizard.itch.io/cryos-mini-gui) by PaperHatLizard
+- [Amarante](https://fonts.google.com/specimen/Amarante/license?query=Amarante) font by Karolina Lach
