@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bb4meiiteox84"
-path="res://.godot/imported/recipebook.png-69e9098a89f68dbeccc9b86275cec68f.ctex"
+path="res://.godot/imported/recipebook.png-eecaf5514bfcf2f57e6b662c454c2a47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://recipebook.png"
-dest_files=["res://.godot/imported/recipebook.png-69e9098a89f68dbeccc9b86275cec68f.ctex"]
+source_file="res://art/recipebook.png"
+dest_files=["res://.godot/imported/recipebook.png-eecaf5514bfcf2f57e6b662c454c2a47.ctex"]
 
 [params]
 

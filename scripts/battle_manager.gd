@@ -16,10 +16,6 @@ var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
 var player_is_attacking: bool = false
 
-#@onready var battle_timer: Timer = $"../BattleTimer"
-#@onready var cardslot_1: Node2D = $"../Cardslots/Cardslot"
-#@onready var cardslot_2: Node2D = $"../Cardslots/Cardslot2"
-#@onready var cardslot_3: Node2D = $"../Cardslots/Cardslot3"
 @export var battle_timer: Timer
 @export var cardslot_1: Node2D
 @export var cardslot_2: Node2D

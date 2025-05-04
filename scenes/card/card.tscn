@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://ibj8aersgrg6"]
 
-[ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scenes/card/monster_card/monster_card.gd" id="1_fxvx8"]
-[ext_resource type="Texture2D" uid="uid://brsnqw1uton8m" path="res://Cards/Cheesecake.png" id="2_odoga"]
-[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_00h61"]
+[ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://scripts/card/monster_card.gd" id="1_vtcvk"]
+[ext_resource type="Texture2D" uid="uid://brsnqw1uton8m" path="res://Cards/Cheesecake.png" id="2_g65cd"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(64, 90)
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("selected_label")]
-script = ExtResource("1_fxvx8")
+script = ExtResource("1_vtcvk")
 selected_label = NodePath("SelectedLabel")
 
 [node name="CardImage" type="Sprite2D" parent="."]
 scale = Vector2(0.135, 0.135)
-texture = ExtResource("2_odoga")
+texture = ExtResource("2_g65cd")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(25, 25)
-theme = ExtResource("3_00h61")
+theme = ExtResource("3_2ufkr")
 theme_override_font_sizes/normal_font_size = 24
 text = "1
 "
@@ -57,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(25, 25)
-theme = ExtResource("3_00h61")
+theme = ExtResource("3_2ufkr")
 theme_override_font_sizes/normal_font_size = 24
 text = "1"
 horizontal_alignment = 1
@@ -69,7 +69,7 @@ offset_left = -28.0
 offset_top = -62.0
 offset_right = 28.0
 offset_bottom = -41.0
-theme = ExtResource("3_00h61")
+theme = ExtResource("3_2ufkr")
 theme_override_colors/font_color = Color(0.339407, 0.726599, 0.479536, 1)
 theme_override_font_sizes/font_size = 12
 text = "Selected"

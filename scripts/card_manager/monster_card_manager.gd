@@ -9,7 +9,7 @@ func _ready():
 	input_manager.connect("left_mouse_button_released", on_left_clicked_released)
 	
 	# TEST ONLY
-	var card_scene = preload("res://scenes/card/monster_card/card.tscn")
+	var card_scene = preload("res://scenes/card/card.tscn")
 	var new_card = card_scene.instantiate()
 	var card_image_path = str("res://Cards/" + "Pizza" + ".png")
 	#new_card.get_node("CardImage").texture = load(card_image_path)

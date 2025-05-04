@@ -1,6 +1,6 @@
 extends Node
 
-const MONSTER_CARD_SCENE_PATH = "res://scenes/card/monster_card/card.tscn"
+const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
 
 var card_starting_position: Vector2 = Vector2(100, 525)
 var card_database_reference
@@ -11,7 +11,7 @@ var recipe = []
 
 
 func _ready():
-	card_database_reference = preload("res://scenes/card/CardDatabase.gd")
+	card_database_reference = preload("res://scripts/card/card_database.gd")
 
 
 func _on_cook() -> void:
