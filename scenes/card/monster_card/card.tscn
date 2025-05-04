@@ -64,14 +64,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SelectedLabel" type="Label" parent="."]
-visible = false
-offset_left = -27.0
-offset_top = -65.0
-offset_right = 29.0
-offset_bottom = -44.0
+offset_left = -28.0
+offset_top = -62.0
+offset_right = 28.0
+offset_bottom = -41.0
 theme = ExtResource("3_00h61")
 theme_override_colors/font_color = Color(0.339407, 0.726599, 0.479536, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 12
 text = "Selected"
 horizontal_alignment = 1
 vertical_alignment = 1

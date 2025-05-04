@@ -33,8 +33,10 @@ func on_hovered_off_card(card):
 
 func highlight_card(card, hovered):
 	if hovered:
-		card.scale = Vector2(1.25, 1.25)
+		#card.scale = Vector2(1.25, 1.25)
+		card.scale *= 1.2
 		card.set_card_z_index(2)
 	else:
-		card.scale = Vector2(1, 1)
+		#card.scale = Vector2(1, 1)
+		card.scale /= 1.2
 		card.set_card_z_index(1)
