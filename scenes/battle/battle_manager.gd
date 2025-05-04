@@ -112,16 +112,17 @@ func _on_player_attack():
 		selected_card_in_slot.selected_label_vis(false)
 
 func monster_attack_boss_anim(card):
-	var new_pos_x = 440
-	var new_pos_y = 0
+	#var new_pos_x = 440
+	#var new_pos_y = 0
 	var old_pos_x = card.position.x
 	var old_pos_y = card.position.y
-	var new_pos = Vector2(new_pos_x, new_pos_y)
+	#var new_pos = Vector2(new_pos_x, new_pos_y)
+	var new_pos = enemy.global_position
 	card.z_index = 5
 	
 	# Monster go attacking
 	var tween = get_tree().create_tween()
-	tween.tween_property(card, "position", new_pos, 0.5)
+	tween.tween_property(card, "global_position", new_pos, 0.5)
 	await wait(0.5)
 	
 	# Monster Returning to original position
