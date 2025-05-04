@@ -17,7 +17,7 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 
 
 func _ready() -> void:
-	pass
+	print("Input Manager")
 
 
 func _input(event):

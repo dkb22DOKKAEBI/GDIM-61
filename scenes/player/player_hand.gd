@@ -17,6 +17,7 @@ var selected_ingredients: Array[Card]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Player Hand")
 	#center_screen_x = get_viewport().size.x / 16
 	center_screen_x = (DESIRED_WINDOW_WIDTH + SIDEBAR_WIDTH - DECK_WIDTH) / 2
 

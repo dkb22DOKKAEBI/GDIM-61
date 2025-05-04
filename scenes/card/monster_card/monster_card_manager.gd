@@ -5,6 +5,7 @@ var played_card_this_turn := false
 @export var battle_manager: Node2D
 
 func _ready():
+	print("Monster Card Manager")
 	super._ready()
 	input_manager.connect("left_mouse_button_released", on_left_clicked_released)
 	

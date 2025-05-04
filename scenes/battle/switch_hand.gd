@@ -3,6 +3,9 @@ extends Node
 @export var ingredient_card_manager: Node2D
 @export var monster_card_manager: Node2D
 
+func _ready() -> void:
+	print("Switch Hand")
+
 
 func _on_switch_hand() -> void:
 	# Update whether on ingredient hand in PlayerHand script
