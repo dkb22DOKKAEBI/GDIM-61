@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=15 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="1_he44v"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="2_5dbsp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scenes/card/cooking_mechanic.gd" id="11_sus8o"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_50odi"]
 [ext_resource type="Script" uid="uid://nrqhns78ljqf" path="res://scenes/battle/switch_hand.gd" id="13_gt826"]
+[ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/battle/recipe_book.tscn" id="14_sus8o"]
 
 [node name="NewBattle" type="Node2D"]
 
@@ -316,6 +317,11 @@ text = "YOU LOSE !!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RecipeBook" parent="UI" instance=ExtResource("14_sus8o")]
+z_index = 15
+layout_mode = 1
+
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/SwitchHandButton" to="UI/Buttons/SwitchHandButton" method="_on_switch_hand"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
+[connection signal="pressed" from="UI/Buttons/RecipeButton" to="UI/RecipeBook" method="_on_recipe_book_button_pressed"]
