@@ -192,7 +192,7 @@ func start_player_turn():
 	
 	# Draw 2 ingredients card on the start of the player turn
 	for i in range(2):
-		$"../Deck".draw_card()
+		$"../PlayerHand/Deck".draw_card()
 	
 	reset_cards_attack()
 	is_on_player_turn = true

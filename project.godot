@@ -17,7 +17,6 @@ config/icon="uid://bxwcx7stx52lk"
 
 [autoload]
 
-CookingMechanic="*res://scenes/card/cooking_mechanic.gd"
 PlayerHand="*res://scenes/player/player_hand.gd"
 
 [display]

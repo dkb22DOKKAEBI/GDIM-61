@@ -134,8 +134,10 @@ player_health_text = NodePath("../Player/PlayerHealth")
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
 one_shot = true
 
-[node name="CookingMechanic" type="Node2D" parent="."]
+[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager")]
 script = ExtResource("11_sus8o")
+battle_manager = NodePath("../BattleManager")
+monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
