@@ -15,7 +15,6 @@ var player_deck = ["Tortilla", "Dough", "Cheese",
 
 #Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Deck")
 	player_deck.shuffle()
 	deck_left_num_text.text = str(player_deck.size())
 

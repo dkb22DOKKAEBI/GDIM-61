@@ -10,7 +10,6 @@ var recipe = []
 
 
 func _ready():
-	print("Cooking Mechanic")
 	card_database_reference = preload("res://scenes/card/CardDatabase.gd")
 
 

@@ -36,7 +36,6 @@ var player_health_text_prefix: String = "Player Health: "
 
 
 func _ready() ->void:
-	print("Battle Manager")
 	player_health = STARTING_HEALTH
 	player_health_text.text = player_health_text_prefix + str(player_health)
 	

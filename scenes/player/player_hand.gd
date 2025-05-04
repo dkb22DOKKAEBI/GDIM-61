@@ -4,7 +4,7 @@ const DESIRED_WINDOW_WIDTH = 960
 const SIDEBAR_WIDTH = 225
 const DECK_WIDTH = 40
 
-const CARD_WIDTH = 70
+const CARD_WIDTH = 75
 const HAND_Y_POSITION = 525
 const DEFAULT_CARD_MOVE_SPEED = 0.1
 
@@ -17,7 +17,6 @@ var selected_ingredients: Array[Card]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Player Hand")
 	#center_screen_x = get_viewport().size.x / 16
 	center_screen_x = (DESIRED_WINDOW_WIDTH + SIDEBAR_WIDTH - DECK_WIDTH) / 2
 
