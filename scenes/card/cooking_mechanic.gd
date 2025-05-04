@@ -2,8 +2,12 @@ extends Node
 
 const MONSTER_CARD_SCENE_PATH = "res://scenes/card/monster_card/card.tscn"
 
+var card_starting_position: Vector2 = Vector2(100, 525)
 var card_database_reference
 var recipe = []
+
+@export var battle_manager: Node2D
+@export var monster_card_manager: Node2D
 
 
 func _ready():
@@ -11,7 +15,7 @@ func _ready():
 
 
 func _on_cook() -> void:
-	if $"../BattleManager".is_on_player_turn:
+	if battle_manager.is_on_player_turn:
 		if PlayerHand.selected_ingredients.size() == 0:
 			return
 		
@@ -26,17 +30,18 @@ func _on_cook() -> void:
 		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 		new_card.get_node("Attack").text = str(card_database_reference.CARDS[result_monster][0])
 		new_card.get_node("Health").text = str(card_database_reference.CARDS[result_monster][1])
-		$"../MonsterCardManager".add_child(new_card)
-		if $"../MonsterCardManager".visible:
+		monster_card_manager.add_child(new_card)
+		if monster_card_manager.visible:
 			new_card.set_card_z_index(1)
 		else:
 			new_card.set_card_z_index(0)
 		new_card.name = "MonsterCard"
-		$"../Player/PlayerHand".add_card_to_hand(new_card, 1, 1)
+		new_card.position = card_starting_position
+		PlayerHand.add_card_to_hand(new_card, 1, 1)
 		
 		# Clear used ingredients
 		for card in PlayerHand.selected_ingredients:
-			$"../Player/PlayerHand".remove_card_from_hand(card, 0)
+			PlayerHand.remove_card_from_hand(card, 0)
 			card.queue_free()
 		PlayerHand.selected_ingredients.clear()
 

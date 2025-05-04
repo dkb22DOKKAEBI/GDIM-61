@@ -1,19 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvpakrny7ra3a"]
+[gd_scene load_steps=5 format=3 uid="uid://cvpakrny7ra3a"]
 
 [ext_resource type="Script" uid="uid://3pelcrvpowxh" path="res://scenes/card/ingredient_card/ingredient_card.gd" id="1_6i1cw"]
 [ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://custom_resources/pixel_theme.tres" id="2_6i1cw"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_rjun3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
-size = Vector2(37.9474, 52.2632)
+size = Vector2(60, 83)
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("ingredient_name_label", "selected_label")]
-scale = Vector2(0.475, 0.475)
 script = ExtResource("1_6i1cw")
 ingredient_name_label = NodePath("IngredientNameLabel")
 selected_label = NodePath("SelectedLabel")
 
 [node name="CardImage" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.16, 0.16)
 
 [node name="ColorRect" type="ColorRect" parent="CardImage"]
 visible = false
@@ -36,7 +36,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.0263157, 0.868421)
+position = Vector2(9.53674e-07, 1.5)
 shape = SubResource("RectangleShape2D_xd4uy")
 
 [node name="IngredientNameLabel" type="Label" parent="."]
@@ -52,11 +52,11 @@ vertical_alignment = 1
 
 [node name="SelectedLabel" type="Label" parent="."]
 visible = false
-offset_left = -16.8421
-offset_top = -37.8947
-offset_right = 16.1579
-offset_bottom = -18.8947
-theme = ExtResource("2_6i1cw")
+offset_left = -27.0
+offset_top = -57.0
+offset_right = 29.0
+offset_bottom = -36.0
+theme = ExtResource("3_rjun3")
 theme_override_colors/font_color = Color(0.341176, 0.72549, 0.478431, 1)
 text = "Selected"
 horizontal_alignment = 1
