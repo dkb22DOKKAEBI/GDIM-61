@@ -4,20 +4,9 @@ extends Node
 @export var monster_card_manager: Node2D
 
 
-
-func _ready() -> void:
-	print("On Ready")
-
 func _on_switch_hand() -> void:
-	print("On Switch Hand")
 	# Update whether on ingredient hand in PlayerHand script
 	PlayerHand.on_ingredient_hand = !PlayerHand.on_ingredient_hand
-	
-	if not ingredient_card_manager:
-		print("No Ingredient")
-	
-	if not monster_card_manager:
-		print("No Monster")
 	
 	# Toggel visibility
 	ingredient_card_manager.visible = PlayerHand.on_ingredient_hand

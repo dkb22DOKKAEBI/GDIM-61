@@ -3,6 +3,7 @@ extends Node2D
 const INGREDIENT_CARD_SCENE_PATH = "res://scenes/card/ingredient_card/ingredient_card.tscn"
 const CARD_DRAW_SPEED = 1
 
+var card_starting_position: Vector2 = Vector2(915, 525)
 var player_deck = ["Tortilla", "Dough", "Cheese", 
 "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
 "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce"]
@@ -38,6 +39,8 @@ func draw_card():
 		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 		ingredient_card_manager.add_child(new_card)
 		new_card.name = "IngredientCard"
+		new_card.position = card_starting_position
+		new_card.starting_position = card_starting_position
 		new_card.ingredient_name = ingredient_name
 		new_card.ingredient_name_label.text = ingredient_name
 		PlayerHand.add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)

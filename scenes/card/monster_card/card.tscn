@@ -23,11 +23,12 @@ shape = SubResource("RectangleShape2D_xd4uy")
 
 [node name="Attack" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = -27.0
-offset_top = -39.0
-offset_right = 32.0
-offset_bottom = 20.0
+offset_left = -45.0
+offset_top = -57.0
+offset_right = 5.0
+offset_bottom = -7.0
 scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(25, 25)
 theme = ExtResource("3_00h61")
 theme_override_font_sizes/normal_font_size = 16
 text = "1
@@ -37,11 +38,12 @@ vertical_alignment = 1
 
 [node name="Health" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = 13.0
-offset_top = -39.0
-offset_right = 64.0
-offset_bottom = 19.0
+offset_left = -6.0
+offset_top = -57.0
+offset_right = 44.0
+offset_bottom = -7.0
 scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(25, 25)
 theme = ExtResource("3_00h61")
 theme_override_font_sizes/normal_font_size = 16
 text = "1"
