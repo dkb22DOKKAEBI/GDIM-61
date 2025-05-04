@@ -227,16 +227,16 @@ func choose_target() -> Cardslot:
 		else:
 			return cardslot_3
 	else:
-		return 
+		return null # Means the target is the player
 	
 	# Calculate turn numbers needed to kill player
 	# and that the cards can kill the enemy
 	# to decide which target to choose
 	
-	return null # Means the target is the player
 
 
 func opponent_attack(target):
+	var old_pos:Vector2 = enemy.global_position
 	var boss_attack = boss1_stats["Vacuum"]["Attack"]
 	if not target:
 		boss_attack_player_anim()
@@ -244,42 +244,44 @@ func opponent_attack(target):
 		
 		player_health = max(0, player_health - boss_attack)
 		player_health_text.text = player_health_text_prefix + str(player_health)
-		boss_return_pos_anim()
-		if player_health == 0:
-			player_lose()
 	else:
 		boss_attack_monster_anim(target)
 		await wait(0.5)
 		player_cards_on_battlefield[target].take_damage(boss_attack)
-		boss_return_pos_anim()
-		
+	
+	# Enemy return to original position
+	boss_return_pos_anim(old_pos)
+	
+	# Check whether player lose
+	if player_health == 0:
+		player_lose()
 	print("Opponent Attack")
 
 
 func boss_attack_player_anim():
-	var new_pos_x = 25
+	var new_pos_x = 280
 	var new_pos = Vector2(new_pos_x, enemy.position.y)
 	enemy.z_index = 5
 	enemy_attack_text.visible = false
 	enemy_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property(enemy, "position", new_pos, 0.5)
+	tween.tween_property(enemy, "global_position", new_pos, 0.5)
 
 func boss_attack_monster_anim(target):
-	var new_pos_x = target.position.x
-	var new_pos_y = target.position.y
+	var new_pos_x = target.global_position.x
+	var new_pos_y = target.global_position.y
 	var new_pos = Vector2(new_pos_x, new_pos_y)
 	enemy.z_index = 5
 	enemy_attack_text.visible = false
 	enemy_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property(enemy, "position", new_pos, 0.5)
+	tween.tween_property(enemy, "global_position", new_pos, 0.5)
 
 
-func boss_return_pos_anim():
-	var old_pos_x = 214.5
-	var old_pos_y = 77
-	var old_pos = Vector2(old_pos_x, old_pos_y)
+func boss_return_pos_anim(old_pos: Vector2):
+	#var old_pos_x = 214.5
+	#var old_pos_y = 77
+	#var old_pos = Vector2(0, 0)
 	enemy.z_index = 0
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(enemy, "position", old_pos, 0.5)
@@ -315,21 +317,22 @@ func opponent_defend():
 
 
 func opponent_eliminate():
+	var old_pos:Vector2 = enemy.global_position
 	if cardslot_1.card_in_slot:
 		boss_attack_monster_anim(cardslot_1)
 		await wait(0.5)
 		player_cards_on_battlefield[cardslot_1].die()
-		boss_return_pos_anim()
+		boss_return_pos_anim(old_pos)
 	elif cardslot_2.card_in_slot:
 		boss_attack_monster_anim(cardslot_2)
 		await wait(0.5)
 		player_cards_on_battlefield[cardslot_2].die()
-		boss_return_pos_anim()
+		boss_return_pos_anim(old_pos)
 	elif cardslot_3.card_in_slot:
 		boss_attack_monster_anim(cardslot_3)
 		await wait(0.5)
 		player_cards_on_battlefield[cardslot_3].die()
-		boss_return_pos_anim()
+		boss_return_pos_anim(old_pos)
 	else:
 		opponent_attack(null)
 	print("Opponent Eliminate")

@@ -78,29 +78,29 @@ script = ExtResource("5_0ysdp")
 z_index = 1
 
 [node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
-position = Vector2(308, 138)
+position = Vector2(439, 222)
 
 [node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
 position = Vector2(309, 306)
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("2_5dbsp")]
-position = Vector2(438, 222)
+position = Vector2(308, 150)
 
 [node name="Enemy" type="Node2D" parent="BattleField"]
+position = Vector2(820, 220)
 
 [node name="EnemySprite2D" type="Sprite2D" parent="BattleField/Enemy"]
 z_index = 1
-position = Vector2(821, 220)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("7_ftm0q")
 
 [node name="EnemyHealth" type="RichTextLabel" parent="BattleField/Enemy"]
 modulate = Color(0, 0, 0, 1)
 z_index = 2
-offset_left = 847.0
-offset_top = 101.0
-offset_right = 906.0
-offset_bottom = 160.0
+offset_left = 26.0
+offset_top = -118.0
+offset_right = 85.0
+offset_bottom = -59.0
 theme = ExtResource("3_wrfy3")
 text = "10"
 horizontal_alignment = 1
@@ -109,10 +109,10 @@ vertical_alignment = 1
 [node name="EnemyAttack" type="RichTextLabel" parent="BattleField/Enemy"]
 modulate = Color(0, 0, 0, 1)
 z_index = 2
-offset_left = 747.0
-offset_top = 112.0
-offset_right = 787.0
-offset_bottom = 152.0
+offset_left = -75.0
+offset_top = -108.0
+offset_right = -35.0
+offset_bottom = -68.0
 theme = ExtResource("3_wrfy3")
 text = "3"
 horizontal_alignment = 1
