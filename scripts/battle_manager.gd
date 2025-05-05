@@ -10,7 +10,7 @@ var player_cards_on_battlefield # Dictionary
 var player_health
 var boss_health
 var boss_damage = 3
-var boss1_stats = {"Vacuum": {"HP": 15, "Attack": 4, "Block": 3, "Kill": 10}}
+var boss1_stats = {"Vacuum": {"HP": 20, "Attack": 3, "Block": 3, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
