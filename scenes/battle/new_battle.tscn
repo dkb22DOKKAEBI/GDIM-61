@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=16 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scripts/battle_manager.gd" id="9_oytup"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_8eucq"]
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="11_gfgng"]
+[ext_resource type="Texture2D" uid="uid://dvdm57iis6taf" path="res://art/pot.png" id="12_sspc1"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_yxeuc"]
 [ext_resource type="Script" uid="uid://nrqhns78ljqf" path="res://scripts/button/switch_hand.gd" id="13_aijqa"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
@@ -151,6 +152,48 @@ mouse_filter = 2
 
 [node name="BattleUI" parent="UI" instance=ExtResource("11_gfgng")]
 layout_mode = 1
+
+[node name="CardInfoUI" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/CardInfoUI"]
+z_index = 5
+layout_mode = 0
+offset_left = 39.0
+offset_top = 75.0
+offset_right = 198.0
+offset_bottom = 115.0
+
+[node name="PotUI" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pot" type="NinePatchRect" parent="UI/PotUI"]
+z_index = 1
+layout_mode = 0
+offset_left = 21.0
+offset_top = 461.0
+offset_right = 74.0
+offset_bottom = 535.0
+texture = ExtResource("12_sspc1")
+region_rect = Rect2(228, 278, 767, 1146)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PotUI"]
+z_index = 5
+layout_mode = 0
+offset_left = 88.0
+offset_top = 462.0
+offset_right = 204.0
+offset_bottom = 502.0
 
 [node name="Buttons" type="Control" parent="UI"]
 layout_mode = 1
