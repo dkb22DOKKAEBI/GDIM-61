@@ -140,10 +140,11 @@ temp_ui = NodePath("../UI")
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
 one_shot = true
 
-[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager")]
+[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager", "temp_ui")]
 script = ExtResource("10_8eucq")
 battle_manager = NodePath("../BattleManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
+temp_ui = NodePath("../UI")
 
 [node name="UI" type="Control" parent="." node_paths=PackedStringArray("card_info_text", "pot_text")]
 z_index = -10

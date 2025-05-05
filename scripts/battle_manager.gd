@@ -136,6 +136,7 @@ func _on_end_turn_button_pressed() -> void:
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
+		temp_ui.default_card_info_text = ""
 	is_on_player_turn = false
 	
 	# Opponent Turn
