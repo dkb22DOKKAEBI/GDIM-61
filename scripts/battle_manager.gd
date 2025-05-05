@@ -104,6 +104,7 @@ func _on_player_attack():
 		# Player attack end
 		player_is_attacking = false;
 		selected_card_in_slot.selected_label_vis(false)
+		selected_card_in_slot = null
 		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
 
