@@ -10,7 +10,7 @@ var player_cards_on_battlefield # Dictionary
 var player_health
 var boss_health
 var boss_damage = 3
-var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 3, "Block": 3, "Kill": 10}}
+var boss1_stats = {"Vacuum": {"HP": 15, "Attack": 4, "Block": 3, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
@@ -39,7 +39,7 @@ func _ready() ->void:
 	player_health = STARTING_HEALTH
 	player_health_text.text = player_health_text_prefix + str(player_health)
 	
-	boss_health = STARTING_HEALTH
+	boss_health = STARTING_HEALTH + 5
 	enemy_health_text.text = str(boss_health)
 	
 	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
@@ -297,11 +297,11 @@ func wait(wait_time):
 
 
 func opponent_defend():
-	if boss_health == 20:
+	if boss_health == 15:
 		var target = choose_target()
 		opponent_attack(target)
 	else:
-		boss_health = min(boss_health + 3, 10)
+		boss_health = min(boss_health + 3, 15)
 		enemy_health_text.text = str(boss_health)
 		
 		# Change font to double size and green

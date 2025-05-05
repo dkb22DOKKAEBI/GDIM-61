@@ -4,7 +4,7 @@ const INGREDIENT_CARD_SCENE_PATH = "res://scenes/card/ingredient_card.tscn"
 const CARD_DRAW_SPEED = 1
 
 var card_starting_position: Vector2 = Vector2(915, 525)
-var player_deck = ["Tortilla", "Dough", "Cheese", 
+var player_deck: Array[String] = ["Tortilla", "Dough", "Cheese", 
 "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
 "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce"]
 
@@ -16,6 +16,9 @@ var player_deck = ["Tortilla", "Dough", "Cheese",
 #Called when the node enters the scene tree for the first time.
 func _ready():
 	player_deck.shuffle()
+	# Random get rid of some ingredients to make it harder for Sam!!!
+	for i in range(4):
+		player_deck.pop_back()
 	deck_left_num_text.text = str(player_deck.size())
 
 
