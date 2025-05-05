@@ -8,6 +8,9 @@ var starting_position
 var placed := false
 var attacked_this_turn := false
 var card_slot_on: Cardslot
+var card_name: String
+
+@export var selected_label: Label 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,4 +37,5 @@ func set_card_z_index(index: int) -> void:
 
 
 func selected_label_vis(flag: bool):
-	$SelectedLabel.visible = flag
+	print("selected_label_vis with " + str(flag))
+	selected_label.visible = flag

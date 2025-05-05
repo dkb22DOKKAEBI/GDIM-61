@@ -10,7 +10,7 @@ var player_cards_on_battlefield # Dictionary
 var player_health
 var boss_health
 var boss_damage = 3
-var boss1_stats = {"Vacuum": {"HP": 10, "Attack": 3, "Block": 3, "Kill": 10}}
+var boss1_stats = {"Vacuum": {"HP": 15, "Attack": 4, "Block": 3, "Kill": 10}}
 var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
@@ -30,12 +30,16 @@ var player_is_attacking: bool = false
 @export var player_health_text: RichTextLabel
 var player_health_text_prefix: String = "Player Health: "
 
+# Temp for Week 6 build
+@export var temp_ui: Control
+@export var temp_attack_message: RichTextLabel
+
 
 func _ready() ->void:
 	player_health = STARTING_HEALTH
 	player_health_text.text = player_health_text_prefix + str(player_health)
 	
-	boss_health = STARTING_HEALTH
+	boss_health = STARTING_HEALTH + 5
 	enemy_health_text.text = str(boss_health)
 	
 	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
@@ -50,40 +54,34 @@ func _ready() ->void:
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
+	if card.attacked_this_turn:
+		return
+	
+	print("OUTSIDE " + str(card.get_label_vis()))
 	card.selected_label_vis(!card.get_label_vis())
+	temp_ui.default_card_info_text = card.card_name
+	temp_attack_message.visible = true
 	
 	# Same card being selected
 	if not card.get_label_vis():
+		print("HERE")
 		selected_card_in_slot = null
+		temp_ui.default_card_info_text = ""
+		temp_attack_message.visible = false
 		return
 	
 	# Disable select for previous selected card
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 	selected_card_in_slot = card
-	
-	
-	# Check if it is the same card being clicked
-	#if selected_card_in_slot and selected_card_in_slot.visible == true:
-		#selected_card_in_slot.selected_label_vis(false)
-		#selected_card_in_slot = null
-		#return
-	
-	# Disable selected label for previous card
-	#if selected_card_in_slot:
-		#selected_card_in_slot.selected_label_vis(false)
-	#selected_card_in_slot = card
-	#
-	#selected_card_in_slot.selected_label_vis(true)
 
 
 func _on_player_attack():
 	if not selected_card_in_slot:
 		return
 	
-	player_is_attacking = true
-	
 	if not selected_card_in_slot.attacked_this_turn:
+		player_is_attacking = true
 		selected_card_in_slot.attacked_this_turn = true
 		
 		monster_attack_boss_anim(selected_card_in_slot)
@@ -106,6 +104,9 @@ func _on_player_attack():
 		# Player attack end
 		player_is_attacking = false;
 		selected_card_in_slot.selected_label_vis(false)
+		selected_card_in_slot = null
+		temp_ui.default_card_info_text = ""
+		temp_attack_message.visible = false
 
 func monster_attack_boss_anim(card):
 	#var new_pos_x = 440
@@ -147,6 +148,8 @@ func _on_end_turn_button_pressed() -> void:
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
+		temp_ui.default_card_info_text = ""
+		temp_attack_message.visible = false
 	is_on_player_turn = false
 	
 	# Opponent Turn
@@ -294,11 +297,11 @@ func wait(wait_time):
 
 
 func opponent_defend():
-	if boss_health == 20:
+	if boss_health == 15:
 		var target = choose_target()
 		opponent_attack(target)
 	else:
-		boss_health = min(boss_health + 3, 10)
+		boss_health = min(boss_health + 3, 15)
 		enemy_health_text.text = str(boss_health)
 		
 		# Change font to double size and green

@@ -9,6 +9,7 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1
 var card_being_dragged # Card type
 var screen_size
 #var is_hovering_on_card
+@export var temp_ui: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready()->void:
@@ -23,12 +24,18 @@ func connect_card_signals(card):
 func on_hovered_over_card(card):
 	if not card_being_dragged:
 		highlight_card(card, true)
+	
+	# Update sidebar UI
+	temp_ui.update_card_info(card.card_name)
 
 
 func on_hovered_off_card(card):
 	if not card_being_dragged:
 		#if not dragging
 		highlight_card(card, false)
+	
+	# Update sidebar UI
+	temp_ui.update_card_info(temp_ui.default_card_info_text)
 
 
 func highlight_card(card, hovered):

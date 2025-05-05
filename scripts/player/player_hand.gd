@@ -14,10 +14,11 @@ var center_screen_x
 var on_ingredient_hand: bool = true
 var selected_ingredients: Array[Card]
 
+signal update_pot_ui_signal
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#center_screen_x = get_viewport().size.x / 16
 	center_screen_x = (DESIRED_WINDOW_WIDTH + SIDEBAR_WIDTH - DECK_WIDTH) / 2
 
 
@@ -68,5 +69,5 @@ func remove_card_from_hand(card: Card, flag: int):
 		update_hand_positions(DEFAULT_CARD_MOVE_SPEED, target_hand)
 
 
-func _on_recipe_book_button_pressed() -> void:
-	pass # Replace with function body.
+func update_sidebar_pot_ui():
+	update_pot_ui_signal.emit()

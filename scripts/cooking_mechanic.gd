@@ -8,10 +8,12 @@ var recipe = []
 
 @export var battle_manager: Node2D
 @export var monster_card_manager: Node2D
+@export var temp_ui: Control
 
 
 func _ready():
 	card_database_reference = preload("res://scripts/card/card_database.gd")
+	PlayerHand.update_pot_ui_signal.connect(update_pot_ui)
 
 
 func _on_cook() -> void:
@@ -36,20 +38,22 @@ func _on_cook() -> void:
 		else:
 			new_card.set_card_z_index(0)
 		new_card.name = "MonsterCard"
+		new_card.card_name = result_monster
 		new_card.position = card_starting_position
 		PlayerHand.add_card_to_hand(new_card, 1, 1)
 		
-		# Clear used ingredients
+		# Clear used ingredients & update sidebar pot ui
 		for card in PlayerHand.selected_ingredients:
 			PlayerHand.remove_card_from_hand(card, 0)
 			card.queue_free()
 		PlayerHand.selected_ingredients.clear()
+		temp_ui.update_pot("")
 
 
 func get_ingredient_string_list(list: Array) -> Array:
 	var result: Array
 	for card in PlayerHand.selected_ingredients:
-		result.append(card.ingredient_name)
+		result.append(card.card_name)
 	
 	return result
 
@@ -74,3 +78,12 @@ func ingredient_check(list: Array) -> String:
 		return "Salad"
 	
 	return "Trashcan"
+
+
+func update_pot_ui():
+	if PlayerHand.selected_ingredients.size() == 0:
+		temp_ui.update_pot("")
+		return
+	
+	var result_monster = ingredient_check(get_ingredient_string_list(PlayerHand.selected_ingredients))
+	temp_ui.update_pot(result_monster)
