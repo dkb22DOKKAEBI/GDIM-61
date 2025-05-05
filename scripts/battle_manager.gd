@@ -29,7 +29,10 @@ var player_is_attacking: bool = false
 @export var enemy_attack_text: RichTextLabel
 @export var player_health_text: RichTextLabel
 var player_health_text_prefix: String = "Player Health: "
+
+# Temp for Week 6 build
 @export var temp_ui: Control
+@export var temp_attack_message: RichTextLabel
 
 
 func _ready() ->void:
@@ -51,13 +54,20 @@ func _ready() ->void:
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
+	if card.attacked_this_turn:
+		return
+	
+	print("OUTSIDE " + str(card.get_label_vis()))
 	card.selected_label_vis(!card.get_label_vis())
 	temp_ui.default_card_info_text = card.card_name
+	temp_attack_message.visible = true
 	
 	# Same card being selected
 	if not card.get_label_vis():
+		print("HERE")
 		selected_card_in_slot = null
 		temp_ui.default_card_info_text = ""
+		temp_attack_message.visible = false
 		return
 	
 	# Disable select for previous selected card
@@ -70,9 +80,8 @@ func _on_player_attack():
 	if not selected_card_in_slot:
 		return
 	
-	player_is_attacking = true
-	
 	if not selected_card_in_slot.attacked_this_turn:
+		player_is_attacking = true
 		selected_card_in_slot.attacked_this_turn = true
 		
 		monster_attack_boss_anim(selected_card_in_slot)
@@ -95,6 +104,8 @@ func _on_player_attack():
 		# Player attack end
 		player_is_attacking = false;
 		selected_card_in_slot.selected_label_vis(false)
+		temp_ui.default_card_info_text = ""
+		temp_attack_message.visible = false
 
 func monster_attack_boss_anim(card):
 	#var new_pos_x = 440
@@ -137,6 +148,7 @@ func _on_end_turn_button_pressed() -> void:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
 		temp_ui.default_card_info_text = ""
+		temp_attack_message.visible = false
 	is_on_player_turn = false
 	
 	# Opponent Turn
