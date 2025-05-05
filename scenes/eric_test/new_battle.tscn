@@ -321,6 +321,15 @@ vertical_alignment = 1
 z_index = 15
 layout_mode = 1
 
+[node name="Boss Instakill" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 769.0
+offset_top = 46.0
+offset_right = 881.0
+offset_bottom = 86.0
+text = "INSTAKILL"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/SwitchHandButton" to="UI/Buttons/SwitchHandButton" method="_on_switch_hand"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]

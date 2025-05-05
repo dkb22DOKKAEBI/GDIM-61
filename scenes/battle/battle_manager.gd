@@ -320,20 +320,26 @@ func opponent_defend():
 func opponent_eliminate():
 	var old_pos:Vector2 = enemy.global_position
 	if cardslot_1.card_in_slot:
+		$"../Boss Instakill".visible = true
 		boss_attack_monster_anim(cardslot_1)
 		await wait(0.5)
 		player_cards_on_battlefield[cardslot_1].die()
 		boss_return_pos_anim(old_pos)
+		$"../Boss Instakill".visible = false
 	elif cardslot_2.card_in_slot:
+		$"../Boss Instakill".visible = true
 		boss_attack_monster_anim(cardslot_2)
 		await wait(0.5)
 		player_cards_on_battlefield[cardslot_2].die()
 		boss_return_pos_anim(old_pos)
+		$"../Boss Instakill".visible = false
 	elif cardslot_3.card_in_slot:
+		$"../Boss Instakill".visible = true
 		boss_attack_monster_anim(cardslot_3)
 		await wait(0.5)
 		player_cards_on_battlefield[cardslot_3].die()
 		boss_return_pos_anim(old_pos)
+		$"../Boss Instakill".visible = false
 	else:
 		opponent_attack(null)
 	print("Opponent Eliminate")
