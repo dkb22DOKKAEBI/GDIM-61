@@ -39,7 +39,7 @@ func _ready() ->void:
 	player_health = STARTING_HEALTH
 	player_health_text.text = player_health_text_prefix + str(player_health)
 	
-	boss_health = STARTING_HEALTH + 5
+	boss_health = STARTING_HEALTH + 10
 	enemy_health_text.text = str(boss_health)
 	
 	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
@@ -54,7 +54,7 @@ func _ready() ->void:
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
-	if card.attacked_this_turn:
+	if card.attacked_this_turn or player_is_attacking:
 		return
 	
 	print("OUTSIDE " + str(card.get_label_vis()))
@@ -80,23 +80,24 @@ func _on_player_attack():
 	if not selected_card_in_slot:
 		return
 	
-	if not selected_card_in_slot.attacked_this_turn:
+	if not player_is_attacking and not selected_card_in_slot.attacked_this_turn:
 		player_is_attacking = true
 		selected_card_in_slot.attacked_this_turn = true
 		
 		monster_attack_boss_anim(selected_card_in_slot)
 		await wait(0.5)
-		boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
-		enemy_health_text.text = str(boss_health)
+		if selected_card_in_slot.get_attack() > 0:
+			boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
+			enemy_health_text.text = str(boss_health)
+			
+			# Change font to double size and red
+			enemy_health_text.add_theme_font_size_override("normal_font_size", 40)
+			enemy_health_text.modulate = Color.RED
 		
-		# Change font to double size and red
-		enemy_health_text.add_theme_font_size_override("normal_font_size", 40)
-		enemy_health_text.modulate = Color.RED
-	
-		# Play animation for health change
-		var tween = get_tree().create_tween()
-		tween.tween_property(enemy_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
-		tween.tween_property(enemy_health_text, "modulate", Color.BLACK, 1)
+			# Play animation for health change
+			var tween = get_tree().create_tween()
+			tween.tween_property(enemy_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
+			tween.tween_property(enemy_health_text, "modulate", Color.BLACK, 1)
 		
 		if boss_health == 0:
 			player_win()
@@ -297,11 +298,11 @@ func wait(wait_time):
 
 
 func opponent_defend():
-	if boss_health == 15:
+	if boss_health == 20:
 		var target = choose_target()
 		opponent_attack(target)
 	else:
-		boss_health = min(boss_health + 3, 15)
+		boss_health = min(boss_health + 4, 20)
 		enemy_health_text.text = str(boss_health)
 		
 		# Change font to double size and green
