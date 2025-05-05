@@ -41,6 +41,6 @@ func draw_card():
 		new_card.name = "IngredientCard"
 		new_card.position = card_starting_position
 		new_card.starting_position = card_starting_position
-		new_card.ingredient_name = ingredient_name
+		new_card.card_name = ingredient_name
 		new_card.ingredient_name_label.text = ingredient_name
 		PlayerHand.add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)

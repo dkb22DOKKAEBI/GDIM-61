@@ -23,6 +23,7 @@ offset_top = 400.0
 offset_right = -735.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Title" type="Control" parent="PotUI"]
 visible = false
@@ -125,9 +126,13 @@ axis_stretch_vertical = 1
 
 [node name="PlayerHand" type="Control" parent="."]
 z_index = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="PlayerHandBorder" type="MarginContainer" parent="PlayerHand"]
 custom_minimum_size = Vector2(588, 120)
@@ -168,9 +173,13 @@ axis_stretch_vertical = 1
 
 [node name="CardInfo" type="Control" parent="."]
 z_index = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CardInfoBorder" type="MarginContainer" parent="CardInfo"]
 custom_minimum_size = Vector2(180, 320)
@@ -232,9 +241,13 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Temp" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CookingResultMessage" type="RichTextLabel" parent="Temp"]
 z_index = 5
@@ -252,4 +265,4 @@ offset_left = 16.0
 offset_top = 26.0
 offset_right = 206.0
 offset_bottom = 74.0
-text = "Food or Ingredient Selected:"
+text = "Food or Ingredient Hovered or Selected:"

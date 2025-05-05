@@ -36,6 +36,7 @@ func _on_cook() -> void:
 		else:
 			new_card.set_card_z_index(0)
 		new_card.name = "MonsterCard"
+		new_card.card_name = result_monster
 		new_card.position = card_starting_position
 		PlayerHand.add_card_to_hand(new_card, 1, 1)
 		

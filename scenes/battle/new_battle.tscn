@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=17 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://cards/Vacuum_boss.png" id="8_uw24h"]
 [ext_resource type="Script" uid="uid://buewu6digva8u" path="res://scripts/battle_manager.gd" id="9_oytup"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_8eucq"]
+[ext_resource type="Script" uid="uid://bmnt8wfxfx4ec" path="res://scripts/temp_ui.gd" id="11_6owpf"]
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="11_gfgng"]
 [ext_resource type="Texture2D" uid="uid://dvdm57iis6taf" path="res://art/pot.png" id="12_sspc1"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_yxeuc"]
@@ -63,16 +64,18 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager")]
+[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui")]
 visible = false
 z_index = 1
 script = ExtResource("5_bsxgu")
 input_manager = NodePath("../../Player/InputManager")
 battle_manager = NodePath("../../BattleManager")
+temp_ui = NodePath("../../UI")
 
-[node name="IngredientCardManager" type="Node2D" parent="PlayerHand"]
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("temp_ui")]
 z_index = 1
 script = ExtResource("6_h8t0o")
+temp_ui = NodePath("../../UI")
 
 [node name="BattleField" type="Node2D" parent="."]
 
@@ -141,7 +144,7 @@ script = ExtResource("10_8eucq")
 battle_manager = NodePath("../BattleManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("card_info_text", "pot_text")]
 z_index = -10
 layout_mode = 3
 anchors_preset = 0
@@ -149,6 +152,9 @@ offset_right = 960.0
 offset_bottom = 600.0
 pivot_offset = Vector2(480, 300)
 mouse_filter = 2
+script = ExtResource("11_6owpf")
+card_info_text = NodePath("CardInfoUI/RichTextLabel")
+pot_text = NodePath("PotUI/RichTextLabel")
 
 [node name="BattleUI" parent="UI" instance=ExtResource("11_gfgng")]
 layout_mode = 1
@@ -160,6 +166,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/CardInfoUI"]
 z_index = 5
@@ -176,6 +183,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Pot" type="NinePatchRect" parent="UI/PotUI"]
 z_index = 1
