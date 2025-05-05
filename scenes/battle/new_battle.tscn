@@ -123,7 +123,7 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "cardslot_1", "cardslot_2", "cardslot_3", "input_manager", "monster_card_manager", "enemy", "enemy_health_text", "enemy_attack_text", "player_health_text")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "cardslot_1", "cardslot_2", "cardslot_3", "input_manager", "monster_card_manager", "enemy", "enemy_health_text", "enemy_attack_text", "player_health_text", "temp_ui")]
 script = ExtResource("9_oytup")
 battle_timer = NodePath("BattleTimer")
 cardslot_1 = NodePath("../BattleField/Cardslots/Cardslot1")
@@ -135,6 +135,7 @@ enemy = NodePath("../BattleField/Enemy")
 enemy_health_text = NodePath("../BattleField/Enemy/EnemyHealth")
 enemy_attack_text = NodePath("../BattleField/Enemy/EnemyAttack")
 player_health_text = NodePath("../Player/PlayerHealth")
+temp_ui = NodePath("../UI")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
 one_shot = true

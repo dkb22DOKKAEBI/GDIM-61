@@ -29,6 +29,7 @@ var player_is_attacking: bool = false
 @export var enemy_attack_text: RichTextLabel
 @export var player_health_text: RichTextLabel
 var player_health_text_prefix: String = "Player Health: "
+@export var temp_ui: Control
 
 
 func _ready() ->void:
@@ -51,30 +52,18 @@ func _ready() ->void:
 
 func _player_select_placed_card(card: MonsterCard) -> void:
 	card.selected_label_vis(!card.get_label_vis())
+	temp_ui.default_card_info_text = card.card_name
 	
 	# Same card being selected
 	if not card.get_label_vis():
 		selected_card_in_slot = null
+		temp_ui.default_card_info_text = ""
 		return
 	
 	# Disable select for previous selected card
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 	selected_card_in_slot = card
-	
-	
-	# Check if it is the same card being clicked
-	#if selected_card_in_slot and selected_card_in_slot.visible == true:
-		#selected_card_in_slot.selected_label_vis(false)
-		#selected_card_in_slot = null
-		#return
-	
-	# Disable selected label for previous card
-	#if selected_card_in_slot:
-		#selected_card_in_slot.selected_label_vis(false)
-	#selected_card_in_slot = card
-	#
-	#selected_card_in_slot.selected_label_vis(true)
 
 
 func _on_player_attack():
