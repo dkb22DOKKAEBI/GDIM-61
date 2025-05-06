@@ -23,7 +23,9 @@ func _on_cook() -> void:
 		
 		# Decide monster
 		var result_monster = ingredient_check(get_ingredient_string_list(PlayerHand.selected_ingredients))
-		
+		if result_monster == "None":
+			return
+			
 		# Instantiate monster
 		var card_scene = preload(MONSTER_CARD_SCENE_PATH)
 		var new_card: Node2D = card_scene.instantiate()
@@ -60,24 +62,48 @@ func get_ingredient_string_list(list: Array) -> Array:
 
 # Get name of the food to cook
 func ingredient_check(list: Array) -> String:
+	var ingredients := []
+
 	if list.has("Dough"):
-		if list.has("Cheese"):
-			if list.has("Sugar"):
-				return "Cheesecake"
-			elif list.has("Tomato"):
-				return "Pizza"
-		elif list.has("Tomato"):
-			if list.has("Mystery_Meat"):
-				return "Sandwich"
-	elif list.has("Tortilla"):
-		if list.has("Cheese"):
-			return "Quesadilla"
-		elif list.has("Tomato") and list.has("Mystery_Meat"):
-			return "Taco"
-	elif list.has("Tomato") and list.has("Lettuce"):
-		return "Salad"
+		ingredients.append("Dough")
+	if list.has("Cheese"):
+		ingredients.append("Cheese")
+	if list.has("Sugar"):
+		ingredients.append("Sugar")
+	if list.has("Tomato"):
+		ingredients.append("Tomato")
+	if list.has("Mystery_Meat"):
+		ingredients.append("Mystery_Meat")
+	if list.has("Tortilla"):
+		ingredients.append("Tortilla")
+	if list.has("Lettuce"):
+		ingredients.append("Lettuce")
+
+	# Turn into sorted string for easier matching
+	ingredients.sort()
+	var key = ",".join(ingredients)
 	
-	return "Trashcan"
+	match key:
+		"Cheese,Dough,Sugar":
+			return "Cheesecake"
+		"Cheese,Dough,Tomato":
+			return "Pizza"
+		"Dough,Lettuce,Mystery_Meat,Tomato":
+			return "Sandwich"
+		"Cheese,Tortilla":
+			return "Quesadilla"
+		"Mystery_Meat,Tomato,Tortilla":
+			return "Taco"
+		"Lettuce,Tomato":
+			return "Salad"
+		_:
+			var list_size = int(list.size())
+			print("Trashcan")
+			if list_size >= 2:
+				print("Trashcan")
+				return "Trashcan"
+			else:
+				return "None"
 
 
 func update_pot_ui():

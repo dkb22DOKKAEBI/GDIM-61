@@ -17,7 +17,7 @@ var player_deck: Array[String] = ["Tortilla", "Dough", "Cheese",
 func _ready():
 	player_deck.shuffle()
 	# Random get rid of some ingredients to make it harder for Sam!!!
-	for i in range(5):
+	for i in range(2):
 		player_deck.pop_back()
 	deck_left_num_text.text = str(player_deck.size())
 
