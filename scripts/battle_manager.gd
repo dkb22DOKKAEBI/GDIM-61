@@ -11,7 +11,6 @@ var player_health
 var boss_health
 var boss_damage = 3
 var boss1_stats = {"Vacuum": {"HP": 20, "Attack": 3, "Block": 3, "Kill": 10}}
-var monster_cards = {"Sandwich": {"HP":5, "Attack": 1}, "Pizza": {"HP":5, "Attack": 1} }
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
 var player_is_attacking: bool = false
@@ -302,7 +301,7 @@ func opponent_defend():
 		var target = choose_target()
 		opponent_attack(target)
 	else:
-		boss_health = min(boss_health + 4, 20)
+		boss_health = min(boss_health + 3, 20)
 		enemy_health_text.text = str(boss_health)
 		
 		# Change font to double size and green
@@ -337,6 +336,8 @@ func opponent_eliminate():
 	else:
 		opponent_attack(null)
 	print("Opponent Eliminate")
+
+
 
 func check_field():
 	if not cardslot_1.card_in_slot and not cardslot_2.card_in_slot and not cardslot_3.card_in_slot:
