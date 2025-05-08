@@ -98,9 +98,9 @@ func ingredient_check(list: Array) -> String:
 			return "Salad"
 		_:
 			var list_size = int(list.size())
-			print("Trashcan")
+			#print("Trashcan")
 			if list_size >= 2:
-				print("Trashcan")
+				#print("Trashcan")
 				return "Trashcan"
 			else:
 				return "None"

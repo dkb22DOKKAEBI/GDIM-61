@@ -31,7 +31,7 @@ func take_damage(dmg: int) -> void:
 
 
 func die():
-	card_slot_on.card_in_slot = false
+	card_slot_on.card_in_slot = null
 	queue_free()
 
 

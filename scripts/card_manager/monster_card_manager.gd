@@ -63,7 +63,8 @@ func finish_drag():
 		
 		#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
 		card_being_dragged.placed = true
-		card_slot_found.card_in_slot = true
+		card_slot_found.card_in_slot = card_being_dragged
+		CardslotManager.test() # Only for test purpose
 		card_being_dragged.card_slot_on = card_slot_found
 		battle_manager.player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
