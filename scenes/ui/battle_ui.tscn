@@ -125,6 +125,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="PlayerHand" type="Control" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -220,8 +221,8 @@ axis_stretch_vertical = 1
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 offset_left = 225.0
-offset_right = 960.0
-offset_bottom = 450.0
+offset_right = 1096.0
+offset_bottom = 601.0
 mouse_filter = 2
 theme_override_constants/margin_left = -3
 theme_override_constants/margin_bottom = -3
