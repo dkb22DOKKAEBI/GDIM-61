@@ -3,8 +3,8 @@ extends Node
 
 @export var boss_health_text: RichTextLabel
 @export var boss_attack_text: RichTextLabel
-var boss_health: float
-var boss_attack: float
+var boss_health: int
+var boss_attack: int
 
 var max_cool_down: int # Boss ability cool down
 var curr_cool_down: int
@@ -14,7 +14,6 @@ var battle_manager: Node2D # Battle manager of the level -> initialized in OnSce
 
 # Initialization
 func _ready() -> void:
-	print("Boss ready")
 	# Initialize variables
 	boss_health = CardDatabase.BOSS_STATS["Vacuum"]["HP"]
 	boss_attack = CardDatabase.BOSS_STATS["Vacuum"]["Attack"]

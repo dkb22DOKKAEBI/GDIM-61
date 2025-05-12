@@ -5,7 +5,7 @@ extends Node
 
 func _ready() -> void:
 	# Instantiate boss
-	var boss_name = CardDatabase.BOSS_INDEX[SceneManager.level_index]
+	var boss_name = CardDatabase.BOSS_NAME[SceneManager.level_index]
 	var boss_scene = load(CardDatabase.BOSS_PATH[boss_name])
 	var boss: Node2D = boss_scene.instantiate()
 	

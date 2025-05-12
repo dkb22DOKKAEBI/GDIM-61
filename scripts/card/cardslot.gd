@@ -7,5 +7,3 @@ var card_in_slot: Card = null
 
 func _ready():
 	CardslotManager.cardslots.append(self)
-	print(card_slot_number)
-	print(1)
