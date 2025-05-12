@@ -39,6 +39,9 @@ func clear_player_hand() -> void:
 	# Clear player hand
 	player_ingredient_hand.clear()
 	player_monster_hand.clear()
+	
+	# Reset which hand the player is on
+	on_ingredient_hand = true
 
 
 # Clear current player legacy hand when the game is over
