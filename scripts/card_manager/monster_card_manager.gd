@@ -14,7 +14,7 @@ func _ready():
 	var card_image_path = str("res://cards/" + "Pizza" + ".png")
 	#new_card.get_node("CardImage").texture = load(card_image_path)
 	new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
-	new_card.get_node("Attack").text = str(3)
+	new_card.get_node("Attack").text = str(1)
 	new_card.get_node("Health").text = str(2)
 	self.add_child(new_card)
 	new_card.name = "MonsterCard"

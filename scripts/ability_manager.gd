@@ -8,9 +8,9 @@ class_name Ability
 var monster_abilities = {
 	"Pizza":[true, "damage"],
 	"Cheesecake": [false],
-	"Sandwich": [true, "block"],
-	"Quesadilla": [true, "heal"],
-	"Salad": [true, "heal"],
+	"Sandwich": [false, "block"],
+	"Quesadilla": [false, "heal"],
+	"Salad": [false, "heal"],
 	"Taco": [false],
 	"Trashcan": [false]
 	}
