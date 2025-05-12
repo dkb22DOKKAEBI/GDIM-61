@@ -7,7 +7,17 @@ const GAME_OVER_WIN = "res://scenes/menus/game_over_win.tscn" # Path to game ove
 const GAME_OVER_LOSE = "res://scenes/menus/game_over_lose.tscn" # Path to game over lose scene
 
 var level_index: int # Level index
-signal player_complete_level_signal
+
+signal new_game_started_signal # Signal emited when a new game started
+signal player_complete_level_signal # Signal emited when player complete a level
+signal game_end_signal # Signal emited when game is over
+
+
+# Start a new game
+func start_new_game() -> void:
+	new_game_started_signal.emit()
+	level_index = 0;
+	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 
 # Player defeat boss -> Update level index and check whether player wins
@@ -37,12 +47,6 @@ func proceed_to_next_level() -> void:
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 
-# Start a new game
-func start_new_game() -> void:
-	level_index = 0;
-	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
-
-
 # Return back to the start menu
 func back_to_start_menu() -> void:
 	get_tree().change_scene_to_file(START_MENU_PATH)
@@ -50,9 +54,11 @@ func back_to_start_menu() -> void:
 
 # Game over and player wins
 func transfer_to_game_over_win() -> void:
+	game_end_signal.emit()
 	get_tree().change_scene_to_file(GAME_OVER_WIN)
 
 
 # Game over and player loses
 func transfer_to_game_over_lose() -> void:
+	game_end_signal.emit()
 	get_tree().change_scene_to_file(GAME_OVER_LOSE)

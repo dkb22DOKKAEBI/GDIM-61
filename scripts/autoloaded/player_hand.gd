@@ -24,12 +24,12 @@ signal update_pot_ui_signal
 func _ready():
 	center_screen_x = (DESIRED_WINDOW_WIDTH + SIDEBAR_WIDTH - DECK_WIDTH) / 2
 	SceneManager.connect("player_complete_level_signal", clear_player_hand)
+	SceneManager.connect("game_end_signal", clear_player_legacy)
 
 
 # Clear current player hand and transfer its record to legacy hands
 # for restoring data at the start of next level
 func clear_player_hand() -> void:
-	print("clear player hand")
 	# Storing card into legacy hand
 	for ingredient_card: Card in player_ingredient_hand:
 		legacy_ingredient_hand.append(ingredient_card.card_name)
@@ -39,6 +39,13 @@ func clear_player_hand() -> void:
 	# Clear player hand
 	player_ingredient_hand.clear()
 	player_monster_hand.clear()
+
+
+# Clear current player legacy hand when the game is over
+func clear_player_legacy() -> void:
+	legacy_ingredient_hand.clear()
+	legacy_monster_hand.clear()
+
 
 
 func get_target_hand(flag: int) -> Array:
