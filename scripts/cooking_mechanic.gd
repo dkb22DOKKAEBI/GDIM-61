@@ -12,7 +12,7 @@ var recipe = []
 
 
 func _ready():
-	card_database_reference = preload("res://scripts/card/card_database.gd")
+	card_database_reference = preload("res://scripts/autoloaded/card_database.gd")
 	PlayerHand.update_pot_ui_signal.connect(update_pot_ui)
 
 
