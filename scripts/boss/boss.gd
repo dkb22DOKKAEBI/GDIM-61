@@ -3,3 +3,8 @@ extends Node
 
 var boss_health: float
 var boss_attack: float
+
+
+# Boss behavoir function
+func on_action():
+	pass

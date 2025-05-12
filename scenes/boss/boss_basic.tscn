@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c60d87i0v4h8r"]
 
-[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_dlmty"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_dgf3a"]
 
 [node name="Boss" type="Node2D"]
 
@@ -15,7 +15,7 @@ offset_left = 26.0
 offset_top = -118.0
 offset_right = 85.0
 offset_bottom = -59.0
-theme = ExtResource("1_dlmty")
+theme = ExtResource("1_dgf3a")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -27,7 +27,7 @@ offset_left = -75.0
 offset_top = -108.0
 offset_right = -35.0
 offset_bottom = -68.0
-theme = ExtResource("1_dlmty")
+theme = ExtResource("1_dgf3a")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

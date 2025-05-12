@@ -1,10 +1,33 @@
+extends Node
+
+# Stats for monster cards
 const CARDS = { #attack, health
 	"Quesadilla" 	: [2, 3],
 	"Cheesecake" 	: [3, 4],
 	"Sandwich"	 	: [4, 5],
 	"Trashcan"		: [0, 3],
 	"Pizza"			: [3, 2],
-	"Salad": [1,1],
-	"Taco": [1,6],
-	"Bunuelos": [0,4]
+	"Salad"			: [1, 1],
+	"Taco"			: [1, 6],
+	"Bunuelos"		: [0, 4]
+}
+
+
+# Level index to boss name
+# Change order here to change level order
+# eg. Level 1 has index of 0
+const BOSS_INDEX = {
+	0: "Vacuum"
+}
+
+
+# Path to boss scenes
+const BOSS_PATH = {
+	"Vacuum": "res://scenes/boss/vacuum.tscn"
+}
+
+
+# Stats for boss
+const BOSS_STATS = {
+	"Vacuum": {"HP": 20, "Attack": 3, "Block": 3, "Elimination": 10}
 }

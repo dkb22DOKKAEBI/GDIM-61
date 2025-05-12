@@ -19,6 +19,7 @@ config/icon="uid://bxwcx7stx52lk"
 
 CardslotManager="*res://scripts/cardslot_manager.gd"
 PlayerHand="*res://scripts/player/player_hand.gd"
+CardDatabase="*res://scripts/card/card_database.gd"
 
 [display]
 
