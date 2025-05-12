@@ -63,9 +63,11 @@ func boss_take_dmg(dmg: float):
 	tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
 	tween.tween_property(boss_health_text, "modulate", Color.BLACK, 1)
 	
-	# Check whether boss die
+	# Check whether boss die and player win
 	if boss_health == 0:
 		battle_manager.player_win()
+		await battle_manager.wait(1)
+		SceneManager.transfer_to_game_over_win()
 
 
 # Boss behavior logic

@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://8gojvjgg4uec"]
+
+[ext_resource type="Script" uid="uid://xngs7548ir70" path="res://scripts/menu/game_over_menu.gd" id="1_g8mfb"]
+
+[node name="PlayerLose" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g8mfb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.712129, 0.712129, 0.712129, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverTitle" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 67
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverTitle"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverText" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 0
+offset_top = 140.0
+offset_right = 960.0
+offset_bottom = 340.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 67
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverText"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "You Win!
+Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReturnButton" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Start Menu"
+
+[connection signal="pressed" from="Buttons/ReturnButton" to="." method="on_return_to_start_menu"]

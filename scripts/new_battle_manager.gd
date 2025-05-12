@@ -114,6 +114,10 @@ func player_win():
 
 func player_lose():
 	$"../UI/GameConditions/LoseCondition".visible = true
+	
+	# Change scene to Game Over Win scene
+	await wait(1)
+	SceneManager.transfer_to_game_over_lose()
 
 
 # End player turn and opponent turn starts

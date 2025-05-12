@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GDIM 61"
-run/main_scene="uid://bebj6ltb2dusn"
+run/main_scene="uid://b8me27agp6vuk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bxwcx7stx52lk"
 
