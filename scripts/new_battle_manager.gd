@@ -34,6 +34,9 @@ func _ready() -> void:
 	# Connect signal for player input manager
 	input_manager.connect("select_placed_card", _player_select_placed_card)
 	input_manager.connect("player_attack", _on_player_attack)
+	
+	# Player act first
+	start_player_turn()
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
