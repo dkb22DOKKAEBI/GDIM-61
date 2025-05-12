@@ -43,7 +43,6 @@ func transfer_to_reward() -> void:
 
 # Proceed to the next level
 func proceed_to_next_level() -> void:
-	print("Proceed to next level: " + str(PlayerHand.player_ingredient_hand.size()) + " " + str(PlayerHand.player_monster_hand.size()))
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 

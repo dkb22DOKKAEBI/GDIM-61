@@ -38,5 +38,4 @@ func set_card_z_index(index: int) -> void:
 
 
 func selected_label_vis(flag: bool):
-	print("selected_label_vis with " + str(flag))
 	selected_label.visible = flag

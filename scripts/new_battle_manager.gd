@@ -40,14 +40,12 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 	if card.attacked_this_turn or player_is_attacking:
 		return
 	
-	print("OUTSIDE " + str(card.get_label_vis()))
 	card.selected_label_vis(!card.get_label_vis())
 	temp_ui.default_card_info_text = card.card_name
 	temp_attack_message.visible = true
 	
 	# Same card being selected
 	if not card.get_label_vis():
-		print("HERE")
 		selected_card_in_slot = null
 		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
@@ -202,7 +200,7 @@ func check_ability_cds():
 			CardslotManager.cardslot_abilities[slot_id][1] = CardslotManager.card_ability_cds[card_name]
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
-			print("Decreased cooldown for", slot_id, "to", CardslotManager.cardslot_abilities[slot_id][1])
+			#print("Decreased cooldown for", slot_id, "to", CardslotManager.cardslot_abilities[slot_id][1])
 
 
 func wait(wait_time):
