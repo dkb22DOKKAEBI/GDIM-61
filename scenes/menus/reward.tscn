@@ -88,4 +88,5 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 25
 text = "Next Level"
 
+[connection signal="pressed" from="Buttons/VBoxContainer/ClaimRewardButton" to="." method="on_claim_reward"]
 [connection signal="pressed" from="Buttons/VBoxContainer/NextLevelButton" to="." method="on_next_level"]
