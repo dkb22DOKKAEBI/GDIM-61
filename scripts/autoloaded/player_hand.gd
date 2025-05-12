@@ -44,10 +44,13 @@ func clear_player_hand() -> void:
 	on_ingredient_hand = true
 
 
-# Clear current player legacy hand when the game is over
+# Clear both player current and legacy hands when the game is over
 func clear_player_legacy() -> void:
+	print("Clear player legacy")
 	legacy_ingredient_hand.clear()
 	legacy_monster_hand.clear()
+	player_ingredient_hand.clear()
+	player_monster_hand.clear()
 
 
 

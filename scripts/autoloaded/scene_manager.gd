@@ -48,16 +48,15 @@ func proceed_to_next_level() -> void:
 
 # Return back to the start menu
 func back_to_start_menu() -> void:
+	game_end_signal.emit()
 	get_tree().change_scene_to_file(START_MENU_PATH)
 
 
 # Game over and player wins
 func transfer_to_game_over_win() -> void:
-	game_end_signal.emit()
 	get_tree().change_scene_to_file(GAME_OVER_WIN)
 
 
 # Game over and player loses
 func transfer_to_game_over_lose() -> void:
-	game_end_signal.emit()
 	get_tree().change_scene_to_file(GAME_OVER_LOSE)

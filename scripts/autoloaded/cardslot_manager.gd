@@ -15,6 +15,7 @@ var card_ability_cds = {
 # Connect signals
 func _ready() -> void:
 	SceneManager.connect("player_complete_level_signal", clear_cardslots)
+	SceneManager.connect("game_end_signal", clear_cardslots)
 
 
 # Clear cardslots array when player completing a level
