@@ -3,7 +3,6 @@ extends Node
 const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
 
 var card_starting_position: Vector2 = Vector2(100, 525)
-var card_database_reference
 var recipe = []
 
 @export var battle_manager: Node2D
@@ -12,7 +11,6 @@ var recipe = []
 
 
 func _ready():
-	card_database_reference = preload("res://scripts/autoloaded/card_database.gd")
 	PlayerHand.update_pot_ui_signal.connect(update_pot_ui)
 
 
@@ -25,15 +23,15 @@ func _on_cook() -> void:
 		var result_monster = ingredient_check(get_ingredient_string_list(PlayerHand.selected_ingredients))
 		if result_monster == "None":
 			return
-			
+		
 		# Instantiate monster
 		var card_scene = preload(MONSTER_CARD_SCENE_PATH)
 		var new_card: Node2D = card_scene.instantiate()
 		var card_image_path = str("res://cards/" + result_monster + ".png")
 		#new_card.get_node("CardImage").texture = load(card_image_path)
 		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
-		new_card.get_node("Attack").text = str(card_database_reference.CARDS[result_monster][0])
-		new_card.get_node("Health").text = str(card_database_reference.CARDS[result_monster][1])
+		new_card.get_node("Attack").text = str(CardDatabase.CARDS[result_monster][0])
+		new_card.get_node("Health").text = str(CardDatabase.CARDS[result_monster][1])
 		monster_card_manager.add_child(new_card)
 		if monster_card_manager.visible:
 			new_card.set_card_z_index(1)

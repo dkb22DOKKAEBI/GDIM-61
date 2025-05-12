@@ -9,23 +9,23 @@ func _ready():
 	input_manager.connect("left_mouse_button_released", on_left_clicked_released)
 	
 	# TEST ONLY
-	var card_scene = preload("res://scenes/card/card.tscn")
-	var new_card = card_scene.instantiate()
-	var card_image_path = str("res://cards/" + "Pizza" + ".png")
-	#new_card.get_node("CardImage").texture = load(card_image_path)
-	new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
-	new_card.get_node("Attack").text = str(1)
-	new_card.get_node("Health").text = str(2)
-	self.add_child(new_card)
-	new_card.name = "MonsterCard"
-	new_card.card_name = "Pizza"
-	new_card.position = Vector2(100, 525)
-	new_card.scale = Vector2(1, 1)
-	PlayerHand.add_card_to_hand(new_card, 1, 1)
-	if self.visible:
-		new_card.set_card_z_index(1)
-	else:
-		new_card.set_card_z_index(0)
+	for monster_name: String in PlayerHand.legacy_monster_hand:
+		var card_scene = preload("res://scenes/card/card.tscn")
+		var new_card = card_scene.instantiate()
+		var card_image_path = str("res://cards/" + monster_name + ".png")
+		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
+		new_card.get_node("Attack").text = str(CardDatabase.CARDS[monster_name][0])
+		new_card.get_node("Health").text = str(CardDatabase.CARDS[monster_name][1])
+		self.add_child(new_card)
+		new_card.name = "MonsterCard"
+		new_card.card_name = monster_name
+		new_card.position = Vector2(100, 525)
+		new_card.scale = Vector2(1, 1)
+		PlayerHand.add_card_to_hand(new_card, 1, 1)
+		if self.visible:
+			new_card.set_card_z_index(1)
+		else:
+			new_card.set_card_z_index(0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

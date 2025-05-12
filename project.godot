@@ -20,6 +20,7 @@ config/icon="uid://bxwcx7stx52lk"
 CardDatabase="*res://scripts/autoloaded/card_database.gd"
 SceneManager="*res://scripts/autoloaded/scene_manager.gd"
 PlayerHand="*res://scripts/autoloaded/player_hand.gd"
+PlayerController="*res://scripts/autoloaded/player_controller.gd"
 CardslotManager="*res://scripts/autoloaded/cardslot_manager.gd"
 
 [display]

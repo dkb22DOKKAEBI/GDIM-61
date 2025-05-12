@@ -7,6 +7,23 @@ const GAME_OVER_WIN = "res://scenes/menus/game_over_win.tscn" # Path to game ove
 const GAME_OVER_LOSE = "res://scenes/menus/game_over_lose.tscn" # Path to game over lose scene
 
 var level_index: int # Level index
+signal player_complete_level_signal
+
+
+# Player defeat boss -> Update level index and check whether player wins
+func defeat_boss():
+	print("Defeat boss")
+	# Emit signal of completing a level
+	player_complete_level_signal.emit()
+	
+	# Update level
+	level_index += 1
+	
+	# Check whether all bosses defeated and game clear
+	if level_index >= CardDatabase.BOSS_LEVEL.size(): # Player wins
+		transfer_to_game_over_win()
+	else: # Still left bosses
+		transfer_to_reward()
 
 
 # Transfer to the reward scene
@@ -14,9 +31,9 @@ func transfer_to_reward() -> void:
 	get_tree().change_scene_to_file(REWARD_SCENE_PATH)
 
 
-# Update level index and ransfer to the next level
-func transfer_to_next_level() -> void:
-	level_index += 1
+# Proceed to the next level
+func proceed_to_next_level() -> void:
+	print("Proceed to next level: " + str(PlayerHand.player_ingredient_hand.size()) + " " + str(PlayerHand.player_monster_hand.size()))
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 

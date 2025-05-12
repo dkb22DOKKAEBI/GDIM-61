@@ -1,12 +1,9 @@
 extends Node
 
-const STARTING_HEALTH = 10
-const STARTING_HAND_SIZE = 3
 const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
 
 var player_cards_on_battlefield # Dictionary
 
-var player_health
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
 var player_is_attacking: bool = false
@@ -30,17 +27,13 @@ var card_starting_position: Vector2 = Vector2(100, 525)
 
 # ready function
 func _ready() -> void:
-	# Set up
-	player_health = STARTING_HEALTH
-	player_health_text.text = player_health_text_prefix + str(player_health)
+	# Display player starting health for each level
+	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
 	player_cards_on_battlefield = {CardslotManager.cardslots[0]: null, CardslotManager.cardslots[1]: null, CardslotManager.cardslots[2]: null}
 	
+	# Connect signal for player input manager
 	input_manager.connect("select_placed_card", _player_select_placed_card)
 	input_manager.connect("player_attack", _on_player_attack)
-	
-	# Draw initial hand
-	for i in range(STARTING_HAND_SIZE):
-		$"../PlayerHand/Deck".draw_card()
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
@@ -152,13 +145,13 @@ func enable_end_turn_button(enable: bool) -> void:
 
 # Player being attacked
 func player_take_dmg(boss_attack: float) -> void:
-	player_health = max(0, player_health - boss_attack)
-	player_health_text.text = player_health_text_prefix + str(player_health)
+	PlayerController.player_health = max(0, PlayerController.player_health - boss_attack)
+	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
 
 
 # Check whether player dead
 func player_check_dead() -> void:
-	if player_health == 0:
+	if PlayerController.player_health <= 0:
 		player_lose()
 
 

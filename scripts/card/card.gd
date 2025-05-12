@@ -12,6 +12,7 @@ var card_name: String
 
 @export var selected_label: Label 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#All cards must be a child of CardManager or this will error

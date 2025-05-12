@@ -16,8 +16,9 @@ const CARDS = { #attack, health
 # Level index to boss name
 # Change order here to change level order
 # eg. Level 1 has index of 0
-const BOSS_NAME = {
-	0: "Vacuum"
+const BOSS_LEVEL = {
+	0: "Vacuum",
+	1: "Vacuum"
 }
 
 

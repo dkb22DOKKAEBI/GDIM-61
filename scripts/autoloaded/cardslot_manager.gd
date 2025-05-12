@@ -11,6 +11,17 @@ var card_ability_cds = {
 	"Taco": 0,
 	"Trashcan": 0}
 
+
+# Connect signals
+func _ready() -> void:
+	SceneManager.connect("player_complete_level_signal", clear_cardslots)
+
+
+# Clear cardslots array when player completing a level
+func clear_cardslots() -> void:
+	cardslots.clear()
+
+
 func test():
 	for cardslot in cardslots:
 		var slot_id = cardslot.card_slot_number
