@@ -225,6 +225,7 @@ texture = ExtResource("14_qwuef")
 [node name="DeckHand2" type="NinePatchRect" parent="UI/HandUI"]
 visibility_layer = 512
 z_index = 1
+layout_mode = 0
 offset_left = 322.0
 offset_top = 483.0
 offset_right = 848.0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cddrlenmm4hcd"]
 
 [ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://scripts/button/recipe_book.gd" id="1_wjb6r"]
-[ext_resource type="Texture2D" uid="uid://cj5m63t60k1ld" path="res://ingredients/Drawing-2.sketchpad(2).png" id="2_cr4yr"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_udx60"]
-[ext_resource type="Texture2D" uid="uid://dxe512tee0li7" path="res://ingredients/Drawing-new.png" id="4_tyidg"]
+[ext_resource type="Texture2D" uid="uid://b6uhfo2tv5woc" path="res://cards/Drawing.sketchpad(1).png" id="4_tyidg"]
+[ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="5_ajw2t"]
 
 [node name="RecipeBook" type="Control"]
 process_mode = 3
@@ -17,7 +17,6 @@ mouse_filter = 2
 script = ExtResource("1_wjb6r")
 
 [node name="RecipeBookVisible" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +24,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="RecipeBg" type="NinePatchRect" parent="RecipeBookVisible"]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+layout_mode = 2
+texture = ExtResource("5_ajw2t")
+region_rect = Rect2(99, 3, 17, 18)
+
+[node name="Border" type="NinePatchRect" parent="RecipeBookVisible"]
+layout_mode = 2
+texture = ExtResource("5_ajw2t")
+region_rect = Rect2(32, 56, 32, 32)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="RecipeBookVisible"]
+layout_mode = 2
+
+[node name="seperator2" type="Control" parent="RecipeBookVisible/VBoxContainer2"]
 layout_mode = 2
 
 [node name="seperator" type="Control" parent="RecipeBookVisible/VBoxContainer2"]
@@ -43,11 +62,6 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="RecipeBookVisible/VBoxContainer2"]
 layout_mode = 2
-texture = ExtResource("2_cr4yr")
-expand_mode = 5
-
-[node name="TextureRect1" type="TextureRect" parent="RecipeBookVisible/VBoxContainer2"]
-layout_mode = 2
 texture = ExtResource("4_tyidg")
 expand_mode = 5
 
@@ -61,6 +75,12 @@ layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
 
+[node name="Control4" type="Control" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="Control" type="Control" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -70,6 +90,12 @@ theme = ExtResource("2_udx60")
 theme_override_font_sizes/font_size = 30
 text = "Exit
 "
+
+[node name="Control3" type="Control" parent="RecipeBookVisible/HBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="RecipeBookVisible/HBoxContainer"]
+layout_mode = 2
 
 [node name="Control" type="Control" parent="RecipeBookVisible/HBoxContainer"]
 layout_mode = 2
