@@ -3,6 +3,7 @@ extends Node
 const STARTING_HEALTH = 10
 const max_cool_down := 3
 const STARTING_HAND_SIZE = 3
+const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
 
 var curr_cool_down := 3
 var player_cards_on_battlefield # Dictionary
@@ -14,6 +15,8 @@ var boss1_stats = {"Vacuum": {"HP": 20, "Attack": 3, "Block": 3, "Kill": 10}}
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
 var player_is_attacking: bool = false
+var card_starting_position: Vector2 = Vector2(100, 525)
+
 
 @export var battle_timer: Timer
 @export var cardslot_1: Node2D
@@ -22,6 +25,7 @@ var player_is_attacking: bool = false
 
 @export var input_manager: Node2D
 @export var monster_card_manager: Node2D
+@export var ability_managaer: Node2D
 
 @export var enemy: Node2D
 @export var enemy_health_text: RichTextLabel
@@ -194,8 +198,46 @@ func start_player_turn():
 		$"../PlayerHand/Deck".draw_card()
 	
 	reset_cards_attack()
+	check_ability_cds()
 	is_on_player_turn = true
 
+func check_ability_cds():
+	for cardslot in CardslotManager.cardslots:
+		var slot_id = cardslot.card_slot_number
+
+		if CardslotManager.cardslot_abilities[slot_id][1] == 0:
+			var card_name = CardslotManager.cardslot_abilities[slot_id][0]
+			if card_name == "None":
+				continue  # Skip if nothing is in the slot
+
+			var card_scene = preload(MONSTER_CARD_SCENE_PATH)
+			var ability_instance = Ability.new()
+			var result_ability = ability_instance.add_ability_card(card_name)
+			if result_ability == null:
+				continue  # this card has no ability, skip it
+			var ability_name = result_ability[0]
+
+			var new_card: Node2D = card_scene.instantiate()
+			new_card.get_node("CardImage").texture = ResourceLoader.load("res://cards/" + ability_name + ".png")
+			new_card.get_node("Attack").text = str(result_ability[1])
+			monster_card_manager.add_child(new_card)
+
+			if monster_card_manager.visible:
+				new_card.set_card_z_index(1)
+			else:
+				new_card.set_card_z_index(0)
+
+			new_card.name = "AbilityCard"
+			new_card.card_name = ability_name
+			new_card.position = card_starting_position
+			PlayerHand.add_card_to_hand(new_card, 1, 1)
+
+			CardslotManager.cardslot_abilities[slot_id][1] = CardslotManager.card_ability_cds[card_name]
+		else:
+			CardslotManager.cardslot_abilities[slot_id][1] -= 1
+			print("Decreased cooldown for", slot_id, "to", CardslotManager.cardslot_abilities[slot_id][1])
+
+	
 
 func opponent_move():
 	var skill = randi() % 3
