@@ -16,18 +16,20 @@ const CARDS = { #attack, health
 # Level index to boss name
 # Change order here to change level order
 # eg. Level 1 has index of 0
+const VACUUM_NAME = "Vacuum"
 const BOSS_INDEX = {
-	0: "Vacuum"
+	0: VACUUM_NAME
 }
 
 
 # Path to boss scenes
+const VACUUM_SCENE_PATH = "res://scenes/boss/vacuum.tscn"
 const BOSS_PATH = {
-	"Vacuum": "res://scenes/boss/vacuum.tscn"
+	"Vacuum": VACUUM_SCENE_PATH
 }
 
 
 # Stats for boss
 const BOSS_STATS = {
-	"Vacuum": {"HP": 20, "Attack": 3, "Block": 3, "Elimination": 10}
+	"Vacuum": {"HP": 20, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
 }
