@@ -11,14 +11,17 @@ config_version=5
 [application]
 
 config/name="GDIM 61"
-run/main_scene="uid://bebj6ltb2dusn"
+run/main_scene="uid://b8me27agp6vuk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bxwcx7stx52lk"
 
 [autoload]
 
-CardslotManager="*res://scripts/cardslot_manager.gd"
-PlayerHand="*res://scripts/player/player_hand.gd"
+CardDatabase="*res://scripts/autoloaded/card_database.gd"
+SceneManager="*res://scripts/autoloaded/scene_manager.gd"
+PlayerHand="*res://scripts/autoloaded/player_hand.gd"
+PlayerController="*res://scripts/autoloaded/player_controller.gd"
+CardslotManager="*res://scripts/autoloaded/cardslot_manager.gd"
 
 [display]
 

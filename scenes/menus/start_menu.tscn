@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8me27agp6vuk"]
+
+[ext_resource type="Script" uid="uid://bguce6op0jbnu" path="res://scripts/menu/start_menu.gd" id="1_8tuso"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tuso")
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(0.74558, 0.74558, 0.74558, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 300.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 67
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameTitle"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+text = "Food Fight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="StartGameButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 25
+text = "Start Game"
+
+[node name="ExitGameButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 25
+text = "Exit Game"
+
+[connection signal="pressed" from="Buttons/VBoxContainer/StartGameButton" to="." method="on_start_game"]
+[connection signal="pressed" from="Buttons/VBoxContainer/ExitGameButton" to="." method="on_exit_game"]

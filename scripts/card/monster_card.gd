@@ -36,4 +36,4 @@ func die():
 
 
 func test():
-	print("Monster card hovered over")
+	pass

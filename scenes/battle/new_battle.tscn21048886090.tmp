@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=18 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://nrqhns78ljqf" path="res://scripts/button/switch_hand.gd" id="13_aijqa"]
 [ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://cards/decklength.png" id="14_qwuef"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
-[ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="17_bsxgu"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://scripts/on_scene_start.gd" id="18_bsxgu"]
 
 [node name="NewBattle" type="Node2D"]
@@ -393,12 +392,6 @@ theme_override_font_sizes/normal_font_size = 24
 text = "Press SPACE to Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("input_manager") instance=ExtResource("17_bsxgu")]
-visible = false
-z_index = 20
-layout_mode = 1
-input_manager = NodePath("../../Player/InputManager")
 
 [node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
 script = ExtResource("18_bsxgu")

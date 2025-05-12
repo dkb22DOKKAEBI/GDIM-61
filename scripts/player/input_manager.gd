@@ -4,6 +4,7 @@ signal left_mouse_button_clicked
 signal left_mouse_button_released
 signal select_placed_card(card: Card)
 signal player_attack
+signal switch_pause_menu_signal
 
 const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
@@ -24,8 +25,13 @@ func _input(event):
 		else:
 			emit_signal("left_mouse_button_released")
 	
+	# Player tempeory attack
 	if Input.is_key_pressed(KEY_SPACE):
 		player_attack.emit()
+	
+	# Open or close pause Menu
+	if Input.is_key_pressed(KEY_ESCAPE):
+		switch_pause_menu_signal.emit()
 
 
 # Handle card dragging, select ingredients

@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://3gh8v5jkfk5q"]
+
+[ext_resource type="Script" uid="uid://24kp6owjmau" path="res://scripts/boss/vacuum.gd" id="1_bw6u8"]
+[ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://cards/Vacuum_boss.png" id="1_t1ajl"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_bw6u8"]
+
+[node name="Boss" type="Node2D" node_paths=PackedStringArray("boss_health_text", "boss_attack_text")]
+script = ExtResource("1_bw6u8")
+boss_health_text = NodePath("BossHealth")
+boss_attack_text = NodePath("BossAttack")
+
+[node name="BossSprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_t1ajl")
+
+[node name="BossHealth" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 26.0
+offset_top = -118.0
+offset_right = 85.0
+offset_bottom = -59.0
+theme = ExtResource("2_bw6u8")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossAttack" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = -75.0
+offset_top = -108.0
+offset_right = -35.0
+offset_bottom = -68.0
+theme = ExtResource("2_bw6u8")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

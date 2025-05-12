@@ -4,9 +4,12 @@ const INGREDIENT_CARD_SCENE_PATH = "res://scenes/card/ingredient_card.tscn"
 const CARD_DRAW_SPEED = 1
 
 var card_starting_position: Vector2 = Vector2(915, 525)
-var player_deck: Array[String] = ["Tortilla", "Dough", "Cheese", 
-"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
-"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce"]
+# Deck kept track inside player controller
+#var player_deck: Array[String] = ["Tortilla", "Dough", "Cheese", 
+#"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
+#"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", "Cheese", 
+#"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
+#"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce"]
 
 @export var deck_left_num_text: RichTextLabel
 @export var deck_sprite: Sprite2D
@@ -15,35 +18,53 @@ var player_deck: Array[String] = ["Tortilla", "Dough", "Cheese",
 
 #Called when the node enters the scene tree for the first time.
 func _ready():
-	player_deck.shuffle()
-	# Random get rid of some ingredients to make it harder for Sam!!!
-	for i in range(2):
-		player_deck.pop_back()
-	deck_left_num_text.text = str(player_deck.size())
+	# Update deck at the start of a level
+	print(PlayerHand.player_ingredient_hand.size())
+	for ingredient_name: String in PlayerHand.legacy_ingredient_hand:
+		instantiate_ingredient_card(ingredient_name)
+	PlayerHand.legacy_ingredient_hand.clear()
+	
+	# Shuffle deck and display left number info
+	PlayerController.deck.shuffle()
+	deck_left_num_text.text = str(PlayerController.deck.size())
 
 
 func draw_card():
-	#If player drew the last card in the deck, disable the deck
-	if player_deck.size() == 0:
-		#$Area2D/CollisionShape2D.disabled = true
+	# If player drew the last card in the deck, disable the deck
+	if PlayerController.deck.size() == 0:
 		deck_sprite.visible = false
 		deck_left_num_text.visible = false
+		return
 	
-	if player_deck.size() > 0:
-		var ingredient_name = player_deck[0]
-		player_deck.erase(ingredient_name)
-		deck_left_num_text.text = str(player_deck.size())
-		
-		# Instantiate ingredient card
-		
-		var card_scene = preload(INGREDIENT_CARD_SCENE_PATH)
-		var new_card: Node2D = card_scene.instantiate()
-		var card_image_path = str("res://ingredients/" + ingredient_name + ".png")
-		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
-		ingredient_card_manager.add_child(new_card)
-		new_card.name = "IngredientCard"
-		new_card.position = card_starting_position
-		new_card.starting_position = card_starting_position
-		new_card.card_name = ingredient_name
-		new_card.ingredient_name_label.text = ingredient_name
-		PlayerHand.add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)
+	# Draw card there is still card left
+	var ingredient_name: String = PlayerController.deck[0]
+	PlayerController.deck.erase(ingredient_name)
+	deck_left_num_text.text = str(PlayerController.deck.size())
+	
+	# Instantiate ingredient card into player hand
+	instantiate_ingredient_card(ingredient_name)
+
+
+# Instantiate new ingredient cards into scene
+# with ingredient name provided
+func instantiate_ingredient_card(ingredient_name: String) -> void:
+	var new_card = instantiate_ingredient_card_helper(ingredient_name)
+	PlayerHand.add_card_to_hand(new_card, CARD_DRAW_SPEED, 0)
+
+# Helper function for instantiating ingredient card
+# Returning the reference to the newly created card of type Node2D
+func instantiate_ingredient_card_helper(ingredient_name: String) -> Node2D:
+	# Instantiate
+	var card_scene = preload(INGREDIENT_CARD_SCENE_PATH)
+	var new_card: Node2D = card_scene.instantiate()
+	var card_image_path = str("res://ingredients/" + ingredient_name + ".png")
+	new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
+	ingredient_card_manager.add_child(new_card)
+	new_card.name = "IngredientCard"
+	new_card.position = card_starting_position
+	new_card.starting_position = card_starting_position
+	new_card.card_name = ingredient_name
+	new_card.ingredient_name_label.text = ingredient_name
+	
+	# Return
+	return new_card
