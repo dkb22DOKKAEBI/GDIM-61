@@ -84,12 +84,15 @@ z_index = 1
 
 [node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
 position = Vector2(439, 222)
+card_slot_number = "cardslot1"
 
 [node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
 position = Vector2(309, 306)
+card_slot_number = "cardslot2"
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
 position = Vector2(308, 150)
+card_slot_number = "cardslot3"
 
 [node name="Enemy" type="Node2D" parent="BattleField"]
 position = Vector2(820, 220)
