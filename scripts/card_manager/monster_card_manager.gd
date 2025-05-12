@@ -8,7 +8,7 @@ func _ready():
 	super._ready()
 	input_manager.connect("left_mouse_button_released", on_left_clicked_released)
 	
-	# TEST ONLY
+	# Restore monster hand at the start of a level
 	for monster_name: String in PlayerHand.legacy_monster_hand:
 		var card_scene = preload("res://scenes/card/card.tscn")
 		var new_card = card_scene.instantiate()
@@ -26,6 +26,7 @@ func _ready():
 			new_card.set_card_z_index(1)
 		else:
 			new_card.set_card_z_index(0)
+	PlayerHand.legacy_monster_hand.clear()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

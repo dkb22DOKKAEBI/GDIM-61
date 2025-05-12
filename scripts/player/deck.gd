@@ -22,6 +22,7 @@ func _ready():
 	print(PlayerHand.player_ingredient_hand.size())
 	for ingredient_name: String in PlayerHand.legacy_ingredient_hand:
 		instantiate_ingredient_card(ingredient_name)
+	PlayerHand.legacy_ingredient_hand.clear()
 	
 	# Shuffle deck and display left number info
 	PlayerController.deck.shuffle()

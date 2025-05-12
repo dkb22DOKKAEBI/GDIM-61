@@ -4,7 +4,7 @@ extends Node
 const STARTING_HEALTH = 10
 const STARTING_HAND_SIZE = 2
 
-# Player's deck
+# Player's deck -> initially 28
 var deck: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
 "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
 "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla",
