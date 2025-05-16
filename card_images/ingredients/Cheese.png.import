@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://342tmwi5ayqb"
-path="res://.godot/imported/decklength.png-200b2c339d6f44423b5bea227b6ea1fc.ctex"
+uid="uid://b2tm3w8cgt66r"
+path="res://.godot/imported/Cheese.png-0036e6f4e3d0304fe4258712c57ed485.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/decklength.png"
-dest_files=["res://.godot/imported/decklength.png-200b2c339d6f44423b5bea227b6ea1fc.ctex"]
+source_file="res://card_images/ingredients/Cheese.png"
+dest_files=["res://.godot/imported/Cheese.png-0036e6f4e3d0304fe4258712c57ed485.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crdnx5y6yu3is"
-path="res://.godot/imported/Dough.png-e290810424f3cda348347095cf3928cf.ctex"
+uid="uid://1twgaqyysgpx"
+path="res://.godot/imported/Drawing.sketchpad.png-c68f5bd2dae062a93815b8e97b237954.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingredients/Dough.png"
-dest_files=["res://.godot/imported/Dough.png-e290810424f3cda348347095cf3928cf.ctex"]
+source_file="res://card_images/monsters/Drawing.sketchpad.png"
+dest_files=["res://.godot/imported/Drawing.sketchpad.png-c68f5bd2dae062a93815b8e97b237954.ctex"]
 
 [params]
 

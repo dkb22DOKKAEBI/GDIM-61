@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2plswik5kalt"
-path="res://.godot/imported/Ham.png-6f3f84ae5e43ef8065880a3c2dab2593.ctex"
+uid="uid://j76vku1aluq0"
+path="res://.godot/imported/Sandwich.png-238341646820c7a74aac42768981a291.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingredients/Ham.png"
-dest_files=["res://.godot/imported/Ham.png-6f3f84ae5e43ef8065880a3c2dab2593.ctex"]
+source_file="res://card_images/monsters/Sandwich.png"
+dest_files=["res://.godot/imported/Sandwich.png-238341646820c7a74aac42768981a291.ctex"]
 
 [params]
 

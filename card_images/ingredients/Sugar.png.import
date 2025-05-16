@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2tm3w8cgt66r"
-path="res://.godot/imported/Cheese.png-bd6a4524ab589ea880981487506d65a7.ctex"
+uid="uid://crbshv2xbok0l"
+path="res://.godot/imported/Sugar.png-e9096ff0cdb08f31b00770a93831a821.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingredients/Cheese.png"
-dest_files=["res://.godot/imported/Cheese.png-bd6a4524ab589ea880981487506d65a7.ctex"]
+source_file="res://card_images/ingredients/Sugar.png"
+dest_files=["res://.godot/imported/Sugar.png-e9096ff0cdb08f31b00770a93831a821.ctex"]
 
 [params]
 

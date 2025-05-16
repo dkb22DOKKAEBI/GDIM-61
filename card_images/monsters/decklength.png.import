@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c75tgs8ekjcun"
-path="res://.godot/imported/Quesadilla.png-66cff671f20d67e63898bbc079b49897.ctex"
+uid="uid://342tmwi5ayqb"
+path="res://.godot/imported/decklength.png-82a8d34fa2599150507a996ad857f5a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Quesadilla.png"
-dest_files=["res://.godot/imported/Quesadilla.png-66cff671f20d67e63898bbc079b49897.ctex"]
+source_file="res://card_images/monsters/decklength.png"
+dest_files=["res://.godot/imported/decklength.png-82a8d34fa2599150507a996ad857f5a9.ctex"]
 
 [params]
 

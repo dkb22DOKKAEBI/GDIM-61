@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvmypg70g5akh"
-path="res://.godot/imported/CardSlot.png-1b2cb59729fef690a46ffbb093dc621c.ctex"
+uid="uid://brsnqw1uton8m"
+path="res://.godot/imported/Cheesecake.png-503ff71a993c184d940455ab3cd1fc27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/CardSlot.png"
-dest_files=["res://.godot/imported/CardSlot.png-1b2cb59729fef690a46ffbb093dc621c.ctex"]
+source_file="res://card_images/monsters/Cheesecake.png"
+dest_files=["res://.godot/imported/Cheesecake.png-503ff71a993c184d940455ab3cd1fc27.ctex"]
 
 [params]
 

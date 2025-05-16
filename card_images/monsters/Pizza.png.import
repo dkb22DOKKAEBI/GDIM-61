@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1tx3ipc0rtl6"
-path="res://.godot/imported/Vacuum_boss.png-fb338f9b10666dfb27831b338ce703aa.ctex"
+uid="uid://c8svvru8n5cfu"
+path="res://.godot/imported/Pizza.png-288dbb463d42479adf2e3292ee2d53b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Vacuum_boss.png"
-dest_files=["res://.godot/imported/Vacuum_boss.png-fb338f9b10666dfb27831b338ce703aa.ctex"]
+source_file="res://card_images/monsters/Pizza.png"
+dest_files=["res://.godot/imported/Pizza.png-288dbb463d42479adf2e3292ee2d53b1.ctex"]
 
 [params]
 

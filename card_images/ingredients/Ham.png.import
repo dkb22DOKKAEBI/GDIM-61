@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1twgaqyysgpx"
-path="res://.godot/imported/Drawing.sketchpad.png-c1594a29c1b439f4ed60fd1a049f2cc4.ctex"
+uid="uid://d2plswik5kalt"
+path="res://.godot/imported/Ham.png-8045c7531952ebcc992e29052b6de96e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Drawing.sketchpad.png"
-dest_files=["res://.godot/imported/Drawing.sketchpad.png-c1594a29c1b439f4ed60fd1a049f2cc4.ctex"]
+source_file="res://card_images/ingredients/Ham.png"
+dest_files=["res://.godot/imported/Ham.png-8045c7531952ebcc992e29052b6de96e.ctex"]
 
 [params]
 

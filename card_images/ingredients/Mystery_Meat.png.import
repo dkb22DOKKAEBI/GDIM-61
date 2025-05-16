@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j76vku1aluq0"
-path="res://.godot/imported/Sandwich.png-bf0b30dfe2c452d11c0e9d50d25734aa.ctex"
+uid="uid://daugm8a1s36aw"
+path="res://.godot/imported/Mystery_Meat.png-3eaa710a0c5fcb3ac374e4e394c22295.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Sandwich.png"
-dest_files=["res://.godot/imported/Sandwich.png-bf0b30dfe2c452d11c0e9d50d25734aa.ctex"]
+source_file="res://card_images/ingredients/Mystery_Meat.png"
+dest_files=["res://.godot/imported/Mystery_Meat.png-3eaa710a0c5fcb3ac374e4e394c22295.ctex"]
 
 [params]
 

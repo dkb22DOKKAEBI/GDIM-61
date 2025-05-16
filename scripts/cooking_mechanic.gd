@@ -14,6 +14,7 @@ func _ready():
 	PlayerHand.update_pot_ui_signal.connect(update_pot_ui)
 
 
+# Cook to create new monster card
 func _on_cook() -> void:
 	if battle_manager.is_on_player_turn:
 		if PlayerHand.selected_ingredients.size() == 0:
@@ -27,8 +28,7 @@ func _on_cook() -> void:
 		# Instantiate monster
 		var card_scene = preload(MONSTER_CARD_SCENE_PATH)
 		var new_card: Node2D = card_scene.instantiate()
-		var card_image_path = str("res://cards/" + result_monster + ".png")
-		#new_card.get_node("CardImage").texture = load(card_image_path)
+		var card_image_path = str("res://card_images/monsters/" + result_monster + ".png")
 		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 		new_card.get_node("Attack").text = str(CardDatabase.CARDS[result_monster][0])
 		new_card.get_node("Health").text = str(CardDatabase.CARDS[result_monster][1])

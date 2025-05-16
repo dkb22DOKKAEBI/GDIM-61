@@ -12,7 +12,7 @@ func _ready():
 	for monster_name: String in PlayerHand.legacy_monster_hand:
 		var card_scene = preload("res://scenes/card/card.tscn")
 		var new_card = card_scene.instantiate()
-		var card_image_path = str("res://cards/" + monster_name + ".png")
+		var card_image_path = str("res://card_images/monsters/" + monster_name + ".png")
 		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 		new_card.get_node("Attack").text = str(CardDatabase.CARDS[monster_name][0])
 		new_card.get_node("Health").text = str(CardDatabase.CARDS[monster_name][1])
@@ -29,7 +29,7 @@ func _ready():
 	PlayerHand.legacy_monster_hand.clear()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Update position of card being dragged
 func _process(_delta: float)-> void:
 	if card_being_dragged:
 		var mouse_pos = get_global_mouse_position()
@@ -37,9 +37,13 @@ func _process(_delta: float)-> void:
 		clamp(mouse_pos.y, 0, screen_size.y))
 
 
+# Start monster card dragging
 func start_drag(card):
+	# Consider as hovered off the monster card when dragging starts
+	on_hovered_off_card(card)
+	
+	# Start dragging
 	card_being_dragged = card
-	card.scale = Vector2(1, 1)
 
 
 func on_left_clicked_released():
@@ -47,8 +51,9 @@ func on_left_clicked_released():
 		finish_drag()
 
 
-func finish_drag():
-	card_being_dragged.scale = Vector2(1, 1)
+# Finish monster card dragging
+func finish_drag():	
+	# Try get card slot at the position where the monster card is dropped
 	var card_slot_found = raycast_check_for_card_slot()
 	
 	# Check whether card goes into  cardslot or goes back to hand
@@ -62,20 +67,21 @@ func finish_drag():
 		card_being_dragged.global_position = card_slot_found.global_position
 		card_being_dragged.scale = Vector2(1.3, 1.3) * 1.2
 		
-		#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
 		card_being_dragged.placed = true
 		card_slot_found.card_in_slot = card_being_dragged
 		CardslotManager.test() # Only for test purpose
 		card_being_dragged.card_slot_on = card_slot_found
 		battle_manager.player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
+		# Card goes back to player's hand
 		PlayerHand.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
 	
 	# Check if mouse hovering on any card
 	var new_card_hovered = raycast_check_for_card()
 	card_being_dragged = null
 	if new_card_hovered:
-		super.highlight_card(new_card_hovered, true)
+		#super.highlight_card(new_card_hovered, true)
+		on_hovered_over_card(new_card_hovered)
 
 
 func raycast_check_for_card_slot():

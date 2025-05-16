@@ -10,6 +10,7 @@ func _init(ingredient_name: String = "") -> void:
 	self.ingredient_name = ingredient_name
 
 
+# Select ingredient card
 func ingredient_card_selected():
 	selected_label.visible = !selected_label.visible
 	
