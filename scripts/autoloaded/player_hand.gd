@@ -110,7 +110,8 @@ func animate_card_to_position(card, new_position, speed):
 	
 	# Card animation ends
 	await tween.finished
-	card.is_in_animation = false
+	if card: # Check whether the card still exists
+		card.is_in_animation = false
 
 
 func remove_card_from_hand(card: Card, flag: int):
