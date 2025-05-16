@@ -48,7 +48,7 @@ func raycast_at_cursor():
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
 				if battle_manager.is_on_player_turn and monster_card_found:
-					if not monster_card_found.placed and not PlayerHand.on_ingredient_hand:
+					if not monster_card_found.placed:
 						card_manager_reference.start_drag(monster_card_found)
 					elif monster_card_found.placed:
 						select_placed_card.emit(monster_card_found)

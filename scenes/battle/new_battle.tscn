@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=18 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="11_gfgng"]
 [ext_resource type="Texture2D" uid="uid://dvdm57iis6taf" path="res://art/pot.png" id="12_sspc1"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_yxeuc"]
-[ext_resource type="Script" uid="uid://nrqhns78ljqf" path="res://scripts/button/switch_hand.gd" id="13_aijqa"]
 [ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://cards/decklength.png" id="14_qwuef"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="17_bsxgu"]
@@ -67,7 +66,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui")]
-visible = false
 z_index = 1
 script = ExtResource("5_bsxgu")
 input_manager = NodePath("../../Player/InputManager")
@@ -183,6 +181,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="DeckHand" type="NinePatchRect" parent="UI/HandUI"]
+visible = false
 visibility_layer = 512
 z_index = 2
 layout_mode = 0
@@ -193,6 +192,7 @@ offset_bottom = 582.0
 texture = ExtResource("14_qwuef")
 
 [node name="DeckHand2" type="NinePatchRect" parent="UI/HandUI"]
+visible = false
 visibility_layer = 512
 z_index = 1
 layout_mode = 0
@@ -203,6 +203,7 @@ offset_bottom = 597.0
 texture = ExtResource("14_qwuef")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/HandUI"]
+visible = false
 layout_mode = 0
 offset_left = 311.0
 offset_top = 448.0
@@ -251,7 +252,8 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="SwitchHandButton" type="Button" parent="UI/Buttons" node_paths=PackedStringArray("ingredient_card_manager", "monster_card_manager")]
+[node name="SwitchHandButton" type="Button" parent="UI/Buttons"]
+visible = false
 z_index = 2
 layout_mode = 0
 offset_left = 249.0
@@ -265,9 +267,6 @@ theme_override_font_sizes/font_size = 12
 text = "Switch
 Hand"
 flat = true
-script = ExtResource("13_aijqa")
-ingredient_card_manager = NodePath("../../../PlayerHand/IngredientCardManager")
-monster_card_manager = NodePath("../../../PlayerHand/MonsterCardManager")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/SwitchHandButton"]
 z_index = -1
@@ -405,6 +404,5 @@ script = ExtResource("18_bsxgu")
 boss_parent = NodePath("../BattleField/Enemy")
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
-[connection signal="pressed" from="UI/Buttons/SwitchHandButton" to="UI/Buttons/SwitchHandButton" method="_on_switch_hand"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
 [connection signal="pressed" from="UI/Buttons/RecipeButton" to="UI/RecipeBook" method="_on_recipe_book_button_pressed"]

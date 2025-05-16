@@ -6,6 +6,7 @@ const DECK_WIDTH = 40
 
 const CARD_WIDTH = 75
 const HAND_Y_POSITION = 525
+const MONSTER_CARD_Y_OFFSET = 80
 const DEFAULT_CARD_MOVE_SPEED = 0.1
 
 var player_monster_hand: Array[Card] = [] # Player's monster hand
@@ -75,8 +76,13 @@ func add_card_to_hand(card: Node2D, speed, flag: int):
 
 func update_hand_positions(speed, target_hand: Array):
 	for i in range(target_hand.size()):
-		#Get new card position based on index passed in
+		# Get new card position based on index passed in
 		var new_position = Vector2(calculate_card_position(i, target_hand.size()), HAND_Y_POSITION) 
+		
+		# Check whether is mosnter card
+		if target_hand == player_monster_hand:
+			new_position.y += MONSTER_CARD_Y_OFFSET
+		
 		var card = target_hand[i]
 		card.starting_position = new_position
 		animate_card_to_position(card, new_position, speed)
