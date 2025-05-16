@@ -37,6 +37,7 @@ func _process(_delta: float)-> void:
 		clamp(mouse_pos.y, 0, screen_size.y))
 
 
+# Start monster card dragging
 func start_drag(card):
 	card_being_dragged = card
 	card.scale = Vector2(1, 1)
@@ -47,6 +48,7 @@ func on_left_clicked_released():
 		finish_drag()
 
 
+# Finish monster card dragging
 func finish_drag():
 	card_being_dragged.scale = Vector2(1, 1)
 	var card_slot_found = raycast_check_for_card_slot()
@@ -62,13 +64,13 @@ func finish_drag():
 		card_being_dragged.global_position = card_slot_found.global_position
 		card_being_dragged.scale = Vector2(1.3, 1.3) * 1.2
 		
-		#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
 		card_being_dragged.placed = true
 		card_slot_found.card_in_slot = card_being_dragged
 		CardslotManager.test() # Only for test purpose
 		card_being_dragged.card_slot_on = card_slot_found
 		battle_manager.player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
+		# Card goes back to player's hand
 		PlayerHand.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
 	
 	# Check if mouse hovering on any card

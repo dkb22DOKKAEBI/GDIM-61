@@ -1,19 +1,19 @@
 extends Node2D
 
-const DESIRED_WINDOW_WIDTH = 960
+const DESIRED_WINDOW_WIDTH = 960 # Window width
 const SIDEBAR_WIDTH = 225
-const DECK_WIDTH = 40
+const DECK_WIDTH = 40 # Deck width
+const CARD_WIDTH = 75 # Card width
 
-const CARD_WIDTH = 75
-const HAND_Y_POSITION = 525
-const MONSTER_CARD_Y_OFFSET = 80
-const MONSTER_CARD_UP_Y_OFFSET = 40
-const DEFAULT_CARD_MOVE_SPEED = 0.1
+const HAND_Y_POSITION = 525 # Y position for ingredient card
+const MONSTER_CARD_Y_OFFSET = 80 # Y offset for monster cards' position in hand
+const MONSTER_CARD_UP_Y_OFFSET = 40 # Y offset for monster card when hovered over
+const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed
 
 var player_monster_hand: Array[Card] = [] # Player's monster hand
 var player_ingredient_hand: Array[Card] = [] # Player's ingredient hand
-var legacy_monster_hand: Array[String] = []
-var legacy_ingredient_hand: Array[String] = []
+var legacy_monster_hand: Array[String] = [] # Record of player's monster hand after completion of a level
+var legacy_ingredient_hand: Array[String] = [] # Record of player's ingredient hand after completion of a level
 
 var center_screen_x
 var on_ingredient_hand: bool = true
@@ -55,7 +55,9 @@ func clear_player_legacy() -> void:
 	player_monster_hand.clear()
 
 
-
+# Get desired player hand
+# Return ingredient hand with input 0
+# Return monster hand with input 1
 func get_target_hand(flag: int) -> Array:
 	if flag == 0:
 		return player_ingredient_hand
@@ -63,6 +65,7 @@ func get_target_hand(flag: int) -> Array:
 		return player_monster_hand
 
 
+# Add a new card to player hand
 # If input 0, add to ingredient hand
 # If input 1, add to monster hand
 func add_card_to_hand(card: Node2D, speed, flag: int):
@@ -75,6 +78,7 @@ func add_card_to_hand(card: Node2D, speed, flag: int):
 		animate_card_to_position(card, card.starting_position, DEFAULT_CARD_MOVE_SPEED)
 
 
+# Update player hand cards' positions
 func update_hand_positions(speed, target_hand: Array):
 	for i in range(target_hand.size()):
 		# Get new card position based on index passed in
@@ -89,6 +93,7 @@ func update_hand_positions(speed, target_hand: Array):
 		animate_card_to_position(card, new_position, speed)
 
 
+# Calculate new card x-position in hand
 func calculate_card_position(index, hand_size: int):
 	var total_width = (hand_size -1) * CARD_WIDTH
 	@warning_ignore("integer_division")
@@ -96,11 +101,14 @@ func calculate_card_position(index, hand_size: int):
 	return x_offset
 
 
+# Animate card to the new position with specified speed
 func animate_card_to_position(card, new_position, speed):
+	# Start card animation
 	card.is_in_animation = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "position", new_position, speed)
 	
+	# Card animation ends
 	await tween.finished
 	card.is_in_animation = false
 
