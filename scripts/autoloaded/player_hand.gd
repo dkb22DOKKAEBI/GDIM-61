@@ -7,6 +7,7 @@ const DECK_WIDTH = 40
 const CARD_WIDTH = 75
 const HAND_Y_POSITION = 525
 const MONSTER_CARD_Y_OFFSET = 80
+const MONSTER_CARD_UP_Y_OFFSET = 40
 const DEFAULT_CARD_MOVE_SPEED = 0.1
 
 var player_monster_hand: Array[Card] = [] # Player's monster hand

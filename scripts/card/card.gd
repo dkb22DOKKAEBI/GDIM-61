@@ -9,9 +9,12 @@ var placed := false
 var attacked_this_turn := false
 var card_slot_on: Cardslot
 var card_name: String
+
 var is_monster_card: bool = false
+var is_in_animation: bool = false
 
 @export var selected_label: Label 
+@export var collision: CollisionObject2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -40,3 +43,7 @@ func set_card_z_index(index: int) -> void:
 
 func selected_label_vis(flag: bool):
 	selected_label.visible = flag
+
+
+func set_pickable(flag: bool):
+	collision.input_pickable = flag

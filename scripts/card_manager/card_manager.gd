@@ -24,7 +24,7 @@ func connect_card_signals(card):
 
 
 func on_hovered_over_card(card):
-	if card_being_dragged:
+	if card_being_dragged or card.is_in_animation:
 		return
 	
 	# Check whether is monster card
@@ -45,7 +45,7 @@ func on_hovered_over_card(card):
 
 
 func on_hovered_off_card(card):
-	if card_being_dragged:
+	if card_being_dragged or card.is_in_animation:
 		return
 	
 	# Check whether is monster card
@@ -72,8 +72,8 @@ func highlight_card(card, hovered):
 		# Move up monster card
 		if card.is_monster_card:
 			var new_position: Vector2 = card.position
-			new_position.y -= PlayerHand.MONSTER_CARD_Y_OFFSET
-			PlayerHand.animate_card_to_position(card, new_position, 0.1)
+			new_position.y -= PlayerHand.MONSTER_CARD_UP_Y_OFFSET
+			PlayerHand.animate_card_to_position(card, new_position, 0.05)
 	else:
 		#card.scale = Vector2(1, 1)
 		card.scale /= 1.2
@@ -82,5 +82,5 @@ func highlight_card(card, hovered):
 		# Move down monster card
 		if card.is_monster_card:
 			var new_position: Vector2 = card.position
-			new_position.y += PlayerHand.MONSTER_CARD_Y_OFFSET
-			PlayerHand.animate_card_to_position(card, new_position, 0.1)
+			new_position.y += PlayerHand.MONSTER_CARD_UP_Y_OFFSET
+			PlayerHand.animate_card_to_position(card, new_position, 0.05)
