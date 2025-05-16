@@ -29,7 +29,7 @@ func _ready():
 	PlayerHand.legacy_monster_hand.clear()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Update position of card being dragged
 func _process(_delta: float)-> void:
 	if card_being_dragged:
 		var mouse_pos = get_global_mouse_position()
@@ -39,9 +39,11 @@ func _process(_delta: float)-> void:
 
 # Start monster card dragging
 func start_drag(card):
-	print("Start dragging: " + str(card.starting_position))
+	# Consider as hovered off the monster card when dragging starts
+	on_hovered_off_card(card)
+	
+	# Start dragging
 	card_being_dragged = card
-	highlight_card(card, false)
 
 
 func on_left_clicked_released():
@@ -50,10 +52,7 @@ func on_left_clicked_released():
 
 
 # Finish monster card dragging
-func finish_drag():
-	# Dis-highlight monster card being dragged
-	#highlight_card(card_being_dragged, false)
-	
+func finish_drag():	
 	# Try get card slot at the position where the monster card is dropped
 	var card_slot_found = raycast_check_for_card_slot()
 	
@@ -75,14 +74,14 @@ func finish_drag():
 		battle_manager.player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
 		# Card goes back to player's hand
-		print("Finish dragging: " + str(card_being_dragged.starting_position))
 		PlayerHand.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
 	
 	# Check if mouse hovering on any card
 	var new_card_hovered = raycast_check_for_card()
 	card_being_dragged = null
 	if new_card_hovered:
-		super.highlight_card(new_card_hovered, true)
+		#super.highlight_card(new_card_hovered, true)
+		on_hovered_over_card(new_card_hovered)
 
 
 func raycast_check_for_card_slot():

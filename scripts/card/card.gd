@@ -5,7 +5,7 @@ signal hovered
 signal hovered_off
 
 var starting_position
-var placed := false
+var placed := false # Whether the card is placed inside the cardslot
 var attacked_this_turn := false
 var card_slot_on: Cardslot
 var card_name: String
