@@ -54,9 +54,8 @@ func raycast_at_cursor():
 						select_placed_card.emit(monster_card_found)
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
-				if PlayerHand.on_ingredient_hand:
-					var ingredient_card_found = point.collider.get_parent()
-					ingredient_card_found.ingredient_card_selected()
+				var ingredient_card_found = point.collider.get_parent()
+				ingredient_card_found.ingredient_card_selected()
 			elif result_collision_mask == COLLISION_MASK_DECK:
 				#Deck Clicked
 				#deck_reference.draw_card()

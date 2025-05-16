@@ -16,7 +16,6 @@ var legacy_monster_hand: Array[String] = [] # Record of player's monster hand af
 var legacy_ingredient_hand: Array[String] = [] # Record of player's ingredient hand after completion of a level
 
 var center_screen_x
-var on_ingredient_hand: bool = true
 var selected_ingredients: Array[Card]
 
 signal update_pot_ui_signal
@@ -41,9 +40,6 @@ func clear_player_hand() -> void:
 	# Clear player hand
 	player_ingredient_hand.clear()
 	player_monster_hand.clear()
-	
-	# Reset which hand the player is on
-	on_ingredient_hand = true
 
 
 # Clear both player current and legacy hands when the game is over
