@@ -32,8 +32,16 @@ func on_hovered_over_card(card):
 	if card.is_highlighted:
 		return
 	
+	# Highlight card
+	card.is_highlighted = true
+	card.scale *= 1.2
+	card.set_card_z_index(2)
+	
 	# Check whether is monster card
 	if card.is_monster_card and not card.placed:
+		# Update PlayerHand for how many monster card hovered over
+		PlayerHand.hovering_monster_num += 1
+		
 		# Disable all detection for ingredient cards hover
 		for ingredient_card in PlayerHand.player_ingredient_hand:
 			if ingredient_card.scale.x == 1.2:
@@ -44,15 +52,12 @@ func on_hovered_over_card(card):
 		# Move monster card up
 		var new_position: Vector2 = card.position
 		new_position.y -= PlayerHand.MONSTER_CARD_UP_Y_OFFSET
-		PlayerHand.animate_card_to_position(card, new_position, 0.05)
+		PlayerHand.animate_card_to_position(card, new_position, 0.015)
 		
 		# Make cover for ingredient cards visible
-		cover.visible = true
-	
-	# Highlight card
-	card.is_highlighted = true
-	card.scale *= 1.2
-	card.set_card_z_index(2)
+		if PlayerHand.hovering_monster_num != 0:
+			print("true")
+			cover.visible = true
 	
 	# Update sidebar UI
 	temp_ui.update_card_info(card.card_name)
@@ -68,8 +73,16 @@ func on_hovered_off_card(card):
 	if not card.is_highlighted:
 		return
 	
+	# Dis-highlight card
+	card.is_highlighted = false
+	card.scale /= 1.2
+	card.set_card_z_index(0)
+	
 	# Check whether is monster card
 	if card.is_monster_card and not card.placed:
+		# Update PlayerHand for how many monster card hovered over
+		PlayerHand.hovering_monster_num -= 1
+		
 		# Enable all detection for ingredient cards hover
 		for ingredient_card in PlayerHand.player_ingredient_hand:
 			ingredient_card.set_pickable(true)
@@ -77,15 +90,12 @@ func on_hovered_off_card(card):
 		# Move monster card down
 		var new_position: Vector2 = card.position
 		new_position.y += PlayerHand.MONSTER_CARD_UP_Y_OFFSET
-		PlayerHand.animate_card_to_position(card, new_position, 0.05)
+		PlayerHand.animate_card_to_position(card, new_position, 0.015)
 		
-		# Make cover for ingredient cards invisible
-		cover.visible = false
-	
-	# Dis-highlight card
-	card.is_highlighted = false
-	card.scale /= 1.2
-	card.set_card_z_index(0)
+		# Make cover for ingredient cards invisible if no monster card hovered over
+		if PlayerHand.hovering_monster_num == 0:
+			print("false")
+			cover.visible = false
 	
 	# Update sidebar UI
 	temp_ui.update_card_info(temp_ui.default_card_info_text)

@@ -15,6 +15,7 @@ var player_ingredient_hand: Array[Card] = [] # Player's ingredient hand
 var legacy_monster_hand: Array[String] = [] # Record of player's monster hand after completion of a level
 var legacy_ingredient_hand: Array[String] = [] # Record of player's ingredient hand after completion of a level
 
+var hovering_monster_num: int = 0 # 0 indicates no monster card hovered over
 var center_screen_x
 var selected_ingredients: Array[Card]
 
