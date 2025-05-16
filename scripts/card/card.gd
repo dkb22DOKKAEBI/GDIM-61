@@ -12,6 +12,7 @@ var card_name: String
 
 var is_monster_card: bool = false
 var is_in_animation: bool = false
+var is_highlighted: bool = false
 
 @export var selected_label: Label 
 @export var collision: CollisionObject2D
