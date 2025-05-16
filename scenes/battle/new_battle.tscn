@@ -65,24 +65,26 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui")]
+[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui", "cover")]
 z_index = 7
 script = ExtResource("5_bsxgu")
 input_manager = NodePath("../../Player/InputManager")
 battle_manager = NodePath("../../BattleManager")
 temp_ui = NodePath("../../UI")
+cover = NodePath("../IngredientCardManager/Cover")
 
-[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("temp_ui")]
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("temp_ui", "cover")]
 z_index = 1
 script = ExtResource("6_h8t0o")
 temp_ui = NodePath("../../UI")
+cover = NodePath("Cover")
 
 [node name="Cover" type="ColorRect" parent="PlayerHand/IngredientCardManager"]
 visible = false
-modulate = Color(0.385493, 0.385492, 0.385492, 0.321569)
+modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
 z_index = 1
 offset_left = 281.0
-offset_top = 484.0
+offset_top = 464.0
 offset_right = 863.0
 offset_bottom = 600.0
 
