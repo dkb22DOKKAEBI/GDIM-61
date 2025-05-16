@@ -51,9 +51,9 @@ func on_hovered_over_card(card):
 		cover.visible = true
 	
 	# Highlight card
-		card.is_highlighted = true
-		card.scale *= 1.2
-		card.set_card_z_index(2)
+	card.is_highlighted = true
+	card.scale *= 1.2
+	card.set_card_z_index(2)
 	
 	# Update sidebar UI
 	temp_ui.update_card_info(card.card_name)
@@ -85,9 +85,9 @@ func on_hovered_off_card(card):
 		cover.visible = false
 	
 	# Dis-highlight card
-		card.is_highlighted = false
-		card.scale /= 1.2
-		card.set_card_z_index(0)
+	card.is_highlighted = false
+	card.scale /= 1.2
+	card.set_card_z_index(0)
 	
 	# Update sidebar UI
 	temp_ui.update_card_info(temp_ui.default_card_info_text)
