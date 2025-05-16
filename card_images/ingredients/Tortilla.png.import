@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1xpc1sl78hb"
-path="res://.godot/imported/Lettuce.png-6089fd4d1ecf273c97d4da71ce5b147b.ctex"
+uid="uid://cnjhpu3rmqom4"
+path="res://.godot/imported/Tortilla.png-15983b11a49b617715e12dbd4002c71d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingredients/Lettuce.png"
-dest_files=["res://.godot/imported/Lettuce.png-6089fd4d1ecf273c97d4da71ce5b147b.ctex"]
+source_file="res://card_images/ingredients/Tortilla.png"
+dest_files=["res://.godot/imported/Tortilla.png-15983b11a49b617715e12dbd4002c71d.ctex"]
 
 [params]
 

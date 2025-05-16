@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crbshv2xbok0l"
-path="res://.godot/imported/Sugar.png-cb1f1de5b68e36be1b33979284940d03.ctex"
+uid="uid://dvatw4kwjl4nv"
+path="res://.godot/imported/Trashcan.png-86c5b959813d7956af6905c5ab3795bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingredients/Sugar.png"
-dest_files=["res://.godot/imported/Sugar.png-cb1f1de5b68e36be1b33979284940d03.ctex"]
+source_file="res://card_images/monsters/Trashcan.png"
+dest_files=["res://.godot/imported/Trashcan.png-86c5b959813d7956af6905c5ab3795bb.ctex"]
 
 [params]
 

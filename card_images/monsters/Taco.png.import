@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlapp75shcsrg"
-path="res://.godot/imported/Deck.png-97711d9d198aab14a33d21b70ace8a8d.ctex"
+uid="uid://dstdwn80cmnrr"
+path="res://.godot/imported/Taco.png-72296b98b6b52fdac55b6822070fc8df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Deck.png"
-dest_files=["res://.godot/imported/Deck.png-97711d9d198aab14a33d21b70ace8a8d.ctex"]
+source_file="res://card_images/monsters/Taco.png"
+dest_files=["res://.godot/imported/Taco.png-72296b98b6b52fdac55b6822070fc8df.ctex"]
 
 [params]
 

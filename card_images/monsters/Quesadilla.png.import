@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6uhfo2tv5woc"
-path="res://.godot/imported/Drawing.sketchpad(1).png-7c0f693ab2aa02e447e1e2d80839934c.ctex"
+uid="uid://c75tgs8ekjcun"
+path="res://.godot/imported/Quesadilla.png-7518074362cfd8552858bc4284d54eb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Drawing.sketchpad(1).png"
-dest_files=["res://.godot/imported/Drawing.sketchpad(1).png-7c0f693ab2aa02e447e1e2d80839934c.ctex"]
+source_file="res://card_images/monsters/Quesadilla.png"
+dest_files=["res://.godot/imported/Quesadilla.png-7518074362cfd8552858bc4284d54eb1.ctex"]
 
 [params]
 

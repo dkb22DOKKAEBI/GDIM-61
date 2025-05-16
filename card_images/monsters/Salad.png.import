@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnjhpu3rmqom4"
-path="res://.godot/imported/Tortilla.png-667b8c80f1d2f5d5b31e463d2d87c544.ctex"
+uid="uid://ctnl58orbqlsb"
+path="res://.godot/imported/Salad.png-dd9a4e21733cd218d9618d503f483b61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingredients/Tortilla.png"
-dest_files=["res://.godot/imported/Tortilla.png-667b8c80f1d2f5d5b31e463d2d87c544.ctex"]
+source_file="res://card_images/monsters/Salad.png"
+dest_files=["res://.godot/imported/Salad.png-dd9a4e21733cd218d9618d503f483b61.ctex"]
 
 [params]
 

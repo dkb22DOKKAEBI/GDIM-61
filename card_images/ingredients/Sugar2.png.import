@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbkob58iwxl0b"
-path="res://.godot/imported/KnightCard.png-9d02a0b3cd922288181ea98161dde734.ctex"
+uid="uid://cuiuh4oxjjlu2"
+path="res://.godot/imported/Sugar2.png-2115f0deaafc4dfcb6580f60a8f3662e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/KnightCard.png"
-dest_files=["res://.godot/imported/KnightCard.png-9d02a0b3cd922288181ea98161dde734.ctex"]
+source_file="res://card_images/ingredients/Sugar2.png"
+dest_files=["res://.godot/imported/Sugar2.png-2115f0deaafc4dfcb6580f60a8f3662e.ctex"]
 
 [params]
 

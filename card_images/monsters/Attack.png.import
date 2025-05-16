@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj5m63t60k1ld"
-path="res://.godot/imported/Drawing-2.sketchpad(2).png-1827889222db6b7de77cc54a13f99e99.ctex"
+uid="uid://de02lcu1a6sjv"
+path="res://.godot/imported/Attack.png-394ff9e218b22d02eeaa4ef117b1532c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingredients/Drawing-2.sketchpad(2).png"
-dest_files=["res://.godot/imported/Drawing-2.sketchpad(2).png-1827889222db6b7de77cc54a13f99e99.ctex"]
+source_file="res://card_images/monsters/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-394ff9e218b22d02eeaa4ef117b1532c.ctex"]
 
 [params]
 

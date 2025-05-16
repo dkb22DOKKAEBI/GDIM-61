@@ -4,12 +4,6 @@ const INGREDIENT_CARD_SCENE_PATH = "res://scenes/card/ingredient_card.tscn"
 const CARD_DRAW_SPEED = 1
 
 var card_starting_position: Vector2 = Vector2(915, 525)
-# Deck kept track inside player controller
-#var player_deck: Array[String] = ["Tortilla", "Dough", "Cheese", 
-#"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
-#"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", "Cheese", 
-#"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
-#"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce"]
 
 @export var deck_left_num_text: RichTextLabel
 @export var deck_sprite: Sprite2D
@@ -57,7 +51,7 @@ func instantiate_ingredient_card_helper(ingredient_name: String) -> Node2D:
 	# Instantiate
 	var card_scene = preload(INGREDIENT_CARD_SCENE_PATH)
 	var new_card: Node2D = card_scene.instantiate()
-	var card_image_path = str("res://ingredients/" + ingredient_name + ".png")
+	var card_image_path = str("res://card_images/ingredients/" + ingredient_name + ".png")
 	new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 	ingredient_card_manager.add_child(new_card)
 	new_card.name = "IngredientCard"

@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://3gh8v5jkfk5q"]
 
 [ext_resource type="Script" uid="uid://24kp6owjmau" path="res://scripts/boss/vacuum.gd" id="1_bw6u8"]
-[ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://cards/Vacuum_boss.png" id="1_t1ajl"]
+[ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://card_images/monsters/Vacuum_boss.png" id="1_t1ajl"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_bw6u8"]
+
 
 [node name="Boss" type="Node2D" node_paths=PackedStringArray("boss_health_text", "boss_attack_text")]
 script = ExtResource("1_bw6u8")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dstdwn80cmnrr"
-path="res://.godot/imported/Taco.png-5fa54ee429fb8cba79641fbbe1eb6e8c.ctex"
+uid="uid://bf1xpc1sl78hb"
+path="res://.godot/imported/Lettuce.png-1a2c288d834b436cdd69a10d5c7ce20e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Taco.png"
-dest_files=["res://.godot/imported/Taco.png-5fa54ee429fb8cba79641fbbe1eb6e8c.ctex"]
+source_file="res://card_images/ingredients/Lettuce.png"
+dest_files=["res://.godot/imported/Lettuce.png-1a2c288d834b436cdd69a10d5c7ce20e.ctex"]
 
 [params]
 

@@ -12,7 +12,7 @@ func _ready():
 	for monster_name: String in PlayerHand.legacy_monster_hand:
 		var card_scene = preload("res://scenes/card/card.tscn")
 		var new_card = card_scene.instantiate()
-		var card_image_path = str("res://cards/" + monster_name + ".png")
+		var card_image_path = str("res://card_images/monsters/" + monster_name + ".png")
 		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 		new_card.get_node("Attack").text = str(CardDatabase.CARDS[monster_name][0])
 		new_card.get_node("Health").text = str(CardDatabase.CARDS[monster_name][1])

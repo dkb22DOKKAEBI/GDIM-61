@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctnl58orbqlsb"
-path="res://.godot/imported/Salad.png-b8b518b6c33ef2d5298b00dd2f39cf4e.ctex"
+uid="uid://b1tx3ipc0rtl6"
+path="res://.godot/imported/Vacuum_boss.png-101b2689422da98cfba1686332fa83a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/Salad.png"
-dest_files=["res://.godot/imported/Salad.png-b8b518b6c33ef2d5298b00dd2f39cf4e.ctex"]
+source_file="res://card_images/monsters/Vacuum_boss.png"
+dest_files=["res://.godot/imported/Vacuum_boss.png-101b2689422da98cfba1686332fa83a5.ctex"]
 
 [params]
 
