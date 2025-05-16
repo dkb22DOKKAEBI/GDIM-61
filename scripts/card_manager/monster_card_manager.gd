@@ -39,8 +39,9 @@ func _process(_delta: float)-> void:
 
 # Start monster card dragging
 func start_drag(card):
+	print("Start dragging: " + str(card.starting_position))
 	card_being_dragged = card
-	card.scale = Vector2(1, 1)
+	highlight_card(card, false)
 
 
 func on_left_clicked_released():
@@ -50,7 +51,10 @@ func on_left_clicked_released():
 
 # Finish monster card dragging
 func finish_drag():
-	card_being_dragged.scale = Vector2(1, 1)
+	# Dis-highlight monster card being dragged
+	#highlight_card(card_being_dragged, false)
+	
+	# Try get card slot at the position where the monster card is dropped
 	var card_slot_found = raycast_check_for_card_slot()
 	
 	# Check whether card goes into  cardslot or goes back to hand
@@ -71,6 +75,7 @@ func finish_drag():
 		battle_manager.player_cards_on_battlefield[card_slot_found] = card_being_dragged
 	else:
 		# Card goes back to player's hand
+		print("Finish dragging: " + str(card_being_dragged.starting_position))
 		PlayerHand.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)
 	
 	# Check if mouse hovering on any card

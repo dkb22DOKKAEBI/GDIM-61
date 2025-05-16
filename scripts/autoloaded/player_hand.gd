@@ -7,7 +7,7 @@ const CARD_WIDTH = 75 # Card width
 
 const HAND_Y_POSITION = 525 # Y position for ingredient card
 const MONSTER_CARD_Y_OFFSET = 80 # Y offset for monster cards' position in hand
-const MONSTER_CARD_UP_Y_OFFSET = 40 # Y offset for monster card when hovered over
+const MONSTER_CARD_UP_Y_OFFSET = 55 # Y offset for monster card when hovered over
 const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed
 
 var player_monster_hand: Array[Card] = [] # Player's monster hand
