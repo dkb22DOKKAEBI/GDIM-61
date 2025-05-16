@@ -33,7 +33,7 @@ func on_hovered_over_card(card):
 		return
 	
 	# Check whether is monster card
-	if card.is_monster_card:
+	if card.is_monster_card and not card.placed:
 		# Disable all detection for ingredient cards hover
 		for ingredient_card in PlayerHand.player_ingredient_hand:
 			if ingredient_card.scale.x == 1.2:
@@ -42,10 +42,9 @@ func on_hovered_over_card(card):
 			ingredient_card.set_pickable(false)
 		
 		# Move monster card up
-		if card.is_monster_card and not card.placed:
-			var new_position: Vector2 = card.position
-			new_position.y -= PlayerHand.MONSTER_CARD_UP_Y_OFFSET
-			PlayerHand.animate_card_to_position(card, new_position, 0.05)
+		var new_position: Vector2 = card.position
+		new_position.y -= PlayerHand.MONSTER_CARD_UP_Y_OFFSET
+		PlayerHand.animate_card_to_position(card, new_position, 0.05)
 		
 		# Make cover for ingredient cards visible
 		cover.visible = true
@@ -70,16 +69,15 @@ func on_hovered_off_card(card):
 		return
 	
 	# Check whether is monster card
-	if card.is_monster_card:
+	if card.is_monster_card and not card.placed:
 		# Enable all detection for ingredient cards hover
 		for ingredient_card in PlayerHand.player_ingredient_hand:
 			ingredient_card.set_pickable(true)
 		
 		# Move monster card down
-		if card.is_monster_card and not card.placed:
-			var new_position: Vector2 = card.position
-			new_position.y += PlayerHand.MONSTER_CARD_UP_Y_OFFSET
-			PlayerHand.animate_card_to_position(card, new_position, 0.05)
+		var new_position: Vector2 = card.position
+		new_position.y += PlayerHand.MONSTER_CARD_UP_Y_OFFSET
+		PlayerHand.animate_card_to_position(card, new_position, 0.05)
 		
 		# Make cover for ingredient cards invisible
 		cover.visible = false
