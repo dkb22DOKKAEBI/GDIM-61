@@ -7,9 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(60, 83)
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("ingredient_name_label", "selected_label")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("ingredient_name_label", "collision", "selected_label")]
 script = ExtResource("1_6i1cw")
 ingredient_name_label = NodePath("IngredientNameLabel")
+collision = NodePath("Area2D")
 selected_label = NodePath("SelectedLabel")
 
 [node name="CardImage" type="Sprite2D" parent="."]

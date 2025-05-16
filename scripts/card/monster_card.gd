@@ -2,6 +2,11 @@ class_name MonsterCard
 extends Card
 
 
+func _ready() -> void:
+	super._ready()
+	is_monster_card = true
+
+
 func get_label_vis() -> bool:
 	return selected_label.visible
 

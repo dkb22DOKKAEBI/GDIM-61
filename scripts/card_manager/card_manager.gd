@@ -22,17 +22,34 @@ func connect_card_signals(card):
 
 
 func on_hovered_over_card(card):
-	if not card_being_dragged:
-		highlight_card(card, true)
+	if card_being_dragged:
+		return
+	
+	# Check whether is monster card
+	if card.is_monster_card:
+		# Disable all detection for ingredient cards hover
+		for ingredient_card in PlayerHand.player_ingredient_hand:
+			if ingredient_card.scale.x == 1.2:
+				highlight_card(ingredient_card, false)
+			ingredient_card.set_pickable(false)
+	
+	highlight_card(card, true)
 	
 	# Update sidebar UI
 	temp_ui.update_card_info(card.card_name)
 
 
 func on_hovered_off_card(card):
-	if not card_being_dragged:
-		#if not dragging
-		highlight_card(card, false)
+	if card_being_dragged:
+		return
+	
+	# Check whether is monster card
+	if card.is_monster_card:
+		# Enable all detection for ingredient cards hover
+		for ingredient_card in PlayerHand.player_ingredient_hand:
+			ingredient_card.set_pickable(true)
+	
+	highlight_card(card, false)
 	
 	# Update sidebar UI
 	temp_ui.update_card_info(temp_ui.default_card_info_text)
@@ -46,4 +63,4 @@ func highlight_card(card, hovered):
 	else:
 		#card.scale = Vector2(1, 1)
 		card.scale /= 1.2
-		card.set_card_z_index(1)
+		card.set_card_z_index(0)

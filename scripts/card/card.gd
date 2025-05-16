@@ -9,6 +9,7 @@ var placed := false
 var attacked_this_turn := false
 var card_slot_on: Cardslot
 var card_name: String
+var is_monster_card: bool = false
 
 @export var selected_label: Label 
 

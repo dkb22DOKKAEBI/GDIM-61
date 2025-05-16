@@ -2,6 +2,7 @@ class_name IngredientCard
 extends Card
 
 @export var ingredient_name_label: Label
+@export var collision: CollisionObject2D
 var ingredient_name: String
 
 
@@ -21,3 +22,7 @@ func ingredient_card_selected():
 
 	# Update pot ui predicted cooking result
 	PlayerHand.update_sidebar_pot_ui()
+
+
+func set_pickable(flag: bool):
+	collision.input_pickable = flag
