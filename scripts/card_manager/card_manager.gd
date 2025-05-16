@@ -52,11 +52,10 @@ func on_hovered_over_card(card):
 		# Move monster card up
 		var new_position: Vector2 = card.position
 		new_position.y -= PlayerHand.MONSTER_CARD_UP_Y_OFFSET
-		PlayerHand.animate_card_to_position(card, new_position, 0.015)
+		PlayerHand.animate_card_to_position(card, new_position, 0)
 		
 		# Make cover for ingredient cards visible
 		if PlayerHand.hovering_monster_num != 0:
-			print("true")
 			cover.visible = true
 	
 	# Update sidebar UI
@@ -90,11 +89,10 @@ func on_hovered_off_card(card):
 		# Move monster card down
 		var new_position: Vector2 = card.position
 		new_position.y += PlayerHand.MONSTER_CARD_UP_Y_OFFSET
-		PlayerHand.animate_card_to_position(card, new_position, 0.015)
+		PlayerHand.animate_card_to_position(card, new_position, 0)
 		
 		# Make cover for ingredient cards invisible if no monster card hovered over
 		if PlayerHand.hovering_monster_num == 0:
-			print("false")
 			cover.visible = false
 	
 	# Update sidebar UI
