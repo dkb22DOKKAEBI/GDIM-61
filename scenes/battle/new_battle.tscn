@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=17 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="7_lsviu"]
 [ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/new_battle_manager.gd" id="9_bsxgu"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_8eucq"]
-[ext_resource type="Script" uid="uid://bmnt8wfxfx4ec" path="res://scripts/temp_ui.gd" id="11_6owpf"]
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="11_gfgng"]
 [ext_resource type="Texture2D" uid="uid://dvdm57iis6taf" path="res://art/pot.png" id="12_sspc1"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_yxeuc"]
@@ -108,26 +107,24 @@ card_slot_number = "cardslot3"
 [node name="Enemy" type="Node2D" parent="BattleField"]
 position = Vector2(820, 220)
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_ui", "temp_attack_message")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_attack_message")]
 script = ExtResource("9_bsxgu")
 battle_timer = NodePath("BattleTimer")
 input_manager = NodePath("../Player/InputManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 enemy = NodePath("../BattleField/Enemy")
 player_health_text = NodePath("../Player/PlayerHealth")
-temp_ui = NodePath("../UI")
 temp_attack_message = NodePath("../UI/TempAttackMessage")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
 one_shot = true
 
-[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager", "temp_ui")]
+[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager")]
 script = ExtResource("10_8eucq")
 battle_manager = NodePath("../BattleManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
-temp_ui = NodePath("../UI")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("card_info_text", "pot_text")]
+[node name="UI" type="Control" parent="."]
 z_index = -10
 layout_mode = 3
 anchors_preset = 0
@@ -135,9 +132,6 @@ offset_right = 960.0
 offset_bottom = 600.0
 pivot_offset = Vector2(480, 300)
 mouse_filter = 2
-script = ExtResource("11_6owpf")
-card_info_text = NodePath("CardInfoUI/RichTextLabel")
-pot_text = NodePath("PotUI/RichTextLabel")
 
 [node name="BattleUI" parent="UI" instance=ExtResource("11_gfgng")]
 layout_mode = 1

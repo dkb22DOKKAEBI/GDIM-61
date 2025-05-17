@@ -18,7 +18,6 @@ var player_is_attacking: bool = false
 var player_health_text_prefix: String = "Player Health: "
 
 # Temp for Week 6 build
-@export var temp_ui: Control
 @export var temp_attack_message: RichTextLabel
 
 @export var ability_manager: Node2D # never used
@@ -44,13 +43,11 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 		return
 	
 	card.selected_label_vis(!card.get_label_vis())
-	temp_ui.default_card_info_text = card.card_name
 	temp_attack_message.visible = true
 	
 	# Same card being selected
 	if not card.get_label_vis():
 		selected_card_in_slot = null
-		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
 		return
 	
@@ -77,7 +74,6 @@ func _on_player_attack():
 		player_is_attacking = false;
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
-		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
 
 func monster_attack_boss_anim(card):
@@ -124,7 +120,6 @@ func _on_end_turn_button_pressed() -> void:
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
-		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
 	is_on_player_turn = false
 	

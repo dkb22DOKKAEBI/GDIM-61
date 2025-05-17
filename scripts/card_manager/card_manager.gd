@@ -57,9 +57,6 @@ func on_hovered_over_card(card):
 		# Make cover for ingredient cards visible
 		if PlayerHand.hovering_monster_num != 0:
 			cover.visible = true
-	
-	# Update sidebar UI
-	temp_ui.update_card_info(card.card_name)
 
 
 # Hover off card
@@ -94,6 +91,3 @@ func on_hovered_off_card(card):
 		# Make cover for ingredient cards invisible if no monster card hovered over
 		if PlayerHand.hovering_monster_num == 0:
 			cover.visible = false
-	
-	# Update sidebar UI
-	temp_ui.update_card_info(temp_ui.default_card_info_text)
