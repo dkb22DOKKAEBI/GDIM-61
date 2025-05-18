@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="7_lsviu"]
 [ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/new_battle_manager.gd" id="9_bsxgu"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_8eucq"]
+[ext_resource type="Texture2D" uid="uid://dat87b5x8g81i" path="res://art/pot-transparent-background.png" id="11_6owpf"]
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="11_gfgng"]
-[ext_resource type="Texture2D" uid="uid://dvdm57iis6taf" path="res://art/pot.png" id="12_sspc1"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_yxeuc"]
 [ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://card_images/monsters/decklength.png" id="14_qwuef"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
@@ -41,7 +41,7 @@ vertical_alignment = 1
 [node name="PlayerHand" type="Node2D" parent="."]
 
 [node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
-position = Vector2(910, 524)
+position = Vector2(910, 534)
 script = ExtResource("3_6owpf")
 deck_left_num_text = NodePath("DeckLeftNum")
 deck_sprite = NodePath("DeckSprite2D")
@@ -93,15 +93,15 @@ offset_bottom = 600.0
 z_index = 1
 
 [node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
-position = Vector2(439, 222)
+position = Vector2(261, 230)
 card_slot_number = "cardslot1"
 
 [node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
-position = Vector2(309, 306)
+position = Vector2(111, 320)
 card_slot_number = "cardslot2"
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
-position = Vector2(308, 150)
+position = Vector2(112, 144)
 card_slot_number = "cardslot3"
 
 [node name="Enemy" type="Node2D" parent="BattleField"]
@@ -165,12 +165,12 @@ mouse_filter = 2
 [node name="Pot" type="NinePatchRect" parent="UI/PotUI"]
 z_index = 1
 layout_mode = 0
-offset_left = 21.0
-offset_top = 461.0
-offset_right = 74.0
-offset_bottom = 535.0
-texture = ExtResource("12_sspc1")
-region_rect = Rect2(228, 278, 767, 1146)
+offset_left = 137.0
+offset_top = 462.0
+offset_right = 236.0
+offset_bottom = 601.0
+texture = ExtResource("11_6owpf")
+region_rect = Rect2(187.102, 227.425, 613.067, 891.304)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/PotUI"]
 z_index = 5
@@ -230,10 +230,10 @@ mouse_filter = 2
 [node name="EndTurnButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 837.0
-offset_top = 410.0
-offset_right = 947.0
-offset_bottom = 447.0
+offset_left = 835.0
+offset_top = 434.0
+offset_right = 945.0
+offset_bottom = 471.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -291,10 +291,10 @@ patch_margin_bottom = 4
 [node name="CookButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 90.0
-offset_top = 548.0
-offset_right = 209.0
-offset_bottom = 585.0
+offset_left = 44.0
+offset_top = 556.0
+offset_right = 132.0
+offset_bottom = 595.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -320,15 +320,15 @@ patch_margin_bottom = 4
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 18.0
-offset_top = 548.0
-offset_right = 81.0
-offset_bottom = 585.0
+offset_left = 3.0
+offset_top = 557.0
+offset_right = 40.0
+offset_bottom = 591.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Recipe"
+text = "R"
 flat = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/RecipeButton"]
