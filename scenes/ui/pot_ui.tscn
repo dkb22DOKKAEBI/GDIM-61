@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvlk5m8v5p4ut"]
+[gd_scene load_steps=4 format=3 uid="uid://bvlk5m8v5p4ut"]
 
 [ext_resource type="Texture2D" uid="uid://dat87b5x8g81i" path="res://art/pot-transparent-background.png" id="1_otwdq"]
+[ext_resource type="Theme" uid="uid://dyuky440b8nnm" path="res://custom_resources/pot_ingredient_grid.tres" id="2_pkf4t"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="5_j7w88"]
 
 [node name="PotUi" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Pot" type="NinePatchRect" parent="."]
 z_index = 1
@@ -18,3 +21,101 @@ offset_right = 236.0
 offset_bottom = 601.0
 texture = ExtResource("1_otwdq")
 region_rect = Rect2(187, 227, 613, 891)
+
+[node name="PotIngredients" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IngredientGrid_1" type="Button" parent="PotIngredients"]
+z_index = 7
+layout_mode = 0
+offset_left = 179.0
+offset_top = 436.0
+offset_right = 216.0
+offset_bottom = 473.0
+focus_mode = 0
+theme = ExtResource("2_pkf4t")
+
+[node name="IngredientImage" type="NinePatchRect" parent="PotIngredients/IngredientGrid_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IngredientGrid_2" type="Button" parent="PotIngredients"]
+z_index = 7
+offset_left = 129.0
+offset_top = 436.0
+offset_right = 166.0
+offset_bottom = 473.0
+focus_mode = 0
+theme = ExtResource("2_pkf4t")
+
+[node name="IngredientImage" type="NinePatchRect" parent="PotIngredients/IngredientGrid_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IngredientGrid_3" type="Button" parent="PotIngredients"]
+z_index = 7
+offset_left = 79.0
+offset_top = 436.0
+offset_right = 116.0
+offset_bottom = 473.0
+focus_mode = 0
+theme = ExtResource("2_pkf4t")
+
+[node name="IngredientImage" type="NinePatchRect" parent="PotIngredients/IngredientGrid_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IngredientGrid_4" type="Button" parent="PotIngredients"]
+z_index = 7
+offset_left = 29.0
+offset_top = 436.0
+offset_right = 66.0
+offset_bottom = 473.0
+focus_mode = 0
+theme = ExtResource("2_pkf4t")
+
+[node name="IngredientImage" type="NinePatchRect" parent="PotIngredients/IngredientGrid_4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Polygon2D" parent="PotIngredients"]
+modulate = Color(0.258824, 0.258824, 0.258824, 0.701961)
+z_index = 6
+position = Vector2(-98, 434)
+polygon = PackedVector2Array(102, -4, 329, -4, 329, 48, 300, 48, 292, 66, 284, 48, 102, 48)
+uv = PackedVector2Array(-144, -32, 393, -35, 394, 70, 305, 71, 291, 105, 270, 72, -141, 75)
+
+[node name="ResultName" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 143.0
+offset_top = 541.0
+offset_right = 230.0
+offset_bottom = 572.0
+mouse_filter = 2
+theme = ExtResource("5_j7w88")
+text = "Food Result"
+horizontal_alignment = 1
+vertical_alignment = 1

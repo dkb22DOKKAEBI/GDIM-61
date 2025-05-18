@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=17 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://card_images/monsters/decklength.png" id="14_qwuef"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="17_bsxgu"]
-[ext_resource type="Theme" uid="uid://dyuky440b8nnm" path="res://custom_resources/pot_ingredient_grid.tres" id="17_qwuef"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://scripts/on_scene_start.gd" id="18_bsxgu"]
 
 [node name="NewBattle" type="Node2D"]
@@ -252,10 +251,10 @@ patch_margin_bottom = 4
 [node name="CookButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 44.0
-offset_top = 556.0
-offset_right = 132.0
-offset_bottom = 595.0
+offset_left = 34.0
+offset_top = 555.0
+offset_right = 125.0
+offset_bottom = 594.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -281,15 +280,15 @@ patch_margin_bottom = 4
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 3.0
-offset_top = 557.0
-offset_right = 40.0
-offset_bottom = 591.0
+offset_left = 34.0
+offset_top = 507.0
+offset_right = 125.0
+offset_bottom = 545.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "R"
+text = "Recipe"
 flat = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/RecipeButton"]
@@ -368,15 +367,6 @@ input_manager = NodePath("../../Player/InputManager")
 [node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
 script = ExtResource("18_bsxgu")
 boss_parent = NodePath("../BattleField/Enemy")
-
-[node name="TestIngredientGrid" type="Button" parent="."]
-z_index = 1
-offset_left = 108.0
-offset_top = 447.0
-offset_right = 141.0
-offset_bottom = 480.0
-focus_mode = 0
-theme = ExtResource("17_qwuef")
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
