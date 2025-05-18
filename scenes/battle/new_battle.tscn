@@ -41,7 +41,7 @@ vertical_alignment = 1
 [node name="PlayerHand" type="Node2D" parent="."]
 
 [node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
-position = Vector2(910, 534)
+position = Vector2(884, 543)
 script = ExtResource("3_6owpf")
 deck_left_num_text = NodePath("DeckLeftNum")
 deck_sprite = NodePath("DeckSprite2D")
@@ -82,9 +82,9 @@ cover = NodePath("Cover")
 visible = false
 modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
 z_index = 1
-offset_left = 281.0
-offset_top = 464.0
-offset_right = 863.0
+offset_left = 239.0
+offset_top = 442.0
+offset_right = 813.0
 offset_bottom = 600.0
 
 [node name="BattleField" type="Node2D" parent="."]
@@ -132,6 +132,39 @@ offset_right = 960.0
 offset_bottom = 600.0
 pivot_offset = Vector2(480, 300)
 mouse_filter = 2
+
+[node name="BackgroundCovers" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PotUICover" type="ColorRect" parent="UI/BackgroundCovers"]
+modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
+z_index = 1
+offset_left = 4.0
+offset_top = 442.0
+offset_right = 223.0
+offset_bottom = 600.0
+
+[node name="EndTurnCover" type="ColorRect" parent="UI/BackgroundCovers"]
+modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
+z_index = 1
+offset_left = 827.0
+offset_top = 442.0
+offset_right = 959.0
+offset_bottom = 600.0
+
+[node name="PlayerHand" type="ColorRect" parent="UI/BackgroundCovers"]
+modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
+z_index = 1
+offset_left = 239.0
+offset_top = 442.0
+offset_right = 813.0
+offset_bottom = 600.0
 
 [node name="BattleUI" parent="UI" instance=ExtResource("11_gfgng")]
 layout_mode = 1
@@ -190,10 +223,10 @@ mouse_filter = 2
 [node name="EndTurnButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 835.0
-offset_top = 434.0
-offset_right = 945.0
-offset_bottom = 471.0
+offset_left = 845.0
+offset_top = 445.0
+offset_right = 955.0
+offset_bottom = 482.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -251,9 +284,9 @@ patch_margin_bottom = 4
 [node name="CookButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 34.0
+offset_left = 25.0
 offset_top = 555.0
-offset_right = 125.0
+offset_right = 116.0
 offset_bottom = 594.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
@@ -280,9 +313,9 @@ patch_margin_bottom = 4
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 34.0
+offset_left = 25.0
 offset_top = 507.0
-offset_right = 125.0
+offset_right = 116.0
 offset_bottom = 545.0
 focus_mode = 0
 theme = ExtResource("2_sspc1")
