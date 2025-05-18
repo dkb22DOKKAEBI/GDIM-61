@@ -53,3 +53,6 @@ func disselect_ingredient(index: int) -> void :
 	PlayerHand.selected_ingredients.erase(ingredient_card)
 	PlayerHand.player_ingredient_hand.insert(0, ingredient_card)
 	PlayerHand.update_hand_positions(0.3, PlayerHand.player_ingredient_hand)
+	
+	# Update pot selected ingredients ui
+	on_update_selected_ing_ui()
