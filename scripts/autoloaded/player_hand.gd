@@ -77,6 +77,7 @@ func add_card_to_hand(card: Node2D, speed, flag: int):
 
 
 # Update player hand cards' positions
+# If drew is true, card is not drew from the deck but returned from dis-select card
 func update_hand_positions(speed, target_hand: Array):
 	for i in range(target_hand.size()):
 		# Get new card position based on index passed in

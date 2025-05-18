@@ -21,9 +21,35 @@ func on_update_selected_ing_ui() -> void:
 		grids[i].texture = ResourceLoader.load(icon_path)
 
 
-# Attached to Pot UI ingredent buttons
+
+# Attached to Pot UI ingredent buttons with corresponding indexes
 # Disselect ingredient and add card view back to player's hand
-func on_disselect_ingredient() -> void :
-	print("On Dis-select")
+func on_disselect_ingredient_1() -> void:
+	disselect_ingredient(0)
+
+func on_disselect_ingredient_2() -> void:
+	disselect_ingredient(1)
+
+func on_disselect_ingredient_3() -> void:
+	disselect_ingredient(2)
+
+func on_disselect_ingredient_4() -> void:
+	disselect_ingredient(3)
+
+
+# Helper function for disselect ingredients
+func disselect_ingredient(index: int) -> void :
+	# Check whether there is ingredient to dis-select
+	if index >= PlayerHand.selected_ingredients.size():
+		return
 	
-	pass
+	var ingredient_card = PlayerHand.selected_ingredients[index]
+	
+	# Enable ingredient card gameobject
+	ingredient_card.visible = true
+	ingredient_card.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	# Update player selected ingredient(-) and ingredient(+) hands
+	PlayerHand.selected_ingredients.erase(ingredient_card)
+	PlayerHand.player_ingredient_hand.insert(0, ingredient_card)
+	PlayerHand.update_hand_positions(0.3, PlayerHand.player_ingredient_hand)
