@@ -44,6 +44,7 @@ func raycast_at_cursor():
 	if result.size() > 0:
 		for point in result:
 			var result_collision_mask = point.collider.collision_mask
+			
 			# Select monster cards
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
@@ -52,11 +53,8 @@ func raycast_at_cursor():
 						card_manager_reference.start_drag(monster_card_found)
 					elif monster_card_found.placed:
 						select_placed_card.emit(monster_card_found)
+			
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
 				var ingredient_card_found = point.collider.get_parent()
 				ingredient_card_found.ingredient_card_selected()
-			elif result_collision_mask == COLLISION_MASK_DECK:
-				#Deck Clicked
-				#deck_reference.draw_card()
-				print("Deck click detected")
