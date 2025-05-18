@@ -12,20 +12,21 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed
 
 var player_monster_hand: Array[Card] = [] # Player's monster hand
 var player_ingredient_hand: Array[Card] = [] # Player's ingredient hand
+var selected_ingredients: Array[Card] # Selected ingredients; Max size should be 4 (Not included simultaniously in player_ingredient_hand)
+
 var legacy_monster_hand: Array[String] = [] # Record of player's monster hand after completion of a level
 var legacy_ingredient_hand: Array[String] = [] # Record of player's ingredient hand after completion of a level
 
 var hovering_monster_num: int = 0 # 0 indicates no monster card hovered over
 var center_screen_x
-var selected_ingredients: Array[Card]
 
-signal update_pot_ui_signal
+signal selected_ingredient_change_signal
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	center_screen_x = (DESIRED_WINDOW_WIDTH + SIDEBAR_WIDTH - DECK_WIDTH) / 2
-	SceneManager.connect("player_complete_level_signal", clear_player_hand)
+	#SceneManager.connect("player_complete_level_signal", clear_player_hand)
 	SceneManager.connect("game_end_signal", clear_player_legacy)
 
 
@@ -34,6 +35,8 @@ func _ready():
 func clear_player_hand() -> void:
 	# Storing card into legacy hand
 	for ingredient_card: Card in player_ingredient_hand:
+		legacy_ingredient_hand.append(ingredient_card.card_name)
+	for ingredient_card: Card in selected_ingredients:
 		legacy_ingredient_hand.append(ingredient_card.card_name)
 	for monster_card: Card in player_monster_hand:
 		legacy_monster_hand.append(monster_card.card_name)
@@ -45,7 +48,6 @@ func clear_player_hand() -> void:
 
 # Clear both player current and legacy hands when the game is over
 func clear_player_legacy() -> void:
-	print("Clear player legacy")
 	legacy_ingredient_hand.clear()
 	legacy_monster_hand.clear()
 	player_ingredient_hand.clear()
@@ -76,6 +78,7 @@ func add_card_to_hand(card: Node2D, speed, flag: int):
 
 
 # Update player hand cards' positions
+# If drew is true, card is not drew from the deck but returned from dis-select card
 func update_hand_positions(speed, target_hand: Array):
 	for i in range(target_hand.size()):
 		# Get new card position based on index passed in
@@ -116,7 +119,3 @@ func remove_card_from_hand(card: Card, flag: int):
 	if target_hand.has(card):
 		target_hand.erase(card)
 		update_hand_positions(DEFAULT_CARD_MOVE_SPEED, target_hand)
-
-
-func update_sidebar_pot_ui():
-	update_pot_ui_signal.emit()

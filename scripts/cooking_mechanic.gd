@@ -7,11 +7,11 @@ var recipe = []
 
 @export var battle_manager: Node2D
 @export var monster_card_manager: Node2D
-@export var temp_ui: Control
+@export var pot_ui: Control
 
 
 func _ready():
-	PlayerHand.update_pot_ui_signal.connect(update_pot_ui)
+	pass
 
 
 # Cook to create new monster card
@@ -47,7 +47,8 @@ func _on_cook() -> void:
 			PlayerHand.remove_card_from_hand(card, 0)
 			card.queue_free()
 		PlayerHand.selected_ingredients.clear()
-		temp_ui.update_pot("")
+		
+		pot_ui.clear_after_cook()
 
 
 func get_ingredient_string_list(list: Array) -> Array:
@@ -104,10 +105,8 @@ func ingredient_check(list: Array) -> String:
 				return "None"
 
 
-func update_pot_ui():
+func update_cooking_result_check() -> void:
 	if PlayerHand.selected_ingredients.size() == 0:
-		temp_ui.update_pot("")
 		return
 	
 	var result_monster = ingredient_check(get_ingredient_string_list(PlayerHand.selected_ingredients))
-	temp_ui.update_pot(result_monster)
