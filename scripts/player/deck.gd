@@ -23,6 +23,7 @@ func _ready():
 	deck_left_num_text.text = str(PlayerController.deck.size())
 
 
+# Player draw card
 func draw_card():
 	# If player drew the last card in the deck, disable the deck
 	if PlayerController.deck.size() == 0:

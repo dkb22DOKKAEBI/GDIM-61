@@ -12,12 +12,13 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed
 
 var player_monster_hand: Array[Card] = [] # Player's monster hand
 var player_ingredient_hand: Array[Card] = [] # Player's ingredient hand
+var selected_ingredients: Array[Card] # Selected ingredients; Max size should be 4 (Not included simultaniously in player_ingredient_hand)
+
 var legacy_monster_hand: Array[String] = [] # Record of player's monster hand after completion of a level
 var legacy_ingredient_hand: Array[String] = [] # Record of player's ingredient hand after completion of a level
 
 var hovering_monster_num: int = 0 # 0 indicates no monster card hovered over
 var center_screen_x
-var selected_ingredients: Array[Card] # Selected ingredients; Max size should be 4
 
 signal selected_ingredient_change_signal
 
