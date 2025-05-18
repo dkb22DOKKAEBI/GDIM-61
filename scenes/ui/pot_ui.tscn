@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvlk5m8v5p4ut"]
+[gd_scene load_steps=5 format=3 uid="uid://bvlk5m8v5p4ut"]
 
+[ext_resource type="Script" uid="uid://c5u2s7smdqdr4" path="res://scripts/pot_ui.gd" id="1_4rq33"]
 [ext_resource type="Texture2D" uid="uid://dat87b5x8g81i" path="res://art/pot-transparent-background.png" id="1_otwdq"]
 [ext_resource type="Theme" uid="uid://dyuky440b8nnm" path="res://custom_resources/pot_ingredient_grid.tres" id="2_pkf4t"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="5_j7w88"]
 
-[node name="PotUi" type="Control"]
+[node name="PotUi" type="Control" node_paths=PackedStringArray("grids")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +13,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_4rq33")
+grids = [NodePath("PotIngredients/IngredientGrid_1/IngredientImage"), NodePath("PotIngredients/IngredientGrid_2/IngredientImage"), NodePath("PotIngredients/IngredientGrid_3/IngredientImage"), NodePath("PotIngredients/IngredientGrid_4/IngredientImage")]
 
 [node name="Pot" type="NinePatchRect" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 121.0
 offset_top = 463.0
 offset_right = 220.0
@@ -64,6 +68,7 @@ grow_vertical = 2
 
 [node name="IngredientGrid_2" type="Button" parent="PotIngredients"]
 z_index = 7
+layout_mode = 0
 offset_left = 119.0
 offset_top = 453.0
 offset_right = 156.0
@@ -81,6 +86,7 @@ grow_vertical = 2
 
 [node name="IngredientGrid_3" type="Button" parent="PotIngredients"]
 z_index = 7
+layout_mode = 0
 offset_left = 69.0
 offset_top = 453.0
 offset_right = 106.0
@@ -98,6 +104,7 @@ grow_vertical = 2
 
 [node name="IngredientGrid_4" type="Button" parent="PotIngredients"]
 z_index = 7
+layout_mode = 0
 offset_left = 19.0
 offset_top = 453.0
 offset_right = 56.0

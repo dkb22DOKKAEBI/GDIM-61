@@ -17,9 +17,9 @@ var legacy_ingredient_hand: Array[String] = [] # Record of player's ingredient h
 
 var hovering_monster_num: int = 0 # 0 indicates no monster card hovered over
 var center_screen_x
-var selected_ingredients: Array[Card]
+var selected_ingredients: Array[Card] # Selected ingredients; Max size should be 4
 
-signal update_pot_ui_signal
+signal selected_ingredient_change_signal
 
 
 # Called when the node enters the scene tree for the first time.
@@ -116,7 +116,3 @@ func remove_card_from_hand(card: Card, flag: int):
 	if target_hand.has(card):
 		target_hand.erase(card)
 		update_hand_positions(DEFAULT_CARD_MOVE_SPEED, target_hand)
-
-
-func update_sidebar_pot_ui():
-	update_pot_ui_signal.emit()
