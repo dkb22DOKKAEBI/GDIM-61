@@ -7,6 +7,7 @@ var recipe = []
 
 @export var battle_manager: Node2D
 @export var monster_card_manager: Node2D
+@export var pot_ui: Control
 
 
 func _ready():
@@ -46,6 +47,8 @@ func _on_cook() -> void:
 			PlayerHand.remove_card_from_hand(card, 0)
 			card.queue_free()
 		PlayerHand.selected_ingredients.clear()
+		
+		pot_ui.clear_after_cook()
 
 
 func get_ingredient_string_list(list: Array) -> Array:

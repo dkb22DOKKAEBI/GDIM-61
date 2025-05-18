@@ -33,7 +33,6 @@ func _ready():
 # Clear current player hand and transfer its record to legacy hands
 # for restoring data at the start of next level
 func clear_player_hand() -> void:
-	print("On Clear Player Hand")
 	# Storing card into legacy hand
 	for ingredient_card: Card in player_ingredient_hand:
 		legacy_ingredient_hand.append(ingredient_card.card_name)
@@ -49,7 +48,6 @@ func clear_player_hand() -> void:
 
 # Clear both player current and legacy hands when the game is over
 func clear_player_legacy() -> void:
-	print("Clear player legacy")
 	legacy_ingredient_hand.clear()
 	legacy_monster_hand.clear()
 	player_ingredient_hand.clear()

@@ -22,9 +22,14 @@ func on_update_selected_ing_ui() -> void:
 		grids[i].texture = ResourceLoader.load(icon_path)
 
 
+# Clear all icons in ui after cooking
+func clear_after_cook() -> void:
+	for grid in grids:
+		grid.texture = null
+
+
 # Dis-select all ingredients
 func disselect_all_ingredient() -> void:
-	print("On Disselect All Ingredients")
 	for i in range(4):
 		disselect_ingredient(i)
 	
