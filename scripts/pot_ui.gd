@@ -30,8 +30,8 @@ func clear_after_cook() -> void:
 
 # Dis-select all ingredients
 func disselect_all_ingredient() -> void:
-	for i in range(4):
-		disselect_ingredient(i)
+	for i in range(4): # Clear backwards
+		disselect_ingredient(3 - i)
 	
 	PlayerHand.clear_player_hand()
 
