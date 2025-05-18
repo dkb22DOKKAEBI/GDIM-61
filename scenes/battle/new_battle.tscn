@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://card_images/monsters/decklength.png" id="14_qwuef"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="17_bsxgu"]
-[ext_resource type="Texture2D" uid="uid://crdnx5y6yu3is" path="res://card_images/ingredients/Dough.png" id="17_qwuef"]
+[ext_resource type="Texture2D" uid="uid://bkkm45bves1h6" path="res://card_images/ingredient-icon/Cheese-Icon.png" id="17_qwuef"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://scripts/on_scene_start.gd" id="18_bsxgu"]
 
 [node name="NewBattle" type="Node2D"]
@@ -433,7 +433,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("17_qwuef")
-region_rect = Rect2(70.6649, 140.638, 273.787, 235.135)
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
