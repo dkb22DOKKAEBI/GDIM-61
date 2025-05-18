@@ -9,13 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="7_lsviu"]
 [ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/new_battle_manager.gd" id="9_bsxgu"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_8eucq"]
-[ext_resource type="Texture2D" uid="uid://dat87b5x8g81i" path="res://art/pot-transparent-background.png" id="11_6owpf"]
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="11_gfgng"]
+[ext_resource type="PackedScene" uid="uid://bvlk5m8v5p4ut" path="res://scenes/ui/pot_ui.tscn" id="11_qwuef"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_yxeuc"]
 [ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://card_images/monsters/decklength.png" id="14_qwuef"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="17_bsxgu"]
-[ext_resource type="Texture2D" uid="uid://bkkm45bves1h6" path="res://card_images/ingredient-icon/Cheese-Icon.png" id="17_qwuef"]
+[ext_resource type="Theme" uid="uid://dyuky440b8nnm" path="res://custom_resources/pot_ingredient_grid.tres" id="17_qwuef"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://scripts/on_scene_start.gd" id="18_bsxgu"]
 
 [node name="NewBattle" type="Node2D"]
@@ -137,57 +137,19 @@ mouse_filter = 2
 [node name="BattleUI" parent="UI" instance=ExtResource("11_gfgng")]
 layout_mode = 1
 
-[node name="CardInfoUI" type="Control" parent="UI"]
+[node name="PotUi" parent="UI" instance=ExtResource("11_qwuef")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/CardInfoUI"]
-z_index = 5
-layout_mode = 0
-offset_left = 39.0
-offset_top = 75.0
-offset_right = 198.0
-offset_bottom = 115.0
-
-[node name="PotUI" type="Control" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Pot" type="NinePatchRect" parent="UI/PotUI"]
-z_index = 1
-layout_mode = 0
-offset_left = 137.0
-offset_top = 462.0
-offset_right = 236.0
-offset_bottom = 601.0
-texture = ExtResource("11_6owpf")
-region_rect = Rect2(187.102, 227.425, 613.067, 891.304)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/PotUI"]
-z_index = 5
-layout_mode = 0
-offset_left = 88.0
-offset_top = 462.0
-offset_right = 204.0
-offset_bottom = 502.0
 
 [node name="HandUI" type="Control" parent="UI"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DeckHand" type="NinePatchRect" parent="UI/HandUI"]
-visible = false
 visibility_layer = 512
 z_index = 2
 layout_mode = 0
@@ -198,7 +160,6 @@ offset_bottom = 582.0
 texture = ExtResource("14_qwuef")
 
 [node name="DeckHand2" type="NinePatchRect" parent="UI/HandUI"]
-visible = false
 visibility_layer = 512
 z_index = 1
 layout_mode = 0
@@ -209,7 +170,6 @@ offset_bottom = 597.0
 texture = ExtResource("14_qwuef")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/HandUI"]
-visible = false
 layout_mode = 0
 offset_left = 311.0
 offset_top = 448.0
@@ -410,29 +370,13 @@ script = ExtResource("18_bsxgu")
 boss_parent = NodePath("../BattleField/Enemy")
 
 [node name="TestIngredientGrid" type="Button" parent="."]
-offset_left = 105.0
-offset_top = 446.0
-offset_right = 138.0
-offset_bottom = 479.0
-flat = true
-
-[node name="ColorRect" type="ColorRect" parent="TestIngredientGrid"]
-modulate = Color(0.860369, 0.860369, 0.860369, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="TestIngredientGrid"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("17_qwuef")
+z_index = 1
+offset_left = 108.0
+offset_top = 447.0
+offset_right = 141.0
+offset_bottom = 480.0
+focus_mode = 0
+theme = ExtResource("17_qwuef")
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]

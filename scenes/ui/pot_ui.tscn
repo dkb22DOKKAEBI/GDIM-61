@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvlk5m8v5p4ut"]
+
+[ext_resource type="Texture2D" uid="uid://dat87b5x8g81i" path="res://art/pot-transparent-background.png" id="1_otwdq"]
+
+[node name="PotUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pot" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = 137.0
+offset_top = 462.0
+offset_right = 236.0
+offset_bottom = 601.0
+texture = ExtResource("1_otwdq")
+region_rect = Rect2(187, 227, 613, 891)
