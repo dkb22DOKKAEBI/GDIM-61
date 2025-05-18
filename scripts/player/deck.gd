@@ -10,7 +10,7 @@ var card_starting_position: Vector2 = Vector2(915, 525)
 @export var ingredient_card_manager: Node2D
 
 
-#Called when the node enters the scene tree for the first time.
+# Ready
 func _ready():
 	# Update deck at the start of a level
 	print(PlayerHand.player_ingredient_hand.size())

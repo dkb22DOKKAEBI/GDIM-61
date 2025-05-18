@@ -7,6 +7,7 @@ extends Node
 # Connect signal
 func _ready() -> void:
 	PlayerHand.connect("selected_ingredient_change_signal", on_update_selected_ing_ui)
+	SceneManager.connect("player_complete_level_signal", disselect_all_ingredient)
 
 
 # Update images of selected ingredients in pot
@@ -20,6 +21,14 @@ func on_update_selected_ing_ui() -> void:
 		var icon_path = "res://card_images/ingredient-icon/" + PlayerHand.selected_ingredients[i].card_name + "_Icon.png"
 		grids[i].texture = ResourceLoader.load(icon_path)
 
+
+# Dis-select all ingredients
+func disselect_all_ingredient() -> void:
+	print("On Disselect All Ingredients")
+	for i in range(4):
+		disselect_ingredient(i)
+	
+	PlayerHand.clear_player_hand()
 
 
 # Attached to Pot UI ingredent buttons with corresponding indexes
