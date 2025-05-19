@@ -10,6 +10,7 @@ var card_being_dragged # Card type
 var screen_size
 @export var temp_ui: Control
 @export var cover: ColorRect
+@onready var clicksfx: AudioStreamPlayer = $clicksfx
 
 
 # Ready

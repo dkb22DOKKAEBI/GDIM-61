@@ -18,6 +18,7 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 @export var battle_manager: Node2D
 @export var card_manager_reference: Node2D
 @export var deck_reference: Node2D
+@onready var clicksfx: AudioStreamPlayer = $"../../clicksfx"
 
 
 func _input(event):
@@ -55,6 +56,7 @@ func raycast_at_cursor():
 			var result_collision_mask = point.collider.collision_mask
 			
 			# Select monster cards
+			clicksfx.play()
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
 				if battle_manager.is_on_player_turn and monster_card_found:
@@ -66,5 +68,6 @@ func raycast_at_cursor():
 			
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
+				clicksfx.play()
 				var ingredient_card_found = point.collider.get_parent()
 				ingredient_card_found.ingredient_card_selected()

@@ -22,7 +22,8 @@ var player_health_text_prefix: String = "Player Health: "
 
 @export var ability_manager: Node2D # never used
 var card_starting_position: Vector2 = Vector2(100, 525)
-
+@onready var endturnsfx: AudioStreamPlayer = $"../endturnsfx"
+@onready var attacksfx: AudioStreamPlayer = $"../attacksfx"
 
 # ready function
 func _ready() -> void:
@@ -59,10 +60,12 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 
 # Player attack
 func _on_player_attack():
+	attacksfx.play()
 	if not selected_card_in_slot:
 		return
 	
 	if not player_is_attacking and not selected_card_in_slot.attacked_this_turn:
+		
 		player_is_attacking = true
 		selected_card_in_slot.attacked_this_turn = true
 		
@@ -114,6 +117,7 @@ func player_lose():
 # End player turn and opponent turn starts
 func _on_end_turn_button_pressed() -> void:
 	# Check whether the player is attacking
+	endturnsfx.play()
 	if player_is_attacking:
 		return
 	
@@ -142,6 +146,7 @@ func enable_end_turn_button(enable: bool) -> void:
 
 # Player being attacked
 func player_take_dmg(boss_attack: float) -> void:
+	attacksfx.play()
 	PlayerController.player_health = max(0, PlayerController.player_health - boss_attack)
 	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
 

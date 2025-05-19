@@ -52,10 +52,13 @@ func on_left_clicked_released():
 
 
 # Finish monster card dragging
-func finish_drag():	
-	# Try get card slot at the position where the monster card is dropped
+func finish_drag():
+		# Try get card slot at the position where the monster card is dropped
 	var card_slot_found = raycast_check_for_card_slot()
-	
+	if has_node("clicksfx"):
+		clicksfx.play()
+	else:
+		print("NO AUDIO DETECTED")
 	# Check whether card goes into  cardslot or goes back to hand
 	if card_slot_found and not card_slot_found.card_in_slot and not played_card_this_turn:
 		#played_card_this_turn = true

@@ -8,6 +8,7 @@ var card_starting_position: Vector2 = Vector2(915, 525)
 @export var deck_left_num_text: RichTextLabel
 @export var deck_sprite: Sprite2D
 @export var ingredient_card_manager: Node2D
+@onready var drawaudio: AudioStreamPlayer = $"../../drawsfx"
 
 
 # Ready
@@ -32,6 +33,7 @@ func draw_card():
 		return
 	
 	# Draw card there is still card left
+	drawaudio.play()
 	var ingredient_name: String = PlayerController.deck[0]
 	PlayerController.deck.erase(ingredient_name)
 	deck_left_num_text.text = str(PlayerController.deck.size())
