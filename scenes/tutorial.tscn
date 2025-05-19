@@ -1,33 +1,33 @@
 [gd_scene load_steps=19 format=3 uid="uid://b1ha1u603qeyd"]
 
-[ext_resource type="Script" uid="uid://c2dd877msfpqm" path="res://scripts/tutorial/tutorial_prep.gd" id="1_k6x8q"]
-[ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_vqm0x"]
-[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_k6x8q"]
-[ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://scripts/player/deck.gd" id="3_5i4y3"]
-[ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://card_images/monsters/Deck.png" id="4_0oxex"]
-[ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://scripts/card_manager/monster_card_manager.gd" id="5_eci3b"]
-[ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://scripts/card_manager/ingredient_card_manager.gd" id="6_tbaoe"]
-[ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="7_nl071"]
-[ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/new_battle_manager.gd" id="8_6mf0j"]
-[ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="9_luoob"]
-[ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://scenes/card_target_selector.tscn" id="10_nbdqu"]
-[ext_resource type="Script" uid="uid://bposbq16v10av" path="res://scripts/on_scene_start.gd" id="11_2hjfy"]
-[ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="12_8s6wq"]
-[ext_resource type="PackedScene" uid="uid://bvlk5m8v5p4ut" path="res://scenes/ui/pot_ui.tscn" id="13_ruegx"]
-[ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://card_images/monsters/decklength.png" id="14_8h0qo"]
-[ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="15_c1p35"]
-[ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="16_opnvs"]
-[ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="17_b3vcp"]
+[ext_resource type="Script" uid="uid://c2dd877msfpqm" path="res://scripts/tutorial/tutorial_prep.gd" id="1_cmspm"]
+[ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="2_ikfo1"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_dwom6"]
+[ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://scripts/player/deck.gd" id="4_bl2xa"]
+[ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://card_images/monsters/Deck.png" id="5_15kfc"]
+[ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://scripts/card_manager/monster_card_manager.gd" id="6_7a100"]
+[ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://scripts/card_manager/ingredient_card_manager.gd" id="7_feaue"]
+[ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="8_210s6"]
+[ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/new_battle_manager.gd" id="9_5qvs7"]
+[ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_qbchm"]
+[ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://scenes/card_target_selector.tscn" id="11_gxgfo"]
+[ext_resource type="Script" uid="uid://bposbq16v10av" path="res://scripts/on_scene_start.gd" id="12_sbw1o"]
+[ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="13_06rsu"]
+[ext_resource type="PackedScene" uid="uid://bvlk5m8v5p4ut" path="res://scenes/ui/pot_ui.tscn" id="14_4gq6d"]
+[ext_resource type="Texture2D" uid="uid://342tmwi5ayqb" path="res://card_images/monsters/decklength.png" id="15_mjrbb"]
+[ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="16_7kfc1"]
+[ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="17_jne3d"]
+[ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="18_nr1vm"]
 
 [node name="Tutorial" type="Node2D"]
 
 [node name="TutorialPrep" type="Node2D" parent="."]
-script = ExtResource("1_k6x8q")
+script = ExtResource("1_cmspm")
 
 [node name="Player" type="Node2D" parent="."]
 
 [node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("battle_manager", "card_manager_reference", "deck_reference")]
-script = ExtResource("1_vqm0x")
+script = ExtResource("2_ikfo1")
 battle_manager = NodePath("../../BattleManager")
 card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
 deck_reference = NodePath("../../PlayerHand/Deck")
@@ -38,7 +38,7 @@ offset_left = 343.0
 offset_top = 1.0
 offset_right = 521.0
 offset_bottom = 30.0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_font_sizes/normal_font_size = 20
 text = "Player Health: 10"
 vertical_alignment = 1
@@ -47,7 +47,7 @@ vertical_alignment = 1
 
 [node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
 position = Vector2(884, 543)
-script = ExtResource("3_5i4y3")
+script = ExtResource("4_bl2xa")
 deck_left_num_text = NodePath("DeckLeftNum")
 deck_sprite = NodePath("DeckSprite2D")
 ingredient_card_manager = NodePath("../IngredientCardManager")
@@ -55,7 +55,7 @@ ingredient_card_manager = NodePath("../IngredientCardManager")
 [node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
 z_index = 1
 scale = Vector2(0.383333, 0.383333)
-texture = ExtResource("4_0oxex")
+texture = ExtResource("5_15kfc")
 
 [node name="DeckLeftNum" type="RichTextLabel" parent="PlayerHand/Deck"]
 z_index = 2
@@ -63,7 +63,7 @@ offset_left = -25.0
 offset_top = -26.0
 offset_right = 29.0
 offset_bottom = 28.0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_font_sizes/normal_font_size = 32
 text = "0"
 horizontal_alignment = 1
@@ -71,7 +71,7 @@ vertical_alignment = 1
 
 [node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui", "cover")]
 z_index = 7
-script = ExtResource("5_eci3b")
+script = ExtResource("6_7a100")
 input_manager = NodePath("../../Player/InputManager")
 battle_manager = NodePath("../../BattleManager")
 temp_ui = NodePath("../../UI")
@@ -79,7 +79,7 @@ cover = NodePath("../IngredientCardManager/Cover")
 
 [node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "cover")]
 z_index = 1
-script = ExtResource("6_tbaoe")
+script = ExtResource("7_feaue")
 deck = NodePath("../Deck")
 temp_ui = NodePath("../../UI")
 cover = NodePath("Cover")
@@ -98,15 +98,15 @@ offset_bottom = 600.0
 [node name="Cardslots" type="Node2D" parent="BattleField"]
 z_index = 1
 
-[node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("7_nl071")]
+[node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("8_210s6")]
 position = Vector2(261, 230)
 card_slot_number = "cardslot1"
 
-[node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("7_nl071")]
+[node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("8_210s6")]
 position = Vector2(111, 320)
 card_slot_number = "cardslot2"
 
-[node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("7_nl071")]
+[node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("8_210s6")]
 position = Vector2(112, 144)
 card_slot_number = "cardslot3"
 
@@ -114,7 +114,7 @@ card_slot_number = "cardslot3"
 position = Vector2(820, 220)
 
 [node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_attack_message")]
-script = ExtResource("8_6mf0j")
+script = ExtResource("9_5qvs7")
 battle_timer = NodePath("BattleTimer")
 input_manager = NodePath("../Player/InputManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
@@ -126,16 +126,16 @@ temp_attack_message = NodePath("../UI/TempAttackMessage")
 one_shot = true
 
 [node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager", "pot_ui")]
-script = ExtResource("9_luoob")
+script = ExtResource("10_qbchm")
 battle_manager = NodePath("../BattleManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 pot_ui = NodePath("../UI/PotUi")
 
-[node name="CardTargetSelector" parent="." node_paths=PackedStringArray("input_manager") instance=ExtResource("10_nbdqu")]
+[node name="CardTargetSelector" parent="." node_paths=PackedStringArray("input_manager") instance=ExtResource("11_gxgfo")]
 input_manager = NodePath("../Player/InputManager")
 
 [node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
-script = ExtResource("11_2hjfy")
+script = ExtResource("12_sbw1o")
 boss_parent = NodePath("../BattleField/Enemy")
 
 [node name="UI" type="Control" parent="."]
@@ -182,10 +182,10 @@ offset_top = 442.0
 offset_right = 813.0
 offset_bottom = 600.0
 
-[node name="BattleUI" parent="UI" instance=ExtResource("12_8s6wq")]
+[node name="BattleUI" parent="UI" instance=ExtResource("13_06rsu")]
 layout_mode = 1
 
-[node name="PotUi" parent="UI" instance=ExtResource("13_ruegx")]
+[node name="PotUi" parent="UI" instance=ExtResource("14_4gq6d")]
 layout_mode = 1
 
 [node name="HandUI" type="Control" parent="UI"]
@@ -205,7 +205,7 @@ offset_left = 308.0
 offset_top = 468.0
 offset_right = 834.0
 offset_bottom = 582.0
-texture = ExtResource("14_8h0qo")
+texture = ExtResource("15_mjrbb")
 
 [node name="DeckHand2" type="NinePatchRect" parent="UI/HandUI"]
 visibility_layer = 512
@@ -215,7 +215,7 @@ offset_left = 322.0
 offset_top = 483.0
 offset_right = 848.0
 offset_bottom = 597.0
-texture = ExtResource("14_8h0qo")
+texture = ExtResource("15_mjrbb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/HandUI"]
 layout_mode = 0
@@ -224,7 +224,7 @@ offset_top = 448.0
 offset_right = 611.0
 offset_bottom = 521.0
 mouse_filter = 2
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 text = "Ingredients"
 
 [node name="Buttons" type="Control" parent="UI"]
@@ -244,7 +244,7 @@ offset_top = 445.0
 offset_right = 955.0
 offset_bottom = 482.0
 focus_mode = 0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "End Turn"
@@ -259,7 +259,7 @@ anchor_bottom = 1.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_c1p35")
+texture = ExtResource("16_7kfc1")
 region_rect = Rect2(114, 4, 44, 26)
 patch_margin_left = 4
 patch_margin_top = 4
@@ -275,7 +275,7 @@ offset_top = 452.0
 offset_right = 292.0
 offset_bottom = 492.0
 focus_mode = 0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "Switch
@@ -290,7 +290,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_c1p35")
+texture = ExtResource("16_7kfc1")
 region_rect = Rect2(114, 4, 44, 26)
 patch_margin_left = 4
 patch_margin_top = 4
@@ -305,7 +305,7 @@ offset_top = 555.0
 offset_right = 116.0
 offset_bottom = 594.0
 focus_mode = 0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Cook"
@@ -319,7 +319,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_c1p35")
+texture = ExtResource("16_7kfc1")
 region_rect = Rect2(114, 4, 44, 26)
 patch_margin_left = 4
 patch_margin_top = 4
@@ -334,7 +334,7 @@ offset_top = 507.0
 offset_right = 116.0
 offset_bottom = 545.0
 focus_mode = 0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Recipe"
@@ -349,7 +349,7 @@ anchor_bottom = 1.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_c1p35")
+texture = ExtResource("16_7kfc1")
 region_rect = Rect2(114, 4, 44, 26)
 patch_margin_left = 4
 patch_margin_top = 4
@@ -368,7 +368,7 @@ offset_left = 125.0
 offset_top = 189.0
 offset_right = 885.0
 offset_bottom = 379.0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_colors/default_color = Color(0.690196, 0.788235, 0, 1)
 theme_override_font_sizes/normal_font_size = 130
 text = "YOU WIN !!!"
@@ -383,14 +383,14 @@ offset_left = 125.0
 offset_top = 189.0
 offset_right = 885.0
 offset_bottom = 379.0
-theme = ExtResource("2_k6x8q")
+theme = ExtResource("3_dwom6")
 theme_override_colors/default_color = Color(0.690196, 0.247059, 0, 1)
 theme_override_font_sizes/normal_font_size = 130
 text = "YOU LOSE !!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RecipeBook" parent="UI" instance=ExtResource("16_opnvs")]
+[node name="RecipeBook" parent="UI" instance=ExtResource("17_jne3d")]
 z_index = 15
 layout_mode = 1
 
@@ -407,7 +407,7 @@ text = "Press SPACE to Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("input_manager") instance=ExtResource("17_b3vcp")]
+[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("input_manager") instance=ExtResource("18_nr1vm")]
 visible = false
 z_index = 20
 layout_mode = 1
