@@ -1,6 +1,6 @@
 extends Node2D
 
-const ARC_POINTS: int = 8
+const ARC_POINTS: int = 11 # How many points aiming arc line2d has besides end point
 
 @export var area_2d: Area2D
 @export var aiming_arc: Line2D
@@ -56,13 +56,15 @@ func get_points() -> Array:
 # Targeting starts
 # Listen to targeting_start_signal
 func _on_targeting_start(monster_card: MonsterCard) -> void:
-	# Set targeting info
-	targeting = true
-	curr_card = monster_card
-	
-	# Enable target selector
-	area_2d.monitoring = true
-	area_2d.monitorable = true
+	# Check whether monster card can attack this turn
+	if not monster_card.attacked_this_turn:
+		# Set targeting info
+		targeting = true
+		curr_card = monster_card
+		
+		# Enable target selector
+		area_2d.monitoring = true
+		area_2d.monitorable = true
 
 
 # Targeting ends

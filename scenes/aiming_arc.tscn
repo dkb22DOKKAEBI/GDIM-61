@@ -1,10 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://bu0mha0b8gxk3"]
 
 [sub_resource type="Curve" id="Curve_adjr5"]
-_limits = [0.2, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.918367, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+_limits = [0.2, 1.2, 0.0, 1.0]
+_data = [Vector2(0, 0.32552), 0.0, 0.0, 0, 0, Vector2(0.886525, 1.2), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [node name="TargetSelector" type="Line2D"]
+modulate = Color(0.76662, 0.76662, 0.76662, 1)
 width = 4.0
 width_curve = SubResource("Curve_adjr5")
