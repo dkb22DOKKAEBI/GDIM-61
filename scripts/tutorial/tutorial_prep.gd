@@ -21,7 +21,8 @@ func _ready():
 	EventController.connect("preceed_tutorial_signal", update_curr_message)
 	EventController.connect("start_cook_tutorial_signal", start_cook_tutorial)
 	EventController.connect("finish_cook_tutorial_signal", finish_cook_tutorial)
-	EventController.connect("finish_place_monster_signal", finish_place_monster)
+	EventController.connect("start_place_monster_tutorial_signal", start_place_monster_tutorial)
+	EventController.connect("finish_place_monster_tutorial_signal", finish_place_monster_tutorial)
 	
 	# Update player setup for tutorial
 	PlayerHand.legacy_monster_hand.clear()
@@ -37,7 +38,7 @@ func _process(delta: float) -> void:
 	if not pizza_placed and pizza:
 		if pizza.placed:
 			pizza_placed = true
-			EventController.finish_place_monster_signal.emit()
+			EventController.finish_place_monster_tutorial_signal.emit()
 
 
 # Update current tutorial message
@@ -60,12 +61,16 @@ func finish_cook_tutorial() -> void:
 
 
 # Placing Mosnter tutorial
-func finish_place_monster() -> void:
+func start_place_monster_tutorial(text: String) -> void:
+	task_text.visible = true
+	task_text.text = text
+
+func finish_place_monster_tutorial() -> void:
 	task_text.visible = false
 	task_text.text = ""
 	
 	end_turn_button.disabled = false
-	#curr_message.activate_self()
+	curr_message.activate_self()
 
 
 # Tutorial "overriden" functions
@@ -79,4 +84,5 @@ func tutorial_on_cook() -> void:
 		return
 	
 	cooking_mechanics._on_cook()
+	pizza = PlayerHand.player_monster_hand[0]
 	EventController.finish_cook_tutorial_signal.emit()

@@ -4,5 +4,5 @@ extends Node
 signal preceed_tutorial_signal(next_message: TutorialMessage)
 signal start_cook_tutorial_signal(task_text: String) # Cook tutorial
 signal finish_cook_tutorial_signal()
-signal start_place_monster_signal(task_text: String) # Place monster tutorial
-signal finish_place_monster_signal()
+signal start_place_monster_tutorial_signal(task_text: String) # Place monster tutorial
+signal finish_place_monster_tutorial_signal()

@@ -8,4 +8,4 @@ func _on_preceed_to_next_tutorial():
 	super._on_preceed_to_next_tutorial()
 	
 	# Emit signal
-	EventController.start_place_monster_signal.emit(task_text)
+	EventController.start_place_monster_tutorial_signal.emit(task_text)
