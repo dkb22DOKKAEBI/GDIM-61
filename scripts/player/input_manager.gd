@@ -5,6 +5,7 @@ signal left_mouse_button_released
 signal select_placed_card(card: Card)
 signal player_attack
 signal switch_pause_menu_signal
+signal targeting_start_signal(monster_card: MonsterCard) # Signal that the targeting starts
 
 const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
@@ -23,6 +24,7 @@ func _input(event):
 			emit_signal("left_mouse_button_clicked")
 			raycast_at_cursor()
 		else:
+			print("Emit left mouse button go signal")
 			emit_signal("left_mouse_button_released")
 	
 	# Player tempeory attack
@@ -49,10 +51,11 @@ func raycast_at_cursor():
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
 				if battle_manager.is_on_player_turn and monster_card_found:
-					if not monster_card_found.placed:
+					if not monster_card_found.placed: # Find monster card in hand
 						card_manager_reference.start_drag(monster_card_found)
-					elif monster_card_found.placed:
-						select_placed_card.emit(monster_card_found)
+					elif monster_card_found.placed: # Find monster card in battle field
+						#select_placed_card.emit(monster_card_found)
+						targeting_start_signal.emit(monster_card_found)
 			
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:

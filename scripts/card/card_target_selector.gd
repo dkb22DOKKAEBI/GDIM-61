@@ -5,14 +5,17 @@ const START_X_OFFSET: int = 15 # Offset in x of starting point of aiming arc on 
 
 @export var area_2d: Area2D
 @export var aiming_arc: Line2D
+@export var input_manager: Node2D
 
-var curr_card: Card # The card that is targeting
+var curr_card: MonsterCard # The card that is targeting
 var targeting: bool = false # Whether playering is targeting
 
 
 # Ready
 func _ready() -> void:
-	pass
+	# Connect signals
+	input_manager.connect("targeting_start_signal", _on_targeting_start)
+	input_manager.connect("left_mouse_button_released", _on_targeting_end)
 
 
 # Process
@@ -54,3 +57,31 @@ func get_points() -> Array:
 func ease_out_cubic(number: float) -> float:
 	var result := 1.0 - pow(1 - number, 3.0)
 	return result
+
+
+# Targeting starts
+# Listen to targeting_start_signal
+func _on_targeting_start(monster_card: MonsterCard) -> void:
+	print("On target Start")
+	# Set targeting info
+	targeting = true
+	curr_card = monster_card
+	
+	# Enable target selector
+	area_2d.monitoring = true
+	area_2d.monitorable = true
+
+
+# Targeting ends
+# Listen to left_mouse_button_released
+func _on_targeting_end() -> void:
+	print("On target Start")
+	# Clear targeting info
+	targeting = false
+	curr_card = null
+	
+	# Disable target selector
+	aiming_arc.clear_points()
+	area_2d.position = Vector2.ZERO
+	area_2d.monitoring = false
+	area_2d.monitorable = false

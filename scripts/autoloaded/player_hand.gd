@@ -27,7 +27,6 @@ signal selected_ingredient_change_signal
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	center_screen_x = (DESIRED_WINDOW_WIDTH + SIDEBAR_WIDTH - DECK_WIDTH) / 2
-	#SceneManager.connect("player_complete_level_signal", clear_player_hand)
 	SceneManager.connect("game_end_signal", clear_player_legacy)
 
 

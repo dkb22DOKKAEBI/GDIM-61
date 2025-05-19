@@ -126,7 +126,8 @@ battle_manager = NodePath("../BattleManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 pot_ui = NodePath("../UI/PotUi")
 
-[node name="CardTargetSelector" parent="." instance=ExtResource("10_qwuef")]
+[node name="CardTargetSelector" parent="." node_paths=PackedStringArray("input_manager") instance=ExtResource("10_qwuef")]
+input_manager = NodePath("../Player/InputManager")
 
 [node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
 script = ExtResource("18_bsxgu")
