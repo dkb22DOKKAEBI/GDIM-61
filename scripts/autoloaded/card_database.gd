@@ -31,5 +31,5 @@ const BOSS_PATH = {
 
 # Stats for boss
 const BOSS_STATS = {
-	"Vacuum": {"HP": 1, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
+	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
 }

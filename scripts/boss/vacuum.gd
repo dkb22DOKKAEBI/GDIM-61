@@ -39,7 +39,8 @@ func on_action() -> void:
 
 
 # Boss abilities
-func vacuum_attack(target): # Boss attack
+# Ability 1: Boss attack
+func vacuum_attack(target):
 	var old_pos:Vector2 = battle_manager.enemy.global_position
 	if not target:
 		boss_attack_player_anim()
@@ -59,12 +60,13 @@ func vacuum_attack(target): # Boss attack
 	print("Opponent Attack")
 
 
-func vacuum_defend(): # Boss defend
+# Ability 2: Boss defend
+func vacuum_defend():
 	if boss_health == 20:
 		var target = choose_target()
 		vacuum_attack(target)
 	else:
-		boss_health = min(boss_health + 3, 20)
+		boss_health = min(boss_health + 3, CardDatabase.BOSS_STATS["Vacuum"]["HP"])
 		boss_health_text.text = str(boss_health)
 		
 		# Change font to double size and green
@@ -79,7 +81,8 @@ func vacuum_defend(): # Boss defend
 		print("Opponent Defend")
 
 
-func vacuum_eliminate(): # Boss eliminate
+# Ability 3: Boss eliminate
+func vacuum_eliminate():
 	var old_pos:Vector2 = battle_manager.enemy.global_position
 	if CardslotManager.cardslots[0].card_in_slot:
 		boss_attack_monster_anim(CardslotManager.cardslots[0])
