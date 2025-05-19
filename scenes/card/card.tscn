@@ -36,6 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(25, 25)
+mouse_filter = 2
 theme = ExtResource("3_2ufkr")
 theme_override_font_sizes/normal_font_size = 24
 text = "1
@@ -58,6 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(25, 25)
+mouse_filter = 2
 theme = ExtResource("3_2ufkr")
 theme_override_font_sizes/normal_font_size = 24
 text = "1"
@@ -77,13 +79,20 @@ text = "Selected"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AbilityButton" type="Button" parent="."]
-visible = false
-visibility_layer = 16
+[node name="UIContainer" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
 offset_left = -35.0
-offset_top = 53.0
+offset_top = 52.0
 offset_right = 35.0
-offset_bottom = 66.0
+offset_bottom = 85.0
+
+[node name="AbilityButton" type="Button" parent="UIContainer"]
+z_index = 10
+offset_left = 1.0
+offset_right = 71.0
+offset_bottom = 31.0
 text = "Ready"
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

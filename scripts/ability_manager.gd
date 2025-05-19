@@ -3,6 +3,8 @@ class_name Ability
 
 @export var cap_ability :bool
 @export var monster_name : String
+@export var enemy: Node2D
+
 
 #the dictionary will be "monster name": [do they have an ability, what type]
 var monster_abilities = {
@@ -40,7 +42,14 @@ func add_ability_card(monster_name):
 func check_damage_ability(name):
 	match name:
 		"Pizza":
-			return ["Attack", 3]
+			if enemy and enemy.get_child_count() > 0:
+				var actual_boss = enemy.get_child(0)
+				if actual_boss.has_method("boss_take_dmg"):
+					actual_boss.boss_take_dmg(5)
+				else:
+					print("Boss child exists but is missing boss_take_dmg()")
+			else:
+				print("Enemy is null or has no children")
 
 func check_heal_ability(name):
 	match name:
