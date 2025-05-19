@@ -52,7 +52,7 @@ func raycast_at_cursor():
 	var result = space_state.intersect_point(parameters)
 	if result.size() > 0:
 		for point in result:
-			var result_collision_mask = point.collider.collision_mask
+			var result_collision_mask = point.collider.collision_layer
 			
 			# Select monster cards
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
