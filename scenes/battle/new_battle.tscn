@@ -26,7 +26,6 @@
 
 [node name="NewBattle" type="Node2D"]
 
-<<<<<<< Updated upstream
 [node name="Player" type="Node2D" parent="."]
 
 [node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("battle_manager", "card_manager_reference", "deck_reference")]
@@ -140,8 +139,7 @@ input_manager = NodePath("../Player/InputManager")
 script = ExtResource("18_bsxgu")
 boss_parent = NodePath("../BattleField/Enemy")
 
-=======
->>>>>>> Stashed changes
+
 [node name="UI" type="Control" parent="."]
 z_index = -10
 layout_mode = 3
