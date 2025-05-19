@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1ha1u603qeyd"]
+[gd_scene load_steps=23 format=3 uid="uid://b1ha1u603qeyd"]
 
 [ext_resource type="Script" uid="uid://c2dd877msfpqm" path="res://scripts/tutorial/tutorial_prep.gd" id="1_cmspm"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="2_ikfo1"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://4uje6e3nsg7o" path="res://scripts/tutorial/tutorial_message_cook.gd" id="19_dwom6"]
 [ext_resource type="Script" uid="uid://clpdlvl6fmebs" path="res://scripts/tutorial/tutorial_start.gd" id="19_ikfo1"]
 [ext_resource type="Script" uid="uid://wpqnwkn5db8" path="res://scripts/tutorial/tutorial_message_place_monster.gd" id="20_bl2xa"]
+[ext_resource type="Script" uid="uid://col1tigqpy5rw" path="res://scripts/tutorial/tutorial_message_defeat_boss.gd" id="21_15kfc"]
 
 [node name="Tutorial" type="Node2D"]
 
@@ -960,7 +961,7 @@ theme = ExtResource("3_dwom6")
 theme_override_font_sizes/font_size = 20
 text = "OK"
 
-[node name="TutMessage_10" type="Control" parent="TutorialMessages"]
+[node name="TutMessage_10" type="Control" parent="TutorialMessages" node_paths=PackedStringArray("next_message")]
 process_mode = 2
 visible = false
 layout_mode = 1
@@ -970,8 +971,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("18_ikfo1")
-activate_next = true
+script = ExtResource("21_15kfc")
+next_message = NodePath("../TutMessage_11")
 
 [node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_10"]
 custom_minimum_size = Vector2(500, 0)
@@ -1018,6 +1019,65 @@ theme = ExtResource("3_dwom6")
 theme_override_font_sizes/font_size = 20
 text = "OK"
 
+[node name="TutMessage_11" type="Control" parent="TutorialMessages" node_paths=PackedStringArray("next_message")]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("18_ikfo1")
+next_message = NodePath("../TutMessage_10")
+activate_next = true
+
+[node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_11"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -76.0
+offset_right = 434.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_dwom6")
+theme_override_font_sizes/normal_font_size = 40
+text = "At the start of each turn, player's hand refills to 6 ingredient cards"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBackground" type="ColorRect" parent="TutorialMessages/TutMessage_11/MessageText"]
+modulate = Color(0, 0, 0, 0.756863)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="TutorialMessages/TutMessage_11"]
+z_index = 1
+layout_mode = 0
+offset_left = 894.0
+offset_top = 403.0
+offset_right = 927.0
+offset_bottom = 437.0
+focus_mode = 0
+theme = ExtResource("3_dwom6")
+theme_override_font_sizes/font_size = 20
+text = "OK"
+
 [node name="TutorialTask" type="RichTextLabel" parent="."]
 visible = false
 offset_left = 763.0
@@ -1056,3 +1116,4 @@ boss_parent = NodePath("../BattleField/Enemy")
 [connection signal="pressed" from="TutorialMessages/TutMessage_8/Button" to="TutorialMessages/TutMessage_8" method="_on_preceed_to_next_tutorial"]
 [connection signal="pressed" from="TutorialMessages/TutMessage_9/Button" to="TutorialMessages/TutMessage_9" method="_on_preceed_to_next_tutorial"]
 [connection signal="pressed" from="TutorialMessages/TutMessage_10/Button" to="TutorialMessages/TutMessage_10" method="_on_preceed_to_next_tutorial"]
+[connection signal="pressed" from="TutorialMessages/TutMessage_11/Button" to="TutorialMessages/TutMessage_11" method="_on_preceed_to_next_tutorial"]
