@@ -16,6 +16,11 @@ func _ready():
 
 # Cook to create new monster card
 func _on_cook() -> void:
+	# Check player monster hand size
+	if PlayerHand.player_monster_hand.size() >= 4:
+		return
+	
+	# Try cook to create monster
 	if battle_manager.is_on_player_turn:
 		if PlayerHand.selected_ingredients.size() == 0:
 			return

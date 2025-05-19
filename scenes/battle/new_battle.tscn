@@ -83,9 +83,9 @@ cover = NodePath("Cover")
 visible = false
 modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
 z_index = 1
-offset_left = 239.0
+offset_left = 240.0
 offset_top = 442.0
-offset_right = 813.0
+offset_right = 814.0
 offset_bottom = 600.0
 
 [node name="BattleField" type="Node2D" parent="."]
@@ -407,6 +407,9 @@ visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(532, 521)
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
