@@ -3,6 +3,8 @@ extends Node
 
 const STARTING_HEALTH = 10
 const STARTING_HAND_SIZE = 2
+const MAX_INGREDIENT_HAND_NUM = 6 # Maximum number of ingredient cards in hand
+const MAX_MONSTER_HAND_NUM = 4 # Maximum number of monster cards in hand
 
 # Player's deck -> initially 28
 const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",

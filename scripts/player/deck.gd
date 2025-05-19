@@ -13,7 +13,6 @@ var card_starting_position: Vector2 = Vector2(915, 525)
 # Ready
 func _ready():
 	# Update deck at the start of a level
-	print(PlayerHand.player_ingredient_hand.size())
 	for ingredient_name: String in PlayerHand.legacy_ingredient_hand:
 		instantiate_ingredient_card(ingredient_name)
 	PlayerHand.legacy_ingredient_hand.clear()
