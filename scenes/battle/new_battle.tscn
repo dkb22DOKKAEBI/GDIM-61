@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=24 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -17,6 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://scenes/ui/recipe_book.tscn" id="14_x8w2e"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://scenes/menus/pause_menu.tscn" id="17_bsxgu"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://scripts/on_scene_start.gd" id="18_bsxgu"]
+[ext_resource type="AudioStream" uid="uid://d2sbgkufk663o" path="res://audio/music/stardew valley soundtrack.mp3" id="18_h8t0o"]
+[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="19_h8t0o"]
+[ext_resource type="AudioStream" uid="uid://cd5bd43x3avc3" path="res://audio/SFX/select.mp3" id="20_lsviu"]
+[ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="21_uw24h"]
+[ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="22_oytup"]
+[ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="23_8eucq"]
 
 [node name="NewBattle" type="Node2D"]
 
@@ -387,7 +393,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RecipeBook" parent="UI" instance=ExtResource("14_x8w2e")]
-z_index = 15
+z_index = 100
 layout_mode = 1
 
 [node name="TempAttackMessage" type="RichTextLabel" parent="UI"]
@@ -408,6 +414,27 @@ visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_h8t0o")
+volume_db = -15.315
+autoplay = true
+
+[node name="drawsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_h8t0o")
+
+[node name="clicksfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_lsviu")
+
+[node name="cookingsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_uw24h")
+
+[node name="endturnsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_oytup")
+
+[node name="attacksfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_8eucq")
+volume_db = -10.0
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]

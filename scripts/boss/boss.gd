@@ -115,6 +115,6 @@ func boss_return_pos_anim(old_pos: Vector2):
 	battle_manager.enemy.z_index = 0
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(battle_manager.enemy, "position", old_pos, 0.5)
-	await battle_manager.wait(0.5)
+	await battle_manager.wait(0.5)	
 	boss_attack_text.visible = true
 	boss_health_text.visible = true

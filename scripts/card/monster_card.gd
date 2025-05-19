@@ -1,10 +1,21 @@
 class_name MonsterCard
 extends Card
 
+@onready var ability_button: Button = $AbilityButton
+@onready var battle_manager = get_node("res://scripts/new_battle_manager.gd")
+
 
 func _ready() -> void:
 	super._ready()
 	is_monster_card = true
+	ability_button.hide()
+	ability_button.connect("pressed", Callable(self, "_on_ability_button_pressed"))
+
+func update_ability_button():
+	if placed:
+		ability_button.show()
+	else:
+		ability_button.hide()
 
 
 func get_label_vis() -> bool:

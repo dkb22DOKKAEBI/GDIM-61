@@ -5,6 +5,7 @@ const ARC_POINTS: int = 11 # How many points aiming arc line2d has besides end p
 @export var area_2d: Area2D
 @export var aiming_arc: Line2D
 @export var input_manager: Node2D
+@onready var attacksfx: AudioStreamPlayer = $AudioStreamPlayer
 
 var curr_card: MonsterCard # The card that is targeting
 var targeting: bool = false # Whether playering is targeting
@@ -75,7 +76,8 @@ func _on_targeting_end() -> void:
 	if target_boss:
 		print("Attack")
 		curr_card.attacked_this_turn = true
-	
+		target_boss.boss_take_dmg(curr_card.get_attack())
+
 	# Clear targeting info
 	targeting = false
 	curr_card = null

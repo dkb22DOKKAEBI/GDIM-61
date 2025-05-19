@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cvmypg70g5akh" path="res://card_images/monsters/CardSlot.png" id="1_lc470"]
 [ext_resource type="Script" uid="uid://wrkrwvu00sun" path="res://scripts/card/cardslot.gd" id="1_uggls"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lc470"]
 size = Vector2(78, 116)
 

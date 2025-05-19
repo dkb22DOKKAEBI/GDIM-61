@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1ha1u603qeyd"]
+[gd_scene load_steps=29 format=3 uid="uid://b1ha1u603qeyd"]
 
 [ext_resource type="Script" uid="uid://c2dd877msfpqm" path="res://scripts/tutorial/tutorial_prep.gd" id="1_cmspm"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="2_ikfo1"]
@@ -22,6 +22,12 @@
 [ext_resource type="Script" uid="uid://clpdlvl6fmebs" path="res://scripts/tutorial/tutorial_start.gd" id="19_ikfo1"]
 [ext_resource type="Script" uid="uid://wpqnwkn5db8" path="res://scripts/tutorial/tutorial_message_place_monster.gd" id="20_bl2xa"]
 [ext_resource type="Script" uid="uid://col1tigqpy5rw" path="res://scripts/tutorial/tutorial_message_defeat_boss.gd" id="21_15kfc"]
+[ext_resource type="AudioStream" uid="uid://d2sbgkufk663o" path="res://audio/music/stardew valley soundtrack.mp3" id="23_gxgfo"]
+[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="24_sbw1o"]
+[ext_resource type="AudioStream" uid="uid://cd5bd43x3avc3" path="res://audio/SFX/select.mp3" id="25_06rsu"]
+[ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="26_4gq6d"]
+[ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="27_mjrbb"]
+[ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="28_7kfc1"]
 
 [node name="Tutorial" type="Node2D"]
 
@@ -1161,6 +1167,27 @@ script = ExtResource("19_ikfo1")
 tutorial_prep = NodePath("../TutorialPrep")
 boss_parent = NodePath("../BattleField/Enemy")
 end_turn_button = NodePath("../UI/Buttons/EndTurnButton")
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_gxgfo")
+volume_db = -15.315
+autoplay = true
+
+[node name="drawsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_sbw1o")
+
+[node name="clicksfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_06rsu")
+
+[node name="cookingsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_4gq6d")
+
+[node name="endturnsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_mjrbb")
+
+[node name="attacksfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_7kfc1")
+volume_db = -10.0
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="TutorialPrep" method="tutorial_on_cook"]

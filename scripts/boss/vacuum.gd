@@ -3,6 +3,8 @@ extends Boss
 
 var boss_block: float
 var boss_elimination: float
+@onready var new_battle: Node2D = $"."
+@onready var attacksfx = new_battle.get_node("attacksfx")
 
 
 # Initialization of boss stats

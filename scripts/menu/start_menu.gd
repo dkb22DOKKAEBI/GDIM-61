@@ -1,4 +1,5 @@
 extends Node
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 # Attached to Start Game button

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b566xs2vmuxjj"]
+[gd_scene load_steps=5 format=3 uid="uid://b566xs2vmuxjj"]
 
 [ext_resource type="Script" uid="uid://5kugmxfpawh4" path="res://scripts/card/card_target_selector.gd" id="1_4nd48"]
 [ext_resource type="PackedScene" uid="uid://bu0mha0b8gxk3" path="res://scenes/aiming_arc.tscn" id="1_c07u4"]
+[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="3_m6un0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66gff"]
 size = Vector2(5, 5)
@@ -24,6 +25,10 @@ debug_color = Color(2.40654e-06, 0.614932, 0.717212, 0.42)
 
 [node name="TargetSelector" parent="CanvasLayer" instance=ExtResource("1_c07u4")]
 modulate = Color(0.65834, 0.65834, 0.65834, 1)
+
+[node name="attacksfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m6un0")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

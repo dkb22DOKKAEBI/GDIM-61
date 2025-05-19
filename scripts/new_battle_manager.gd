@@ -22,7 +22,8 @@ var player_health_text_prefix: String = "Player Health: "
 
 @export var ability_manager: Node2D # never used
 var card_starting_position: Vector2 = Vector2(100, 525)
-
+@onready var endturnsfx: AudioStreamPlayer = $"../endturnsfx"
+@onready var attacksfx: AudioStreamPlayer = $"../attacksfx"
 
 # ready function
 func _ready() -> void:
@@ -59,10 +60,12 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 
 # Player attack
 func _on_player_attack():
+	attacksfx.play()
 	if not selected_card_in_slot:
 		return
 	
 	if not player_is_attacking and not selected_card_in_slot.attacked_this_turn:
+		
 		player_is_attacking = true
 		selected_card_in_slot.attacked_this_turn = true
 		
@@ -115,6 +118,7 @@ func player_lose():
 func _on_end_turn_button_pressed() -> void:
 	EventController.player_turn_end_signal.emit()
 	# Check whether the player is attacking
+	endturnsfx.play()
 	if player_is_attacking:
 		return
 	
@@ -143,6 +147,7 @@ func enable_end_turn_button(enable: bool) -> void:
 
 # Player being attacked
 func player_take_dmg(boss_attack: float) -> void:
+	attacksfx.play()
 	PlayerController.player_health = max(0, PlayerController.player_health - boss_attack)
 	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
 
@@ -164,8 +169,8 @@ func start_player_turn():
 		$"../PlayerHand/Deck".draw_card()
 	
 	reset_cards_attack()
-	check_ability_cds()
 	is_on_player_turn = true
+	check_ability_cds()
 
 
 func check_ability_cds():
@@ -174,32 +179,38 @@ func check_ability_cds():
 
 		if CardslotManager.cardslot_abilities[slot_id][1] == 0:
 			var card_name = CardslotManager.cardslot_abilities[slot_id][0]
+
 			if card_name == "None":
 				continue  # Skip if nothing is in the slot
 
-			var card_scene = preload(MONSTER_CARD_SCENE_PATH)
-			var ability_instance = Ability.new()
-			var result_ability = ability_instance.add_ability_card(card_name)
-			if result_ability == null:
-				continue  # this card has no ability, skip it
-			var ability_name = result_ability[0]
+			var monster_card = cardslot.card_in_slot
 
-			var new_card: Node2D = card_scene.instantiate()
-			new_card.get_node("CardImage").texture = ResourceLoader.load("res://cards/" + ability_name + ".png")
-			new_card.get_node("Attack").text = str(result_ability[1])
-			monster_card_manager.add_child(new_card)
+			if monster_card and monster_card.has_method("update_ability_button"):
+				monster_card.update_ability_button()
 
-			if monster_card_manager.visible:
-				new_card.set_card_z_index(1)
-			else:
-				new_card.set_card_z_index(0)
-
-			new_card.name = "AbilityCard"
-			new_card.card_name = ability_name
-			new_card.position = card_starting_position
-			PlayerHand.add_card_to_hand(new_card, 1, 1)
-
-			CardslotManager.cardslot_abilities[slot_id][1] = CardslotManager.card_ability_cds[card_name]
+			#var card_scene = preload(MONSTER_CARD_SCENE_PATH)
+			#var ability_instance = Ability.new()
+			#var result_ability = ability_instance.add_ability_card(card_name)
+			#if result_ability == null:
+				#continue  # this card has no ability, skip it
+			#var ability_name = result_ability[0]
+#
+			#var new_card: Node2D = card_scene.instantiate()
+			#new_card.get_node("CardImage").texture = ResourceLoader.load("res://cards/" + ability_name + ".png")
+			#new_card.get_node("Attack").text = str(result_ability[1])
+			#monster_card_manager.add_child(new_card)
+#
+			#if monster_card_manager.visible:
+				#new_card.set_card_z_index(1)
+			#else:
+				#new_card.set_card_z_index(0)
+#
+			#new_card.name = "AbilityCard"
+			#new_card.card_name = ability_name
+			#new_card.position = card_starting_position
+			#PlayerHand.add_card_to_hand(new_card, 1, 1)
+#
+			#CardslotManager.cardslot_abilities[slot_id][1] = CardslotManager.card_ability_cds[card_name]
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
 			#print("Decreased cooldown for", slot_id, "to", CardslotManager.cardslot_abilities[slot_id][1])
