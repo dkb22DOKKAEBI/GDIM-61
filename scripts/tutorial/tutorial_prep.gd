@@ -118,6 +118,7 @@ func tutorial_on_cook() -> void:
 		cooked = true
 		cooking_mechanics._on_cook()
 		pizza = PlayerHand.player_monster_hand[0]
+		await get_tree().create_timer(1).timeout
 		EventController.finish_cook_tutorial_signal.emit()
 	else:
 		cooking_mechanics._on_cook()

@@ -1079,6 +1079,7 @@ text = "OK"
 [node name="TutMessage_12" type="Control" parent="TutorialMessages"]
 process_mode = 2
 visible = false
+z_index = 200
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1133,8 +1134,6 @@ focus_mode = 0
 theme = ExtResource("3_dwom6")
 theme_override_font_sizes/font_size = 24
 text = "Start Menu"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="TutorialMessages"]
 
 [node name="TutorialTask" type="RichTextLabel" parent="."]
 z_index = 3

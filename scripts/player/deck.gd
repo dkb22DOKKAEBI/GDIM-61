@@ -1,7 +1,7 @@
 extends Node2D
 
 const INGREDIENT_CARD_SCENE_PATH = "res://scenes/card/ingredient_card.tscn"
-const CARD_DRAW_SPEED = 1
+var CARD_DRAW_SPEED = 1
 
 var card_starting_position: Vector2 = Vector2(915, 525)
 

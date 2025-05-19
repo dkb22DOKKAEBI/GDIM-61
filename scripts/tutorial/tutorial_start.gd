@@ -18,4 +18,6 @@ func _ready() -> void:
 	
 	# Start Tutorial
 	end_turn_button.disabled = true
+	
+	await get_tree().create_timer(1).timeout
 	tutorial_prep.curr_message.activate_self()
