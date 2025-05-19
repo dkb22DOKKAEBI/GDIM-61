@@ -1,9 +1,9 @@
 class_name TutorialMessage
 extends Node
 
-
 @export var next_message: TutorialMessage # Next message
 @export var activate_next: bool # Whether activate next message when finish this tutorial message
+
 
 # Ready
 func _ready() -> void:
@@ -14,8 +14,7 @@ func _ready() -> void:
 
 # Attached to the button OK
 # Try proceed to the next tutorial message
-func _on_preceed_to_next_level():
-	print("On preceed to next level")
+func _on_preceed_to_next_tutorial():
 	# Emit signal
 	EventController.preceed_tutorial_signal.emit(next_message)
 	get_tree().paused = false
@@ -34,7 +33,3 @@ func activate_self() -> void:
 	self.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	
 	get_tree().paused = true
-
-func _process(delta: float):
-	#print(self.can_process())
-	pass

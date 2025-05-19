@@ -16,5 +16,4 @@ func _ready() -> void:
 	#boss.battle_manager = $"../BattleManager"
 	
 	# Start Tutorial
-	print("On Tutorial Start")
 	tutorial_prep.curr_message.activate_self()
