@@ -8,6 +8,7 @@ var recipe = []
 @export var battle_manager: Node2D
 @export var monster_card_manager: Node2D
 @export var pot_ui: Control
+@onready var cookingsfx: AudioStreamPlayer = $"../cookingsfx"
 
 
 func _ready():
@@ -31,6 +32,7 @@ func _on_cook() -> void:
 			return
 		
 		# Instantiate monster
+		cookingsfx.play()
 		var card_scene = preload(MONSTER_CARD_SCENE_PATH)
 		var new_card: Node2D = card_scene.instantiate()
 		var card_image_path = str("res://card_images/monsters/" + result_monster + ".png")

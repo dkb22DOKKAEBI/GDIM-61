@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8me27agp6vuk"]
+[gd_scene load_steps=3 format=3 uid="uid://b8me27agp6vuk"]
 
 [ext_resource type="Script" uid="uid://bguce6op0jbnu" path="res://scripts/menu/start_menu.gd" id="1_8tuso"]
+[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="2_r2ayf"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -68,6 +69,9 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 25
 text = "Exit Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r2ayf")
 
 [connection signal="pressed" from="Buttons/VBoxContainer/StartGameButton" to="." method="on_start_game"]
 [connection signal="pressed" from="Buttons/VBoxContainer/ExitGameButton" to="." method="on_exit_game"]
