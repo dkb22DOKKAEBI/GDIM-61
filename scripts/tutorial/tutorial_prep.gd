@@ -5,6 +5,7 @@ const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Tortilla",
 
 @export var cooking_mechanics: Node2D # Reference to cooking mechanics
 @export var task_text: RichTextLabel # Reference to task text
+@export var win_condition: RichTextLabel
 
 @export var curr_message: TutorialMessage # Current tutorial message
 var cooked: bool = false
@@ -33,6 +34,7 @@ func _ready():
 	PlayerHand.legacy_monster_hand.clear()
 	PlayerController.deck = TUTORIAL_DECK.duplicate()
 	PlayerController.is_on_tutorial = true
+	win_condition.text = ""
 	
 	# Disable buttons
 	cook_button.disabled = true

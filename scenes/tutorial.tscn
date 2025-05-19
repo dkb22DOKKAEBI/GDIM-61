@@ -25,10 +25,11 @@
 
 [node name="Tutorial" type="Node2D"]
 
-[node name="TutorialPrep" type="Node2D" parent="." node_paths=PackedStringArray("cooking_mechanics", "task_text", "curr_message", "cook_button", "recipe_button", "end_turn_button")]
+[node name="TutorialPrep" type="Node2D" parent="." node_paths=PackedStringArray("cooking_mechanics", "task_text", "win_condition", "curr_message", "cook_button", "recipe_button", "end_turn_button")]
 script = ExtResource("1_cmspm")
 cooking_mechanics = NodePath("../CookingMechanic")
 task_text = NodePath("../TutorialTask")
+win_condition = NodePath("../UI/GameConditions/WinCondition")
 curr_message = NodePath("../TutorialMessages/TutMessage_1")
 cook_button = NodePath("../UI/Buttons/CookButton")
 recipe_button = NodePath("../UI/Buttons/RecipeButton")
