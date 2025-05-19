@@ -62,7 +62,7 @@ func vacuum_attack(target):
 
 # Ability 2: Boss defend
 func vacuum_defend():
-	if boss_health == 20:
+	if boss_health == CardDatabase.BOSS_STATS["Vacuum"]["HP"]:
 		var target = choose_target()
 		vacuum_attack(target)
 	else:

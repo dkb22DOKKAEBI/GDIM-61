@@ -408,9 +408,6 @@ z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(532, 521)
-
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]
 [connection signal="pressed" from="UI/Buttons/RecipeButton" to="UI/RecipeBook" method="_on_recipe_book_button_pressed"]
