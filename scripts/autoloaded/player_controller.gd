@@ -15,6 +15,7 @@ const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
 
 var deck: Array[String] # Player deck
 var player_health: int # Player health
+var is_on_tutorial: bool = false # Whether the player is in totorial
 
 
 # Ready function

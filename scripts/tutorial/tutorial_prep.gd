@@ -1,7 +1,7 @@
 extends Node
 
-const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Lettuce",
-"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough"]
+const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Tortilla",
+"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Cheese", "Dough"]
 
 @export var cooking_mechanics: Node2D # Reference to cooking mechanics
 @export var task_text: RichTextLabel # Reference to task text
@@ -26,11 +26,13 @@ func _ready():
 	EventController.connect("start_place_monster_tutorial_signal", start_place_monster_tutorial)
 	EventController.connect("finish_place_monster_tutorial_signal", finish_place_monster_tutorial)
 	EventController.connect("start_defeat_boss_tutorial_signal",start_defeat_boss_tutorial)
+	EventController.connect("finish_defeat_boss_tutorial_signal",finish_defeat_boss_tutorial)
 	EventController.connect("player_turn_end_signal", start_end_turn_tutorial)
 	
 	# Update player setup for tutorial
 	PlayerHand.legacy_monster_hand.clear()
 	PlayerController.deck = TUTORIAL_DECK.duplicate()
+	PlayerController.is_on_tutorial = true
 	
 	# Disable buttons
 	cook_button.disabled = true
@@ -84,6 +86,10 @@ func start_defeat_boss_tutorial(text: String) -> void:
 	print("Enable end turn button")
 	end_turn_button.disabled = false
 
+func finish_defeat_boss_tutorial() -> void:
+	PlayerController.is_on_tutorial = false
+	curr_message.activate_self()
+
 
 # End turn tutorial
 func start_end_turn_tutorial() -> void:
@@ -94,6 +100,7 @@ func start_end_turn_tutorial() -> void:
 
 # Return to the start menu
 func back_to_start_menu() -> void:
+	get_tree().paused = false
 	SceneManager.back_to_start_menu()
 
 

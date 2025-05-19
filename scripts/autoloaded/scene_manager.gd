@@ -36,7 +36,10 @@ func defeat_boss() -> void:
 	level_index += 1
 	
 	# Check whether all bosses defeated and game clear
-	if level_index >= CardDatabase.BOSS_LEVEL.size(): # Player wins
+	if PlayerController.is_on_tutorial: # Player complete tutorial
+		print("Emit tutorial finish signal")
+		EventController.finish_defeat_boss_tutorial_signal.emit()
+	elif level_index >= CardDatabase.BOSS_LEVEL.size(): # Player wins
 		transfer_to_game_over_win()
 	else: # Still left bosses
 		transfer_to_reward()
