@@ -16,6 +16,7 @@ func _ready() -> void:
 	# Connect signals
 	input_manager.connect("targeting_start_signal", _on_targeting_start)
 	input_manager.connect("left_mouse_button_released", _on_targeting_end)
+	input_manager.connect("right_mouse_button_clicked", _on_targeting_canceled)
 
 
 # Process
@@ -70,6 +71,25 @@ func _on_targeting_start(monster_card: MonsterCard) -> void:
 # Targeting ends
 # Listen to left_mouse_button_released
 func _on_targeting_end() -> void:
+	# Try attack if has boss target
+	if target_boss:
+		print("Attack")
+		curr_card.attacked_this_turn = true
+	
+	# Clear targeting info
+	targeting = false
+	curr_card = null
+	
+	# Disable target selector
+	aiming_arc.clear_points()
+	area_2d.position = Vector2.ZERO
+	area_2d.monitoring = false
+	area_2d.monitorable = false
+
+
+# Targeting canceled
+# Listen to right_mouse_button_released
+func _on_targeting_canceled() -> void:
 	# Clear targeting info
 	targeting = false
 	curr_card = null
@@ -83,17 +103,9 @@ func _on_targeting_end() -> void:
 
 # Detect boss card entered and update boss target
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	test()
-	pass # Replace with function body.
+	target_boss = area.get_parent()
 
 
 # Detect boss card entered and update boss target
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	test()
-	pass # Replace with function body.
-
-func test():
-	if not target_boss:
-		print("None")
-	else:
-		print(target_boss.name)
+	target_boss = null

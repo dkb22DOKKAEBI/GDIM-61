@@ -12,7 +12,7 @@ area_2d = NodePath("Area2D")
 aiming_arc = NodePath("CanvasLayer/TargetSelector")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 8
+collision_mask = 16
 monitoring = false
 monitorable = false
 

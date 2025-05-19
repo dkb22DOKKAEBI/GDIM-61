@@ -1,7 +1,9 @@
 extends Node2D
 
-signal left_mouse_button_clicked
+signal left_mouse_button_clicked   # Mouse signals
 signal left_mouse_button_released
+signal right_mouse_button_clicked
+
 signal select_placed_card(card: Card)
 signal player_attack
 signal switch_pause_menu_signal
@@ -19,12 +21,18 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 
 
 func _input(event):
+	# Check mouse left button events
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			emit_signal("left_mouse_button_clicked")
 			raycast_at_cursor()
 		else:
 			emit_signal("left_mouse_button_released")
+	
+	# Check mouse right button events
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed:
+			emit_signal("right_mouse_button_clicked")
 	
 	# Player tempeory attack
 	if Input.is_key_pressed(KEY_SPACE):
