@@ -38,5 +38,5 @@ func test():
 		else:
 			cardslot_abilities[slot_id][0] = "None"
 			cardslot_abilities[slot_id][1] = 0
-	print(cardslot_abilities)
-	print("-------------------------------")
+	#print(cardslot_abilities)
+	#print("-------------------------------")
