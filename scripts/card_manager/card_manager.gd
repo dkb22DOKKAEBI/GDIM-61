@@ -24,6 +24,7 @@ func connect_card_signals(card):
 
 # Hover over card
 func on_hovered_over_card(card):
+	print("On Hover Over")
 	# Return if the card is being dragged or is in animation
 	if card_being_dragged or card.is_in_animation:
 		return

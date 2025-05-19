@@ -20,6 +20,7 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 @export var deck_reference: Node2D
 
 
+# Check for inputs
 func _input(event):
 	# Check mouse left button events
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

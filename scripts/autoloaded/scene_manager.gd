@@ -3,7 +3,7 @@ extends Node
 const START_MENU_PATH = "res://scenes/menus/start_menu.tscn" # Path to start menu scene
 const REWARD_SCENE_PATH = "res://scenes/menus/reward.tscn" # Path to reward scene
 const BATTLE_SCENE_PATH = "res://scenes/battle/new_battle.tscn" # Path to battle scene
-const TUTORIAL_SCENE_PATH = "res://scenes/battle/tutorial.tscn" # Path to tutorial scene
+const TUTORIAL_SCENE_PATH = "res://scenes/tutorial.tscn" # Path to tutorial scene
 const GAME_OVER_WIN = "res://scenes/menus/game_over_win.tscn" # Path to game over win scene
 const GAME_OVER_LOSE = "res://scenes/menus/game_over_lose.tscn" # Path to game over lose scene
 

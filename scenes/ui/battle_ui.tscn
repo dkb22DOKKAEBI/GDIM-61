@@ -232,13 +232,16 @@ mouse_filter = 2
 [node name="BattleFieldBg" type="NinePatchRect" parent="BattleField"]
 modulate = Color(0.408329, 0.408329, 0.408329, 1)
 layout_mode = 2
+mouse_filter = 1
 texture = ExtResource("1_ebl3e")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BattleField"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TopInfo" type="ColorRect" parent="BattleField/VBoxContainer"]
 modulate = Color(0, 0, 0, 0.670588)
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2

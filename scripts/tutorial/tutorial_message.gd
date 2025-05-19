@@ -15,8 +15,10 @@ func _ready() -> void:
 # Attached to the button OK
 # Try proceed to the next tutorial message
 func _on_preceed_to_next_level():
+	print("On preceed to next level")
 	# Emit signal
 	EventController.preceed_tutorial_signal.emit(next_message)
+	get_tree().paused = false
 	
 	# Check whether activate next tutorial message
 	if activate_next:
@@ -29,4 +31,10 @@ func _on_preceed_to_next_level():
 # Enable message
 func activate_self() -> void:
 	self.visible = true
-	self.process_mode = Node.PROCESS_MODE_INHERIT
+	self.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	
+	get_tree().paused = true
+
+func _process(delta: float):
+	#print(self.can_process())
+	pass
