@@ -1,6 +1,7 @@
 class_name Boss
 extends Node
 
+var boss_name: String # Name of the boss
 @export var boss_health_text: RichTextLabel
 @export var boss_attack_text: RichTextLabel
 var boss_health: int
@@ -15,9 +16,9 @@ var battle_manager: Node2D # Battle manager of the level -> initialized in OnSce
 # Initialization
 func _ready() -> void:
 	# Initialize variables
-	boss_health = CardDatabase.BOSS_STATS["Vacuum"]["HP"]
-	boss_attack = CardDatabase.BOSS_STATS["Vacuum"]["Attack"]
-	max_cool_down = CardDatabase.BOSS_STATS["Vacuum"]["CoolDown"]
+	boss_health = CardDatabase.BOSS_STATS[boss_name]["HP"]
+	boss_attack = CardDatabase.BOSS_STATS[boss_name]["Attack"]
+	max_cool_down = CardDatabase.BOSS_STATS[boss_name]["CoolDown"]
 	curr_cool_down = max_cool_down
 	
 	# Update boss health and attack text
@@ -75,7 +76,7 @@ func on_action() -> void:
 	pass
 
 
-# Boss choosing target logic
+# Basic boss choosing target logic
 func choose_target() -> Cardslot:
 	#for now this is how it will target cards
 	if CardslotManager.cardslots[0].card_in_slot:

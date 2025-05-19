@@ -24,12 +24,15 @@ const BOSS_LEVEL = {
 
 # Path to boss scenes
 const VACUUM_SCENE_PATH = "res://scenes/boss/vacuum.tscn"
+const LIGHTBULB_SCENE_PATH = "res://scenes/boss/lightbulb.tscn"
 const BOSS_PATH = {
+	"Lightbulb": LIGHTBULB_SCENE_PATH,
 	"Vacuum": VACUUM_SCENE_PATH
 }
 
 
 # Stats for boss
 const BOSS_STATS = {
+	"Lightbulb": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
 	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
 }

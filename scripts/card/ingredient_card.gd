@@ -12,7 +12,7 @@ func _init(ingredient_name: String = "") -> void:
 
 
 # Select ingredient card
-func ingredient_card_selected():	
+func ingredient_card_selected():
 	# Check whether exist selected ingredients limit of 4
 	if PlayerHand.selected_ingredients.size() >= 4:
 		return

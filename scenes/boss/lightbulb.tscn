@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://xcmputmidh3d"]
+
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_2ajcm"]
+[ext_resource type="Script" uid="uid://bxmxg3wlxf6oe" path="res://scripts/boss/tutorial_boss.gd" id="1_ln1ru"]
+[ext_resource type="Texture2D" uid="uid://bye6wutonq8am" path="res://card_images/monsters/Breedspawn.png" id="1_ynhii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
+size = Vector2(164, 228)
+
+[node name="Boss" type="Node2D" node_paths=PackedStringArray("voice_text", "boss_health_text", "boss_attack_text")]
+script = ExtResource("1_ln1ru")
+voice_text = NodePath("BRRRRR")
+boss_health_text = NodePath("BossHealth")
+boss_attack_text = NodePath("BossAttack")
+
+[node name="BossSprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(4.76837e-06, 7.62939e-06)
+scale = Vector2(0.344538, 0.344538)
+texture = ExtResource("1_ynhii")
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7xtgf")
+
+[node name="BossHealth" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 26.0
+offset_top = -118.0
+offset_right = 85.0
+offset_bottom = -59.0
+theme = ExtResource("1_2ajcm")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossAttack" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = -75.0
+offset_top = -108.0
+offset_right = -35.0
+offset_bottom = -68.0
+theme = ExtResource("1_2ajcm")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BRRRRR" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -70.0
+offset_top = -147.0
+offset_right = 82.0
+offset_bottom = -111.0
+theme = ExtResource("1_2ajcm")
+theme_override_font_sizes/normal_font_size = 24
+text = "BRRR....."
+horizontal_alignment = 1
+vertical_alignment = 1

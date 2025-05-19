@@ -79,9 +79,10 @@ battle_manager = NodePath("../../BattleManager")
 temp_ui = NodePath("../../UI")
 cover = NodePath("../IngredientCardManager/Cover")
 
-[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("temp_ui", "cover")]
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "cover")]
 z_index = 1
 script = ExtResource("6_h8t0o")
+deck = NodePath("../Deck")
 temp_ui = NodePath("../../UI")
 cover = NodePath("Cover")
 
@@ -418,28 +419,22 @@ input_manager = NodePath("../../Player/InputManager")
 stream = ExtResource("18_h8t0o")
 volume_db = -15.315
 autoplay = true
-bus = &"Music"
 
 [node name="drawsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_h8t0o")
-bus = &"SFX"
 
 [node name="clicksfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_lsviu")
-bus = &"SFX"
 
 [node name="cookingsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_uw24h")
-bus = &"SFX"
 
 [node name="endturnsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_oytup")
-bus = &"SFX"
 
 [node name="attacksfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_8eucq")
 volume_db = -10.0
-bus = &"SFX"
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]

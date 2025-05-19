@@ -116,6 +116,7 @@ func player_lose():
 
 # End player turn and opponent turn starts
 func _on_end_turn_button_pressed() -> void:
+	EventController.player_turn_end_signal.emit()
 	# Check whether the player is attacking
 	endturnsfx.play()
 	if player_is_attacking:

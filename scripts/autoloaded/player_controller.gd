@@ -2,7 +2,7 @@
 extends Node
 
 const STARTING_HEALTH = 10
-const STARTING_HAND_SIZE = 2
+const STARTING_HAND_SIZE = 0
 const MAX_INGREDIENT_HAND_NUM = 6 # Maximum number of ingredient cards in hand
 const MAX_MONSTER_HAND_NUM = 4 # Maximum number of monster cards in hand
 
@@ -15,6 +15,7 @@ const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
 
 var deck: Array[String] # Player deck
 var player_health: int # Player health
+var is_on_tutorial: bool = false # Whether the player is in totorial
 
 
 # Ready function

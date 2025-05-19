@@ -3,6 +3,7 @@ extends Node
 const START_MENU_PATH = "res://scenes/menus/start_menu.tscn" # Path to start menu scene
 const REWARD_SCENE_PATH = "res://scenes/menus/reward.tscn" # Path to reward scene
 const BATTLE_SCENE_PATH = "res://scenes/battle/new_battle.tscn" # Path to battle scene
+const TUTORIAL_SCENE_PATH = "res://scenes/tutorial.tscn" # Path to tutorial scene
 const GAME_OVER_WIN = "res://scenes/menus/game_over_win.tscn" # Path to game over win scene
 const GAME_OVER_LOSE = "res://scenes/menus/game_over_lose.tscn" # Path to game over lose scene
 
@@ -20,8 +21,14 @@ func start_new_game() -> void:
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 
+# Start tutorial level
+func start_tutorial() -> void:
+	new_game_started_signal.emit()
+	get_tree().change_scene_to_file(TUTORIAL_SCENE_PATH)
+
+
 # Player defeat boss -> Update level index and check whether player wins
-func defeat_boss():
+func defeat_boss() -> void:
 	# Emit signal of completing a level
 	player_complete_level_signal.emit()
 	
@@ -29,7 +36,9 @@ func defeat_boss():
 	level_index += 1
 	
 	# Check whether all bosses defeated and game clear
-	if level_index >= CardDatabase.BOSS_LEVEL.size(): # Player wins
+	if PlayerController.is_on_tutorial: # Player complete tutorial
+		EventController.finish_defeat_boss_tutorial_signal.emit()
+	elif level_index >= CardDatabase.BOSS_LEVEL.size(): # Player wins
 		transfer_to_game_over_win()
 	else: # Still left bosses
 		transfer_to_reward()

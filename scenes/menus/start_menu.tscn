@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8me27agp6vuk"]
+[gd_scene load_steps=2 format=3 uid="uid://b8me27agp6vuk"]
 
 [ext_resource type="Script" uid="uid://bguce6op0jbnu" path="res://scripts/menu/start_menu.gd" id="1_8tuso"]
-[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="2_r2ayf"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -39,7 +38,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(200, 150)
+custom_minimum_size = Vector2(200, 250)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -47,14 +46,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
+offset_top = -6.0
 offset_right = 100.0
-offset_bottom = 150.0
+offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 30
 
 [node name="StartGameButton" type="Button" parent="Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -63,6 +63,13 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 25
 text = "Start Game"
 
+[node name="TutorialButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 25
+text = "Tutorial"
+
 [node name="ExitGameButton" type="Button" parent="Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -70,8 +77,6 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 25
 text = "Exit Game"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_r2ayf")
-
 [connection signal="pressed" from="Buttons/VBoxContainer/StartGameButton" to="." method="on_start_game"]
+[connection signal="pressed" from="Buttons/VBoxContainer/TutorialButton" to="." method="on_enter_tutorial"]
 [connection signal="pressed" from="Buttons/VBoxContainer/ExitGameButton" to="." method="on_exit_game"]

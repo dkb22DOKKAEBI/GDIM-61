@@ -1,7 +1,7 @@
 extends Node2D
 
 const INGREDIENT_CARD_SCENE_PATH = "res://scenes/card/ingredient_card.tscn"
-const CARD_DRAW_SPEED = 1
+var CARD_DRAW_SPEED = 1
 
 var card_starting_position: Vector2 = Vector2(915, 525)
 
@@ -13,13 +13,7 @@ var card_starting_position: Vector2 = Vector2(915, 525)
 
 # Ready
 func _ready():
-	# Update deck at the start of a level
-	for ingredient_name: String in PlayerHand.legacy_ingredient_hand:
-		instantiate_ingredient_card(ingredient_name)
-	PlayerHand.legacy_ingredient_hand.clear()
-	
-	# Shuffle deck and display left number info
-	PlayerController.deck.shuffle()
+	# Update left number info
 	deck_left_num_text.text = str(PlayerController.deck.size())
 
 

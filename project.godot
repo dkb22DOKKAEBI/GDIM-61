@@ -17,6 +17,7 @@ config/icon="uid://bxwcx7stx52lk"
 
 [autoload]
 
+EventController="*res://scripts/autoloaded/event_controller.gd"
 CardDatabase="*res://scripts/autoloaded/card_database.gd"
 SceneManager="*res://scripts/autoloaded/scene_manager.gd"
 PlayerHand="*res://scripts/autoloaded/player_hand.gd"
