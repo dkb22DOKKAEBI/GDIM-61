@@ -161,7 +161,6 @@ func start_player_turn():
 	var ingredient_num := PlayerHand.player_ingredient_hand.size() + PlayerHand.selected_ingredients.size()
 	for i in range(PlayerController.MAX_INGREDIENT_HAND_NUM - ingredient_num):
 		$"../PlayerHand/Deck".draw_card()
-	print("Refill hand to 6 ingredient cards")
 	
 	reset_cards_attack()
 	check_ability_cds()
