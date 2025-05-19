@@ -24,7 +24,9 @@ const BOSS_LEVEL = {
 
 # Path to boss scenes
 const VACUUM_SCENE_PATH = "res://scenes/boss/vacuum.tscn"
+const LIGHTBULB_SCENE_PATH = "res://scenes/boss/lightbulb.tscn"
 const BOSS_PATH = {
+	"Lightbulb": LIGHTBULB_SCENE_PATH,
 	"Vacuum": VACUUM_SCENE_PATH
 }
 
