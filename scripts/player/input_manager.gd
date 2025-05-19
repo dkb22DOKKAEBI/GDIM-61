@@ -24,7 +24,6 @@ func _input(event):
 			emit_signal("left_mouse_button_clicked")
 			raycast_at_cursor()
 		else:
-			print("Emit left mouse button go signal")
 			emit_signal("left_mouse_button_released")
 	
 	# Player tempeory attack

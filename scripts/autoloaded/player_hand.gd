@@ -4,7 +4,7 @@ const DESIRED_WINDOW_WIDTH = 960 # Window width
 const SIDEBAR_WIDTH = 225
 const DECK_WIDTH = 40 # Deck width
 const CARD_WIDTH = 85 # Card width
-const CARD_HEIGHT = 50 # Card height
+const CARD_HEIGHT = 40 # Card height
 
 const HAND_Y_POSITION = 525 # Y position for ingredient card
 const MONSTER_CARD_Y_OFFSET = 80 # Y offset for monster cards' position in hand
