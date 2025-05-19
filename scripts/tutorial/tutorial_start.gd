@@ -2,7 +2,7 @@ extends Node
 
 @export var tutorial_prep: Node2D
 @export var boss_parent: Node2D
-
+@export var end_turn_button: Button
 
 func _ready() -> void:
 	# Instantiate boss
@@ -17,4 +17,5 @@ func _ready() -> void:
 	boss.battle_manager = $"../BattleManager"
 	
 	# Start Tutorial
+	end_turn_button.disabled = true
 	tutorial_prep.curr_message.activate_self()

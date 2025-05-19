@@ -9,6 +9,7 @@ const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Lettuce",
 @export var curr_message: TutorialMessage # Current tutorial message
 var pizza: MonsterCard = null
 var pizza_placed: bool = false
+var end_turn_pressed: bool = false
 
 @export var cook_button: Button # Buttons
 @export var recipe_button: Button
@@ -23,6 +24,7 @@ func _ready():
 	EventController.connect("finish_cook_tutorial_signal", finish_cook_tutorial)
 	EventController.connect("start_place_monster_tutorial_signal", start_place_monster_tutorial)
 	EventController.connect("finish_place_monster_tutorial_signal", finish_place_monster_tutorial)
+	EventController.connect("start_defeat_boss_tutorial_signal",start_defeat_boss_tutorial)
 	EventController.connect("player_turn_end_signal", start_end_turn_tutorial)
 	
 	# Update player setup for tutorial
@@ -70,13 +72,23 @@ func finish_place_monster_tutorial() -> void:
 	task_text.visible = false
 	task_text.text = ""
 	
-	end_turn_button.disabled = false
 	curr_message.activate_self()
+
+
+# Defeat boss tutorial
+func start_defeat_boss_tutorial(text: String) -> void:
+	task_text.visible = true
+	task_text.text = text
+	
+	print("Enable end turn button")
+	end_turn_button.disabled = false
 
 
 # End turn tutorial
 func start_end_turn_tutorial() -> void:
-	curr_message.activate_self()
+	if not end_turn_pressed:
+		end_turn_pressed = true
+		curr_message.activate_self()
 
 
 # Tutorial "overriden" functions
