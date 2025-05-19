@@ -22,7 +22,6 @@ func start_new_game() -> void:
 
 # Player defeat boss -> Update level index and check whether player wins
 func defeat_boss():
-	print("Defeat boss")
 	# Emit signal of completing a level
 	player_complete_level_signal.emit()
 	

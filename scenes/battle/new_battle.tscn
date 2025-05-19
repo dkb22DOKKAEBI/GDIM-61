@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=18 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://scripts/player/input_manager.gd" id="1_krkoh"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_sspc1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="7_lsviu"]
 [ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/new_battle_manager.gd" id="9_bsxgu"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_8eucq"]
+[ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://scenes/card_target_selector.tscn" id="10_qwuef"]
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="11_gfgng"]
 [ext_resource type="PackedScene" uid="uid://bvlk5m8v5p4ut" path="res://scenes/ui/pot_ui.tscn" id="11_qwuef"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="12_yxeuc"]
@@ -124,6 +125,13 @@ script = ExtResource("10_8eucq")
 battle_manager = NodePath("../BattleManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 pot_ui = NodePath("../UI/PotUi")
+
+[node name="CardTargetSelector" parent="." node_paths=PackedStringArray("input_manager") instance=ExtResource("10_qwuef")]
+input_manager = NodePath("../Player/InputManager")
+
+[node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
+script = ExtResource("18_bsxgu")
+boss_parent = NodePath("../BattleField/Enemy")
 
 [node name="UI" type="Control" parent="."]
 z_index = -10
@@ -399,10 +407,6 @@ visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
-
-[node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
-script = ExtResource("18_bsxgu")
-boss_parent = NodePath("../BattleField/Enemy")
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]

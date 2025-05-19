@@ -1,10 +1,13 @@
 extends Node2D
 
-signal left_mouse_button_clicked
+signal left_mouse_button_clicked   # Mouse signals
 signal left_mouse_button_released
+signal right_mouse_button_clicked
+
 signal select_placed_card(card: Card)
 signal player_attack
 signal switch_pause_menu_signal
+signal targeting_start_signal(monster_card: MonsterCard) # Signal that the targeting starts
 
 const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
@@ -18,12 +21,18 @@ const COLLISION_MASK_INGREDIENT_CARD = 8
 
 
 func _input(event):
+	# Check mouse left button events
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			emit_signal("left_mouse_button_clicked")
 			raycast_at_cursor()
 		else:
 			emit_signal("left_mouse_button_released")
+	
+	# Check mouse right button events
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.pressed:
+			emit_signal("right_mouse_button_clicked")
 	
 	# Player tempeory attack
 	if Input.is_key_pressed(KEY_SPACE):
@@ -44,19 +53,18 @@ func raycast_at_cursor():
 	if result.size() > 0:
 		for point in result:
 			var result_collision_mask = point.collider.collision_mask
+			
 			# Select monster cards
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
 				if battle_manager.is_on_player_turn and monster_card_found:
-					if not monster_card_found.placed:
+					if not monster_card_found.placed: # Find monster card in hand
 						card_manager_reference.start_drag(monster_card_found)
-					elif monster_card_found.placed:
-						select_placed_card.emit(monster_card_found)
+					elif monster_card_found.placed: # Find monster card in battle field
+						#select_placed_card.emit(monster_card_found)
+						targeting_start_signal.emit(monster_card_found)
+			
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
 				var ingredient_card_found = point.collider.get_parent()
 				ingredient_card_found.ingredient_card_selected()
-			elif result_collision_mask == COLLISION_MASK_DECK:
-				#Deck Clicked
-				#deck_reference.draw_card()
-				print("Deck click detected")

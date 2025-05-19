@@ -57,6 +57,7 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 	selected_card_in_slot = card
 
 
+# Player attack
 func _on_player_attack():
 	if not selected_card_in_slot:
 		return

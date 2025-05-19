@@ -4,6 +4,7 @@ const DESIRED_WINDOW_WIDTH = 960 # Window width
 const SIDEBAR_WIDTH = 225
 const DECK_WIDTH = 40 # Deck width
 const CARD_WIDTH = 85 # Card width
+const CARD_HEIGHT = 40 # Card height
 
 const HAND_Y_POSITION = 525 # Y position for ingredient card
 const MONSTER_CARD_Y_OFFSET = 80 # Y offset for monster cards' position in hand
@@ -26,7 +27,6 @@ signal selected_ingredient_change_signal
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	center_screen_x = (DESIRED_WINDOW_WIDTH + SIDEBAR_WIDTH - DECK_WIDTH) / 2
-	#SceneManager.connect("player_complete_level_signal", clear_player_hand)
 	SceneManager.connect("game_end_signal", clear_player_legacy)
 
 

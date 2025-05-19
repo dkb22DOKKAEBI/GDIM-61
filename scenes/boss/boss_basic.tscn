@@ -1,12 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c60d87i0v4h8r"]
+[gd_scene load_steps=3 format=3 uid="uid://c60d87i0v4h8r"]
 
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_dgf3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
+size = Vector2(164, 228)
 
 [node name="Boss" type="Node2D"]
 
 [node name="BossSprite2D" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.42, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7xtgf")
 
 [node name="BossHealth" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b566xs2vmuxjj"]
+
+[ext_resource type="Script" uid="uid://5kugmxfpawh4" path="res://scripts/card/card_target_selector.gd" id="1_4nd48"]
+[ext_resource type="PackedScene" uid="uid://bu0mha0b8gxk3" path="res://scenes/aiming_arc.tscn" id="1_c07u4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66gff"]
+size = Vector2(5, 5)
+
+[node name="CardTargetSelector" type="Node2D" node_paths=PackedStringArray("area_2d", "aiming_arc")]
+script = ExtResource("1_4nd48")
+area_2d = NodePath("Area2D")
+aiming_arc = NodePath("CanvasLayer/TargetSelector")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 16
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_66gff")
+debug_color = Color(2.40654e-06, 0.614932, 0.717212, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TargetSelector" parent="CanvasLayer" instance=ExtResource("1_c07u4")]
+modulate = Color(0.65834, 0.65834, 0.65834, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
