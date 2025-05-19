@@ -76,7 +76,7 @@ func on_action() -> void:
 	pass
 
 
-# Boss choosing target logic
+# Basic boss choosing target logic
 func choose_target() -> Cardslot:
 	#for now this is how it will target cards
 	if CardslotManager.cardslots[0].card_in_slot:
