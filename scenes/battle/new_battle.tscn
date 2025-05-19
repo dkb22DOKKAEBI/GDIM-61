@@ -73,9 +73,10 @@ battle_manager = NodePath("../../BattleManager")
 temp_ui = NodePath("../../UI")
 cover = NodePath("../IngredientCardManager/Cover")
 
-[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("temp_ui", "cover")]
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "cover")]
 z_index = 1
 script = ExtResource("6_h8t0o")
+deck = NodePath("../Deck")
 temp_ui = NodePath("../../UI")
 cover = NodePath("Cover")
 

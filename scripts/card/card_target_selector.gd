@@ -74,6 +74,7 @@ func _on_targeting_end() -> void:
 	# Try attack if has boss target
 	if target_boss:
 		print("Attack")
+		target_boss.boss_take_dmg(curr_card.get_attack())
 		curr_card.attacked_this_turn = true
 	
 	# Clear targeting info
