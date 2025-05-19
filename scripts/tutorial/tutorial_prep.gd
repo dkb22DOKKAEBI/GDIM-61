@@ -23,6 +23,7 @@ func _ready():
 	EventController.connect("finish_cook_tutorial_signal", finish_cook_tutorial)
 	EventController.connect("start_place_monster_tutorial_signal", start_place_monster_tutorial)
 	EventController.connect("finish_place_monster_tutorial_signal", finish_place_monster_tutorial)
+	EventController.connect("player_turn_end_signal", start_end_turn_tutorial)
 	
 	# Update player setup for tutorial
 	PlayerHand.legacy_monster_hand.clear()
@@ -60,7 +61,7 @@ func finish_cook_tutorial() -> void:
 	curr_message.activate_self()
 
 
-# Placing Mosnter tutorial
+# Placing mosnter tutorial
 func start_place_monster_tutorial(text: String) -> void:
 	task_text.visible = true
 	task_text.text = text
@@ -70,6 +71,11 @@ func finish_place_monster_tutorial() -> void:
 	task_text.text = ""
 	
 	end_turn_button.disabled = false
+	curr_message.activate_self()
+
+
+# End turn tutorial
+func start_end_turn_tutorial() -> void:
 	curr_message.activate_self()
 
 
