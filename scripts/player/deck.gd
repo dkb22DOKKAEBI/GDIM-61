@@ -12,8 +12,7 @@ var card_starting_position: Vector2 = Vector2(915, 525)
 
 # Ready
 func _ready():
-	# Shuffle deck and display left number info
-	PlayerController.deck.shuffle()
+	# Update left number info
 	deck_left_num_text.text = str(PlayerController.deck.size())
 
 

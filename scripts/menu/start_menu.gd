@@ -11,6 +11,7 @@ func on_start_game() -> void:
 # Enter the tutorial level
 func on_enter_tutorial() -> void:
 	print("Enter Tutorial Level")
+	SceneManager.start_tutorial()
 
 
 # Attached to Exit Game button
