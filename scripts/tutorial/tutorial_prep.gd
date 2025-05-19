@@ -7,6 +7,7 @@ const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Lettuce",
 @export var task_text: RichTextLabel # Reference to task text
 
 @export var curr_message: TutorialMessage # Current tutorial message
+var cooked: bool = false
 var pizza: MonsterCard = null
 var pizza_placed: bool = false
 var end_turn_pressed: bool = false
@@ -91,16 +92,25 @@ func start_end_turn_tutorial() -> void:
 		curr_message.activate_self()
 
 
+# Return to the start menu
+func back_to_start_menu() -> void:
+	SceneManager.back_to_start_menu()
+
+
 # Tutorial "overriden" functions
 func tutorial_on_cook() -> void:
-	if PlayerHand.selected_ingredients.size() == 0:
-		return
+	if not cooked:
+		if PlayerHand.selected_ingredients.size() == 0:
+			return
+			
+		# Decide monster
+		var result_monster = cooking_mechanics.ingredient_check(cooking_mechanics.get_ingredient_string_list(PlayerHand.selected_ingredients))
+		if result_monster != "Pizza":
+			return
 		
-	# Decide monster
-	var result_monster = cooking_mechanics.ingredient_check(cooking_mechanics.get_ingredient_string_list(PlayerHand.selected_ingredients))
-	if result_monster != "Pizza":
-		return
-	
-	cooking_mechanics._on_cook()
-	pizza = PlayerHand.player_monster_hand[0]
-	EventController.finish_cook_tutorial_signal.emit()
+		cooked = true
+		cooking_mechanics._on_cook()
+		pizza = PlayerHand.player_monster_hand[0]
+		EventController.finish_cook_tutorial_signal.emit()
+	else:
+		cooking_mechanics._on_cook()
