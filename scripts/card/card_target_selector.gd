@@ -8,7 +8,7 @@ const ARC_POINTS: int = 11 # How many points aiming arc line2d has besides end p
 
 var curr_card: MonsterCard # The card that is targeting
 var targeting: bool = false # Whether playering is targeting
-var test_start: Vector2 = Vector2.ZERO
+var target_boss: Boss = null # The boss to be attacked
 
 
 # Ready
@@ -79,3 +79,21 @@ func _on_targeting_end() -> void:
 	area_2d.position = Vector2.ZERO
 	area_2d.monitoring = false
 	area_2d.monitorable = false
+
+
+# Detect boss card entered and update boss target
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	test()
+	pass # Replace with function body.
+
+
+# Detect boss card entered and update boss target
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	test()
+	pass # Replace with function body.
+
+func test():
+	if not target_boss:
+		print("None")
+	else:
+		print(target_boss.name)
