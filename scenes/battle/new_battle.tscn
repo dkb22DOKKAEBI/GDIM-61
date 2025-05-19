@@ -415,15 +415,6 @@ z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
 
-[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager", "pot_ui")]
-script = ExtResource("10_8eucq")
-battle_manager = NodePath("../BattleManager")
-monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
-pot_ui = NodePath("../UI/PotUi")
-
-[node name="CardTargetSelector" parent="." node_paths=PackedStringArray("input_manager") instance=ExtResource("10_qwuef")]
-input_manager = NodePath("../Player/InputManager")
-
 [node name="bgmusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_h8t0o")
 volume_db = -15.315
