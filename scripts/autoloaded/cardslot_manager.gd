@@ -1,7 +1,7 @@
 extends Node
 
 var cardslots: Array[Cardslot]
-var cardslot_abilities = {"cardslot1": ["name",0], "cardslot2": ["name",0], "cardslot3": ["name",0]}
+var cardslot_abilities = {"cardslot1": ["None",0], "cardslot2": ["None",0], "cardslot3": ["None",0]}
 var card_ability_cds = {
 	"Pizza": 2,
 	"Cheesecake": 0,

@@ -8,10 +8,11 @@ const MAX_MONSTER_HAND_NUM = 4 # Maximum number of monster cards in hand
 
 # Player's deck -> initially 28
 const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
-"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla", "Dough", 
-"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Tortilla",
-"Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
-"Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat"]
+"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla", "Dough", 
+"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla",
+"Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", 
+"Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
+"Chocolate"]
 
 var deck: Array[String] # Player deck
 var player_health: int # Player health
