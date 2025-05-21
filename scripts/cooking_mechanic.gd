@@ -69,21 +69,22 @@ func get_ingredient_string_list(list: Array) -> Array:
 # Get name of the food to cook
 func ingredient_check(list: Array) -> String:
 	var ingredients := []
-
-	if list.has("Dough"):
-		ingredients.append("Dough")
-	if list.has("Cheese"):
-		ingredients.append("Cheese")
-	if list.has("Sugar"):
-		ingredients.append("Sugar")
-	if list.has("Tomato"):
-		ingredients.append("Tomato")
-	if list.has("Mystery_Meat"):
-		ingredients.append("Mystery_Meat")
-	if list.has("Tortilla"):
-		ingredients.append("Tortilla")
-	if list.has("Lettuce"):
-		ingredients.append("Lettuce")
+	for i in list:
+		ingredients.append(i)
+		#if list.has("Dough"):
+			#ingredients.append("Dough")
+		#if list.has("Cheese"):
+			#ingredients.append("Cheese")
+		#if list.has("Sugar"):
+			#ingredients.append("Sugar")
+		#if list.has("Tomato"):
+			#ingredients.append("Tomato")
+		#if list.has("Mystery_Meat"):
+			#ingredients.append("Mystery_Meat")
+		#if list.has("Tortilla"):
+			#ingredients.append("Tortilla")
+		#if list.has("Lettuce"):
+			#ingredients.append("Lettuce")
 
 	# Turn into sorted string for easier matching
 	ingredients.sort()
@@ -102,6 +103,10 @@ func ingredient_check(list: Array) -> String:
 			return "Taco"
 		"Lettuce,Tomato":
 			return "Salad"
+		"Chocolate,Dough,Sugar":
+			return "Donut"
+		"Chocolate,Dough,Sugar,Sugar":
+			return "Eclair"
 		_:
 			var list_size = int(list.size())
 			#print("Trashcan")

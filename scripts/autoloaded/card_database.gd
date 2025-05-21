@@ -9,7 +9,9 @@ const CARDS = { #attack, health
 	"Pizza"			: [1, 2],
 	"Salad"			: [1, 1],
 	"Taco"			: [1, 6],
-	"Bunuelos"		: [0, 4]
+	"Bunuelos"		: [0, 4],
+	"Donut"			: [3, 1],
+	"Eclair"		: [5, 2],
 }
 
 

@@ -8,13 +8,15 @@ class_name Ability
 
 #the dictionary will be "monster name": [do they have an ability, what type]
 var monster_abilities = {
-	"Pizza":[true, "damage"],
-	"Cheesecake": [false],
-	"Sandwich": [false, "block"],
-	"Quesadilla": [false, "heal"],
-	"Salad": [false, "heal"],
-	"Taco": [false],
-	"Trashcan": [false]
+	"Pizza"			: [true, "damage"],
+	"Cheesecake"	: [false],
+	"Sandwich"		: [false, "block"],
+	"Quesadilla"	: [false, "heal"],
+	"Salad"			: [false, "heal"],
+	"Taco"			: [false],
+	"Trashcan"		: [false],
+	"Donut"			: [false],
+	"Eclair"		: [false]
 	}
 
 
@@ -62,3 +64,14 @@ func check_block_ability(name):
 	match name:
 		"Sandwich":
 			return ["Block", 1]
+
+func heal_single(target_card: Node2D, amount: int) -> void:
+	if target_card and target_card.health < target_card.max_health:
+		target_card.health = min(target_card.health + amount, target_card.max_health)
+		target_card.update_health_display()  # if you have this
+
+func heal_all(allied_cards: Array, amount: int) -> void:
+	for card in allied_cards:
+		if card and card.health < card.max_health:
+			card.health = min(card.health + amount, card.max_health)
+			card.update_health_display()

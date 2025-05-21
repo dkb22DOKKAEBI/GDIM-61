@@ -26,120 +26,6 @@
 
 [node name="NewBattle" type="Node2D"]
 
-[node name="Player" type="Node2D" parent="."]
-
-[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("battle_manager", "card_manager_reference", "deck_reference")]
-script = ExtResource("1_krkoh")
-battle_manager = NodePath("../../BattleManager")
-card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
-deck_reference = NodePath("../../PlayerHand/Deck")
-
-[node name="PlayerHealth" type="RichTextLabel" parent="Player"]
-z_index = 1
-offset_left = 343.0
-offset_top = 1.0
-offset_right = 521.0
-offset_bottom = 30.0
-theme = ExtResource("2_sspc1")
-theme_override_font_sizes/normal_font_size = 20
-text = "Player Health: 10"
-vertical_alignment = 1
-
-[node name="PlayerHand" type="Node2D" parent="."]
-
-[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
-position = Vector2(884, 543)
-script = ExtResource("3_6owpf")
-deck_left_num_text = NodePath("DeckLeftNum")
-deck_sprite = NodePath("DeckSprite2D")
-ingredient_card_manager = NodePath("../IngredientCardManager")
-
-[node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
-z_index = 1
-scale = Vector2(0.383333, 0.383333)
-texture = ExtResource("4_qwuef")
-
-[node name="DeckLeftNum" type="RichTextLabel" parent="PlayerHand/Deck"]
-z_index = 2
-offset_left = -25.0
-offset_top = -26.0
-offset_right = 29.0
-offset_bottom = 28.0
-theme = ExtResource("2_sspc1")
-theme_override_font_sizes/normal_font_size = 32
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui", "cover")]
-z_index = 7
-script = ExtResource("5_bsxgu")
-input_manager = NodePath("../../Player/InputManager")
-battle_manager = NodePath("../../BattleManager")
-temp_ui = NodePath("../../UI")
-cover = NodePath("../IngredientCardManager/Cover")
-
-[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "cover")]
-z_index = 1
-script = ExtResource("6_h8t0o")
-deck = NodePath("../Deck")
-temp_ui = NodePath("../../UI")
-cover = NodePath("Cover")
-
-[node name="Cover" type="ColorRect" parent="PlayerHand/IngredientCardManager"]
-visible = false
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
-z_index = 1
-offset_left = 240.0
-offset_top = 442.0
-offset_right = 814.0
-offset_bottom = 600.0
-
-[node name="BattleField" type="Node2D" parent="."]
-
-[node name="Cardslots" type="Node2D" parent="BattleField"]
-z_index = 1
-
-[node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
-position = Vector2(261, 230)
-card_slot_number = "cardslot1"
-
-[node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
-position = Vector2(111, 320)
-card_slot_number = "cardslot2"
-
-[node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
-position = Vector2(112, 144)
-card_slot_number = "cardslot3"
-
-[node name="Enemy" type="Node2D" parent="BattleField"]
-position = Vector2(820, 220)
-
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_attack_message")]
-script = ExtResource("9_bsxgu")
-battle_timer = NodePath("BattleTimer")
-input_manager = NodePath("../Player/InputManager")
-monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
-enemy = NodePath("../BattleField/Enemy")
-player_health_text = NodePath("../Player/PlayerHealth")
-temp_attack_message = NodePath("../UI/TempAttackMessage")
-
-[node name="BattleTimer" type="Timer" parent="BattleManager"]
-one_shot = true
-
-[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager", "pot_ui")]
-script = ExtResource("10_8eucq")
-battle_manager = NodePath("../BattleManager")
-monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
-pot_ui = NodePath("../UI/PotUi")
-
-[node name="CardTargetSelector" parent="." node_paths=PackedStringArray("input_manager") instance=ExtResource("10_qwuef")]
-input_manager = NodePath("../Player/InputManager")
-
-[node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
-script = ExtResource("18_bsxgu")
-boss_parent = NodePath("../BattleField/Enemy")
-
 [node name="UI" type="Control" parent="."]
 z_index = -10
 layout_mode = 3
@@ -414,6 +300,120 @@ visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("battle_manager", "card_manager_reference", "deck_reference")]
+script = ExtResource("1_krkoh")
+battle_manager = NodePath("../../BattleManager")
+card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
+deck_reference = NodePath("../../PlayerHand/Deck")
+
+[node name="PlayerHealth" type="RichTextLabel" parent="Player"]
+z_index = 1
+offset_left = 343.0
+offset_top = 1.0
+offset_right = 521.0
+offset_bottom = 30.0
+theme = ExtResource("2_sspc1")
+theme_override_font_sizes/normal_font_size = 20
+text = "Player Health: 10"
+vertical_alignment = 1
+
+[node name="PlayerHand" type="Node2D" parent="."]
+
+[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
+position = Vector2(884, 543)
+script = ExtResource("3_6owpf")
+deck_left_num_text = NodePath("DeckLeftNum")
+deck_sprite = NodePath("DeckSprite2D")
+ingredient_card_manager = NodePath("../IngredientCardManager")
+
+[node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
+z_index = 1
+scale = Vector2(0.383333, 0.383333)
+texture = ExtResource("4_qwuef")
+
+[node name="DeckLeftNum" type="RichTextLabel" parent="PlayerHand/Deck"]
+z_index = 2
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 29.0
+offset_bottom = 28.0
+theme = ExtResource("2_sspc1")
+theme_override_font_sizes/normal_font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui", "cover")]
+z_index = 7
+script = ExtResource("5_bsxgu")
+input_manager = NodePath("../../Player/InputManager")
+battle_manager = NodePath("../../BattleManager")
+temp_ui = NodePath("../../UI")
+cover = NodePath("../IngredientCardManager/Cover")
+
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "cover")]
+z_index = 1
+script = ExtResource("6_h8t0o")
+deck = NodePath("../Deck")
+temp_ui = NodePath("../../UI")
+cover = NodePath("Cover")
+
+[node name="Cover" type="ColorRect" parent="PlayerHand/IngredientCardManager"]
+visible = false
+modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
+z_index = 1
+offset_left = 240.0
+offset_top = 442.0
+offset_right = 814.0
+offset_bottom = 600.0
+
+[node name="BattleField" type="Node2D" parent="."]
+
+[node name="Cardslots" type="Node2D" parent="BattleField"]
+z_index = 1
+
+[node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
+position = Vector2(261, 230)
+card_slot_number = "cardslot1"
+
+[node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
+position = Vector2(111, 320)
+card_slot_number = "cardslot2"
+
+[node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("7_lsviu")]
+position = Vector2(112, 144)
+card_slot_number = "cardslot3"
+
+[node name="Enemy" type="Node2D" parent="BattleField"]
+position = Vector2(820, 220)
+
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_attack_message")]
+script = ExtResource("9_bsxgu")
+battle_timer = NodePath("BattleTimer")
+input_manager = NodePath("../Player/InputManager")
+monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
+enemy = NodePath("../BattleField/Enemy")
+player_health_text = NodePath("../Player/PlayerHealth")
+temp_attack_message = NodePath("../UI/TempAttackMessage")
+
+[node name="BattleTimer" type="Timer" parent="BattleManager"]
+one_shot = true
+
+[node name="CookingMechanic" type="Node2D" parent="." node_paths=PackedStringArray("battle_manager", "monster_card_manager", "pot_ui")]
+script = ExtResource("10_8eucq")
+battle_manager = NodePath("../BattleManager")
+monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
+pot_ui = NodePath("../UI/PotUi")
+
+[node name="CardTargetSelector" parent="." node_paths=PackedStringArray("input_manager") instance=ExtResource("10_qwuef")]
+input_manager = NodePath("../Player/InputManager")
+
+[node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
+script = ExtResource("18_bsxgu")
+boss_parent = NodePath("../BattleField/Enemy")
 
 [node name="bgmusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_h8t0o")

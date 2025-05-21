@@ -7,6 +7,18 @@ var player_cards_on_battlefield # Dictionary
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
 var player_is_attacking: bool = false
+var has_an_abilities = {
+	"Pizza"		:true,
+	"Cheesecake":false,
+	"Sandwich"	:false,
+	"Quesadilla":false,
+	"Salad"		:false,
+	"Taco"		:false,
+	"Trashcan"	:false,
+	"Eclair"	:false,
+	"Donut"		:false
+	}
+
 
 @export var battle_timer: Timer
 
@@ -179,41 +191,24 @@ func check_ability_cds():
 
 		if CardslotManager.cardslot_abilities[slot_id][1] == 0:
 			var card_name = CardslotManager.cardslot_abilities[slot_id][0]
-
+			
 			if card_name == "None":
 				continue  # Skip if nothing is in the slot
+			
+			var has_ability = has_an_abilities[card_name]
+			print("Card name:", card_name)
+			print("Ability data:", has_an_abilities[card_name])
+			if has_ability:
 
-			var monster_card = cardslot.card_in_slot
+				var monster_card = cardslot.card_in_slot
 
-			if monster_card and monster_card.has_method("update_ability_button"):
-				monster_card.update_ability_button()
+				if monster_card and monster_card.has_method("update_ability_button"):
+					monster_card.update_ability_button()
+			else:
+				continue
 
-			#var card_scene = preload(MONSTER_CARD_SCENE_PATH)
-			#var ability_instance = Ability.new()
-			#var result_ability = ability_instance.add_ability_card(card_name)
-			#if result_ability == null:
-				#continue  # this card has no ability, skip it
-			#var ability_name = result_ability[0]
-#
-			#var new_card: Node2D = card_scene.instantiate()
-			#new_card.get_node("CardImage").texture = ResourceLoader.load("res://cards/" + ability_name + ".png")
-			#new_card.get_node("Attack").text = str(result_ability[1])
-			#monster_card_manager.add_child(new_card)
-#
-			#if monster_card_manager.visible:
-				#new_card.set_card_z_index(1)
-			#else:
-				#new_card.set_card_z_index(0)
-#
-			#new_card.name = "AbilityCard"
-			#new_card.card_name = ability_name
-			#new_card.position = card_starting_position
-			#PlayerHand.add_card_to_hand(new_card, 1, 1)
-#
-			#CardslotManager.cardslot_abilities[slot_id][1] = CardslotManager.card_ability_cds[card_name]
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
-			#print("Decreased cooldown for", slot_id, "to", CardslotManager.cardslot_abilities[slot_id][1])
 
 
 func wait(wait_time):
