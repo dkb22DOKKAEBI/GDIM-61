@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bvlk5m8v5p4ut" path="res://battle/ui/pot_ui.tscn" id="2_pyfix"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_e48mi"]
 [ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="5_ueicy"]
-[ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://battle/ui/deck.gd" id="6_oiw7q"]
+[ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://battle/deck.gd" id="6_oiw7q"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://autoloaded/player/input_manager.gd" id="7_fisqk"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://menus/pause_menu.tscn" id="7_n5ix6"]
 [ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://art/card_images/monsters/Deck.png" id="7_py4tk"]
