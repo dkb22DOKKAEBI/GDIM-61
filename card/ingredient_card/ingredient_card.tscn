@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvpakrny7ra3a"]
+
+[ext_resource type="Script" uid="uid://3pelcrvpowxh" path="res://card/ingredient_card/ingredient_card.gd" id="1_6i1cw"]
+[ext_resource type="Theme" uid="uid://bexwcxv8tsvxx" path="res://custom_resources/pixel_theme.tres" id="2_6i1cw"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_rjun3"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
+size = Vector2(60, 83)
+
+[node name="Card" type="Node2D" node_paths=PackedStringArray("ingredient_name_label", "selected_label", "collision")]
+script = ExtResource("1_6i1cw")
+ingredient_name_label = NodePath("IngredientNameLabel")
+selected_label = NodePath("SelectedLabel")
+collision = NodePath("Area2D")
+
+[node name="CardImage" type="Sprite2D" parent="."]
+scale = Vector2(0.16, 0.16)
+
+[node name="ColorRect" type="ColorRect" parent="CardImage"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -253.5
+offset_right = 189.5
+offset_bottom = 272.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.744184, 0.709883, 0.770173, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9.53674e-07, 1.5)
+shape = SubResource("RectangleShape2D_xd4uy")
+
+[node name="IngredientNameLabel" type="Label" parent="."]
+visible = false
+offset_left = -16.8421
+offset_top = -8.42105
+offset_right = 19.1579
+offset_bottom = 4.57895
+theme = ExtResource("2_6i1cw")
+text = "Ingredient"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedLabel" type="Label" parent="."]
+visible = false
+offset_left = -27.0
+offset_top = -57.0
+offset_right = 29.0
+offset_bottom = -36.0
+theme = ExtResource("3_rjun3")
+theme_override_colors/font_color = Color(0.341176, 0.72549, 0.478431, 1)
+text = "Selected"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

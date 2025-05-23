@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://ibj8aersgrg6"]
+
+[ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
+[ext_resource type="Texture2D" uid="uid://brsnqw1uton8m" path="res://art/card_images/monsters/Cheesecake.png" id="2_vtcvk"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
+size = Vector2(72, 102)
+
+[node name="Card" type="Node2D" node_paths=PackedStringArray("selected_label", "collision")]
+script = ExtResource("1_vtcvk")
+selected_label = NodePath("SelectedLabel")
+collision = NodePath("Area2D")
+
+[node name="CardImage" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_vtcvk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xd4uy")
+
+[node name="Attack" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -68.0
+offset_right = 26.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(25, 25)
+mouse_filter = 2
+theme = ExtResource("3_2ufkr")
+theme_override_font_sizes/normal_font_size = 24
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -69.0
+offset_right = 75.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(25, 25)
+mouse_filter = 2
+theme = ExtResource("3_2ufkr")
+theme_override_font_sizes/normal_font_size = 24
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedLabel" type="Label" parent="."]
+visible = false
+offset_left = -28.0
+offset_top = -62.0
+offset_right = 28.0
+offset_bottom = -41.0
+theme = ExtResource("3_2ufkr")
+theme_override_colors/font_color = Color(0.339407, 0.726599, 0.479536, 1)
+theme_override_font_sizes/font_size = 12
+text = "Selected"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIContainer" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = -35.0
+offset_top = 52.0
+offset_right = 35.0
+offset_bottom = 85.0
+
+[node name="AbilityButton" type="Button" parent="UIContainer"]
+z_index = 10
+layout_mode = 0
+offset_left = 1.0
+offset_right = 71.0
+offset_bottom = 31.0
+text = "Ready"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

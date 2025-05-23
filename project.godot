@@ -21,12 +21,12 @@ buses/default_bus_layout="res://custom_resources/default_bus_layout.tres"
 
 [autoload]
 
-EventController="*res://scripts/autoloaded/event_controller.gd"
-CardDatabase="*res://scripts/autoloaded/card_database.gd"
-SceneManager="*res://scripts/autoloaded/scene_manager.gd"
-PlayerHand="*res://scripts/autoloaded/player_hand.gd"
-PlayerController="*res://scripts/autoloaded/player_controller.gd"
-CardslotManager="*res://scripts/autoloaded/cardslot_manager.gd"
+EventController="*res://autoloaded/event_controller.gd"
+CardDatabase="*res://autoloaded/card_database.gd"
+SceneManager="*res://autoloaded/scene_manager.gd"
+PlayerHand="*res://autoloaded/player/player_hand.gd"
+PlayerController="*res://autoloaded/player/player_controller.gd"
+CardslotManager="*res://autoloaded/cardslot_manager.gd"
 
 [display]
 
