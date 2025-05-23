@@ -1,75 +1,66 @@
 extends Node
 
-const STARTING_HEALTH = 10
-const max_cool_down := 3
-const STARTING_HAND_SIZE = 3
 const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
 
-var curr_cool_down := 3
 var player_cards_on_battlefield # Dictionary
 
-var player_health
-var boss_health
-var boss_damage = 3
-var boss1_stats = {"Vacuum": {"HP": 20, "Attack": 3, "Block": 3, "Kill": 10}}
 var selected_card_in_slot: Card
 var is_on_player_turn: bool = true
 var player_is_attacking: bool = false
-var card_starting_position: Vector2 = Vector2(100, 525)
+var has_an_abilities = {
+	"Pizza"		:true,
+	"Cheesecake":false,
+	"Sandwich"	:false,
+	"Quesadilla":false,
+	"Salad"		:false,
+	"Taco"		:false,
+	"Trashcan"	:false,
+	"Eclair"	:false,
+	"Donut"		:false
+	}
 
 
 @export var battle_timer: Timer
-@export var cardslot_1: Node2D
-@export var cardslot_2: Node2D
-@export var cardslot_3: Node2D
 
 @export var input_manager: Node2D
 @export var monster_card_manager: Node2D
-@export var ability_managaer: Node2D
 
 @export var enemy: Node2D
-@export var enemy_health_text: RichTextLabel
-@export var enemy_attack_text: RichTextLabel
 @export var player_health_text: RichTextLabel
 var player_health_text_prefix: String = "Player Health: "
 
 # Temp for Week 6 build
-@export var temp_ui: Control
 @export var temp_attack_message: RichTextLabel
 
+@export var ability_manager: Node2D # never used
+var card_starting_position: Vector2 = Vector2(100, 525)
+@onready var endturnsfx: AudioStreamPlayer = $"../endturnsfx"
+@onready var attacksfx: AudioStreamPlayer = $"../attacksfx"
 
-func _ready() ->void:
-	player_health = STARTING_HEALTH
-	player_health_text.text = player_health_text_prefix + str(player_health)
+# ready function
+func _ready() -> void:
+	# Display player starting health for each level
+	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
+	player_cards_on_battlefield = {CardslotManager.cardslots[0]: null, CardslotManager.cardslots[1]: null, CardslotManager.cardslots[2]: null}
 	
-	boss_health = STARTING_HEALTH + 10
-	enemy_health_text.text = str(boss_health)
-	
-	player_cards_on_battlefield = {cardslot_1: null, cardslot_2: null, cardslot_3: null}
-	
-	enemy_attack_text.text = str(boss_damage)
+	# Connect signal for player input manager
 	input_manager.connect("select_placed_card", _player_select_placed_card)
 	input_manager.connect("player_attack", _on_player_attack)
 	
-	# Draw initial hand
-	for i in range(STARTING_HAND_SIZE):
-		$"../PlayerHand/Deck".draw_card()
+	# Player act first
+	start_player_turn()
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
 	if card.attacked_this_turn or player_is_attacking:
 		return
 	
-	print("OUTSIDE " + str(card.get_label_vis()))
 	card.selected_label_vis(!card.get_label_vis())
-	temp_ui.default_card_info_text = card.card_name
 	temp_attack_message.visible = true
 	
 	# Same card being selected
 	if not card.get_label_vis():
-		print("HERE")
 		selected_card_in_slot = null
-		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
 		return
 	
@@ -79,37 +70,26 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 	selected_card_in_slot = card
 
 
+# Player attack
 func _on_player_attack():
+	attacksfx.play()
 	if not selected_card_in_slot:
 		return
 	
 	if not player_is_attacking and not selected_card_in_slot.attacked_this_turn:
+		
 		player_is_attacking = true
 		selected_card_in_slot.attacked_this_turn = true
 		
 		monster_attack_boss_anim(selected_card_in_slot)
 		await wait(0.5)
 		if selected_card_in_slot.get_attack() > 0:
-			boss_health = max(0, boss_health - selected_card_in_slot.get_attack())
-			enemy_health_text.text = str(boss_health)
-			
-			# Change font to double size and red
-			enemy_health_text.add_theme_font_size_override("normal_font_size", 40)
-			enemy_health_text.modulate = Color.RED
-		
-			# Play animation for health change
-			var tween = get_tree().create_tween()
-			tween.tween_property(enemy_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
-			tween.tween_property(enemy_health_text, "modulate", Color.BLACK, 1)
-		
-		if boss_health == 0:
-			player_win()
+			enemy.get_child(0).boss_take_dmg(selected_card_in_slot.get_attack())
 		
 		# Player attack end
 		player_is_attacking = false;
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
-		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
 
 func monster_attack_boss_anim(card):
@@ -140,11 +120,17 @@ func player_win():
 
 func player_lose():
 	$"../UI/GameConditions/LoseCondition".visible = true
+	
+	# Change scene to Game Over Win scene
+	await wait(1)
+	SceneManager.transfer_to_game_over_lose()
 
 
 # End player turn and opponent turn starts
 func _on_end_turn_button_pressed() -> void:
+	EventController.player_turn_end_signal.emit()
 	# Check whether the player is attacking
+	endturnsfx.play()
 	if player_is_attacking:
 		return
 	
@@ -152,12 +138,11 @@ func _on_end_turn_button_pressed() -> void:
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
-		temp_ui.default_card_info_text = ""
 		temp_attack_message.visible = false
 	is_on_player_turn = false
 	
 	# Opponent Turn
-	opponent_turn()
+	enemy.get_child(0).boss_turn()
 
 
 func reset_cards_attack():
@@ -166,40 +151,39 @@ func reset_cards_attack():
 			player_cards_on_battlefield[key].attacked_this_turn = false
 
 
-func opponent_turn():
-	$"../UI/Buttons/EndTurnButton".disabled = true
-	$"../UI/Buttons/EndTurnButton".visible = false
-	
-	# Opponent Turn Starts
-	battle_timer.start()
-	await battle_timer.timeout
-	
-	# Opponent Move
-	curr_cool_down -= 1
-	opponent_move()
-	
-	if curr_cool_down == 0:
-		curr_cool_down = max_cool_down
-	
-	battle_timer.start()
-	await battle_timer.timeout
-	
-	# Opponent Turn Ends
-	start_player_turn()
+# Enable or Disable end turn button when boss attacking
+func enable_end_turn_button(enable: bool) -> void:
+	$"../UI/Buttons/EndTurnButton".disabled = !enable
+	$"../UI/Buttons/EndTurnButton".visible = enable
 
 
+# Player being attacked
+func player_take_dmg(boss_attack: float) -> void:
+	attacksfx.play()
+	PlayerController.player_health = max(0, PlayerController.player_health - boss_attack)
+	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
+
+
+# Check whether player dead
+func player_check_dead() -> void:
+	if PlayerController.player_health <= 0:
+		player_lose()
+
+
+# Player's turn starts
 func start_player_turn():
 	monster_card_manager.reset_played()
-	$"../UI/Buttons/EndTurnButton".disabled = false
-	$"../UI/Buttons/EndTurnButton".visible = true
+	enable_end_turn_button(true)
 	
-	# Draw 2 ingredients card on the start of the player turn
-	for i in range(2):
+	# Refill ingredient hand at the start of the player turn
+	var ingredient_num := PlayerHand.player_ingredient_hand.size() + PlayerHand.selected_ingredients.size()
+	for i in range(PlayerController.MAX_INGREDIENT_HAND_NUM - ingredient_num):
 		$"../PlayerHand/Deck".draw_card()
 	
 	reset_cards_attack()
-	check_ability_cds()
 	is_on_player_turn = true
+	check_ability_cds()
+
 
 func check_ability_cds():
 	for cardslot in CardslotManager.cardslots:
@@ -207,129 +191,24 @@ func check_ability_cds():
 
 		if CardslotManager.cardslot_abilities[slot_id][1] == 0:
 			var card_name = CardslotManager.cardslot_abilities[slot_id][0]
+			
 			if card_name == "None":
 				continue  # Skip if nothing is in the slot
+			
+			var has_ability = has_an_abilities[card_name]
+			print("Card name:", card_name)
+			print("Ability data:", has_an_abilities[card_name])
+			if has_ability:
 
-			var card_scene = preload(MONSTER_CARD_SCENE_PATH)
-			var ability_instance = Ability.new()
-			var result_ability = ability_instance.add_ability_card(card_name)
-			if result_ability == null:
-				continue  # this card has no ability, skip it
-			var ability_name = result_ability[0]
+				var monster_card = cardslot.card_in_slot
 
-			var new_card: Node2D = card_scene.instantiate()
-			new_card.get_node("CardImage").texture = ResourceLoader.load("res://cards/" + ability_name + ".png")
-			new_card.get_node("Attack").text = str(result_ability[1])
-			monster_card_manager.add_child(new_card)
-
-			if monster_card_manager.visible:
-				new_card.set_card_z_index(1)
+				if monster_card and monster_card.has_method("update_ability_button"):
+					monster_card.update_ability_button()
 			else:
-				new_card.set_card_z_index(0)
+				continue
 
-			new_card.name = "AbilityCard"
-			new_card.card_name = ability_name
-			new_card.position = card_starting_position
-			PlayerHand.add_card_to_hand(new_card, 1, 1)
-
-			CardslotManager.cardslot_abilities[slot_id][1] = CardslotManager.card_ability_cds[card_name]
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
-			print("Decreased cooldown for", slot_id, "to", CardslotManager.cardslot_abilities[slot_id][1])
-
-	
-
-func opponent_move():
-	var skill = randi() % 3
-	if curr_cool_down == 0:
-		skill = 3
-	var target = choose_target()
-	
-	match skill:
-		0 :
-			opponent_attack(target)
-		1:
-			opponent_attack(target)
-		2:
-			opponent_defend()
-		3:
-			opponent_eliminate()
-		_:
-			print("Skill out of range")
-
-
-func choose_target() -> Cardslot:
-	#for now this is how it will target cards
-	if cardslot_1.card_in_slot:
-		return cardslot_1
-	elif cardslot_2.card_in_slot and cardslot_3.card_in_slot:
-		var target = randi() % 2
-		if target == 0:
-			return cardslot_2
-		else:
-			return cardslot_3
-	else:
-		return null # Means the target is the player
-	
-	# Calculate turn numbers needed to kill player
-	# and that the cards can kill the enemy
-	# to decide which target to choose
-	
-
-
-func opponent_attack(target):
-	var old_pos:Vector2 = enemy.global_position
-	var boss_attack = boss1_stats["Vacuum"]["Attack"]
-	if not target:
-		boss_attack_player_anim()
-		await wait(0.5)
-		
-		player_health = max(0, player_health - boss_attack)
-		player_health_text.text = player_health_text_prefix + str(player_health)
-	else:
-		boss_attack_monster_anim(target)
-		await wait(0.5)
-		player_cards_on_battlefield[target].take_damage(boss_attack)
-	
-	# Enemy return to original position
-	boss_return_pos_anim(old_pos)
-	
-	# Check whether player lose
-	if player_health == 0:
-		player_lose()
-	print("Opponent Attack")
-
-
-func boss_attack_player_anim():
-	var new_pos_x = 280
-	var new_pos = Vector2(new_pos_x, enemy.position.y)
-	enemy.z_index = 5
-	enemy_attack_text.visible = false
-	enemy_health_text.visible = false
-	var tween = get_tree().create_tween()
-	tween.tween_property(enemy, "global_position", new_pos, 0.5)
-
-func boss_attack_monster_anim(target):
-	var new_pos_x = target.global_position.x
-	var new_pos_y = target.global_position.y
-	var new_pos = Vector2(new_pos_x, new_pos_y)
-	enemy.z_index = 5
-	enemy_attack_text.visible = false
-	enemy_health_text.visible = false
-	var tween = get_tree().create_tween()
-	tween.tween_property(enemy, "global_position", new_pos, 0.5)
-
-
-func boss_return_pos_anim(old_pos: Vector2):
-	#var old_pos_x = 214.5
-	#var old_pos_y = 77
-	#var old_pos = Vector2(0, 0)
-	enemy.z_index = 0
-	var tween2 = get_tree().create_tween()
-	tween2.tween_property(enemy, "position", old_pos, 0.5)
-	await wait(0.5)
-	enemy_attack_text.visible = true
-	enemy_health_text.visible = true
 
 
 func wait(wait_time):
@@ -338,51 +217,8 @@ func wait(wait_time):
 	await battle_timer.timeout
 
 
-func opponent_defend():
-	if boss_health == 20:
-		var target = choose_target()
-		opponent_attack(target)
-	else:
-		boss_health = min(boss_health + 3, 20)
-		enemy_health_text.text = str(boss_health)
-		
-		# Change font to double size and green
-		enemy_health_text.add_theme_font_size_override("normal_font_size", 40)
-		enemy_health_text.modulate = Color.GREEN
-	
-		# Play animation for health change
-		var tween = get_tree().create_tween()
-		tween.tween_property(enemy_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
-		tween.tween_property(enemy_health_text, "modulate", Color.BLACK, 1)
-		
-		print("Opponent Defend")
-
-
-func opponent_eliminate():
-	var old_pos:Vector2 = enemy.global_position
-	if cardslot_1.card_in_slot:
-		boss_attack_monster_anim(cardslot_1)
-		await wait(0.5)
-		player_cards_on_battlefield[cardslot_1].die()
-		boss_return_pos_anim(old_pos)
-	elif cardslot_2.card_in_slot:
-		boss_attack_monster_anim(cardslot_2)
-		await wait(0.5)
-		player_cards_on_battlefield[cardslot_2].die()
-		boss_return_pos_anim(old_pos)
-	elif cardslot_3.card_in_slot:
-		boss_attack_monster_anim(cardslot_3)
-		await wait(0.5)
-		player_cards_on_battlefield[cardslot_3].die()
-		boss_return_pos_anim(old_pos)
-	else:
-		opponent_attack(null)
-	print("Opponent Eliminate")
-
-
-
 func check_field():
-	if not cardslot_1.card_in_slot and not cardslot_2.card_in_slot and not cardslot_3.card_in_slot:
+	if not CardslotManager.cardslots[0].card_in_slot and not CardslotManager.cardslots[1].card_in_slot and not CardslotManager.cardslots[2].card_in_slot:
 		return true
 	else:
 		return false

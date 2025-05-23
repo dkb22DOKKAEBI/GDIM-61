@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://scripts/card_manager/monster_card_manager.gd" id="6_7a100"]
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://scripts/card_manager/ingredient_card_manager.gd" id="7_feaue"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://scenes/card/cardslot.tscn" id="8_210s6"]
-[ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/new_battle_manager.gd" id="9_5qvs7"]
+[ext_resource type="Script" uid="uid://pr1np1molltl" path="res://scripts/battle_manager.gd" id="9_5qvs7"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://scripts/cooking_mechanic.gd" id="10_qbchm"]
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://scenes/card_target_selector.tscn" id="11_gxgfo"]
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://scenes/ui/battle_ui.tscn" id="13_06rsu"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="26_4gq6d"]
 [ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="27_mjrbb"]
 [ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="28_7kfc1"]
+
 
 [node name="Tutorial" type="Node2D"]
 
