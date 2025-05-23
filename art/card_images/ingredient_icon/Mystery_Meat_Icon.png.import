@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byp35ifhyk7oo"
-path="res://.godot/imported/Dough_Icon.png-d8973d7b5ce56360a435c08e7363d1ab.ctex"
+uid="uid://bq4pygbco233q"
+path="res://.godot/imported/Mystery_Meat_Icon.png-a43864b687ef7f8bbf874bf00c07d3c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/ingredient-icon/Dough_Icon.png"
-dest_files=["res://.godot/imported/Dough_Icon.png-d8973d7b5ce56360a435c08e7363d1ab.ctex"]
+source_file="res://art/card_images/ingredient_icon/Mystery_Meat_Icon.png"
+dest_files=["res://.godot/imported/Mystery_Meat_Icon.png-a43864b687ef7f8bbf874bf00c07d3c6.ctex"]
 
 [params]
 

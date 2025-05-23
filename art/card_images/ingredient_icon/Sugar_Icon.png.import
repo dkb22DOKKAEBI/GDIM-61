@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blnjl7nwsdag5"
-path="res://.godot/imported/Lettuce_Icon.png-0692d3573cc2927ef4b03d8cd00f368e.ctex"
+uid="uid://e0ggfdcvw4q"
+path="res://.godot/imported/Sugar_Icon.png-c88e280e502068b9135dd6ba210f71b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/ingredient-icon/Lettuce_Icon.png"
-dest_files=["res://.godot/imported/Lettuce_Icon.png-0692d3573cc2927ef4b03d8cd00f368e.ctex"]
+source_file="res://art/card_images/ingredient_icon/Sugar_Icon.png"
+dest_files=["res://.godot/imported/Sugar_Icon.png-c88e280e502068b9135dd6ba210f71b1.ctex"]
 
 [params]
 

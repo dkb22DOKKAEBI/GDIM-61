@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq4pygbco233q"
-path="res://.godot/imported/Mystery_Meat_Icon.png-d91f9b5110f3dc2c096718740929ab50.ctex"
+uid="uid://blnjl7nwsdag5"
+path="res://.godot/imported/Lettuce_Icon.png-58cb4ec0f250ae9904184b86c95ac284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/ingredient-icon/Mystery_Meat_Icon.png"
-dest_files=["res://.godot/imported/Mystery_Meat_Icon.png-d91f9b5110f3dc2c096718740929ab50.ctex"]
+source_file="res://art/card_images/ingredient_icon/Lettuce_Icon.png"
+dest_files=["res://.godot/imported/Lettuce_Icon.png-58cb4ec0f250ae9904184b86c95ac284.ctex"]
 
 [params]
 

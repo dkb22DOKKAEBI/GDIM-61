@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo4xbcmk7i8qe"
-path="res://.godot/imported/Tomato_Icon.png-3881d35f3ac421b9a5eb655c6b8dfafd.ctex"
+uid="uid://btjaqnsnngsld"
+path="res://.godot/imported/Ham_Icon.png-5d53464e9c3b8503a7c0911bdfcf0dab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/ingredient-icon/Tomato_Icon.png"
-dest_files=["res://.godot/imported/Tomato_Icon.png-3881d35f3ac421b9a5eb655c6b8dfafd.ctex"]
+source_file="res://art/card_images/ingredient_icon/Ham_Icon.png"
+dest_files=["res://.godot/imported/Ham_Icon.png-5d53464e9c3b8503a7c0911bdfcf0dab.ctex"]
 
 [params]
 

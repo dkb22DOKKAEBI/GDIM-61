@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btjaqnsnngsld"
-path="res://.godot/imported/Ham_Icon.png-90e230e378a10df7feb726dc130baa49.ctex"
+uid="uid://cuggays5nv2ex"
+path="res://.godot/imported/Cheese_Icon.png-5140a1a0aaa2e8fd36bff427366f5234.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/ingredient-icon/Ham_Icon.png"
-dest_files=["res://.godot/imported/Ham_Icon.png-90e230e378a10df7feb726dc130baa49.ctex"]
+source_file="res://art/card_images/ingredient_icon/Cheese_Icon.png"
+dest_files=["res://.godot/imported/Cheese_Icon.png-5140a1a0aaa2e8fd36bff427366f5234.ctex"]
 
 [params]
 

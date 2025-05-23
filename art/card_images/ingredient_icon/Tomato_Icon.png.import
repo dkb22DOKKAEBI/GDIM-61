@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0vxkitj3maaw"
-path="res://.godot/imported/Tortilla_Icon.png-de9cd74bf9539cacab2215e619e2ae2f.ctex"
+uid="uid://bo4xbcmk7i8qe"
+path="res://.godot/imported/Tomato_Icon.png-147a29b958c80a7fcd0c95511bb83464.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/ingredient-icon/Tortilla_Icon.png"
-dest_files=["res://.godot/imported/Tortilla_Icon.png-de9cd74bf9539cacab2215e619e2ae2f.ctex"]
+source_file="res://art/card_images/ingredient_icon/Tomato_Icon.png"
+dest_files=["res://.godot/imported/Tomato_Icon.png-147a29b958c80a7fcd0c95511bb83464.ctex"]
 
 [params]
 
