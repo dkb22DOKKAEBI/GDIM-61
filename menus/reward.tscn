@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://bygysgvppteqj"]
+
+[ext_resource type="Script" uid="uid://ba6i2gvqt07jl" path="res://menus/reward_menu.gd" id="1_hp86r"]
+
+
+[node name="Reward" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hp86r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.712129, 0.712129, 0.712129, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RewardTitle" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 67
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RewardTitle"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+text = "Reward"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardText" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+offset_top = 140.0
+offset_right = 960.0
+offset_bottom = 340.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 67
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RewardText"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "5 ingredient cards
+1 pizza monster card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 25.0
+offset_right = 100.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="ClaimRewardButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 25
+text = "Claim Reward
+"
+
+[node name="NextLevelButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 25
+text = "Next Level"
+
+[connection signal="pressed" from="Buttons/VBoxContainer/ClaimRewardButton" to="." method="on_claim_reward"]
+[connection signal="pressed" from="Buttons/VBoxContainer/NextLevelButton" to="." method="on_next_level"]
