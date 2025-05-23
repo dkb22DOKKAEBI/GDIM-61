@@ -1,6 +1,6 @@
 extends Node
 
-const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
+const MONSTER_CARD_SCENE_PATH = "res://card/monster_card/monster_card.tscn"
 
 var card_starting_position: Vector2 = Vector2(100, 525)
 var recipe = []
@@ -9,10 +9,6 @@ var recipe = []
 @export var monster_card_manager: Node2D
 @export var pot_ui: Control
 @onready var cookingsfx: AudioStreamPlayer = $"../cookingsfx"
-
-
-func _ready():
-	pass
 
 
 # Cook to create new monster card
@@ -35,7 +31,7 @@ func _on_cook() -> void:
 		cookingsfx.play()
 		var card_scene = preload(MONSTER_CARD_SCENE_PATH)
 		var new_card: Node2D = card_scene.instantiate()
-		var card_image_path = str("res://card_images/monsters/" + result_monster + ".png")
+		var card_image_path = str("res://art/card_images/monsters/" + result_monster + ".png")
 		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
 		new_card.get_node("Attack").text = str(CardDatabase.CARDS[result_monster][0])
 		new_card.get_node("Health").text = str(CardDatabase.CARDS[result_monster][1])
@@ -71,20 +67,6 @@ func ingredient_check(list: Array) -> String:
 	var ingredients := []
 	for i in list:
 		ingredients.append(i)
-		#if list.has("Dough"):
-			#ingredients.append("Dough")
-		#if list.has("Cheese"):
-			#ingredients.append("Cheese")
-		#if list.has("Sugar"):
-			#ingredients.append("Sugar")
-		#if list.has("Tomato"):
-			#ingredients.append("Tomato")
-		#if list.has("Mystery_Meat"):
-			#ingredients.append("Mystery_Meat")
-		#if list.has("Tortilla"):
-			#ingredients.append("Tortilla")
-		#if list.has("Lettuce"):
-			#ingredients.append("Lettuce")
 
 	# Turn into sorted string for easier matching
 	ingredients.sort()

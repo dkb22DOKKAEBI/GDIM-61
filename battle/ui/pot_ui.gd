@@ -19,7 +19,7 @@ func on_update_selected_ing_ui() -> void:
 	
 	# Add in all images for ingredients selected in order
 	for i in range(PlayerHand.selected_ingredients.size()):
-		var icon_path = "res://card_images/ingredient-icon/" + PlayerHand.selected_ingredients[i].card_name + "_Icon.png"
+		var icon_path = "res://art/card_images/ingredient-icon/" + PlayerHand.selected_ingredients[i].card_name + "_Icon.png"
 		grids[i].texture = ResourceLoader.load(icon_path)
 
 

@@ -4,7 +4,7 @@ extends Card
 @onready var ability_button: Button = $UIContainer/AbilityButton
 @onready var battle_manager = get_node("/root/NewBattle")
 @onready var cardslot_manager = get_node("/root/CardslotManager")
-@onready var ability_handler = preload("res://scripts/ability_manager.gd").new()  # assuming the path is correct
+@onready var ability_handler = preload("res://battle/ability_manager.gd").new()  # assuming the path is correct
 @onready var boss_node = get_node("/root/NewBattle/BattleField/Enemy")  # or whatever path to the boss
 
 
@@ -14,13 +14,14 @@ func _ready() -> void:
 	ability_button.connect("pressed", Callable(self, "_on_ability_button_pressed"))
 	
 	# Get card name from the image file name
-	var texture_path = $CardImage.texture.resource_path
-	card_name = texture_path.get_file().get_basename()
-	print("Loaded card name:", card_name)
+	#var texture_path = $CardImage.texture.resource_path
+	#card_name = texture_path.get_file().get_basename()
+	#print("Loaded card name:", card_name)
 	
 	ability_button.disabled = true # start disabled if needed
 	ability_button.hide()
 	ability_button.z_index = 10  # Higher than any sprites or labels
+
 
 func update_ability_button():
 	if placed:
@@ -29,6 +30,7 @@ func update_ability_button():
 	else:
 		ability_button.hide()
 		ability_button.disabled = true  # prevent pressing just in case
+
 
 func _on_ability_button_pressed():
 	if card_slot_on == null:
@@ -56,6 +58,7 @@ func _on_ability_button_pressed():
 	# Disable button after use
 	ability_button.disabled = true
 	ability_button.hide()
+
 
 func get_label_vis() -> bool:
 	return selected_label.visible
