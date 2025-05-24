@@ -13,8 +13,6 @@ const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
 
-# @onready var card_manager_reference: Node2D = $"../../MonsterCardManager"
-# @onready var deck_reference: Node2D = $"../../Deck"
 @export var battle_manager: Node2D
 @export var card_manager_reference: Node2D
 @export var deck_reference: Node2D
