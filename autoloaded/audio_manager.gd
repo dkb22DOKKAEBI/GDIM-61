@@ -14,8 +14,8 @@ func play_sound(sfx_name: String) -> void:
 		var new_2d_audio = AudioStreamPlayer2D.new()
 		self.add_child(new_2d_audio)
 		new_2d_audio.stream = sfx_dic[sfx_name]
+		new_2d_audio.finished.connect(new_2d_audio.queue_free) # Destroy when finish playing
 		
-		# Destroy audio stream player 2d when sound finished playing
-		new_2d_audio.finished.connect(new_2d_audio.queue_free)
+		new_2d_audio.play()
 	else: # Doesn't have sfx
 		push_error("No defined sound effect " + sfx_name)

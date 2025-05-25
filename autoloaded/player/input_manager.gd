@@ -14,7 +14,6 @@ const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
 
 @export var card_manager_reference: Node2D
-@onready var clicksfx: AudioStreamPlayer = $"../../clicksfx"
 
 
 # Check for inputs
@@ -48,12 +47,16 @@ func raycast_at_cursor():
 	parameters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
 	var result = space_state.intersect_point(parameters)
+	
+	# Play click sound
+	AudioManager.play_sound("CLICK")
+	
+	# Perform clicked action
 	if result.size() > 0:
 		for point in result:
 			var result_collision_mask = point.collider.collision_layer
 			
 			# Select monster cards
-			clicksfx.play()
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
 				if PlayerController.is_on_player_turn and monster_card_found:
@@ -65,6 +68,5 @@ func raycast_at_cursor():
 			
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
-				clicksfx.play()
 				var ingredient_card_found = point.collider.get_parent()
 				ingredient_card_found.ingredient_card_selected()
