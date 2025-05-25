@@ -13,9 +13,7 @@ const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
 
-@export var battle_manager: Node2D
 @export var card_manager_reference: Node2D
-@export var deck_reference: Node2D
 @onready var clicksfx: AudioStreamPlayer = $"../../clicksfx"
 
 
@@ -58,7 +56,7 @@ func raycast_at_cursor():
 			clicksfx.play()
 			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 				var monster_card_found = point.collider.get_parent()
-				if battle_manager.is_on_player_turn and monster_card_found:
+				if PlayerController.is_on_player_turn and monster_card_found:
 					if not monster_card_found.placed: # Find monster card in hand
 						card_manager_reference.start_drag(monster_card_found)
 					elif monster_card_found.placed: # Find monster card in battle field

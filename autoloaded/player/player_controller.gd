@@ -16,6 +16,7 @@ const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
 
 var deck: Array[String] # Player deck
 var player_health: int # Player health
+var is_on_player_turn: bool = true # Whether is on player's turn
 var is_on_tutorial: bool = false # Whether the player is in totorial
 
 
@@ -37,5 +38,6 @@ func new_game_started() -> void:
 		PlayerHand.legacy_ingredient_hand.append(ingredient_name)
 	PlayerHand.legacy_monster_hand.append("Pizza")
 	
-	# Initialize player health
+	# Initialize player status
 	player_health = STARTING_HEALTH
+	is_on_player_turn = true

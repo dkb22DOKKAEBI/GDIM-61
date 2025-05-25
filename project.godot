@@ -23,6 +23,7 @@ buses/default_bus_layout="res://custom_resources/default_bus_layout.tres"
 
 EventController="*res://autoloaded/event_controller.gd"
 CardDatabase="*res://autoloaded/card_database.gd"
+AudioManager="*res://autoloaded/audio_manager.tscn"
 SceneManager="*res://autoloaded/scene_manager.gd"
 PlayerHand="*res://autoloaded/player/player_hand.gd"
 PlayerController="*res://autoloaded/player/player_controller.gd"

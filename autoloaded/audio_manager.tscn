@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cshovo18iagie"]
+
+[ext_resource type="Script" uid="uid://bspu037ji6ikp" path="res://autoloaded/audio_manager.gd" id="1_5jhky"]
+[ext_resource type="AudioStream" uid="uid://cd5bd43x3avc3" path="res://audio/SFX/select.mp3" id="2_drlug"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_5jhky")
+sfx_dic = {
+"CLICK": ExtResource("2_drlug")
+}
