@@ -18,7 +18,7 @@ func _on_cook() -> void:
 		return
 	
 	# Try cook to create monster
-	if battle_manager.is_on_player_turn:
+	if PlayerController.is_on_player_turn:
 		if PlayerHand.selected_ingredients.size() == 0:
 			return
 		

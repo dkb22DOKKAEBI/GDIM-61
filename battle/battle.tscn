@@ -89,6 +89,7 @@ offset_left = 240.0
 offset_top = 442.0
 offset_right = 814.0
 offset_bottom = 600.0
+mouse_filter = 2
 
 [node name="BattleField" type="Node2D" parent="."]
 
