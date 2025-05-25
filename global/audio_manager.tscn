@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cshovo18iagie"]
+
+[ext_resource type="Script" uid="uid://bspu037ji6ikp" path="res://global/audio_manager.gd" id="1_5jhky"]
+[ext_resource type="AudioStream" uid="uid://cd5bd43x3avc3" path="res://audio/SFX/select.mp3" id="2_drlug"]
+[ext_resource type="AudioStream" uid="uid://d2sbgkufk663o" path="res://audio/music/stardew valley soundtrack.mp3" id="3_tnf83"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_5jhky")
+sfx_dic = {
+"CLICK": ExtResource("2_drlug")
+}
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tnf83")
+volume_db = -15.315
+autoplay = true
+parameters/looping = true

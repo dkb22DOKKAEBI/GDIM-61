@@ -1,9 +1,9 @@
 [gd_scene load_steps=29 format=3 uid="uid://b1ha1u603qeyd"]
 
 [ext_resource type="Script" uid="uid://c2dd877msfpqm" path="res://tutorial/tutorial_prep.gd" id="1_cmspm"]
-[ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://autoloaded/player/input_manager.gd" id="2_ikfo1"]
+[ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://global/player/input_manager.gd" id="2_ikfo1"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_dwom6"]
-[ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://battle/ui/deck.gd" id="4_bl2xa"]
+[ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://battle/deck.gd" id="4_bl2xa"]
 [ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://art/card_images/monsters/Deck.png" id="5_15kfc"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="6_7a100"]
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://card/card_manager/ingredient_card_manager.gd" id="7_feaue"]
@@ -28,8 +28,6 @@
 [ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="26_4gq6d"]
 [ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="27_mjrbb"]
 [ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="28_7kfc1"]
-
-
 
 [node name="Tutorial" type="Node2D"]
 

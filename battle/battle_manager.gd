@@ -5,7 +5,6 @@ const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
 var player_cards_on_battlefield # Dictionary
 
 var selected_card_in_slot: Card
-var is_on_player_turn: bool = true
 var player_is_attacking: bool = false
 var has_an_abilities = {
 	"Pizza"		:true,
@@ -139,7 +138,7 @@ func _on_end_turn_button_pressed() -> void:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
 		temp_attack_message.visible = false
-	is_on_player_turn = false
+	PlayerController.is_on_player_turn = false
 	
 	# Opponent Turn
 	enemy.get_child(0).boss_turn()
@@ -181,7 +180,7 @@ func start_player_turn():
 		$"../PlayerHand/Deck".draw_card()
 	
 	reset_cards_attack()
-	is_on_player_turn = true
+	PlayerController.is_on_player_turn = true
 	check_ability_cds()
 
 
