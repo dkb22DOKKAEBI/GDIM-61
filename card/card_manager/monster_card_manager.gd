@@ -1,6 +1,5 @@
 extends CardManager
 
-var played_card_this_turn := false
 @export var input_manager: Node2D
 @export var battle_manager: Node2D
 
@@ -60,8 +59,7 @@ func finish_drag():
 	else:
 		print("NO AUDIO DETECTED")
 	# Check whether card goes into  cardslot or goes back to hand
-	if card_slot_found and not card_slot_found.card_in_slot and not played_card_this_turn:
-		#played_card_this_turn = true
+	if card_slot_found and not card_slot_found.card_in_slot:
 		PlayerHand.remove_card_from_hand(card_being_dragged, 1)
 		
 		#Card dropped in empty card slot
@@ -97,10 +95,6 @@ func raycast_check_for_card_slot():
 	if result.size() > 0:
 		return result[0].collider.get_parent()
 	return null
-
-
-func reset_played():
-	played_card_this_turn = false
 
 
 func raycast_check_for_card():

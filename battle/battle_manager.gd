@@ -171,7 +171,6 @@ func player_check_dead() -> void:
 
 # Player's turn starts
 func start_player_turn():
-	monster_card_manager.reset_played()
 	enable_end_turn_button(true)
 	
 	# Refill ingredient hand at the start of the player turn
