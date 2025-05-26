@@ -3,6 +3,7 @@ extends Node
 @export var boss_parent: Node2D
 
 
+# Called after all other nodes are created in the scene
 func _ready() -> void:
 	# Instantiate boss
 	var boss_name = CardDatabase.BOSS_LEVEL[SceneManager.level_index]
