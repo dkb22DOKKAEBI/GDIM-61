@@ -101,7 +101,7 @@ func calculate_card_position(index, hand_size: int):
 
 
 # Animate card to the new position with specified speed
-func animate_card_to_position(card, new_position, speed):
+func animate_card_to_position(card, new_position, speed = 0.1):
 	# Start card animation
 	card.is_in_animation = true
 	var tween = get_tree().create_tween()

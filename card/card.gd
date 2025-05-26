@@ -20,7 +20,7 @@ var is_highlighted: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#All cards must be a child of CardManager or this will error
+	#All cards must be a child of CardManager
 	get_parent().connect_card_signals(self)
 
 

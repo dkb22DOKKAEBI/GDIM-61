@@ -14,6 +14,10 @@ const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
 "Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
 "Chocolate"]
 
+# Reference to other scripts
+var battle_manager: Node2D
+
+# Member variables
 var deck: Array[String] # Player deck
 var player_health: int # Player health
 var is_on_player_turn: bool = true # Whether is on player's turn

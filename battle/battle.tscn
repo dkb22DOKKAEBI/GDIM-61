@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="12_icoan"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://battle/ui/recipe_book.tscn" id="15_n6gaa"]
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://card/target_selection/card_target_selector.tscn" id="16_tnndc"]
-[ext_resource type="Script" uid="uid://bposbq16v10av" path="res://battle/on_scene_start.gd" id="17_k6ux7"]
+[ext_resource type="Script" uid="uid://bposbq16v10av" path="res://battle/on_level_start.gd" id="17_k6ux7"]
 [ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="19_kavl5"]
 [ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="21_m24mv"]
 [ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="22_1x3g8"]
@@ -89,6 +89,7 @@ offset_left = 240.0
 offset_top = 442.0
 offset_right = 814.0
 offset_bottom = 600.0
+mouse_filter = 2
 
 [node name="BattleField" type="Node2D" parent="."]
 
@@ -370,7 +371,7 @@ z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
 
-[node name="OnSceneStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
+[node name="OnLevelStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
 script = ExtResource("17_k6ux7")
 boss_parent = NodePath("../BattleField/Enemy")
 

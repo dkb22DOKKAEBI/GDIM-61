@@ -58,6 +58,7 @@ func on_hovered_over_card(card):
 		# Make cover for ingredient cards visible
 		if PlayerHand.hovering_monster_num != 0:
 			cover.visible = true
+		
 
 
 # Hover off card
