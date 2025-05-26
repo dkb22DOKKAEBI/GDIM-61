@@ -13,4 +13,6 @@ func _ready() -> void:
 	# Add boss as child of Enemy node
 	boss_parent.add_child(boss)
 	
+	# Connect battle_manager to player and boss
 	boss.battle_manager = $"../BattleManager"
+	PlayerController.battle_manager = $"../BattleManager"

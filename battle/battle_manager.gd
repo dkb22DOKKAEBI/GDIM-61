@@ -1,7 +1,5 @@
 extends Node
 
-const MONSTER_CARD_SCENE_PATH = "res://scenes/card/card.tscn"
-
 var player_cards_on_battlefield # Dictionary
 
 var selected_card_in_slot: Card
@@ -51,6 +49,7 @@ func _ready() -> void:
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
+	# Return if this card has attacked this turn OR another card is attaking
 	if card.attacked_this_turn or player_is_attacking:
 		return
 	
