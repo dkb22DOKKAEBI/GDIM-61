@@ -1,7 +1,6 @@
 class_name PotUI
 extends Node
 
-@onready var clicksfx: AudioStreamPlayer = $"../../clicksfx"
 @export var grids: Array[NinePatchRect] # Array of the four ingredient grids
 
 
@@ -41,23 +40,22 @@ func disselect_all_ingredient() -> void:
 # Disselect ingredient and add card view back to player's hand
 func on_disselect_ingredient_1() -> void:
 	disselect_ingredient(0)
-	clicksfx.play()
 
 func on_disselect_ingredient_2() -> void:
 	disselect_ingredient(1)
-	clicksfx.play()
 
 func on_disselect_ingredient_3() -> void:
 	disselect_ingredient(2)
-	clicksfx.play()
 
 func on_disselect_ingredient_4() -> void:
 	disselect_ingredient(3)
-	clicksfx.play()
 
 
 # Helper function for disselect ingredients
 func disselect_ingredient(index: int) -> void :
+	# Play CLICK sound
+	AudioManager.play_sound("CLICK")
+	
 	# Check whether there is ingredient to dis-select
 	if index >= PlayerHand.selected_ingredients.size():
 		return

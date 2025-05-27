@@ -24,6 +24,7 @@ func clear_cardslots() -> void:
 
 
 func test():
+	print("CardSlot Test Called")
 	for cardslot in cardslots:
 		var slot_id = cardslot.card_slot_number
 

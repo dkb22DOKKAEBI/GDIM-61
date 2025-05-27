@@ -43,11 +43,9 @@ end_turn_button = NodePath("../UI/Buttons/EndTurnButton")
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("battle_manager", "card_manager_reference", "deck_reference")]
+[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("card_manager_reference")]
 script = ExtResource("2_ikfo1")
-battle_manager = NodePath("../../BattleManager")
 card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
-deck_reference = NodePath("../../PlayerHand/Deck")
 
 [node name="PlayerHealth" type="RichTextLabel" parent="Player"]
 z_index = 1

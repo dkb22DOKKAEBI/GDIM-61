@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjxp67gh21f73"
-path="res://.godot/imported/Trashcan.png-efd45c05799ed0c060f0d63a4d8640fe.ctex"
+uid="uid://coip512m5rbhs"
+path="res://.godot/imported/Grain_Icon.png-6ee4a3e21a73a8137017665c9191fe8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/monsters/Trashcan.png"
-dest_files=["res://.godot/imported/Trashcan.png-efd45c05799ed0c060f0d63a4d8640fe.ctex"]
+source_file="res://art/card_images/ingredient_icon/Grain_Icon.png"
+dest_files=["res://.godot/imported/Grain_Icon.png-6ee4a3e21a73a8137017665c9191fe8d.ctex"]
 
 [params]
 

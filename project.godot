@@ -29,6 +29,10 @@ PlayerHand="*res://global/player/player_hand.gd"
 PlayerController="*res://global/player/player_controller.gd"
 CardslotManager="*res://global/cardslot_manager.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=960

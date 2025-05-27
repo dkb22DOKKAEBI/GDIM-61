@@ -4,7 +4,7 @@ extends Card
 @onready var ability_button: Button = $UIContainer/AbilityButton
 @onready var battle_manager = get_node("/root/NewBattle")
 @onready var cardslot_manager = get_node("/root/CardslotManager")
-@onready var ability_handler = preload("res://battle/ability_manager.gd").new()  # assuming the path is correct
+@onready var ability_handler = preload("res://card/monster_card/ability_manager.gd").new()  # assuming the path is correct
 @onready var boss_node = get_node("/root/NewBattle/BattleField/Enemy")  # or whatever path to the boss
 
 
