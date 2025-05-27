@@ -42,6 +42,7 @@ const BOSS_STATS = {
 
 
 # Info for monster cards and bosses
+# Display names
 const DISPLAY_NAME = {
 	"Trashcan"   : "Trashcan",               # Monster Cards
 	"Pizza"      : "Pizza Ninja",
@@ -58,4 +59,23 @@ const DISPLAY_NAME = {
 	"Toaster"    : "The Burnt Apostle",
 	"Breadspawn" : "Breadspawn",
 	"Oven"       : "The Blazing Inferno"
+}
+
+# Descriptions
+const DESCRIPTION = {
+	"Trashcan"   : "The damned… ",                               # Monster Cards
+	"Pizza"      : "A silent and deadly assassin. Don’t let his appearance fool you his pepperoni ninja stars and lethal pizza slaps will hurt more than any pizza cutter.",
+	"Quesadilla" : "The life of the party. The quesadilla bard will never fail to raise the spirits of your modest party. Together with his trusty old guitar and maraca he’ll ensure your party’s safety.",
+	"Cheesecake" : "The cheesecake cannoneer fuelled by his insatiable desire for sugar blasts his way through any amount of enemies. Anything walking in this brutes path will be drowned under dozens of frosting blasts ",
+	"Sandwich"   : "A trusty and loyal servant. The sandwich knight born from the mighty magic pot will always come to your aid armed with his tomato buckler and his trusty breadstick blade.",
+	"Taco"       : "The taco tank will guard you well with his trusty tortilla hammer. Stand behind him and don’t fret.",
+	"Salad"      : "The salad cleric will drown your team in ranch blessings. Believe in his holy ranch power and he’ll ensure your party lives through any encounter.",
+	"Sushi"      : "Sushi Samurai needs some more words",
+	"Donut"      : "Stand down the doughnut machine gunner is here! He’ll mow down the enemies with a hailstorm of sprinkles get low or prepare to be caught in his path of destruction.",
+	"Eclair"     : "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle.",
+	"Lightbulb"  : "Lightbulb needs some more words",              # Bosses
+	"Vacuum"     : "Vacuum needs some more words",
+	"Toaster"    : "The Burnt Apostle needs some more words",
+	"Breadspawn" : "Breadspawn needs some more words",
+	"Oven"       : "The Blazing Inferno needs some more words"
 }
