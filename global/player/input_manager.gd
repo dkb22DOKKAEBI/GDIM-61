@@ -13,7 +13,7 @@ signal targeting_start_signal(monster_card: MonsterCard) # Signal that the targe
 const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
-const COLLISION_MASK_BOSS = 256
+const COLLISION_MASK_BOSS = 16
 
 @export var card_manager_reference: Node2D
 @export var ingredient_card_manager: Node2D
