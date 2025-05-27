@@ -36,6 +36,18 @@ func display_monster_card_info(monster_card: MonsterCard) -> void:
 
 # Display info for boss
 func display_boss_info(boss: Boss) -> void:
+	# Set up info
+	var boss_name := boss.boss_name
+	character_image.texture = ResourceLoader.load("res://art/card_images/monsters/" + boss_name + "_boss.png")
+	character_name_text.text = CardDatabase.DISPLAY_NAME[boss_name]
+	character_attack_text.text = str(boss.boss_attack)
+	character_health_text.text = str(boss.boss_max_health)
+	for i in range(CardDatabase.ABILITY_DESCRIPTION[boss_name].size()): # Set up descriptions for abilites
+		character_ability_texts[i].text = CardDatabase.ABILITY_DESCRIPTION[boss_name][i]
+	for i in range(3 - CardDatabase.ABILITY_DESCRIPTION[boss_name].size()): # Clear all ability descriptions for additional slots
+		character_ability_texts[2 - i].text = ""
+	character_description_text.text = CardDatabase.CHARACTER_DESCRIPTION[boss_name]
+	
 	self.visible = true
 
 
