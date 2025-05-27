@@ -99,7 +99,7 @@ const ABILITY_DESCRIPTION = {
 	"Lightbulb"  : ["BRRRRRRRRRRR: with no effect (regular)"],                                                 # Bosses
 	"Vacuum"     : ["Power Cord Whip: Inflict damage equal to the attack power to one enemy (regular)",
 					"Power Surge Shield: Self restore 3 health (regular)",
-					"Elimination!: Deal 10 damage to one enemy (3 turns cool down)"],
+					"Last Supper: Deal 10 damage to one enemy (3 turns cool down)"],
 	"Toaster"    : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
 	"Breadspawn" : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
 	"Oven"       : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"]
