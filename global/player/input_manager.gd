@@ -3,6 +3,7 @@ extends Node2D
 signal left_mouse_button_clicked   # Mouse signals
 signal left_mouse_button_released
 signal right_mouse_button_clicked
+signal right_mouse_button_released
 
 signal select_placed_card(card: Card)
 signal player_attack
@@ -34,8 +35,7 @@ func _input(event):
 			perform_right_click_action()
 			emit_signal("right_mouse_button_clicked")
 		else:
-			print("Checking end")
-			checking_card_info_end()
+			EventController.right_mouse_button_released.emit()
 	
 	# Open or close pause Menu
 	if Input.is_key_pressed(KEY_ESCAPE):
@@ -107,15 +107,10 @@ func perform_right_click_action() -> void:
 		var point := raycast_points[0]
 		if point.collider.collision_layer == COLLISION_MASK_BOSS:
 			PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.CHECKING_INFO
+			EventController.display_boss_info_signal.emit(point.collider.get_parent())
 		elif point.collider.collision_layer == COLLISION_MASK_MONSTER_CARD:
 			PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.CHECKING_INFO
-
-
-# Exit player checking card info status
-func checking_card_info_end() -> void:
-	# Return to IDLE status if in CHEKCING_INFO status
-	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.CHECKING_INFO:
-		PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
+			EventController.display_monster_card_info_signal.emit(point.collider.get_parent())
 
 
 # Quick fix for ingredient cards still hoverable when dragging monster card

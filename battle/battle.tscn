@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=23 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://card/card_manager/ingredient_card_manager.gd" id="11_icoan"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="12_icoan"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://battle/ui/recipe_book.tscn" id="15_n6gaa"]
+[ext_resource type="PackedScene" uid="uid://sx7gnxc5mwqp" path="res://battle/ui/card_info.tscn" id="16_220ih"]
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://card/target_selection/card_target_selector.tscn" id="16_tnndc"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://battle/on_level_start.gd" id="17_k6ux7"]
 [ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="19_kavl5"]
@@ -372,6 +373,12 @@ visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
+
+[node name="CardInfoLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CardInfo" parent="CardInfoLayer" instance=ExtResource("16_220ih")]
+visible = false
 
 [node name="OnLevelStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
 script = ExtResource("17_k6ux7")

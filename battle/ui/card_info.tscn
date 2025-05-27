@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://sx7gnxc5mwqp"]
+
+[ext_resource type="Script" uid="uid://cocxex075gfxd" path="res://battle/ui/card_info.gd" id="1_2qdcr"]
+
+[node name="CardInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qdcr")
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(0.266667, 0.266667, 0.266667, 0.407843)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
