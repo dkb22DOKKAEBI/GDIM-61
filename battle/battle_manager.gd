@@ -70,7 +70,7 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 
 # Player attack
 func _on_player_attack():
-	attacksfx.play()
+	AudioManager.play_sound("ATTACK")
 	if not selected_card_in_slot:
 		return
 	
@@ -157,7 +157,6 @@ func enable_end_turn_button(enable: bool) -> void:
 
 # Player being attacked
 func player_take_dmg(boss_attack: float) -> void:
-	attacksfx.play()
 	PlayerController.player_health = max(0, PlayerController.player_health - boss_attack)
 	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
 

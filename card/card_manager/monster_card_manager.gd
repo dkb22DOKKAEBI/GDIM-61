@@ -54,10 +54,8 @@ func on_left_clicked_released():
 func finish_drag():
 		# Try get card slot at the position where the monster card is dropped
 	var card_slot_found = raycast_check_for_card_slot()
-	if has_node("clicksfx"):
-		clicksfx.play()
-	else:
-		print("NO AUDIO DETECTED")
+	AudioManager.play_sound("CLICK")
+	
 	# Check whether card goes into  cardslot or goes back to hand
 	if card_slot_found and not card_slot_found.card_in_slot:
 		PlayerHand.remove_card_from_hand(card_being_dragged, 1)

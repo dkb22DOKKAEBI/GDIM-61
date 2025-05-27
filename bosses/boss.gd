@@ -52,6 +52,7 @@ func boss_turn() -> void:
 
 # Boss take damage
 func boss_take_dmg(dmg: float):
+	AudioManager.play_sound("ATTACK")
 	boss_health = max(0, boss_health - dmg)
 	boss_health_text.text = str(boss_health)
 	
@@ -112,6 +113,7 @@ func boss_attack_monster_anim(target):
 	tween.tween_property(battle_manager.enemy, "global_position", new_pos, 0.5)
 
 func boss_return_pos_anim(old_pos: Vector2):
+	AudioManager.play_sound("ATTACK")
 	battle_manager.enemy.z_index = 0
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(battle_manager.enemy, "position", old_pos, 0.5)
