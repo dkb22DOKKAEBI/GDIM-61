@@ -116,8 +116,8 @@ custom_minimum_size = Vector2(215, 0)
 layout_mode = 2
 
 [node name="Image" type="Sprite2D" parent="CardInfoBox/HBoxContainer/CardImage"]
-position = Vector2(119, 175)
-scale = Vector2(0.4, 0.4)
+position = Vector2(127, 175)
+scale = Vector2(0.453571, 0.453571)
 texture = ExtResource("5_yr2eo")
 
 [node name="InfoSection" type="MarginContainer" parent="CardInfoBox/HBoxContainer"]
@@ -127,14 +127,104 @@ theme_override_constants/margin_top = 27
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 7
 
 [node name="Name" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(0, 26.715)
+custom_minimum_size = Vector2(0, 33)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 26
 text = "Cheesecake Cannoneer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Health" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HealthIcon" type="NinePatchRect" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tfdyk")
+region_rect = Rect2(64, 64, 8, 8)
+
+[node name="HealthText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 22
+text = "100"
+vertical_alignment = 1
+
+[node name="Attack" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="AttackIcon" type="NinePatchRect" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tfdyk")
+region_rect = Rect2(120, 0, 8, 8)
+
+[node name="AttackText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 22
+text = "100"
+vertical_alignment = 1
+
+[node name="Abilities" type="MarginContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities"]
+layout_mode = 2
+alignment = 2
+
+[node name="Ability_1" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 16
+text = "Ability 1: Deal 3 dmg to on"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ability_2" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 16
+text = "Ability 1: Deal 3 dmg to on"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ability_3" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 16
+text = "Ability 1: Deal 3 dmg to on"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
