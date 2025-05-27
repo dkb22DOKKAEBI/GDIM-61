@@ -1,6 +1,7 @@
 extends Node
 
 # Tutorial signals
+@warning_ignore("unused_signal")
 signal preceed_tutorial_signal(next_message: TutorialMessage)
 signal start_cook_tutorial_signal(task_text: String) # Cook tutorial
 signal finish_cook_tutorial_signal()

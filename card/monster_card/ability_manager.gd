@@ -68,10 +68,10 @@ func check_block_ability(name):
 func heal_single(target_card: Node2D, amount: int) -> void:
 	if target_card and target_card.health < target_card.max_health:
 		target_card.health = min(target_card.health + amount, target_card.max_health)
-		target_card.update_health_display()  # if you have this
+		#target_card.update_health_display()  # if you have this <- I dont have this
 
 func heal_all(allied_cards: Array, amount: int) -> void:
 	for card in allied_cards:
 		if card and card.health < card.max_health:
 			card.health = min(card.health + amount, card.max_health)
-			card.update_health_display()
+			#card.update_health_display()
