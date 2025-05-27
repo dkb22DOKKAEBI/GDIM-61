@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_tfdyk"]
 [ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="3_tfdyk"]
 
-[node name="CardInfo" type="Control"]
+[node name="CardInfo" type="Control" node_paths=PackedStringArray("character_name_text", "character_attack_text", "character_health_text", "character_ability_texts", "character_description_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2qdcr")
+character_name_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Name")
+character_attack_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack/AttackText")
+character_health_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health/HealthText")
+character_ability_texts = [NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_1"), NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_2"), NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_3")]
+character_description_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Description")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
 modulate = Color(0.2484, 0.2484, 0.2484, 0.678431)

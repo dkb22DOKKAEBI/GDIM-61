@@ -1,5 +1,12 @@
 extends Node
 
+# Description text parts
+@export var character_name_text: RichTextLabel
+@export var character_attack_text: RichTextLabel
+@export var character_health_text: RichTextLabel
+@export var character_ability_texts: Array[RichTextLabel] # Of size 3
+@export var character_description_text: RichTextLabel
+
 
 # Ready
 func _ready() -> void:
@@ -19,7 +26,10 @@ func display_boss_info(boss: Boss) -> void:
 	self.visible = true
 
 
+# End displaying info
 func display_info_end() -> void:
+	# Check whether the player is checking info
 	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.CHECKING_INFO:
-		PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
+		# Update player status
+		PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE		
 		self.visible = false
