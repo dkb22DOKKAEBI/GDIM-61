@@ -39,8 +39,12 @@ func _input(event):
 		switch_pause_menu_signal.emit()
 
 
-# Handle card dragging, select ingredients
+# Handle left-click actions
 func perform_left_click_action():
+	# Return if player is checking card info
+	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.CHECKING_INFO:
+		return
+	
 	var space_state = get_world_2d().direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_global_mouse_position()
@@ -61,7 +65,7 @@ func perform_left_click_action():
 		# Select monster cards
 		if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 			var monster_card_found = point.collider.get_parent()
-			if PlayerController.is_on_player_turn and monster_card_found:
+			if monster_card_found and PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.IDLE:
 				if not monster_card_found.placed: # Find monster card in hand
 					card_manager_reference.start_drag(monster_card_found)
 					ingredient_card_manager.card_being_dragged = monster_card_found
