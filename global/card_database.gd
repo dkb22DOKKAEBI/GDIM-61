@@ -38,3 +38,24 @@ const BOSS_STATS = {
 	"Lightbulb": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
 	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
 }
+
+
+
+# Info for monster cards and bosses
+const DISPLAY_NAME = {
+	"Trashcan"   : "Trashcan",               # Monster Cards
+	"Pizza"      : "Pizza Ninja",
+	"Quesadilla" : "Quesadilla Bard",
+	"Cheesecake" : "Cheesecake Cannoneer",
+	"Sandwich"   : "Sandwich Knight",
+	"Taco"       : "Taco Tank",
+	"Salad"      : "Salad Cleric",
+	"Sushi"      : "Sushi Samurai",
+	"Donut"      : "Doughnut Machine Gunner",
+	"Eclair"     : "Eclair Knight",
+	"Lightbulb"  : "Lightbulb",              # Bosses
+	"Vacuum"     : "Vacuum",
+	"Toaster"    : "The Burnt Apostle",
+	"Breadspawn" : "Breadspawn",
+	"Oven"       : "The Blazing Inferno"
+}
