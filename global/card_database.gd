@@ -75,7 +75,7 @@ const CHARACTER_DESCRIPTION = {
 	"Donut"      : "Stand down the doughnut machine gunner is here! He’ll mow down the enemies with a hailstorm of sprinkles get low or prepare to be caught in his path of destruction.",
 	"Eclair"     : "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle.",
 	"Lightbulb"  : "Lightbulb needs some more words",              # Bosses
-	"Vacuum"     : "Vacuum needs some more words",
+	"Vacuum"     : "Steer clear! The Insatiable Hunger is here ready to consume all in its path!",
 	"Toaster"    : "The Burnt Apostle needs some more words",
 	"Breadspawn" : "Breadspawn needs some more words",
 	"Oven"       : "The Blazing Inferno needs some more words"
@@ -83,24 +83,24 @@ const CHARACTER_DESCRIPTION = {
 
 # Ability descriptions
 const ABILITY_DESCRIPTION = {
-	"Trashcan"   : ["Regular: Inflict damage equal to the attack power to one enemy"],               # Monster Cards
-	"Pizza"      : ["Regular: Inflict damage equal to the attack power to one enemy",
+	"Trashcan"   : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],               # Monster Cards
+	"Pizza"      : ["Attack: Inflict damage equal to the attack power to one enemy (regular)",
 					"Ability: Inflict 3 damage to one enemy (2 turns cool down)"],
-	"Quesadilla" : ["Regular: Restore health equal to the attack power for one ally"],
-	"Cheesecake" : ["Regular: Inflict damage equal to the attack power to one enemy"],
-	"Sandwich"   : ["Regular: Inflict damage equal to the attack power to one enemy",
+	"Quesadilla" : ["Attack: Restore health equal to the attack power for one ally (regular)"],
+	"Cheesecake" : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
+	"Sandwich"   : ["Attack: Inflict damage equal to the attack power to one enemy (regular)",
 					"Ability: Self restore 1 health (1 turn cool down)"],
-	"Taco"       : ["Regular: Inflict damage equal to the attack power to one enemy"],
-	"Salad"      : ["Regular: Restore health equal to the attack power for one ally",
+	"Taco"       : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
+	"Salad"      : ["Attack: Restore health equal to the attack power for one ally (regular)",
 					"Ability: Restore 1 health for all allies (2 turns cool down)"],
-	"Sushi"      : ["Regular: Restore health equal to the attack power for one ally"],
-	"Donut"      : ["Regular: Inflict damage equal to the attack power to one enemy"],
-	"Eclair"     : ["Regular: Inflict damage equal to the attack power to one enemy"],
-	"Lightbulb"  : ["Regular: BRRRRRRRRRRR with no effect"],                                         # Bosses
-	"Vacuum"     : ["Regular: Inflict damage equal to the attack power to one enemy",
-					"Regular: Self restore 3 health",
+	"Sushi"      : ["Attack: Restore health equal to the attack power for one ally (regular)"],
+	"Donut"      : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
+	"Eclair"     : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
+	"Lightbulb"  : ["BRRRRRRRRRRR: with no effect (regular)"],                                                 # Bosses
+	"Vacuum"     : ["Power Cord Whip: Inflict damage equal to the attack power to one enemy (regular)",
+					"Power Surge Shield: Self restore 3 health (regular)",
 					"Elimination!: Deal 10 damage to one enemy (3 turns cool down)"],
-	"Toaster"    : ["Regular: Inflict damage equal to the attack power to one enemy"],
-	"Breadspawn" : ["Regular: Inflict damage equal to the attack power to one enemy"],
-	"Oven"       : ["Regular: Inflict damage equal to the attack power to one enemy"]
+	"Toaster"    : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
+	"Breadspawn" : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
+	"Oven"       : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"]
 }
