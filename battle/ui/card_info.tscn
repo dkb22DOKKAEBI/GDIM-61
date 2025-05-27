@@ -200,17 +200,17 @@ theme_override_constants/margin_top = 13
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Ability_1" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
+theme_override_constants/line_separation = -3
 theme_override_font_sizes/normal_font_size = 16
 text = "Ability 1:"
 fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Ability_2" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
@@ -220,8 +220,6 @@ theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 16
 text = "Ability 2:"
 fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Ability_3" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
@@ -231,8 +229,6 @@ theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 16
 text = "Ability 3"
 fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
 modulate = Color(0.277528, 0.277528, 0.277528, 1)
