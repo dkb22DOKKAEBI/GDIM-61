@@ -17,14 +17,13 @@ func _ready():
 		new_card.get_node("Health").text = str(CardDatabase.CARDS[monster_name][1])
 		self.add_child(new_card)
 		new_card.name = "MonsterCard"
+		new_card.attack_power = CardDatabase.CARDS[monster_name][0]
+		new_card.max_health = CardDatabase.CARDS[monster_name][1]
 		new_card.card_name = monster_name
 		new_card.position = Vector2(100, 525)
 		new_card.scale = Vector2(1, 1)
 		PlayerHand.add_card_to_hand(new_card, 1, 1)
-		if self.visible:
-			new_card.set_card_z_index(1)
-		else:
-			new_card.set_card_z_index(0)
+	
 	PlayerHand.legacy_monster_hand.clear()
 
 
