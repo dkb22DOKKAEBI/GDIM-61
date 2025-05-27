@@ -48,9 +48,6 @@ func raycast_at_cursor():
 	parameters.collide_with_areas = true
 	var result = space_state.intersect_point(parameters)
 	
-	# Play click sound
-	AudioManager.play_sound("CLICK")
-	
 	# Perform clicked action
 	if result.size() > 0:
 		for point in result:
@@ -62,11 +59,14 @@ func raycast_at_cursor():
 				if PlayerController.is_on_player_turn and monster_card_found:
 					if not monster_card_found.placed: # Find monster card in hand
 						card_manager_reference.start_drag(monster_card_found)
+						AudioManager.play_sound("CLICK")
 					elif monster_card_found.placed: # Find monster card in battle field
 						#select_placed_card.emit(monster_card_found)
 						targeting_start_signal.emit(monster_card_found)
+						AudioManager.play_sound("CLICK")
 			
 			# Select ingredients cards
 			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
 				var ingredient_card_found = point.collider.get_parent()
 				ingredient_card_found.ingredient_card_selected()
+				AudioManager.play_sound("CLICK")

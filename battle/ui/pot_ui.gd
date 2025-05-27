@@ -53,6 +53,9 @@ func on_disselect_ingredient_4() -> void:
 
 # Helper function for disselect ingredients
 func disselect_ingredient(index: int) -> void :
+	# Play CLICK sound
+	AudioManager.play_sound("CLICK")
+	
 	# Check whether there is ingredient to dis-select
 	if index >= PlayerHand.selected_ingredients.size():
 		return
