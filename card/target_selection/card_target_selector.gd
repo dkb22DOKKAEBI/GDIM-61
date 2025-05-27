@@ -8,7 +8,6 @@ const ARC_POINTS: int = 11 # How many points aiming arc line2d has besides end p
 @onready var attacksfx: AudioStreamPlayer = $AudioStreamPlayer
 
 var curr_card: MonsterCard # The card that is targeting
-var targeting: bool = false # Whether playering is targeting
 var target_boss: Boss = null # The boss to be attacked
 
 
@@ -22,7 +21,7 @@ func _ready() -> void:
 
 # Process
 func _process(_delta: float) -> void:
-	if not targeting:
+	if PlayerController.curr_player_status != PlayerController.PLAYER_STATUS.TARGETING:
 		return
 	
 	# Selector following mouse
@@ -61,7 +60,7 @@ func _on_targeting_start(monster_card: MonsterCard) -> void:
 	# Check whether monster card can attack this turn
 	if not monster_card.attacked_this_turn:
 		# Set targeting info
-		targeting = true
+		PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.TARGETING
 		curr_card = monster_card
 		
 		# Enable target selector
@@ -79,7 +78,7 @@ func _on_targeting_end() -> void:
 		target_boss.boss_take_dmg(curr_card.get_attack())
 
 	# Clear targeting info
-	targeting = false
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	curr_card = null
 	
 	# Disable target selector
@@ -93,7 +92,7 @@ func _on_targeting_end() -> void:
 # Listen to right_mouse_button_released
 func _on_targeting_canceled() -> void:
 	# Clear targeting info
-	targeting = false
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	curr_card = null
 	
 	# Disable target selector
