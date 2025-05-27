@@ -8,18 +8,14 @@ extends Card
 @onready var boss_node = get_node("/root/NewBattle/BattleField/Enemy")  # or whatever path to the boss
 
 # Monster card info
-var display_name: String
-var ability_description: Array[String]
-var monster_description: String
+var max_health: int
+var attack_power: int
 
 
 func _ready() -> void:
 	super._ready()
 	is_monster_card = true
 	ability_button.connect("pressed", Callable(self, "_on_ability_button_pressed"))
-	
-	# Set up basic info
-	
 	
 	# Set up ability
 	ability_button.disabled = true # start disabled if needed

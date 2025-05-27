@@ -36,12 +36,12 @@ func _on_cook() -> void:
 		new_card.get_node("Attack").text = str(CardDatabase.CARDS[result_monster][0])
 		new_card.get_node("Health").text = str(CardDatabase.CARDS[result_monster][1])
 		monster_card_manager.add_child(new_card)
-		if monster_card_manager.visible:
-			new_card.set_card_z_index(1)
-		else:
-			new_card.set_card_z_index(0)
+		
+		# Initialize monster card properties and add it to player hand
 		new_card.name = "MonsterCard"
 		new_card.card_name = result_monster
+		new_card.attack_power = CardDatabase.CARDS[result_monster][0]
+		new_card.max_health = CardDatabase.CARDS[result_monster][1]
 		new_card.position = card_starting_position
 		PlayerHand.add_card_to_hand(new_card, 1, 1)
 		
