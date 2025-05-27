@@ -12,6 +12,11 @@ var curr_cool_down: int
 
 var battle_manager: Node2D # Battle manager of the level -> initialized in OnSceneStart
 
+# Boss info
+var display_name: String
+var ability_description: Array[String]
+var boss_description: String
+
 
 # Initialization
 func _ready() -> void:

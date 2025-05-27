@@ -7,17 +7,21 @@ extends Card
 @onready var ability_handler = preload("res://card/monster_card/ability_manager.gd").new()  # assuming the path is correct
 @onready var boss_node = get_node("/root/NewBattle/BattleField/Enemy")  # or whatever path to the boss
 
+# Monster card info
+var display_name: String
+var ability_description: Array[String]
+var monster_description: String
+
 
 func _ready() -> void:
 	super._ready()
 	is_monster_card = true
 	ability_button.connect("pressed", Callable(self, "_on_ability_button_pressed"))
 	
-	# Get card name from the image file name
-	#var texture_path = $CardImage.texture.resource_path
-	#card_name = texture_path.get_file().get_basename()
-	#print("Loaded card name:", card_name)
+	# Set up basic info
 	
+	
+	# Set up ability
 	ability_button.disabled = true # start disabled if needed
 	ability_button.hide()
 	ability_button.z_index = 10  # Higher than any sprites or labels
