@@ -42,7 +42,6 @@ func _ready() -> void:
 	
 	# Connect signal for player input manager
 	input_manager.connect("select_placed_card", _player_select_placed_card)
-	input_manager.connect("player_attack", _on_player_attack)
 	
 	# Player act first
 	start_player_turn()
@@ -69,26 +68,26 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 
 
 # Player attack
-func _on_player_attack():
-	AudioManager.play_sound("ATTACK")
-	if not selected_card_in_slot:
-		return
-	
-	if not player_is_attacking and not selected_card_in_slot.attacked_this_turn:
-		
-		player_is_attacking = true
-		selected_card_in_slot.attacked_this_turn = true
-		
-		monster_attack_boss_anim(selected_card_in_slot)
-		await wait(0.5)
-		if selected_card_in_slot.get_attack() > 0:
-			enemy.get_child(0).boss_take_dmg(selected_card_in_slot.get_attack())
-		
-		# Player attack end
-		player_is_attacking = false;
-		selected_card_in_slot.selected_label_vis(false)
-		selected_card_in_slot = null
-		temp_attack_message.visible = false
+#func _on_player_attack():
+	#AudioManager.play_sound("ATTACK")
+	#if not selected_card_in_slot:
+		#return
+	#
+	#if not player_is_attacking and not selected_card_in_slot.attacked_this_turn:
+		#
+		#player_is_attacking = true
+		#selected_card_in_slot.attacked_this_turn = true
+		#
+		#monster_attack_boss_anim(selected_card_in_slot)
+		#await wait(0.5)
+		#if selected_card_in_slot.get_attack() > 0:
+			#enemy.get_child(0).boss_take_dmg(selected_card_in_slot.get_attack())
+		#
+		## Player attack end
+		#player_is_attacking = false;
+		#selected_card_in_slot.selected_label_vis(false)
+		#selected_card_in_slot = null
+		#temp_attack_message.visible = false
 
 func monster_attack_boss_anim(card):
 	#var new_pos_x = 440
@@ -140,6 +139,7 @@ func _on_end_turn_button_pressed() -> void:
 	PlayerController.is_on_player_turn = false
 	
 	# Opponent Turn
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.WAITING_TURN
 	enemy.get_child(0).boss_turn()
 
 
@@ -179,6 +179,9 @@ func start_player_turn():
 	reset_cards_attack()
 	PlayerController.is_on_player_turn = true
 	check_ability_cds()
+	
+	# Update player status
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 
 
 func check_ability_cds():

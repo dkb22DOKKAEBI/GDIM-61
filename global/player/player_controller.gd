@@ -6,6 +6,9 @@ const STARTING_HAND_SIZE = 0
 const MAX_INGREDIENT_HAND_NUM = 6 # Maximum number of ingredient cards in hand
 const MAX_MONSTER_HAND_NUM = 4 # Maximum number of monster cards in hand
 
+# Player status
+enum PLAYER_STATUS {IDLE, TARGETING, CHECKING_INFO, WAITING_TURN}
+
 # Player's deck -> initially 28
 const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
 "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla", "Dough", 
@@ -22,6 +25,7 @@ var deck: Array[String] # Player deck
 var player_health: int # Player health
 var is_on_player_turn: bool = true # Whether is on player's turn
 var is_on_tutorial: bool = false # Whether the player is in totorial
+var curr_player_status: PLAYER_STATUS = PLAYER_STATUS.IDLE # Current player status
 
 
 # Ready function
@@ -45,3 +49,4 @@ func new_game_started() -> void:
 	# Initialize player status
 	player_health = STARTING_HEALTH
 	is_on_player_turn = true
+	curr_player_status = PLAYER_STATUS.IDLE

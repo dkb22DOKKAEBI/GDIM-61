@@ -1,0 +1,241 @@
+[gd_scene load_steps=5 format=3 uid="uid://sx7gnxc5mwqp"]
+
+[ext_resource type="Script" uid="uid://cocxex075gfxd" path="res://battle/ui/card_info.gd" id="1_2qdcr"]
+[ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="2_luj7x"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_tfdyk"]
+[ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="3_tfdyk"]
+
+[node name="CardInfo" type="Control" node_paths=PackedStringArray("character_image", "character_name_text", "character_attack_text", "character_health_text", "character_ability_texts", "character_description_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qdcr")
+character_image = NodePath("CardInfoBox/HBoxContainer/CardImage/Image")
+character_name_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Name")
+character_attack_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack/AttackText")
+character_health_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health/HealthText")
+character_ability_texts = [NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_1"), NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_2"), NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_3")]
+character_description_text = NodePath("CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Description")
+
+[node name="CoverBackground" type="ColorRect" parent="."]
+modulate = Color(0.2484, 0.2484, 0.2484, 0.678431)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardInfoTitle" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -200.0
+offset_right = 87.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="CardInfoTitle"]
+z_index = 1
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 23
+text = "Information"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleBackground" type="NinePatchRect" parent="CardInfoTitle"]
+layout_mode = 2
+texture = ExtResource("2_luj7x")
+region_rect = Rect2(198.151, 104.465, 17.6695, 15.3522)
+
+[node name="TitleBorder" type="MarginContainer" parent="CardInfoTitle"]
+layout_mode = 2
+theme_override_constants/margin_left = -1
+theme_override_constants/margin_top = -1
+theme_override_constants/margin_right = -1
+theme_override_constants/margin_bottom = -1
+
+[node name="Border" type="NinePatchRect" parent="CardInfoTitle/TitleBorder"]
+layout_mode = 2
+texture = ExtResource("3_tfdyk")
+region_rect = Rect2(0, 56, 32, 31)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CardInfoBox" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -175.0
+offset_right = 275.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="NinePatchRect" parent="CardInfoBox"]
+layout_mode = 2
+texture = ExtResource("2_luj7x")
+region_rect = Rect2(198.957, 8.66315, 31.8391, 29.6846)
+
+[node name="BoxBorder" type="MarginContainer" parent="CardInfoBox"]
+layout_mode = 2
+theme_override_constants/margin_left = -1
+theme_override_constants/margin_top = -1
+theme_override_constants/margin_right = -1
+theme_override_constants/margin_bottom = -1
+
+[node name="Border" type="NinePatchRect" parent="CardInfoBox/BoxBorder"]
+layout_mode = 2
+texture = ExtResource("3_tfdyk")
+region_rect = Rect2(32, 56, 32, 32)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardInfoBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CardImage" type="MarginContainer" parent="CardInfoBox/HBoxContainer"]
+custom_minimum_size = Vector2(215, 0)
+layout_mode = 2
+
+[node name="Image" type="Sprite2D" parent="CardInfoBox/HBoxContainer/CardImage"]
+position = Vector2(119, 178)
+scale = Vector2(0.453571, 0.453571)
+
+[node name="InfoSection" type="MarginContainer" parent="CardInfoBox/HBoxContainer"]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+theme_override_constants/margin_top = 27
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Name" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 26
+text = "Card / Boss Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Health" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HealthIcon" type="NinePatchRect" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tfdyk")
+region_rect = Rect2(64, 64, 8, 8)
+
+[node name="HealthText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 22
+text = "100"
+vertical_alignment = 1
+
+[node name="Attack" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="AttackIcon" type="NinePatchRect" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_tfdyk")
+region_rect = Rect2(120, 0, 8, 8)
+
+[node name="AttackText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 22
+text = "100"
+vertical_alignment = 1
+
+[node name="Abilities" type="MarginContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_constants/margin_top = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Ability_1" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_constants/line_separation = -3
+theme_override_font_sizes/normal_font_size = 16
+text = "Ability 1:"
+fit_content = true
+
+[node name="Ability_2" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 16
+text = "Ability 2:"
+fit_content = true
+
+[node name="Ability_3" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 16
+text = "Ability 3"
+fit_content = true
+
+[node name="Description" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
+modulate = Color(0.277528, 0.277528, 0.277528, 1)
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 12
+text = "Card / Boss Description"
+horizontal_alignment = 1
+vertical_alignment = 2

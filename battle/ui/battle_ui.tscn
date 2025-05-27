@@ -22,7 +22,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BattleFieldBg" type="NinePatchRect" parent="BattleField"]
-modulate = Color(0.585062, 0.585062, 0.585062, 1)
+modulate = Color(0.860369, 0.860369, 0.860369, 1)
 layout_mode = 2
 texture = ExtResource("1_2hywk")
 
