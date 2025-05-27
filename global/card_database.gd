@@ -1,5 +1,15 @@
 extends Node
 
+
+# Level index to boss name
+# Change order here to change level order
+# eg. Level 1 has index of 0
+const BOSS_LEVEL = {
+	0: "Vacuum",
+	1: "Vacuum"
+}
+
+
 # Stats for monster cards
 const CARDS = { #attack, health
 	"Quesadilla" 	: [2, 3],
@@ -15,12 +25,10 @@ const CARDS = { #attack, health
 }
 
 
-# Level index to boss name
-# Change order here to change level order
-# eg. Level 1 has index of 0
-const BOSS_LEVEL = {
-	0: "Vacuum",
-	1: "Vacuum"
+# Stats for boss
+const BOSS_STATS = {
+	"Lightbulb": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
+	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
 }
 
 
@@ -30,13 +38,6 @@ const LIGHTBULB_SCENE_PATH = "res://bosses/tutorial_level/lightbulb.tscn"
 const BOSS_PATH = {
 	"Lightbulb": LIGHTBULB_SCENE_PATH,
 	"Vacuum": VACUUM_SCENE_PATH
-}
-
-
-# Stats for boss
-const BOSS_STATS = {
-	"Lightbulb": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
 }
 
 
@@ -62,7 +63,7 @@ const DISPLAY_NAME = {
 }
 
 # Descriptions
-const DESCRIPTION = {
+const CHARACTER_DESCRIPTION = {
 	"Trashcan"   : "The damned… ",                               # Monster Cards
 	"Pizza"      : "A silent and deadly assassin. Don’t let his appearance fool you his pepperoni ninja stars and lethal pizza slaps will hurt more than any pizza cutter.",
 	"Quesadilla" : "The life of the party. The quesadilla bard will never fail to raise the spirits of your modest party. Together with his trusty old guitar and maraca he’ll ensure your party’s safety.",
@@ -78,4 +79,28 @@ const DESCRIPTION = {
 	"Toaster"    : "The Burnt Apostle needs some more words",
 	"Breadspawn" : "Breadspawn needs some more words",
 	"Oven"       : "The Blazing Inferno needs some more words"
+}
+
+# Ability descriptions
+const ABILITY_DESCRIPTION = {
+	"Trashcan"   : ["Regular: Inflict damage equal to the attack power to one enemy"],               # Monster Cards
+	"Pizza"      : ["Regular: Inflict damage equal to the attack power to one enemy",
+					"Ability: Inflict 3 damage to one enemy (2 turns cool down)"],
+	"Quesadilla" : ["Regular: Restore health equal to the attack power for one ally"],
+	"Cheesecake" : ["Regular: Inflict damage equal to the attack power to one enemy"],
+	"Sandwich"   : ["Regular: Inflict damage equal to the attack power to one enemy",
+					"Ability: Self restore 1 health (1 turn cool down)"],
+	"Taco"       : ["Regular: Inflict damage equal to the attack power to one enemy"],
+	"Salad"      : ["Regular: Restore health equal to the attack power for one ally",
+					"Ability: Restore 1 health for all allies (2 turns cool down)"],
+	"Sushi"      : ["Regular: Restore health equal to the attack power for one ally"],
+	"Donut"      : ["Regular: Inflict damage equal to the attack power to one enemy"],
+	"Eclair"     : ["Regular: Inflict damage equal to the attack power to one enemy"],
+	"Lightbulb"  : ["Regular: BRRRRRRRRRRR with no effect"],                                         # Bosses
+	"Vacuum"     : ["Regular: Inflict damage equal to the attack power to one enemy",
+					"Regular: Self restore 3 health",
+					"Elimination!: Deal 10 damage to one enemy (3 turns cool down)"],
+	"Toaster"    : ["Regular: Inflict damage equal to the attack power to one enemy"],
+	"Breadspawn" : ["Regular: Inflict damage equal to the attack power to one enemy"],
+	"Oven"       : ["Regular: Inflict damage equal to the attack power to one enemy"]
 }
