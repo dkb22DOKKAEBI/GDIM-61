@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://sx7gnxc5mwqp"]
+[gd_scene load_steps=6 format=3 uid="uid://sx7gnxc5mwqp"]
 
 [ext_resource type="Script" uid="uid://cocxex075gfxd" path="res://battle/ui/card_info.gd" id="1_2qdcr"]
 [ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="2_luj7x"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_tfdyk"]
 [ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="3_tfdyk"]
+[ext_resource type="Texture2D" uid="uid://b08y02cs1mw1d" path="res://art/card_images/monsters/Cheesecake.png" id="5_yr2eo"]
 
 [node name="CardInfo" type="Control"]
 layout_mode = 3
@@ -106,3 +107,29 @@ patch_margin_right = 9
 patch_margin_bottom = 9
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardInfoBox"]
+layout_mode = 2
+
+[node name="CardImage" type="MarginContainer" parent="CardInfoBox/HBoxContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+
+[node name="Image" type="Sprite2D" parent="CardInfoBox/HBoxContainer/CardImage"]
+position = Vector2(119, 175)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_yr2eo")
+
+[node name="MarginContainer" type="MarginContainer" parent="CardInfoBox/HBoxContainer"]
+custom_minimum_size = Vector2(305, 0)
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="InfoSection" type="VBoxContainer" parent="CardInfoBox/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Name" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/MarginContainer/InfoSection"]
+custom_minimum_size = Vector2(0, 26.715)
+layout_mode = 2
+text = "Cheesecake"
