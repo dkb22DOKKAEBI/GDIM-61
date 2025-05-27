@@ -1,6 +1,7 @@
 extends Node
 
 # Description text parts
+@export var character_image: Sprite2D
 @export var character_name_text: RichTextLabel
 @export var character_attack_text: RichTextLabel
 @export var character_health_text: RichTextLabel
@@ -18,6 +19,18 @@ func _ready() -> void:
 
 # Display info for monster card
 func display_monster_card_info(monster_card: MonsterCard) -> void:
+	# Set up info
+	var monster_name := monster_card.card_name
+	character_image.texture = ResourceLoader.load("res://art/card_images/monsters/" + monster_name + ".png")
+	character_name_text.text = CardDatabase.DISPLAY_NAME[monster_name]
+	character_attack_text.text = str(monster_card.attack_power)
+	character_health_text.text = str(monster_card.max_health)
+	for i in range(CardDatabase.ABILITY_DESCRIPTION[monster_name].size()): # Set up descriptions for abilites
+		character_ability_texts[i].text = CardDatabase.ABILITY_DESCRIPTION[monster_name][i]
+	for i in range(3 - CardDatabase.ABILITY_DESCRIPTION[monster_name].size()): # Clear all ability descriptions for additional slots
+		character_ability_texts[2 - i].text = ""
+	character_description_text.text = CardDatabase.CHARACTER_DESCRIPTION[monster_name]
+	
 	self.visible = true
 
 
