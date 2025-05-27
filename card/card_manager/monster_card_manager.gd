@@ -78,6 +78,7 @@ func finish_drag():
 	# Check if mouse hovering on any card
 	var new_card_hovered = raycast_check_for_card()
 	card_being_dragged = null
+	input_manager.temp_disable_ingredient_hover()
 	if new_card_hovered:
 		#super.highlight_card(new_card_hovered, true)
 		on_hovered_over_card(new_card_hovered)

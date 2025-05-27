@@ -13,7 +13,9 @@ const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
 
+var raycast_points: Array[Dictionary] # Array of points detected by raycast
 @export var card_manager_reference: Node2D
+@export var ingredient_card_manager: Node2D
 
 
 # Check for inputs
@@ -31,10 +33,6 @@ func _input(event):
 		if event.pressed:
 			emit_signal("right_mouse_button_clicked")
 	
-	# Player tempeory attack
-	if Input.is_key_pressed(KEY_SPACE):
-		player_attack.emit()
-	
 	# Open or close pause Menu
 	if Input.is_key_pressed(KEY_ESCAPE):
 		switch_pause_menu_signal.emit()
@@ -46,11 +44,11 @@ func raycast_at_cursor():
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
-	var result = space_state.intersect_point(parameters)
+	raycast_points = space_state.intersect_point(parameters)
 	
 	# Perform clicked action
-	if result.size() > 0:
-		for point in result:
+	if raycast_points.size() > 0:
+		for point in raycast_points:
 			var result_collision_mask = point.collider.collision_layer
 			
 			# Select monster cards
@@ -59,7 +57,9 @@ func raycast_at_cursor():
 				if PlayerController.is_on_player_turn and monster_card_found:
 					if not monster_card_found.placed: # Find monster card in hand
 						card_manager_reference.start_drag(monster_card_found)
+						ingredient_card_manager.card_being_dragged = monster_card_found
 						AudioManager.play_sound("CLICK")
+						break
 					elif monster_card_found.placed: # Find monster card in battle field
 						#select_placed_card.emit(monster_card_found)
 						targeting_start_signal.emit(monster_card_found)
@@ -70,3 +70,9 @@ func raycast_at_cursor():
 				var ingredient_card_found = point.collider.get_parent()
 				ingredient_card_found.ingredient_card_selected()
 				AudioManager.play_sound("CLICK")
+	
+	# Reset raycast_points
+	raycast_points.clear()
+
+func temp_disable_ingredient_hover() -> void:
+	ingredient_card_manager.card_being_dragged = null

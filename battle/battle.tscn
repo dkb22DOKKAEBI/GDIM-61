@@ -26,9 +26,10 @@
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("card_manager_reference")]
+[node name="InputManager" type="Node2D" parent="Player" node_paths=PackedStringArray("card_manager_reference", "ingredient_card_manager")]
 script = ExtResource("7_fisqk")
 card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
+ingredient_card_manager = NodePath("../../PlayerHand/IngredientCardManager")
 
 [node name="PlayerHealth" type="RichTextLabel" parent="Player"]
 z_index = 1
