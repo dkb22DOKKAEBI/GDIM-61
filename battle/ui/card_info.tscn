@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://sx7gnxc5mwqp"]
+[gd_scene load_steps=5 format=3 uid="uid://sx7gnxc5mwqp"]
 
 [ext_resource type="Script" uid="uid://cocxex075gfxd" path="res://battle/ui/card_info.gd" id="1_2qdcr"]
 [ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="2_luj7x"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_tfdyk"]
 [ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="3_tfdyk"]
-[ext_resource type="Texture2D" uid="uid://b08y02cs1mw1d" path="res://art/card_images/monsters/Cheesecake.png" id="5_yr2eo"]
 
 [node name="CardInfo" type="Control"]
 layout_mode = 3
@@ -119,7 +118,6 @@ layout_mode = 2
 [node name="Image" type="Sprite2D" parent="CardInfoBox/HBoxContainer/CardImage"]
 position = Vector2(119, 178)
 scale = Vector2(0.453571, 0.453571)
-texture = ExtResource("5_yr2eo")
 
 [node name="InfoSection" type="MarginContainer" parent="CardInfoBox/HBoxContainer"]
 custom_minimum_size = Vector2(310, 0)
@@ -132,11 +130,11 @@ theme_override_constants/separation = 7
 
 [node name="Name" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(0, 33)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 26
-text = "Cheesecake Cannoneer"
+text = "Card / Boss Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -203,7 +201,7 @@ custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 16
-text = "Ability 1: Deal 3 dmg to on"
+text = "Ability 1:"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -214,7 +212,7 @@ custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 16
-text = "Ability 1: Deal 3 dmg to on"
+text = "Ability 2:"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -225,7 +223,7 @@ custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 16
-text = "Ability 1: Deal 3 dmg to on"
+text = "Ability 3"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -236,6 +234,6 @@ custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 12
-text = "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle."
+text = "Card / Boss Description"
 horizontal_alignment = 1
 vertical_alignment = 2
