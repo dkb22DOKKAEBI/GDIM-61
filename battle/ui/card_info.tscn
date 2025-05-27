@@ -194,12 +194,12 @@ text = "100"
 vertical_alignment = 1
 
 [node name="Abilities" type="MarginContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
-custom_minimum_size = Vector2(0, 112)
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
+theme_override_constants/margin_top = 13
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities"]
 layout_mode = 2
-alignment = 2
 
 [node name="Ability_1" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
@@ -236,7 +236,7 @@ vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer"]
 modulate = Color(0.277528, 0.277528, 0.277528, 1)
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
 theme_override_font_sizes/normal_font_size = 12
