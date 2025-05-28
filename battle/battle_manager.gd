@@ -7,9 +7,9 @@ var player_is_attacking: bool = false
 var has_an_abilities = {
 	"Pizza"		:true,
 	"Cheesecake":false,
-	"Sandwich"	:false,
+	"Sandwich"	:true,
 	"Quesadilla":false,
-	"Salad"		:false,
+	"Salad"		:true,
 	"Taco"		:false,
 	"Trashcan"	:false,
 	"Eclair"	:false,
@@ -48,6 +48,11 @@ func _ready() -> void:
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
+	
+	# If AbilityManager is in heal targeting mode, send the clicked card to it
+	if ability_manager.waiting_for_heal_target:
+		ability_manager.handle_target_selection(card)
+		return
 	# Return if this card has attacked this turn OR another card is attaking
 	if card.attacked_this_turn or player_is_attacking:
 		return
