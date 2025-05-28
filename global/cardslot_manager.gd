@@ -5,7 +5,7 @@ var cardslot_abilities = {"cardslot1": ["None",0], "cardslot2": ["None",0], "car
 var card_ability_cds = {
 	"Pizza": 2,
 	"Cheesecake": 0,
-	"Sandwich": 2,
+	"Sandwich": 1,
 	"Quesadilla": 2,
 	"Salad": 2,
 	"Taco": 0,
