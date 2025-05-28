@@ -30,7 +30,7 @@ const CARDS = { #attack, health
 # Stats for boss
 const BOSS_STATS = {
 	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum"      : {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
+	"Vacuum"      : {"HP": 1, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
@@ -90,10 +90,11 @@ const CHARACTER_DESCRIPTION = {
 	"Eclair"     : "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle.",
 	"Tutorial"   : "Tutorial boss needs some more words",              # Bosses
 	"Vacuum"     : "Steer clear! The Insatiable Hunger is here ready to consume all in its path!",
-	"Toaster"    : "The Burnt Apostle needs some more words",
-	"Breadspawn" : "Breadspawn needs some more words",
-	"Oven"       : "The Blazing Inferno needs some more words",
-	"Blender"    : "The Blender needs some more words"
+	"Toaster"    : "Arise......the breadspawn and their master the burnt apostle are here to terrorize any battle swaying the tides in a moment's notice.",
+	"Breadspawn" : "Watch the bread zombie!",
+	"Oven"       : "The Blazing Inferno incinerates the field, reducing any party to ash. Prepare yourself or face the fury of the flames!",
+	"Blender"    : "Run! Blend is coming spinning at full speed ready to cleave his way through any party daring to cross paths with its axes.",
+	"Steamseer"  : "It's raining, it's pouring…wait, it's boiling! The steamseer is here to scald any party willing to challenge its ancient steam magic."
 }
 
 # Ability descriptions

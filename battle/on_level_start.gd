@@ -17,3 +17,6 @@ func _ready() -> void:
 	
 	# Connect battle_manager to player
 	PlayerController.battle_manager = $"../BattleManager"
+	
+	# Update Pot ui
+	PlayerHand.selected_ingredient_change_signal.emit()

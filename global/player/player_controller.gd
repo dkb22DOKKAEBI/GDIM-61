@@ -15,7 +15,7 @@ const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
 "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla",
 "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", 
 "Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
-"Chocolate"]
+"Chocolate", "Grain", "Grain", "Grain", "Grain"]
 
 # Reference to other scripts
 var battle_manager: Node2D

@@ -5,8 +5,7 @@
 [ext_resource type="Theme" uid="uid://dyuky440b8nnm" path="res://custom_resources/pot_ingredient_grid.tres" id="2_pkf4t"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="5_j7w88"]
 
-
-[node name="PotUi" type="Control" node_paths=PackedStringArray("grids")]
+[node name="PotUi" type="Control" node_paths=PackedStringArray("grids", "food_result_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +15,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4rq33")
 grids = [NodePath("PotIngredients/IngredientGrid_1/IngredientImage"), NodePath("PotIngredients/IngredientGrid_2/IngredientImage"), NodePath("PotIngredients/IngredientGrid_3/IngredientImage"), NodePath("PotIngredients/IngredientGrid_4/IngredientImage")]
+food_result_text = NodePath("Pot/ResultName")
 
 [node name="Pot" type="NinePatchRect" parent="."]
 z_index = 1
