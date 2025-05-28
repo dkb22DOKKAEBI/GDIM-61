@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://sx7gnxc5mwqp"]
+[gd_scene load_steps=5 format=3 uid="uid://dhand73cgok5l"]
 
 [ext_resource type="Script" uid="uid://cocxex075gfxd" path="res://battle/ui/card_info.gd" id="1_2qdcr"]
 [ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="2_luj7x"]

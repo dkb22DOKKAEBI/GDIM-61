@@ -15,6 +15,7 @@ func _ready() -> void:
 	EventController.connect("display_monster_card_info_signal", display_monster_card_info)
 	EventController.connect("display_boss_info_signal", display_boss_info)
 	EventController.connect("right_mouse_button_released", display_info_end)
+	EventController.connect("pause_game_signal", display_info_end)
 
 
 # Display info for monster card

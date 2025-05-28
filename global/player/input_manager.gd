@@ -39,6 +39,7 @@ func _input(event):
 	
 	# Open or close pause Menu
 	if Input.is_key_pressed(KEY_ESCAPE):
+		EventController.pause_game_signal.emit()
 		switch_pause_menu_signal.emit()
 
 
