@@ -1,9 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://3gh8v5jkfk5q"]
 
-[ext_resource type="Script" uid="uid://24kp6owjmau" path="res://bosses/first_level/vacuum.gd" id="1_bw6u8"]
-[ext_resource type="Texture2D" uid="uid://b1tx3ipc0rtl6" path="res://art/card_images/monsters/Vacuum_boss.png" id="1_t1ajl"]
+[ext_resource type="Script" uid="uid://24kp6owjmau" path="res://bosses/first_level/vacuum_boss.gd" id="1_bw6u8"]
+[ext_resource type="Texture2D" uid="uid://cq4om28i3qhf1" path="res://art/card_images/bosses/Vacuum_Boss.png" id="1_t1ajl"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_bw6u8"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw6u8"]
 size = Vector2(164, 228)
@@ -15,7 +14,8 @@ boss_attack_text = NodePath("BossAttack")
 
 [node name="BossSprite2D" type="Sprite2D" parent="."]
 z_index = 1
-scale = Vector2(0.42, 0.42)
+position = Vector2(-1.66893e-06, 7.15256e-07)
+scale = Vector2(0.390476, 0.393103)
 texture = ExtResource("1_t1ajl")
 
 [node name="Area2D" type="Area2D" parent="."]

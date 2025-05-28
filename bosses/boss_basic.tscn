@@ -9,7 +9,7 @@ size = Vector2(164, 228)
 
 [node name="BossSprite2D" type="Sprite2D" parent="."]
 z_index = 1
-scale = Vector2(0.42, 0.42)
+scale = Vector2(0.39, 0.39)
 
 [node name="Area2D" type="Area2D" parent="."]
 z_index = 1

@@ -39,7 +39,7 @@ func display_monster_card_info(monster_card: MonsterCard) -> void:
 func display_boss_info(boss: Boss) -> void:
 	# Set up info
 	var boss_name := boss.boss_name
-	character_image.texture = ResourceLoader.load("res://art/card_images/monsters/" + boss_name + "_boss.png")
+	character_image.texture = ResourceLoader.load("res://art/card_images/bosses/" + boss_name + "_Boss.png")
 	character_name_text.text = CardDatabase.DISPLAY_NAME[boss_name]
 	character_attack_text.text = str(boss.boss_attack)
 	character_health_text.text = str(boss.boss_max_health)
