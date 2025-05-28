@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1tx3ipc0rtl6"
-path="res://.godot/imported/Vacuum_boss.png-baaab1eafe5c5ac11766698abdfa49e9.ctex"
+uid="uid://b5lodsqkmvywx"
+path="res://.godot/imported/Breadspawn_Boss.png-a03655217727eb3fc4b27c4a3bc63720.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/monsters/Vacuum_boss.png"
-dest_files=["res://.godot/imported/Vacuum_boss.png-baaab1eafe5c5ac11766698abdfa49e9.ctex"]
+source_file="res://art/card_images/bosses/Breadspawn_Boss.png"
+dest_files=["res://.godot/imported/Breadspawn_Boss.png-a03655217727eb3fc4b27c4a3bc63720.ctex"]
 
 [params]
 
