@@ -2,11 +2,14 @@ class_name PotUI
 extends Node
 
 @export var grids: Array[NinePatchRect] # Array of the four ingredient grids
+@export var food_result_text: RichTextLabel
+@export var cooking_mechanics: Node2D
 
 
 # Connect signal
 func _ready() -> void:
 	PlayerHand.connect("selected_ingredient_change_signal", on_update_selected_ing_ui)
+	PlayerHand.connect("selected_ingredient_change_signal", update_food_result)
 	SceneManager.connect("player_complete_level_signal", disselect_all_ingredient)
 
 
@@ -72,4 +75,9 @@ func disselect_ingredient(index: int) -> void :
 	PlayerHand.update_hand_positions(0.3, PlayerHand.player_ingredient_hand)
 	
 	# Update pot selected ingredients ui
-	on_update_selected_ing_ui()
+	PlayerHand.selected_ingredient_change_signal.emit()
+
+
+# Update food result
+func update_food_result() -> void:
+	food_result_text.text = cooking_mechanics.ingredient_check(cooking_mechanics.get_ingredient_string_list(PlayerHand.selected_ingredients))

@@ -30,7 +30,7 @@ const CARDS = { #attack, health
 # Stats for boss
 const BOSS_STATS = {
 	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum"      : {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
+	"Vacuum"      : {"HP": 1, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},

@@ -185,8 +185,9 @@ mouse_filter = 2
 [node name="BattleUI" parent="UI" instance=ExtResource("1_156m4")]
 layout_mode = 1
 
-[node name="PotUi" parent="UI" instance=ExtResource("2_pyfix")]
+[node name="PotUi" parent="UI" node_paths=PackedStringArray("cooking_mechanics") instance=ExtResource("2_pyfix")]
 layout_mode = 1
+cooking_mechanics = NodePath("../../CookingMechanic")
 
 [node name="Buttons" type="Control" parent="UI"]
 layout_mode = 1
