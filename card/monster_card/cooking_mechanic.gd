@@ -89,6 +89,14 @@ func ingredient_check(list: Array) -> String:
 			return "Donut"
 		"Chocolate,Dough,Sugar,Sugar":
 			return "Eclair"
+		"Grain,Mystery_Meat":
+			return "Sushi"
+		#"Chocolate,Tortilla":
+			#return "Crepe"
+		"Grain,Grain,Lettuce,Lettuce":
+			return "Onigiri"
+		"Cheese,Mystery_Meat":
+			return "Charcuterie"
 		_:
 			var list_size = int(list.size())
 			#print("Trashcan")

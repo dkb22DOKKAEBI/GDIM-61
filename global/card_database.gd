@@ -19,11 +19,15 @@ const CARDS = { #attack, health
 	"Sandwich"	 	: [4, 5],
 	"Trashcan"		: [0, 3],
 	"Pizza"			: [1, 2],
-	"Salad"			: [1, 5],
+	"Salad"			: [1, 3],
 	"Taco"			: [1, 6],
 	"Bunuelos"		: [0, 4],
 	"Donut"			: [3, 1],
 	"Eclair"		: [5, 2],
+	"Sushi"			: [2, 1],
+	"Crepe"			: [3, 3],
+	"Onigiri"		: [4, 2],
+	"Charcuterie"	: [1, 4]
 }
 
 
@@ -68,6 +72,8 @@ const DISPLAY_NAME = {
 	"Sushi"      : "Sushi Samurai",
 	"Donut"      : "Doughnut Machine Gunner",
 	"Eclair"     : "Eclair Knight",
+	"Onigiri"    : "Onigiri Rogue",
+	"Charcuterie": "Charcuterie Squadron",
 	"Tutorial"   : "Tutorial Boss",              # Bosses
 	"Vacuum"     : "Vacuum Boss",
 	"Toaster"    : "The Burnt Apostle",

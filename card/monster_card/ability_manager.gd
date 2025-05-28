@@ -23,7 +23,11 @@ var monster_abilities = {
 	"Taco"			: [false],
 	"Trashcan"		: [false],
 	"Donut"			: [false],
-	"Eclair"		: [false]
+	"Eclair"		: [false],
+	"Sushi"			: [false],
+	"Crepe"			: [false],
+	"Onigiri"		: [true, "block"],
+	"Charcuterie"	: [false]
 	}
 
 
@@ -63,7 +67,7 @@ func check_damage_ability(name):
 func check_heal_ability(name: String, card: Node2D):
 	match name:
 		"Quesadilla":
-			return heal_target(card, 2)
+			return apply_heal_all(2, name)
 		"Salad":
 			return apply_heal_all(1, name)
 
@@ -71,14 +75,16 @@ func check_block_ability(name, card: Node2D):
 	match name:
 		"Sandwich":
 			return apply_self_heal(card, 1, name)
+		"Onigiri":
+			return apply_self_heal(card, 1, name)
 
 
 func apply_self_heal(card: Node2D, amount: int, monster_name: String):
 	var current_health = card.get_health()
 	var max_health = card.max_health
 
-	if current_health < max_health:
-		var new_health = min(current_health + amount, max_health)
+	if current_health == current_health:
+		var new_health = min(current_health + amount)
 		card.get_node("Health").text = str(new_health)
 
 		# Optional animation

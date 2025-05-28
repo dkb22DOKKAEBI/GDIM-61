@@ -3,13 +3,20 @@ extends Node
 var cardslots: Array[Cardslot]
 var cardslot_abilities = {"cardslot1": ["None",0], "cardslot2": ["None",0], "cardslot3": ["None",0]}
 var card_ability_cds = {
-	"Pizza": 2,
-	"Cheesecake": 0,
-	"Sandwich": 1,
-	"Quesadilla": 2,
-	"Salad": 2,
-	"Taco": 0,
-	"Trashcan": 0}
+	"Pizza"			: 2,
+	"Cheesecake"	: 0,
+	"Sandwich"		: 1,
+	"Quesadilla"	: 2,
+	"Salad"			: 2,
+	"Taco"			: 0,
+	"Trashcan"		: 0,
+	"Ecalir"		: 0,
+	"Donut"			: 0,
+	"Sushi"			: 0,
+	"Crepe"			: 0,
+	"Onigiri"		: 1,
+	"Charcuterie"	: 0
+	}
 
 
 # Connect signals

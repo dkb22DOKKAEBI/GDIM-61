@@ -8,12 +8,16 @@ var has_an_abilities = {
 	"Pizza"		:true,
 	"Cheesecake":false,
 	"Sandwich"	:true,
-	"Quesadilla":false,
+	"Quesadilla":true,
 	"Salad"		:true,
 	"Taco"		:false,
 	"Trashcan"	:false,
 	"Eclair"	:false,
-	"Donut"		:false
+	"Donut"		:false,
+	"Sushi"		:false,
+	"Crepe"		:false,
+	"Onigiri"	:true,
+	"Charcuterie":false
 	}
 
 
