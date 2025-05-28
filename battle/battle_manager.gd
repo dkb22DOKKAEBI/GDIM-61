@@ -154,6 +154,11 @@ func reset_cards_attack():
 			player_cards_on_battlefield[key].attacked_this_turn = false
 
 
+func update_player_cards_on_battlefield() -> void:
+	for cardslot in CardslotManager.cardslots:
+		player_cards_on_battlefield[cardslot] = cardslot.card_in_slot
+
+
 # Enable or Disable end turn button when boss attacking
 func enable_end_turn_button(enable: bool) -> void:
 	$"../UI/Buttons/EndTurnButton".disabled = !enable
