@@ -32,7 +32,6 @@ func _ready() -> void:
 func boss_turn() -> void:
 	# Disable end turn button
 	battle_manager.enable_end_turn_button(false)
-	
 	# Boss thinking waiting time
 	battle_manager.battle_timer.start()
 	await battle_manager.battle_timer.timeout

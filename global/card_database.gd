@@ -17,7 +17,7 @@ const CARDS = { #attack, health
 	"Sandwich"	 	: [4, 5],
 	"Trashcan"		: [0, 3],
 	"Pizza"			: [1, 2],
-	"Salad"			: [1, 1],
+	"Salad"			: [1, 5],
 	"Taco"			: [1, 6],
 	"Bunuelos"		: [0, 4],
 	"Donut"			: [3, 1],
@@ -28,7 +28,7 @@ const CARDS = { #attack, health
 # Stats for boss
 const BOSS_STATS = {
 	"Lightbulb": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
+	"Vacuum": {"HP": 12, "Attack": 2, "CoolDown": 3, "Block": 3, "Elimination": 10}
 }
 
 

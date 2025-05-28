@@ -6,13 +6,20 @@ class_name Ability
 @export var enemy: Node2D
 
 
+
+var cardslot_manager: Node
+var waiting_for_heal_target: bool = false
+var heal_source_card: Node2D
+var heal_amount: int
+
+
 #the dictionary will be "monster name": [do they have an ability, what type]
 var monster_abilities = {
 	"Pizza"			: [true, "damage"],
 	"Cheesecake"	: [false],
-	"Sandwich"		: [false, "block"],
-	"Quesadilla"	: [false, "heal"],
-	"Salad"			: [false, "heal"],
+	"Sandwich"		: [true, "block"],
+	"Quesadilla"	: [true, "heal"],
+	"Salad"			: [true, "heal"],
 	"Taco"			: [false],
 	"Trashcan"		: [false],
 	"Donut"			: [false],
@@ -21,7 +28,7 @@ var monster_abilities = {
 
 
 
-func add_ability_card(monster_name):
+func add_ability_card(monster_name, card):
 	if not monster_abilities.has(monster_name):
 		return null  # monster isn't even in the table
 
@@ -34,9 +41,9 @@ func add_ability_card(monster_name):
 		"damage":
 			return check_damage_ability(monster_name)
 		"block":
-			return check_block_ability(monster_name)
+			return check_block_ability(monster_name, card)
 		"heal":
-			return check_heal_ability(monster_name)
+			return check_heal_ability(monster_name, card)
 		_:
 			return null  # unknown ability type
 
@@ -47,31 +54,78 @@ func check_damage_ability(name):
 			if enemy and enemy.get_child_count() > 0:
 				var actual_boss = enemy.get_child(0)
 				if actual_boss.has_method("boss_take_dmg"):
-					actual_boss.boss_take_dmg(5)
+					actual_boss.boss_take_dmg(3)
 				else:
 					print("Boss child exists but is missing boss_take_dmg()")
 			else:
 				print("Enemy is null or has no children")
 
-func check_heal_ability(name):
+func check_heal_ability(name: String, card: Node2D):
 	match name:
 		"Quesadilla":
-			return ["Heal", 2]
+			return heal_target(card, 2)
 		"Salad":
-			return ["Heal", 1]
+			return apply_heal_all(1, name)
 
-func check_block_ability(name):
+func check_block_ability(name, card: Node2D):
 	match name:
 		"Sandwich":
-			return ["Block", 1]
+			return apply_self_heal(card, 1, name)
 
-func heal_single(target_card: Node2D, amount: int) -> void:
-	if target_card and target_card.health < target_card.max_health:
-		target_card.health = min(target_card.health + amount, target_card.max_health)
-		#target_card.update_health_display()  # if you have this <- I dont have this
 
-func heal_all(allied_cards: Array, amount: int) -> void:
-	for card in allied_cards:
-		if card and card.health < card.max_health:
-			card.health = min(card.health + amount, card.max_health)
-			#card.update_health_display()
+func apply_self_heal(card: Node2D, amount: int, monster_name: String):
+	var current_health = card.get_health()
+	var max_health = card.max_health
+
+	if current_health < max_health:
+		var new_health = min(current_health + amount, max_health)
+		card.get_node("Health").text = str(new_health)
+
+		# Optional animation
+		card.get_node("Health").add_theme_font_size_override("normal_font_size", 40)
+		card.get_node("Health").modulate = Color.GREEN
+		var tween = card.get_tree().create_tween()
+		tween.tween_property(card.get_node("Health"), "theme_override_font_sizes/normal_font_size", 16, 1)
+		tween.tween_property(card.get_node("Health"), "modulate", Color.BLACK, 1)
+
+		print(monster_name + " healed for " + str(amount))
+	else:
+		print(monster_name + " is already at full health")
+
+	return ["HealedSelf", amount]
+
+func apply_heal_all(amount: int, monster_name):
+	var healed_cards = []
+
+	for slot in cardslot_manager.cardslots:
+		if slot.card_in_slot != null:
+			var card = slot.card_in_slot
+			card.heal(amount)
+			healed_cards.append(monster_name)
+
+	return ["HealedAll", healed_cards]
+
+func handle_target_selection(target_card: Node2D):
+	if not waiting_for_heal_target:
+		return
+	
+	waiting_for_heal_target = false
+	heal_source_card = null
+
+	if target_card == null or not target_card.has_method("heal"):
+		print("Invalid target for healing")
+		return
+	print("Handling target selection for monster")
+	target_card.heal(heal_amount)
+	print("Healed monster for", heal_amount)
+
+
+func heal_target(card: Node2D, amount: int ):
+	waiting_for_heal_target = true
+	heal_source_card = card
+	heal_amount = amount
+	print("Waiting to heal a target with", amount)
+	return ["HealTarget"]
+
+func set_cardslot_manager(manager: Node):
+	cardslot_manager = manager

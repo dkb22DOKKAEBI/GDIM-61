@@ -17,6 +17,9 @@ func _ready() -> void:
 	is_monster_card = true
 	ability_button.connect("pressed", Callable(self, "_on_ability_button_pressed"))
 	
+	ability_handler = preload("res://card/monster_card/ability_manager.gd").new()
+	ability_handler.set_cardslot_manager(cardslot_manager)
+	
 	# Set up ability
 	ability_button.disabled = true # start disabled if needed
 	ability_button.hide()
@@ -45,7 +48,7 @@ func _on_ability_button_pressed():
 
 	# Configure the Ability instance
 	ability_handler.enemy = boss_node
-	var result = ability_handler.add_ability_card(card_name_from_slot)
+	var result = ability_handler.add_ability_card(card_name_from_slot, self)
 
 	if result == null:
 		print("No ability or ability not implemented.")
@@ -83,6 +86,23 @@ func take_damage(dmg: int) -> void:
 	$Health.modulate = Color.RED
 	
 	# Play animation for health change
+	var tween = get_tree().create_tween()
+	tween.tween_property($Health, "theme_override_font_sizes/normal_font_size", 16, 1)
+	tween.tween_property($Health, "modulate", Color.BLACK, 1)
+
+func heal(amount: int) -> void:
+	var current_health = get_health()
+	if current_health >= max_health:
+		print("Already at full health")
+		return
+
+	var new_health = min(current_health + amount, max_health)
+	$Health.text = str(new_health)
+
+	# Visual effect (optional like your damage one)
+	$Health.add_theme_font_size_override("normal_font_size", 40)
+	$Health.modulate = Color.GREEN
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property($Health, "theme_override_font_sizes/normal_font_size", 16, 1)
 	tween.tween_property($Health, "modulate", Color.BLACK, 1)
