@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://3gh8v5jkfk5q"]
+[gd_scene load_steps=5 format=3 uid="uid://noqah7a1vl5t"]
 
-[ext_resource type="Script" uid="uid://24kp6owjmau" path="res://bosses/first_level/vacuum_boss.gd" id="1_bw6u8"]
+[ext_resource type="Script" path="res://bosses/first_level/vacuum_boss.gd" id="1_sfwc6"]
 [ext_resource type="Texture2D" uid="uid://cq4om28i3qhf1" path="res://art/card_images/bosses/Vacuum_Boss.png" id="1_t1ajl"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_bw6u8"]
 
@@ -8,7 +8,7 @@
 size = Vector2(164, 228)
 
 [node name="Boss" type="Node2D" node_paths=PackedStringArray("boss_health_text", "boss_attack_text")]
-script = ExtResource("1_bw6u8")
+script = ExtResource("1_sfwc6")
 boss_health_text = NodePath("BossHealth")
 boss_attack_text = NodePath("BossAttack")
 
