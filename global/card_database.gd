@@ -5,9 +5,10 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	0: "Toaster",
-	1: "Oven",
-	2: "Vacuum"
+	0: "Blender",
+	1: "Toaster",
+	2: "Oven",
+	3: "Vacuum"
 }
 
 
@@ -42,12 +43,14 @@ const VACUUM_SCENE_PATH = "res://bosses/vacuum/vacuum_boss.tscn"
 const OVEN_SCENE_PATH = "res://bosses/oven/oven_boss.tscn"
 const TOASTER_SCENE_PATH = "res://bosses/toaster/toaster_boss.tscn"
 const BREADSPAWN_SCENE_PATH = "res://bosses/toaster/breadspawn_boss.tscn"
+const BLENDER_SCENE_PATH = "res://bosses/blender/blender_boss.tscn"
 const BOSS_PATH = {
 	"Tutorial"   : TUTORIAL_SCENE_PATH,
 	"Vacuum"     : VACUUM_SCENE_PATH,
 	"Oven"       : OVEN_SCENE_PATH,
 	"Toaster"    : TOASTER_SCENE_PATH,
-	"Breadspawn" : BREADSPAWN_SCENE_PATH
+	"Breadspawn" : BREADSPAWN_SCENE_PATH,
+	"Blender"    : BLENDER_SCENE_PATH
 }
 
 
@@ -68,7 +71,8 @@ const DISPLAY_NAME = {
 	"Vacuum"     : "Vacuum Boss",
 	"Toaster"    : "The Burnt Apostle",
 	"Breadspawn" : "Breadspawn Zombie",
-	"Oven"       : "The Blazing Inferno"
+	"Oven"       : "The Blazing Inferno",
+	"Blender"    : "Unit B.L.E.N.D"
 }
 
 # Descriptions
@@ -87,7 +91,8 @@ const CHARACTER_DESCRIPTION = {
 	"Vacuum"     : "Steer clear! The Insatiable Hunger is here ready to consume all in its path!",
 	"Toaster"    : "The Burnt Apostle needs some more words",
 	"Breadspawn" : "Breadspawn needs some more words",
-	"Oven"       : "The Blazing Inferno needs some more words"
+	"Oven"       : "The Blazing Inferno needs some more words",
+	"Blender"    : "The Blender needs some more words"
 }
 
 # Ability descriptions
@@ -116,5 +121,6 @@ const ABILITY_DESCRIPTION = {
 	"Breadspawn" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Oven"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					"Multi Attack: " + ability_text_color_code + "Perform attack 3 times with monsters as prioirty",
-					"Overheat: " + ability_text_color_code + "Gain high attack and health, but self damage 200 health every turn (passive)"]
+					"Overheat: " + ability_text_color_code + "Gain high attack and health, but self damage 200 health every turn (passive)"],
+	"Blender"    : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"]
 }
