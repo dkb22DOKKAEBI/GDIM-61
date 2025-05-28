@@ -29,6 +29,7 @@ texture = ExtResource("2_yhcmu")
 
 [node name="TextureRect4" type="TextureRect" parent="."]
 z_index = 20
+layout_mode = 0
 offset_left = 565.0
 offset_top = 270.0
 offset_right = 1098.0
@@ -40,6 +41,7 @@ stretch_mode = 3
 
 [node name="TextureRect5" type="TextureRect" parent="."]
 z_index = 35
+layout_mode = 0
 offset_left = 2.01
 offset_top = 409.76
 offset_right = 946.01
@@ -49,6 +51,7 @@ texture = ExtResource("4_54tpi")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 z_index = 45
+layout_mode = 0
 offset_left = 34.97
 offset_top = 420.875
 offset_right = 546.97
