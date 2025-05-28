@@ -28,8 +28,8 @@ const CARDS = { #attack, health
 # Stats for boss
 const BOSS_STATS = {
 	"Tutorial": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum": {"HP": 1, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
-	"Oven": {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 1000}
+	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
+	"Oven": {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200}
 }
 
 
@@ -105,5 +105,7 @@ const ABILITY_DESCRIPTION = {
 					"Last Supper: " + ability_text_color_code + "Deal 10 damage to one enemy (3 turns cool down)"],
 	"Toaster"    : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Breadspawn" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
-	"Oven"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"]
+	"Oven"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Multi Attack: " + ability_text_color_code + "Perform attack 3 times with monsters as prioirty",
+					"Overheat: " + ability_text_color_code + "Gain high attack and health, but self damage 200 health every turn (passive)"]
 }

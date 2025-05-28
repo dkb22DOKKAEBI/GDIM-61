@@ -1,7 +1,11 @@
 extends Node
 
-const ingredient_reward: Array[String] = ["Cheese", "Tomato", "Cheese", "Tomato", "Dough"]
-const monster_reward: Array[String] = ["Pizza"]
+const ingredient_reward_deck: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
+"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla", "Dough", 
+"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla",
+"Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", 
+"Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
+"Chocolate"]
 
 var reward_claimed: bool = false
 
@@ -18,11 +22,8 @@ func on_claim_reward() -> void:
 	if not reward_claimed:
 		reward_claimed = true
 		
-		# Add ingredient reward to player's deck
-		for reward_ingredient: String in ingredient_reward:
-			PlayerController.deck.append(reward_ingredient)
+		# Add 5 random ingredient rewards to player's deck
+		ingredient_reward_deck.shuffle()
+		for i in range(5):
+			PlayerController.deck.append(ingredient_reward_deck[i])
 		PlayerController.deck.shuffle()
-		
-		# Add monster reward to player's hand
-		for reward_monster: String in monster_reward:
-			PlayerHand.legacy_monster_hand.append(reward_monster)

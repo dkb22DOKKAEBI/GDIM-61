@@ -48,8 +48,7 @@ theme_override_constants/margin_top = 67
 [node name="RichTextLabel" type="RichTextLabel" parent="RewardText"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
-text = "5 ingredient cards
-1 pizza monster card"
+text = "5 random ingredient cards"
 horizontal_alignment = 1
 vertical_alignment = 1
 
