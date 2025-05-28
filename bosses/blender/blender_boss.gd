@@ -54,3 +54,6 @@ func swap_front_back_line() -> void:
 	front_cardslot.card_in_slot.reparent(front_cardslot)
 	front_cardslot.card_in_slot.position = Vector2.ZERO
 	
+	# Update player_cards_on_battlefield in battle manager
+	battle_manager.update_player_cards_on_battlefield()
+	
