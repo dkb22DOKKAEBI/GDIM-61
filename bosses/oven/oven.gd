@@ -57,5 +57,28 @@ func oven_attack() -> void:
 
 # Ability 2: Multiple attacks
 func oven_multi_attack() -> void:
+	# Attack three targets
 	for i in range(3):
-		oven_attack()
+		var target = multi_attack_choose_target()
+		if not target:
+			battle_manager.player_take_dmg(2)
+		else:
+			battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
+	
+	# Play attack animation
+	var old_pos:Vector2 = battle_manager.enemy.global_position
+	boss_attack_player_anim()
+	await battle_manager.wait(0.5)
+	
+	# Enemy return to original position
+	boss_return_pos_anim(old_pos)
+
+func multi_attack_choose_target() -> Cardslot:
+	if CardslotManager.cardslots[0].card_in_slot:
+		return CardslotManager.cardslots[0]
+	if CardslotManager.cardslots[1].card_in_slot:
+		return CardslotManager.cardslots[1]
+	if CardslotManager.cardslots[2].card_in_slot:
+		return CardslotManager.cardslots[2]
+	
+	return null

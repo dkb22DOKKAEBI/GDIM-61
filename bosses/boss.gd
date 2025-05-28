@@ -49,6 +49,7 @@ func boss_turn() -> void:
 	await battle_manager.battle_timer.timeout
 	
 	# Boss turn ends
+	print("Boss turn ends")
 	battle_manager.start_player_turn()
 
 
@@ -101,7 +102,6 @@ func boss_attack_player_anim():
 	battle_manager.enemy.z_index = 5
 	boss_attack_text.visible = false
 	boss_health_text.visible = false
-	print(new_pos)
 	var tween = get_tree().create_tween()
 	tween.tween_property(battle_manager.enemy, "global_position", new_pos, 0.5)
 
@@ -116,7 +116,6 @@ func boss_attack_monster_anim(target):
 	tween.tween_property(battle_manager.enemy, "global_position", new_pos, 0.5)
 
 func boss_return_pos_anim(old_pos: Vector2):
-	print("Player return animation start")
 	AudioManager.play_sound("ATTACK")
 	battle_manager.enemy.z_index = 0
 	var tween2 = get_tree().create_tween()
