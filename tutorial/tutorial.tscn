@@ -198,8 +198,9 @@ offset_bottom = 600.0
 [node name="BattleUI" parent="UI" instance=ExtResource("13_06rsu")]
 layout_mode = 1
 
-[node name="PotUi" parent="UI" instance=ExtResource("14_4gq6d")]
+[node name="PotUi" parent="UI" node_paths=PackedStringArray("cooking_mechanics") instance=ExtResource("14_4gq6d")]
 layout_mode = 1
+cooking_mechanics = NodePath("../../CookingMechanic")
 
 [node name="HandUI" type="Control" parent="UI"]
 visible = false

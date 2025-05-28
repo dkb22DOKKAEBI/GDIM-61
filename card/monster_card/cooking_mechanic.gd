@@ -51,6 +51,7 @@ func _on_cook() -> void:
 			card.queue_free()
 		PlayerHand.selected_ingredients.clear()
 		
+		PlayerHand.selected_ingredient_change_signal.emit()
 		pot_ui.clear_after_cook()
 
 
