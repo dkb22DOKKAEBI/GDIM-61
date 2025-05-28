@@ -10,10 +10,11 @@ func _ready() -> void:
 	var boss_scene = load(CardDatabase.BOSS_PATH[boss_name])
 	var boss: Node2D = boss_scene.instantiate()
 	boss.boss_name = boss_name
+	boss.battle_manager = $"../BattleManager"
 	
 	# Add boss as child of Enemy node
 	boss_parent.add_child(boss)
 	
 	# Connect battle_manager to player and boss
-	boss.battle_manager = $"../BattleManager"
+	#boss.battle_manager = $"../BattleManager"
 	PlayerController.battle_manager = $"../BattleManager"

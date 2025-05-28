@@ -24,6 +24,13 @@ func _ready():
 # Boss behavior logic
 func on_action() -> void:
 	super.on_action()
+	
+	# Breadspawn attack
+	if breadspwan_1.get_child_count() != 0:
+		breadspwan_1.get_child(0).breadspawn_attack()
+	if breadspwan_2.get_child_count() != 0:
+		breadspwan_2.get_child(0).breadspawn_attack()
+	
 
 
 # Boss abilities
@@ -39,5 +46,29 @@ func spawn_bread_helper() -> Node2D:
 	var boss_scene = load(CardDatabase.BOSS_PATH["Breadspawn"])
 	var boss: Node2D = boss_scene.instantiate()
 	boss.boss_name ="Breadspawn"
+	boss.battle_manager = battle_manager
+	if not battle_manager:
+		print("NO Battle manager")
 	
 	return boss
+
+# Ability 2: Attack
+func toaster_attack() -> void:
+	# Choose target
+	var target = choose_target()
+	
+	var old_pos:Vector2 = self.global_position
+	if not target:
+		boss_attack_player_anim()
+		await battle_manager.wait(0.5)
+		battle_manager.player_take_dmg(1)
+	else:
+		boss_attack_monster_anim(target)
+		await battle_manager.wait(0.5)
+		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
+	
+	# Enemy return to original position
+	boss_return_pos_anim(old_pos)
+	
+	# Check whether player lose
+	battle_manager.player_check_dead()

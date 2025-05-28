@@ -38,11 +38,9 @@ func boss_turn() -> void:
 	await battle_manager.battle_timer.timeout
 	
 	# Boss action
-	curr_cool_down -= 1
+	if curr_cool_down != 0:
+		curr_cool_down -= 1
 	on_action()
-	
-	if curr_cool_down == 0:
-		curr_cool_down = max_cool_down
 	
 	# Boss aftermath waiting time
 	battle_manager.battle_timer.start()
@@ -98,28 +96,28 @@ func choose_target() -> Cardslot:
 # Boss attack animations
 func boss_attack_player_anim():
 	var new_pos_x = 280
-	var new_pos = Vector2(new_pos_x, battle_manager.enemy.position.y)
-	battle_manager.enemy.z_index = 5
+	var new_pos = Vector2(new_pos_x, self.global_position.y)
+	#battle_manager.enemy.z_index = 5
 	boss_attack_text.visible = false
 	boss_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property(battle_manager.enemy, "global_position", new_pos, 0.5)
+	tween.tween_property(self, "global_position", new_pos, 0.5)
 
 func boss_attack_monster_anim(target):
 	var new_pos_x = target.global_position.x
 	var new_pos_y = target.global_position.y
 	var new_pos = Vector2(new_pos_x, new_pos_y)
-	battle_manager.enemy.z_index = 5
+	#battle_manager.enemy.z_index = 5
 	boss_attack_text.visible = false
 	boss_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property(battle_manager.enemy, "global_position", new_pos, 0.5)
+	tween.tween_property(self, "global_position", new_pos, 0.5)
 
 func boss_return_pos_anim(old_pos: Vector2):
 	AudioManager.play_sound("ATTACK")
-	battle_manager.enemy.z_index = 0
+	#battle_manager.enemy.z_index = 0
 	var tween2 = get_tree().create_tween()
-	tween2.tween_property(battle_manager.enemy, "position", old_pos, 0.5)
+	tween2.tween_property(self, "global_position", old_pos, 0.5)
 	await battle_manager.wait(0.5)
 	boss_attack_text.visible = true
 	boss_health_text.visible = true

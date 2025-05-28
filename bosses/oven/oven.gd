@@ -28,6 +28,7 @@ func on_action() -> void:
 			oven_attack()
 		1:
 			oven_multi_attack()
+			curr_cool_down = max_cool_down
 	
 	# Self take damage
 	boss_take_dmg(self_dmg)

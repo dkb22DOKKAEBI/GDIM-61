@@ -36,6 +36,7 @@ func on_action() -> void:
 			vacuum_defend()
 		3:
 			vacuum_eliminate()
+			curr_cool_down = max_cool_down
 		_:
 			print("Skill out of range")
 
