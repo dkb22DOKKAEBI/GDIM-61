@@ -5,8 +5,9 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	0: "Oven",
-	1: "Vacuum"
+	0: "Toaster",
+	1: "Oven",
+	2: "Vacuum"
 }
 
 
@@ -29,7 +30,9 @@ const CARDS = { #attack, health
 const BOSS_STATS = {
 	"Tutorial": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
 	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
-	"Oven": {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200}
+	"Oven": {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
+	"Toaster": {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
+	"Breadspawn": {"HP": 5, "Attack": 1, "CoolDown": 0},
 }
 
 
@@ -37,10 +40,14 @@ const BOSS_STATS = {
 const TUTORIAL_SCENE_PATH = "res://bosses/tutorial_level/tutorial_boss.tscn"
 const VACUUM_SCENE_PATH = "res://bosses/vacuum/vacuum_boss.tscn"
 const OVEN_SCENE_PATH = "res://bosses/oven/oven_boss.tscn"
+const TOASTER_SCENE_PATH = "res://bosses/toaster/toaster_boss.tscn"
+const BREADSPAWN_SCENE_PATH = "res://bosses/toaster/breadspawn_boss.tscn"
 const BOSS_PATH = {
-	"Tutorial": TUTORIAL_SCENE_PATH,
-	"Vacuum": VACUUM_SCENE_PATH,
-	"Oven": OVEN_SCENE_PATH
+	"Tutorial"   : TUTORIAL_SCENE_PATH,
+	"Vacuum"     : VACUUM_SCENE_PATH,
+	"Oven"       : OVEN_SCENE_PATH,
+	"Toaster"    : TOASTER_SCENE_PATH,
+	"Breadspawn" : BREADSPAWN_SCENE_PATH
 }
 
 
