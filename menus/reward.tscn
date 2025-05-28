@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ba6i2gvqt07jl" path="res://menus/reward_menu.gd" id="1_hp86r"]
 
-
 [node name="Reward" type="Control"]
 layout_mode = 3
 anchors_preset = 15
