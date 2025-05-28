@@ -5,8 +5,9 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	0: "Oven",
-	1: "Vacuum"
+	0: "Toaster",
+	1: "Oven",
+	2: "Vacuum"
 }
 
 
@@ -29,7 +30,9 @@ const CARDS = { #attack, health
 const BOSS_STATS = {
 	"Tutorial": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
 	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
-	"Oven": {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200}
+	"Oven": {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
+	"Toaster": {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
+	"Breadspawn": {"HP": 5, "Attack": 1, "CoolDown": 0},
 }
 
 
@@ -37,10 +40,14 @@ const BOSS_STATS = {
 const TUTORIAL_SCENE_PATH = "res://bosses/tutorial_level/tutorial_boss.tscn"
 const VACUUM_SCENE_PATH = "res://bosses/vacuum/vacuum_boss.tscn"
 const OVEN_SCENE_PATH = "res://bosses/oven/oven_boss.tscn"
+const TOASTER_SCENE_PATH = "res://bosses/toaster/toaster_boss.tscn"
+const BREADSPAWN_SCENE_PATH = "res://bosses/toaster/breadspawn_boss.tscn"
 const BOSS_PATH = {
-	"Tutorial": TUTORIAL_SCENE_PATH,
-	"Vacuum": VACUUM_SCENE_PATH,
-	"Oven": OVEN_SCENE_PATH
+	"Tutorial"   : TUTORIAL_SCENE_PATH,
+	"Vacuum"     : VACUUM_SCENE_PATH,
+	"Oven"       : OVEN_SCENE_PATH,
+	"Toaster"    : TOASTER_SCENE_PATH,
+	"Breadspawn" : BREADSPAWN_SCENE_PATH
 }
 
 
@@ -88,22 +95,24 @@ const ability_text_color_code := "[color=#505050]"
 const ABILITY_DESCRIPTION = {
 	"Trashcan"   : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],               # Monster Cards
 	"Pizza"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
-					"Ability: " + ability_text_color_code + "Inflict 3 damage to one enemy (2 turns cool down)"],
+					"Ability: " + ability_text_color_code + "Inflict 3 damage to one enemy (2 turns CD)"],
 	"Quesadilla" : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)"],
 	"Cheesecake" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Sandwich"   : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
-					"Ability: " + ability_text_color_code + "Self restore 1 health (1 turn cool down)"],
+					"Ability: " + ability_text_color_code + "Self restore 1 health (1 turn CD)"],
 	"Taco"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Salad"      : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)",
-					"Ability: " + ability_text_color_code + "Restore 1 health for all allies (2 turns cool down)"],
+					"Ability: " + ability_text_color_code + "Restore 1 health for all allies (2 turns CD)"],
 	"Sushi"      : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)"],
 	"Donut"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Eclair"     : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Tutorial"   : ["BRRRRRRRRRRR: " + ability_text_color_code + "No effect (regular)"],                                                      # Bosses
 	"Vacuum"     : ["Power Cord Whip: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					"Power Surge Shield: " + ability_text_color_code + "Self restore 3 health (regular)",
-					"Last Supper: " + ability_text_color_code + "Deal 10 damage to one enemy (3 turns cool down)"],
-	"Toaster"    : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
+					"Last Supper: " + ability_text_color_code + "Deal 10 damage to one enemy (3 turns CD)"],
+	"Toaster"    : ["Breadspawn: " + ability_text_color_code + "Summons up to 2 undead toasts onto the field (4 turns CD)",
+					"Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Ritual of the Unbread: " + ability_text_color_code + "Devours one of the bread summons in exchange for health (3 turns CD)"],
 	"Breadspawn" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Oven"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					"Multi Attack: " + ability_text_color_code + "Perform attack 3 times with monsters as prioirty",

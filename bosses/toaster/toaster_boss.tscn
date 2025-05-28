@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1uhootg68g1l"]
+
+[ext_resource type="Texture2D" uid="uid://dx6ywxo0xw6d3" path="res://art/card_images/bosses/Toaster_Boss.png" id="1_4bvqr"]
+[ext_resource type="Script" uid="uid://b5w3uhml1numc" path="res://bosses/toaster/toaster_boss.gd" id="1_kwowq"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_udu1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
+size = Vector2(164, 228)
+
+[node name="Boss" type="Node2D" node_paths=PackedStringArray("breadspwan_1", "breadspwan_2", "boss_health_text", "boss_attack_text")]
+script = ExtResource("1_kwowq")
+breadspwan_1 = NodePath("Breadspawn_1")
+breadspwan_2 = NodePath("Breadspawn_2")
+boss_health_text = NodePath("BossHealth")
+boss_attack_text = NodePath("BossAttack")
+
+[node name="BossSprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("1_4bvqr")
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7xtgf")
+
+[node name="BossHealth" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = 28.0
+offset_top = -105.0
+offset_right = 87.0
+offset_bottom = -46.0
+theme = ExtResource("1_udu1j")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossAttack" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+offset_left = -76.0
+offset_top = -91.0
+offset_right = -36.0
+offset_bottom = -51.0
+theme = ExtResource("1_udu1j")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Breadspawn_1" type="Node2D" parent="."]
+position = Vector2(-180, -100)
+
+[node name="Breadspawn_2" type="Node2D" parent="."]
+position = Vector2(-180, 100)
