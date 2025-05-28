@@ -16,3 +16,6 @@ signal finish_defeat_boss_tutorial_signal()
 signal player_turn_end_signal()
 signal display_monster_card_info_signal(monster_card: MonsterCard) # Display info page for monster card or boss
 signal display_boss_info_signal(boss: Boss)
+
+# Pause game
+signal pause_game_signal()
