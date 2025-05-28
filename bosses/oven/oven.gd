@@ -43,7 +43,6 @@ func oven_attack() -> void:
 	if not target:
 		boss_attack_player_anim()
 		await battle_manager.wait(0.5)
-		
 		battle_manager.player_take_dmg(2)
 	else:
 		boss_attack_monster_anim(target)
