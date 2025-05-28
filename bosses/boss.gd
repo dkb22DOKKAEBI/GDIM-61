@@ -49,6 +49,7 @@ func boss_turn() -> void:
 	await battle_manager.battle_timer.timeout
 	
 	# Boss turn ends
+	print("Boss turn ends")
 	battle_manager.start_player_turn()
 
 
@@ -70,7 +71,7 @@ func boss_take_dmg(dmg: float):
 	# Check whether boss die and player win
 	if boss_health <= 0:
 		battle_manager.player_win()
-		await battle_manager.wait(1)
+		#await battle_manager.wait(1)
 		SceneManager.defeat_boss()
 
 
@@ -119,6 +120,6 @@ func boss_return_pos_anim(old_pos: Vector2):
 	battle_manager.enemy.z_index = 0
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(battle_manager.enemy, "position", old_pos, 0.5)
-	await battle_manager.wait(0.5)	
+	await battle_manager.wait(0.5)
 	boss_attack_text.visible = true
 	boss_health_text.visible = true

@@ -5,7 +5,7 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	0: "Vacuum",
+	0: "Oven",
 	1: "Vacuum"
 }
 
@@ -27,19 +27,21 @@ const CARDS = { #attack, health
 
 # Stats for boss
 const BOSS_STATS = {
-	"Lightbulb": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10}
+	"Tutorial": {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
+	"Vacuum": {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
+	"Oven": {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200}
 }
 
 
 # Path to boss scenes
-const VACUUM_SCENE_PATH = "res://bosses/first_level/vacuum.tscn"
-const LIGHTBULB_SCENE_PATH = "res://bosses/tutorial_level/lightbulb.tscn"
+const TUTORIAL_SCENE_PATH = "res://bosses/tutorial_level/tutorial_boss.tscn"
+const VACUUM_SCENE_PATH = "res://bosses/vacuum/vacuum_boss.tscn"
+const OVEN_SCENE_PATH = "res://bosses/oven/oven_boss.tscn"
 const BOSS_PATH = {
-	"Lightbulb": LIGHTBULB_SCENE_PATH,
-	"Vacuum": VACUUM_SCENE_PATH
+	"Tutorial": TUTORIAL_SCENE_PATH,
+	"Vacuum": VACUUM_SCENE_PATH,
+	"Oven": OVEN_SCENE_PATH
 }
-
 
 
 # Info for monster cards and bosses
@@ -55,10 +57,10 @@ const DISPLAY_NAME = {
 	"Sushi"      : "Sushi Samurai",
 	"Donut"      : "Doughnut Machine Gunner",
 	"Eclair"     : "Eclair Knight",
-	"Lightbulb"  : "Lightbulb",              # Bosses
-	"Vacuum"     : "Vacuum",
+	"Tutorial"   : "Tutorial Boss",              # Bosses
+	"Vacuum"     : "Vacuum Boss",
 	"Toaster"    : "The Burnt Apostle",
-	"Breadspawn" : "Breadspawn",
+	"Breadspawn" : "Breadspawn Zombie",
 	"Oven"       : "The Blazing Inferno"
 }
 
@@ -74,7 +76,7 @@ const CHARACTER_DESCRIPTION = {
 	"Sushi"      : "Sushi Samurai needs some more words",
 	"Donut"      : "Stand down the doughnut machine gunner is here! He’ll mow down the enemies with a hailstorm of sprinkles get low or prepare to be caught in his path of destruction.",
 	"Eclair"     : "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle.",
-	"Lightbulb"  : "Lightbulb needs some more words",              # Bosses
+	"Tutorial"   : "Tutorial boss needs some more words",              # Bosses
 	"Vacuum"     : "Steer clear! The Insatiable Hunger is here ready to consume all in its path!",
 	"Toaster"    : "The Burnt Apostle needs some more words",
 	"Breadspawn" : "Breadspawn needs some more words",
@@ -97,11 +99,13 @@ const ABILITY_DESCRIPTION = {
 	"Sushi"      : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)"],
 	"Donut"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Eclair"     : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
-	"Lightbulb"  : ["BRRRRRRRRRRR: " + ability_text_color_code + "No effect (regular)"],                                                 # Bosses
+	"Tutorial"   : ["BRRRRRRRRRRR: " + ability_text_color_code + "No effect (regular)"],                                                      # Bosses
 	"Vacuum"     : ["Power Cord Whip: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					"Power Surge Shield: " + ability_text_color_code + "Self restore 3 health (regular)",
 					"Last Supper: " + ability_text_color_code + "Deal 10 damage to one enemy (3 turns cool down)"],
 	"Toaster"    : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Breadspawn" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
-	"Oven"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"]
+	"Oven"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Multi Attack: " + ability_text_color_code + "Perform attack 3 times with monsters as prioirty",
+					"Overheat: " + ability_text_color_code + "Gain high attack and health, but self damage 200 health every turn (passive)"]
 }

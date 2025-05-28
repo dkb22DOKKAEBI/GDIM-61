@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bye6wutonq8am"
-path="res://.godot/imported/Breedspawn.png-12dd27eafcd1e6d892104e59b361c25e.ctex"
+uid="uid://sctlphjgqxt3"
+path="res://.godot/imported/Tutorial_Boss.png-ec512a3284c92699ace820b7eaf48023.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/monsters/Breedspawn.png"
-dest_files=["res://.godot/imported/Breedspawn.png-12dd27eafcd1e6d892104e59b361c25e.ctex"]
+source_file="res://art/card_images/bosses/Tutorial_Boss.png"
+dest_files=["res://.godot/imported/Tutorial_Boss.png-ec512a3284c92699ace820b7eaf48023.ctex"]
 
 [params]
 

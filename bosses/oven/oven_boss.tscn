@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c60d87i0v4h8r"]
+[gd_scene load_steps=5 format=3 uid="uid://5bb2farvgtxp"]
 
-[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_dgf3a"]
+[ext_resource type="Script" uid="uid://5ouav6ya3gcf" path="res://bosses/oven/oven.gd" id="1_4ns61"]
+[ext_resource type="Texture2D" uid="uid://xdl4n5nvmbuw" path="res://art/card_images/bosses/Oven_Boss.png" id="2_rowo4"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_o1hp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
 size = Vector2(164, 228)
 
-[node name="Boss" type="Node2D"]
+[node name="Boss" type="Node2D" node_paths=PackedStringArray("boss_health_text", "boss_attack_text")]
+script = ExtResource("1_4ns61")
+boss_health_text = NodePath("BossHealth")
+boss_attack_text = NodePath("BossAttack")
 
 [node name="BossSprite2D" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_rowo4")
 
 [node name="Area2D" type="Area2D" parent="."]
 z_index = 1
@@ -25,7 +31,7 @@ offset_left = 28.0
 offset_top = -105.0
 offset_right = 87.0
 offset_bottom = -46.0
-theme = ExtResource("1_dgf3a")
+theme = ExtResource("3_o1hp7")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -37,7 +43,7 @@ offset_left = -76.0
 offset_top = -91.0
 offset_right = -36.0
 offset_bottom = -51.0
-theme = ExtResource("1_dgf3a")
+theme = ExtResource("3_o1hp7")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

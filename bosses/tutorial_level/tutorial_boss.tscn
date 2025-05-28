@@ -2,8 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_2ajcm"]
 [ext_resource type="Script" uid="uid://bxmxg3wlxf6oe" path="res://bosses/tutorial_level/tutorial_boss.gd" id="1_ln1ru"]
-[ext_resource type="Texture2D" uid="uid://bye6wutonq8am" path="res://art/card_images/monsters/Breedspawn.png" id="1_ynhii"]
-
+[ext_resource type="Texture2D" uid="uid://sctlphjgqxt3" path="res://art/card_images/bosses/Tutorial_Boss.png" id="1_ynhii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
 size = Vector2(164, 228)
@@ -16,8 +15,8 @@ boss_attack_text = NodePath("BossAttack")
 
 [node name="BossSprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(4.76837e-06, 7.62939e-06)
-scale = Vector2(0.344538, 0.344538)
+position = Vector2(2.38419e-06, -2.38419e-06)
+scale = Vector2(0.390476, 0.393103)
 texture = ExtResource("1_ynhii")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -30,10 +29,10 @@ shape = SubResource("RectangleShape2D_7xtgf")
 [node name="BossHealth" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)
 z_index = 2
-offset_left = 26.0
-offset_top = -118.0
-offset_right = 85.0
-offset_bottom = -59.0
+offset_left = 28.0
+offset_top = -106.0
+offset_right = 87.0
+offset_bottom = -47.0
 theme = ExtResource("1_2ajcm")
 text = "0"
 horizontal_alignment = 1
@@ -43,9 +42,9 @@ vertical_alignment = 1
 modulate = Color(0, 0, 0, 1)
 z_index = 2
 offset_left = -75.0
-offset_top = -108.0
+offset_top = -92.0
 offset_right = -35.0
-offset_bottom = -68.0
+offset_bottom = -52.0
 theme = ExtResource("1_2ajcm")
 text = "0"
 horizontal_alignment = 1

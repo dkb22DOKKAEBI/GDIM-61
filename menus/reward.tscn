@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ba6i2gvqt07jl" path="res://menus/reward_menu.gd" id="1_hp86r"]
 
-
 [node name="Reward" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -49,8 +48,7 @@ theme_override_constants/margin_top = 67
 [node name="RichTextLabel" type="RichTextLabel" parent="RewardText"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
-text = "5 ingredient cards
-1 pizza monster card"
+text = "5 random ingredient cards"
 horizontal_alignment = 1
 vertical_alignment = 1
 

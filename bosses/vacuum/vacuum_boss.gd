@@ -43,12 +43,11 @@ func on_action() -> void:
 # Boss abilities
 # Ability 1: Boss attack
 func vacuum_attack(target):
-	var old_pos:Vector2 = battle_manager.enemy.global_position
+	var old_pos:Vector2 = self.global_position
 	if not target:
 		boss_attack_player_anim()
 		await battle_manager.wait(0.5)
-		
-		battle_manager.player_take_dmg(boss_attack)
+		battle_manager.player_take_dmg(1)
 	else:
 		boss_attack_monster_anim(target)
 		await battle_manager.wait(0.5)
@@ -59,7 +58,6 @@ func vacuum_attack(target):
 	
 	# Check whether player lose
 	battle_manager.player_check_dead()
-	print("Opponent Attack")
 
 
 # Ability 2: Boss defend
@@ -79,8 +77,6 @@ func vacuum_defend():
 		var tween = get_tree().create_tween()
 		tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
 		tween.tween_property(boss_health_text, "modulate", Color.BLACK, 1)
-		
-		print("Opponent Defend")
 
 
 # Ability 3: Boss eliminate
@@ -103,4 +99,3 @@ func vacuum_eliminate():
 		boss_return_pos_anim(old_pos)
 	else:
 		vacuum_attack(null)
-	print("Opponent Eliminate")
