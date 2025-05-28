@@ -34,7 +34,7 @@ const BOSS_STATS = {
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
-	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 2, "DoubleHitChance": 0.15, "RampAttack": 2}
+	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.15, "RampAttack": 2}
 }
 
 

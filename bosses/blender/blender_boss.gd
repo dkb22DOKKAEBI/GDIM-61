@@ -23,9 +23,13 @@ func _ready():
 func on_action() -> void:
 	super.on_action()	
 	
+	# Update cool downs
+	if curr_ramp_cool_down != 0:
+		curr_ramp_cool_down -= 1
+	
 	# Boss action
 	# Check whether has a backline
-	if CardslotManager.cardslots[1].card_in_slot or CardslotManager.cardslots[2].card_in_slot:
+	if curr_cool_down == 0 and (CardslotManager.cardslots[1].card_in_slot or CardslotManager.cardslots[2].card_in_slot):
 		blender_swap_front_back_line()
 		curr_cool_down = max_cool_down
 	else:
