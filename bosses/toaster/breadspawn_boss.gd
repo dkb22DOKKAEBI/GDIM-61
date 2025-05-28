@@ -12,6 +12,27 @@ func boss_turn() -> void:
 	pass
 
 
+# Do not beat the level when dead
+func boss_take_dmg(dmg: float):
+	AudioManager.play_sound("ATTACK")
+	boss_health = max(0, boss_health - dmg)
+	boss_health_text.text = str(boss_health)
+	
+	# Change font to double size and red
+	boss_health_text.add_theme_font_size_override("normal_font_size", 40)
+	boss_health_text.modulate = Color.RED
+
+	# Play animation for health change
+	var tween = get_tree().create_tween()
+	tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
+	tween.tween_property(boss_health_text, "modulate", Color.BLACK, 1)
+	
+	# Check whether boss die and player win
+	if boss_health <= 0:
+		#await battle_manager.wait(1)
+		SceneManager.defeat_boss()
+
+
 # Boss abilities
 # Ability 1: Regular attack
 func breadspawn_attack() -> void:
