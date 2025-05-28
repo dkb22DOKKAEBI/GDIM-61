@@ -82,25 +82,26 @@ const CHARACTER_DESCRIPTION = {
 }
 
 # Ability descriptions
+const ability_text_color_code := "[color=#505050]"
 const ABILITY_DESCRIPTION = {
-	"Trashcan"   : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],               # Monster Cards
-	"Pizza"      : ["Attack: Inflict damage equal to the attack power to one enemy (regular)",
-					"Ability: Inflict 3 damage to one enemy (2 turns cool down)"],
-	"Quesadilla" : ["Attack: Restore health equal to the attack power for one ally (regular)"],
-	"Cheesecake" : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
-	"Sandwich"   : ["Attack: Inflict damage equal to the attack power to one enemy (regular)",
-					"Ability: Self restore 1 health (1 turn cool down)"],
-	"Taco"       : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
-	"Salad"      : ["Attack: Restore health equal to the attack power for one ally (regular)",
-					"Ability: Restore 1 health for all allies (2 turns cool down)"],
-	"Sushi"      : ["Attack: Restore health equal to the attack power for one ally (regular)"],
-	"Donut"      : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
-	"Eclair"     : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
-	"Lightbulb"  : ["BRRRRRRRRRRR: with no effect (regular)"],                                                 # Bosses
-	"Vacuum"     : ["Power Cord Whip: Inflict damage equal to the attack power to one enemy (regular)",
-					"Power Surge Shield: Self restore 3 health (regular)",
-					"Last Supper: Deal 10 damage to one enemy (3 turns cool down)"],
-	"Toaster"    : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
-	"Breadspawn" : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"],
-	"Oven"       : ["Attack: Inflict damage equal to the attack power to one enemy (regular)"]
+	"Trashcan"   : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],               # Monster Cards
+	"Pizza"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Ability: " + ability_text_color_code + "Inflict 3 damage to one enemy (2 turns cool down)"],
+	"Quesadilla" : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)"],
+	"Cheesecake" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
+	"Sandwich"   : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Ability: " + ability_text_color_code + "Self restore 1 health (1 turn cool down)"],
+	"Taco"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
+	"Salad"      : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)",
+					"Ability: " + ability_text_color_code + "Restore 1 health for all allies (2 turns cool down)"],
+	"Sushi"      : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)"],
+	"Donut"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
+	"Eclair"     : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
+	"Lightbulb"  : ["BRRRRRRRRRRR: " + ability_text_color_code + "No effect (regular)"],                                                 # Bosses
+	"Vacuum"     : ["Power Cord Whip: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Power Surge Shield: " + ability_text_color_code + "Self restore 3 health (regular)",
+					"Last Supper: " + ability_text_color_code + "Deal 10 damage to one enemy (3 turns cool down)"],
+	"Toaster"    : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
+	"Breadspawn" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
+	"Oven"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"]
 }
