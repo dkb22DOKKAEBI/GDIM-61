@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bu0mha0b8gxk3" path="res://card/target_selection/aiming_arc.tscn" id="1_c07u4"]
 [ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="3_m6un0"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66gff"]
 size = Vector2(5, 5)
 
