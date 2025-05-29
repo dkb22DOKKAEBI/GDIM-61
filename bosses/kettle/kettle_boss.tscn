@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci4hsjxb7e8y4"]
+[gd_scene load_steps=6 format=3 uid="uid://ci4hsjxb7e8y4"]
 
 [ext_resource type="Texture2D" uid="uid://co2kmu1oc6pc8" path="res://art/card_images/bosses/Kettle_Boss.png" id="1_08any"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_mbcu7"]
 [ext_resource type="Script" uid="uid://cn7so74e1fvwm" path="res://bosses/kettle/kettle_boss.gd" id="1_v7hv2"]
+[ext_resource type="Texture2D" uid="uid://2wf6x1nuvcgr" path="res://art/steam.png" id="4_24wve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
 size = Vector2(164, 228)
@@ -47,3 +48,10 @@ theme = ExtResource("1_mbcu7")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Steam" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.698039)
+z_index = 100
+position = Vector2(-706, 84)
+scale = Vector2(0.16575, 0.2365)
+texture = ExtResource("4_24wve")

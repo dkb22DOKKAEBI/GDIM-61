@@ -1,7 +1,6 @@
 class_name Kettle
 extends Boss
 
-var steam_sprite_pos: Vector2
 var steam_attack_power: int
 var range_attack_power: int
 
@@ -14,8 +13,6 @@ func _ready():
 	# Boss unique stats
 	steam_attack_power = CardDatabase.BOSS_STATS["Kettle"]["SteamAttackPower"]
 	range_attack_power = CardDatabase.BOSS_STATS["Kettle"]["RangeAttackPower"]
-	# Set up steam sprite position
-	
 
 
 # Boss behavior logic
