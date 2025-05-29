@@ -5,11 +5,11 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	0: "Kettle",
+	4: "Vacuum",
 	1: "Oven",
 	2: "Toaster",
 	3: "Blender",
-	4: "Vacuum"
+	0: "Kettle"
 }
 
 
@@ -105,7 +105,7 @@ const CHARACTER_DESCRIPTION = {
 	"Breadspawn" : "Watch the bread zombie!",
 	"Oven"       : "The Blazing Inferno incinerates the field, reducing any party to ash. Prepare yourself or face the fury of the flames!",
 	"Blender"    : "Run! Blend is coming spinning at full speed ready to cleave his way through any party daring to cross paths with its axes.",
-	"Steamseer"  : "It's raining, it's pouring…wait, it's boiling! The steamseer is here to scald any party willing to challenge its ancient steam magic."
+	"Kettle"     : "It's raining, it's pouring…wait, it's boiling! The steamseer is here to scald any party willing to challenge its ancient steam magic."
 }
 
 # Ability descriptions
@@ -138,5 +138,7 @@ const ABILITY_DESCRIPTION = {
 	"Blender"    : ["Axe Rush: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy and has a chance of doubling damge(regular)",
 					"Whirlwind Pull: " + ability_text_color_code + "Blend spins and drags the backline units to the front (2 turns CD)",
 					"Slushy Surge: " + ability_text_color_code + "Ramp up attack after every turn (passive)"],
-	"Kettle"     : []
+	"Kettle"     : ["Vial Toss : " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Final Geyser"  + ability_text_color_code + "Deals an AOE hit to all party (3 turns CD)",
+					"Scalding stream: " + ability_text_color_code + "Sprays a stream of scalding hot liquids at the backline dealing damage overtime (passive)"]
 }
