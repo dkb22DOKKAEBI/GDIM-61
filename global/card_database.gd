@@ -40,7 +40,7 @@ const BOSS_STATS = {
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
 	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.15, "RampAttack": 2},
-	"Kettle"      : {"HP": 20, "Attack": 1, "CoolDown": 2, "SteamAttack": 1}
+	"Kettle"      : {"HP": 20, "Attack": 3, "CoolDown": 3, "RangeAttackPower": 2, "SteamAttackPower": 1}
 }
 
 

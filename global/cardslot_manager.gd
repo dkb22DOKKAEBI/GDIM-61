@@ -30,6 +30,15 @@ func clear_cardslots() -> void:
 	cardslots.clear()
 
 
+# Check whether there is monster cards on the battle field
+func check_battlefield_empty() -> bool:
+	for i in range(3):
+		if cardslots[i].card_in_slot:
+			return false
+	
+	return true
+
+
 func test():
 	print("CardSlot Test Called")
 	for cardslot in cardslots:
