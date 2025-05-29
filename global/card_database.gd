@@ -5,10 +5,11 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	0: "Vacuum",
+	4: "Vacuum",
 	1: "Oven",
 	2: "Toaster",
-	3: "Blender"
+	3: "Blender",
+	0: "Kettle"
 }
 
 
@@ -34,11 +35,12 @@ const CARDS = { #attack, health
 # Stats for boss
 const BOSS_STATS = {
 	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum"      : {"HP": 12, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
+	"Vacuum"      : {"HP": 1, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
-	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.15, "RampAttack": 2}
+	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.15, "RampAttack": 2},
+	"Kettle"      : {"HP": 20, "Attack": 3, "CoolDown": 3, "RangeAttackPower": 2, "SteamAttackPower": 1}
 }
 
 
@@ -49,13 +51,15 @@ const OVEN_SCENE_PATH = "res://bosses/oven/oven_boss.tscn"
 const TOASTER_SCENE_PATH = "res://bosses/toaster/toaster_boss.tscn"
 const BREADSPAWN_SCENE_PATH = "res://bosses/toaster/breadspawn_boss.tscn"
 const BLENDER_SCENE_PATH = "res://bosses/blender/blender_boss.tscn"
+const KETTLE_SCENE_PATH = "res://bosses/kettle/kettle_boss.tscn"
 const BOSS_PATH = {
 	"Tutorial"   : TUTORIAL_SCENE_PATH,
 	"Vacuum"     : VACUUM_SCENE_PATH,
 	"Oven"       : OVEN_SCENE_PATH,
 	"Toaster"    : TOASTER_SCENE_PATH,
 	"Breadspawn" : BREADSPAWN_SCENE_PATH,
-	"Blender"    : BLENDER_SCENE_PATH
+	"Blender"    : BLENDER_SCENE_PATH,
+	"Kettle"     : KETTLE_SCENE_PATH
 }
 
 
@@ -79,7 +83,8 @@ const DISPLAY_NAME = {
 	"Toaster"    : "The Burnt Apostle",
 	"Breadspawn" : "Breadspawn Zombie",
 	"Oven"       : "The Blazing Inferno",
-	"Blender"    : "Unit B.L.E.N.D"
+	"Blender"    : "Unit B.L.E.N.D",
+	"Kettle"     : "Steamseer"
 }
 
 # Descriptions
@@ -94,13 +99,13 @@ const CHARACTER_DESCRIPTION = {
 	"Sushi"      : "Sushi Samurai needs some more words",
 	"Donut"      : "Stand down the doughnut machine gunner is here! He’ll mow down the enemies with a hailstorm of sprinkles get low or prepare to be caught in his path of destruction.",
 	"Eclair"     : "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle.",
-	"Tutorial"   : "Tutorial boss needs some more words",              # Bosses
+	"Tutorial"   : "A simple tutorial boss",                     # Bosses
 	"Vacuum"     : "Steer clear! The Insatiable Hunger is here ready to consume all in its path!",
 	"Toaster"    : "Arise......the breadspawn and their master the burnt apostle are here to terrorize any battle swaying the tides in a moment's notice.",
 	"Breadspawn" : "Watch the bread zombie!",
 	"Oven"       : "The Blazing Inferno incinerates the field, reducing any party to ash. Prepare yourself or face the fury of the flames!",
 	"Blender"    : "Run! Blend is coming spinning at full speed ready to cleave his way through any party daring to cross paths with its axes.",
-	"Steamseer"  : "It's raining, it's pouring…wait, it's boiling! The steamseer is here to scald any party willing to challenge its ancient steam magic."
+	"Kettle"     : "It's raining, it's pouring…wait, it's boiling! The steamseer is here to scald any party willing to challenge its ancient steam magic."
 }
 
 # Ability descriptions
@@ -132,5 +137,8 @@ const ABILITY_DESCRIPTION = {
 					"Overheat: " + ability_text_color_code + "Gain high attack and health, but self damage 200 health every turn (passive)"],
 	"Blender"    : ["Axe Rush: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy and has a chance of doubling damge(regular)",
 					"Whirlwind Pull: " + ability_text_color_code + "Blend spins and drags the backline units to the front (2 turns CD)",
-					"Slushy Surge: " + ability_text_color_code + "Ramp up attack after every turn (passive)"]
+					"Slushy Surge: " + ability_text_color_code + "Ramp up attack after every turn (passive)"],
+	"Kettle"     : ["Vial Toss : " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
+					"Final Geyser"  + ability_text_color_code + "Deals an AOE hit to all party (3 turns CD)",
+					"Scalding stream: " + ability_text_color_code + "Sprays a stream of scalding hot liquids at the backline dealing damage overtime (passive)"]
 }

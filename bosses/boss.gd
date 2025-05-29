@@ -46,7 +46,6 @@ func boss_turn() -> void:
 	await battle_manager.battle_timer.timeout
 	
 	# Boss turn ends
-	print("Boss turn ends")
 	battle_manager.start_player_turn()
 
 
