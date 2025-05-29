@@ -114,14 +114,14 @@ const ABILITY_DESCRIPTION = {
 	"Trashcan"   : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],               # Monster Cards
 	"Pizza"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					"Ability: " + ability_text_color_code + "Inflict 3 damage to one enemy (2 turns CD)"],
-	"Quesadilla" : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)"],
+	"Quesadilla" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Cheesecake" : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Sandwich"   : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					"Ability: " + ability_text_color_code + "Self restore 1 health (1 turn CD)"],
 	"Taco"       : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
-	"Salad"      : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)",
+	"Salad"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					"Ability: " + ability_text_color_code + "Restore 1 health for all allies (2 turns CD)"],
-	"Sushi"      : ["Attack: " + ability_text_color_code + "Restore health equal to the attack power for one ally (regular)"],
+	"Sushi"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Donut"      : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Eclair"     : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],
 	"Tutorial"   : ["BRRRRRRRRRRR: " + ability_text_color_code + "No effect (regular)"],                                                      # Bosses
