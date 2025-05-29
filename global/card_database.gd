@@ -139,6 +139,6 @@ const ABILITY_DESCRIPTION = {
 					"Whirlwind Pull: " + ability_text_color_code + "Blend spins and drags the backline units to the front (2 turns CD)",
 					"Slushy Surge: " + ability_text_color_code + "Ramp up attack after every turn (passive)"],
 	"Kettle"     : ["Vial Toss : " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
-					"Final Geyser"  + ability_text_color_code + "Deals an AOE hit to all party (3 turns CD)",
+					"Final Geyser: "  + ability_text_color_code + "Deals an AOE hit to all party (3 turns CD)",
 					"Scalding stream: " + ability_text_color_code + "Sprays a stream of scalding hot liquids at the backline dealing damage overtime (passive)"]
 }
