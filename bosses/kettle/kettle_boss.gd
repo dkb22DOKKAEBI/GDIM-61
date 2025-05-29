@@ -13,3 +13,6 @@ func _ready():
 # Boss behavior logic
 func on_action() -> void:
 	super.on_action()
+	
+	# Steam attack the backline
+	
