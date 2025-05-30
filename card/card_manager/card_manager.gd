@@ -38,7 +38,7 @@ func on_hovered_over_card(card):
 	card.scale *= 1.2
 	card.set_card_z_index(2)
 	
-	# Check whether is monster card
+	# Check whether is monster card to move it up
 	if card.is_monster_card and not card.placed:
 		# Update PlayerHand for how many monster card hovered over
 		PlayerHand.hovering_monster_num += 1

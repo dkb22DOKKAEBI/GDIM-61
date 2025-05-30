@@ -59,7 +59,7 @@ func finish_drag():
 		card_being_dragged.get_parent().remove_child(card_being_dragged)
 		card_slot_found.add_child(card_being_dragged)
 		card_being_dragged.global_position = card_slot_found.global_position
-		card_being_dragged.scale = Vector2(1.3, 1.3) * 1.2
+		card_being_dragged.scale = Vector2(1.3, 1.3)
 		
 		card_being_dragged.placed = true
 		card_slot_found.card_in_slot = card_being_dragged

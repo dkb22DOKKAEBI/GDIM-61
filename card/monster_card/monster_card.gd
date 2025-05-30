@@ -15,6 +15,7 @@ extends Card
 var max_health: int
 var curr_health: int
 var attack_power: int
+var placed := false # Whether is placed onto the battlefield
 
 
 # Ready
@@ -124,3 +125,13 @@ func health_change_animation(target_color: Color) -> void:
 func die():
 	card_slot_on.card_in_slot = null
 	queue_free()
+
+
+# Override for hight functionality
+func _on_area_2d_mouse_entered():
+	if not placed:
+		emit_signal("hovered", self)
+
+func _on_area_2d_mouse_exited():
+	if not placed:
+		emit_signal("hovered_off", self)
