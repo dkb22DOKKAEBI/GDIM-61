@@ -19,6 +19,7 @@ var curr_health: int
 var attack_power: int
 var placed := false # Whether is placed onto the battlefield
 
+var number_color := Color(0.2, 0.2, 0.2) # Color for the attack and health text
 var ability_cooldown_color := Color(0.375, 0.375, 0.375)
 var ability_ready_color := Color(0.6, 1, 0.45)
 
@@ -124,12 +125,11 @@ func heal(amount: int) -> void:
 # Animation for health change animation as damage indicator
 func health_change_animation(target_color: Color) -> void:
 	health_text.add_theme_font_size_override("normal_font_size", 70)
-	health_text.modulate = target_color
+	health_text.add_theme_color_override("default_color", target_color)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(health_text, "theme_override_font_sizes/normal_font_size", 50, 1)
-	tween.tween_property(health_text, "modulate", Color.BLACK, 1)
-
+	tween.tween_property(health_text, "theme_override_colors/default_color", number_color, 1)
 
 # Monster card dies
 func die():
