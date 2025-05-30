@@ -55,7 +55,7 @@ func initialize_status() -> void:
 func update_ability_button(curr_cooldown: int):
 	# Edge case when the monster does not have an ability
 	if CardslotManager.card_ability_cds[card_name] == 0:
-		cooldown_text.text = "No ability"
+		ability_ui_parent.visible = false
 		return
 	
 	# Ability ready
