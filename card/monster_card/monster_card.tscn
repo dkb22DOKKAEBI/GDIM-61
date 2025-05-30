@@ -7,14 +7,15 @@
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="5_316fr"]
 [ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="6_hyyyl"]
 [ext_resource type="Texture2D" uid="uid://dds5hqksfjvsr" path="res://art/card_images/monsters/Screenshot 2025-05-29 212237.png" id="6_oliei"]
-[ext_resource type="Texture2D" uid="uid://cr85qemgwy2c7" path="res://art/card_images/monsters/ability_icon_inner.png" id="7_nkpla"]
-[ext_resource type="Texture2D" uid="uid://btwh62qvx7af" path="res://art/card_images/monsters/ability_icon_outer.png" id="7_v5mhw"]
 [ext_resource type="Texture2D" uid="uid://d0jlmscxpogdh" path="res://art/card_images/monsters/Screenshot 2025-05-29 212231.png" id="7_ydfrr"]
+[ext_resource type="Texture2D" uid="uid://dfih4yocvcl7g" path="res://art/ui_element/ability_icon_inner.png" id="8_oliei"]
+[ext_resource type="Texture2D" uid="uid://doiv62f311qbc" path="res://art/ui_element/ability_icon_outer.png" id="10_ydfrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(78, 112)
 
 [node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("collision")]
+position = Vector2(183, 134)
 script = ExtResource("1_vtcvk")
 collision = NodePath("Area2D")
 
@@ -223,7 +224,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
+offset_left = 11.0
 offset_top = 16.0
 offset_right = 57.0
 offset_bottom = 6.0
@@ -247,23 +248,25 @@ scale = Vector2(0.9, 0.9)
 mouse_filter = 2
 
 [node name="AbilityButton" type="Button" parent="Ability/AbilityButtonParent"]
-modulate = Color(0.450648, 0.450648, 0.450648, 1)
+modulate = Color(0.377919, 0.377919, 0.377919, 1)
 z_index = 10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
+offset_left = 4.44444
+offset_top = 4.44444
+offset_right = 91.4444
+offset_bottom = 91.4444
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.25, 0.25)
 focus_mode = 0
-icon = ExtResource("7_nkpla")
+icon = ExtResource("8_oliei")
 flat = true
 
 [node name="AbilityIcon" type="NinePatchRect" parent="Ability/AbilityButtonParent"]
+visible = false
 z_index = 11
 layout_mode = 1
 anchors_preset = 15
@@ -281,11 +284,11 @@ region_rect = Rect2(176, 127, 16, 17)
 [node name="AbilityButtonBorder" type="NinePatchRect" parent="Ability/AbilityButtonParent"]
 z_index = 11
 layout_mode = 0
-offset_left = 3.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = 37.0
-texture = ExtResource("7_v5mhw")
+offset_left = 3.33334
+offset_top = 3.33333
+offset_right = 36.3333
+offset_bottom = 36.3333
+texture = ExtResource("10_ydfrr")
 
 [node name="Cooldown" type="RichTextLabel" parent="Ability"]
 layout_mode = 0

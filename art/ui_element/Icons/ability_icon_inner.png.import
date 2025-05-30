@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btwh62qvx7af"
-path="res://.godot/imported/ability_icon_outer.png-ea3a7b8e7fadecb06a979b35e4fe643b.ctex"
+uid="uid://dfih4yocvcl7g"
+path="res://.godot/imported/ability_icon_inner.png-b501c545fcda3468318a8169e7ec6a22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/monsters/ability_icon_outer.png"
-dest_files=["res://.godot/imported/ability_icon_outer.png-ea3a7b8e7fadecb06a979b35e4fe643b.ctex"]
+source_file="res://art/ui_element/Icons/ability_icon_inner.png"
+dest_files=["res://.godot/imported/ability_icon_inner.png-b501c545fcda3468318a8169e7ec6a22.ctex"]
 
 [params]
 
