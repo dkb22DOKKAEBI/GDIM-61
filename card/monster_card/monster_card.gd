@@ -2,6 +2,7 @@ class_name MonsterCard
 extends Card
 
 @export var ability_button: Button
+@export var ability_ui_parent: Control
 @onready var battle_manager = get_node("/root/NewBattle")
 @onready var cardslot_manager = get_node("/root/CardslotManager")
 @onready var ability_handler = preload("res://card/monster_card/ability_manager.gd").new()  # assuming the path is correct
@@ -41,9 +42,10 @@ func initialize_status() -> void:
 	curr_health = max_health
 	card_image.texture = ResourceLoader.load("res://art/card_images/monsters/" + card_name + ".png")
 	
-	# Update text
+	# Update text and disable ability button when in player hand
 	attack_text.text = str(attack_power)
 	health_text.text = str(curr_health)
+	ability_ui_parent.visible = false
 
 
 func update_ability_button():
@@ -57,23 +59,23 @@ func update_ability_button():
 
 func _on_ability_button_pressed():
 	if card_slot_on == null:
-		#print("Error: Monster card is not placed in a slot.")
+		print("Error: Monster card is not placed in a slot.")
 		return
 
 	var slot_id = card_slot_on.card_slot_number
 	var card_info = cardslot_manager.cardslot_abilities[slot_id]
 	var card_name_from_slot = card_info[0]
 
-	#print("Ability activated for", card_name_from_slot, "in", slot_id)
+	print("Ability activated for", card_name_from_slot, "in", slot_id)
 
 	# Configure the Ability instance
 	ability_handler.enemy = boss_node
 	var result = ability_handler.add_ability_card(card_name_from_slot, self)
 
-	#if result == null:
-		#print("No ability or ability not implemented.")
-	#else:
-		#print("Ability result:", result)
+	if result == null:
+		print("No ability or ability not implemented.")
+	else:
+		print("Ability result:", result)
 
 	# Reset cooldown
 	cardslot_manager.cardslot_abilities[slot_id][1] = cardslot_manager.card_ability_cds.get(card_name_from_slot, 0)

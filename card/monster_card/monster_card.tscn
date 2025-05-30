@@ -12,9 +12,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(78, 112)
 
-[node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("ability_button", "attack_text", "health_text", "card_image", "collision")]
+[node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("ability_button", "ability_ui_parent", "attack_text", "health_text", "card_image", "collision")]
 script = ExtResource("1_vtcvk")
 ability_button = NodePath("Ability/AbilityButtonParent/AbilityButton")
+ability_ui_parent = NodePath("Ability")
 attack_text = NodePath("Attack/AttackText")
 health_text = NodePath("Health/HealthTetxt")
 card_image = NodePath("CardImage")
