@@ -1,101 +1,243 @@
-[gd_scene load_steps=4 format=3 uid="uid://ibj8aersgrg6"]
+[gd_scene load_steps=11 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
+[ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/ui_element/Icons/heart.png" id="4_ydfrr"]
+[ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="5_316fr"]
+[ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/ui_element/Icons/sword.png" id="6_bqkcq"]
+[ext_resource type="Texture2D" uid="uid://dfih4yocvcl7g" path="res://art/ui_element/Icons/ability_icon_inner.png" id="7_bqkcq"]
+[ext_resource type="Texture2D" uid="uid://doiv62f311qbc" path="res://art/ui_element/Icons/ability_icon_outer.png" id="10_oliei"]
+[ext_resource type="Texture2D" uid="uid://bxlm2lgel16x3" path="res://art/ui_element/Icons/lighting.png" id="10_p5jr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
-size = Vector2(72, 102)
+size = Vector2(78, 112)
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("selected_label", "collision")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5mhw"]
+radius = 15.5952
+
+[node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("ability_button", "ability_ui_parent", "attack_text", "health_text", "card_image", "cooldown_text", "collision")]
 script = ExtResource("1_vtcvk")
-selected_label = NodePath("SelectedLabel")
+ability_button = NodePath("Ability/AbilityButtonParent/AbilityButton")
+ability_ui_parent = NodePath("Ability")
+attack_text = NodePath("Attack/AttackText")
+health_text = NodePath("Health/HealthTetxt")
+card_image = NodePath("CardImage")
+cooldown_text = NodePath("Ability/Cooldown")
 collision = NodePath("Area2D")
 
 [node name="CardImage" type="Sprite2D" parent="."]
 position = Vector2(0, -7.15256e-07)
-scale = Vector2(0.171429, 0.175862)
+scale = Vector2(0.19, 0.195)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_xd4uy")
 
-[node name="Attack" type="RichTextLabel" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = 58.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(25, 25)
-mouse_filter = 2
-theme = ExtResource("3_2ufkr")
-theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
-theme_override_font_sizes/normal_font_size = 50
-text = "1
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Health" type="RichTextLabel" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = -67.0
-offset_right = 112.0
-offset_bottom = 54.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(25, 25)
-mouse_filter = 2
-theme = ExtResource("3_2ufkr")
-theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
-theme_override_font_sizes/normal_font_size = 50
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SelectedLabel" type="Label" parent="."]
+[node name="NameDisplay" type="RichTextLabel" parent="."]
 visible = false
-offset_left = -28.0
-offset_top = -62.0
-offset_right = 28.0
-offset_bottom = -41.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -54.0
+offset_right = 39.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_2ufkr")
-theme_override_colors/font_color = Color(0.339407, 0.726599, 0.479536, 1)
-theme_override_font_sizes/font_size = 12
-text = "Selected"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 7
+text = "Pizza Ninja"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UIContainer" type="Control" parent="."]
+[node name="Health" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -8.0
+offset_bottom = -8.0
+mouse_filter = 2
+
+[node name="HealthIcon" type="NinePatchRect" parent="Health"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 0
+offset_left = 23.0
+offset_top = -45.0
+offset_right = 36.0
+offset_bottom = -32.0
+texture = ExtResource("4_ydfrr")
+region_rect = Rect2(-2, 2, 513, 509)
+
+[node name="HealthTetxt" type="RichTextLabel" parent="Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -51.0
+offset_right = 123.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+theme = ExtResource("5_316fr")
+theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/normal_font_size = 50
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -9.0
+offset_bottom = -9.0
+mouse_filter = 2
+
+[node name="AttackIcon" type="NinePatchRect" parent="Attack"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 0
+offset_left = -36.0
+offset_top = -44.0
+offset_right = -24.0
+offset_bottom = -32.0
+texture = ExtResource("6_bqkcq")
+region_rect = Rect2(0, -1, 499, 501)
+
+[node name="AttackText" type="RichTextLabel" parent="Attack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -51.0
+offset_right = 89.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+theme = ExtResource("5_316fr")
+theme_override_colors/default_color = Color(0.207843, 0.207843, 0.207843, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/normal_font_size = 50
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ability" type="Control" parent="."]
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
-offset_left = -35.0
-offset_top = 52.0
-offset_right = 35.0
-offset_bottom = 85.0
+offset_left = -43.0
+offset_top = 31.0
+offset_right = -17.0
+offset_bottom = 57.0
 mouse_filter = 2
 
-[node name="AbilityButton" type="Button" parent="UIContainer"]
-visible = false
+[node name="Background" type="ColorRect" parent="Ability"]
+modulate = Color(0.0745098, 0.0745098, 0.0745098, 0.478431)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 16.0
+offset_right = 57.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AbilityButtonParent" type="Control" parent="Ability"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 17.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+
+[node name="Area2D" type="Area2D" parent="Ability/AbilityButtonParent"]
+position = Vector2(18.8889, 20)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ability/AbilityButtonParent/Area2D"]
+shape = SubResource("CircleShape2D_v5mhw")
+
+[node name="AbilityButton" type="Button" parent="Ability/AbilityButtonParent"]
+modulate = Color(0.377919, 0.377919, 0.377919, 1)
 z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.44444
+offset_top = 4.44444
+offset_right = 91.4444
+offset_bottom = 91.4444
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+focus_mode = 0
+icon = ExtResource("7_bqkcq")
+flat = true
+
+[node name="AbilityIcon" type="NinePatchRect" parent="Ability/AbilityButtonParent"]
+z_index = 11
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.1111
+offset_top = 8.88889
+offset_right = -8.88888
+offset_bottom = -6.11111
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_p5jr6")
+region_rect = Rect2(1, 1, 511, 511)
+
+[node name="AbilityButtonBorder" type="NinePatchRect" parent="Ability/AbilityButtonParent"]
+z_index = 11
 layout_mode = 0
-offset_left = 1.0
-offset_right = 71.0
-offset_bottom = 31.0
-text = "Ready"
+offset_left = 3.33334
+offset_top = 3.33333
+offset_right = 36.3333
+offset_bottom = 36.3333
+texture = ExtResource("10_oliei")
+
+[node name="Cooldown" type="RichTextLabel" parent="Ability"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 16.0
+offset_right = 83.0
+offset_bottom = 33.0
+theme = ExtResource("3_2ufkr")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "in 3 turns"
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

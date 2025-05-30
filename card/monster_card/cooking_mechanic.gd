@@ -27,21 +27,16 @@ func _on_cook() -> void:
 		if result_monster == "None":
 			return
 		
-		# Instantiate monster
+		# Instantiate and initialize monster card
 		cookingsfx.play()
 		var card_scene = preload(MONSTER_CARD_SCENE_PATH)
 		var new_card: Node2D = card_scene.instantiate()
-		var card_image_path = str("res://art/card_images/monsters/" + result_monster + ".png")
-		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
-		new_card.get_node("Attack").text = str(CardDatabase.CARDS[result_monster][0])
-		new_card.get_node("Health").text = str(CardDatabase.CARDS[result_monster][1])
 		monster_card_manager.add_child(new_card)
-		
-		# Initialize monster card properties and add it to player hand
 		new_card.name = "MonsterCard"
 		new_card.card_name = result_monster
-		new_card.attack_power = CardDatabase.CARDS[result_monster][0]
-		new_card.max_health = CardDatabase.CARDS[result_monster][1]
+		new_card.initialize_status()
+		
+		# Add to player hand
 		new_card.position = card_starting_position
 		PlayerHand.add_card_to_hand(new_card, 1, 1)
 		

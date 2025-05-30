@@ -11,15 +11,11 @@ func _ready():
 	for monster_name: String in PlayerHand.legacy_monster_hand:
 		var card_scene = preload("res://card/monster_card/monster_card.tscn")
 		var new_card = card_scene.instantiate()
-		var card_image_path = str("res://art/card_images/monsters/" + monster_name + ".png")
-		new_card.get_node("CardImage").texture = ResourceLoader.load(card_image_path)
-		new_card.get_node("Attack").text = str(CardDatabase.CARDS[monster_name][0])
-		new_card.get_node("Health").text = str(CardDatabase.CARDS[monster_name][1])
-		self.add_child(new_card)
 		new_card.name = "MonsterCard"
-		new_card.attack_power = CardDatabase.CARDS[monster_name][0]
-		new_card.max_health = CardDatabase.CARDS[monster_name][1]
+		self.add_child(new_card)
+		
 		new_card.card_name = monster_name
+		new_card.initialize_status()
 		new_card.position = Vector2(100, 525)
 		new_card.scale = Vector2(1, 1)
 		PlayerHand.add_card_to_hand(new_card, 1, 1)
@@ -63,9 +59,11 @@ func finish_drag():
 		card_being_dragged.get_parent().remove_child(card_being_dragged)
 		card_slot_found.add_child(card_being_dragged)
 		card_being_dragged.global_position = card_slot_found.global_position
-		card_being_dragged.scale = Vector2(1.3, 1.3) * 1.2
+		card_being_dragged.scale = Vector2(1.3, 1.3)
 		
 		card_being_dragged.placed = true
+		card_being_dragged.ability_ui_parent.visible = true
+		card_being_dragged.update_ability_button(CardslotManager.card_ability_cds[card_being_dragged.card_name])
 		card_slot_found.card_in_slot = card_being_dragged
 		CardslotManager.test() # Only for test purpose
 		card_being_dragged.card_slot_on = card_slot_found

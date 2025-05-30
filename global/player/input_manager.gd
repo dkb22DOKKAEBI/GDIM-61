@@ -14,6 +14,7 @@ const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
 const COLLISION_MASK_BOSS = 16
+const COLLISION_MASK_ABILITY_BUTTON = 32
 
 @export var card_manager_reference: Node2D
 @export var ingredient_card_manager: Node2D
@@ -54,39 +55,40 @@ func perform_left_click_action():
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_INGREDIENT_CARD
+	parameters.collision_mask = COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_INGREDIENT_CARD + COLLISION_MASK_ABILITY_BUTTON
 	var raycast_points := space_state.intersect_point(parameters)
 	
-	# Move monster card, if any, to the front
-	for i in range(raycast_points.size()):
-		if raycast_points[i].collider.collision_layer == COLLISION_MASK_MONSTER_CARD:
-			raycast_points.insert(0, raycast_points[i])
-			raycast_points.remove_at(i + 1)
-	
-	# Perform clicked action
 	if raycast_points.size() > 0:
-		for point in raycast_points:
-			var result_collision_mask = point.collider.collision_layer
-			
-			# Select monster cards
-			if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
-				var monster_card_found = point.collider.get_parent()
-				if monster_card_found and PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.IDLE:
-					if not monster_card_found.placed: # Find monster card in hand
-						card_manager_reference.start_drag(monster_card_found)
-						ingredient_card_manager.card_being_dragged = monster_card_found
-						AudioManager.play_sound("CLICK")
-						break
-					elif monster_card_found.placed: # Find monster card in battle field
-						#select_placed_card.emit(monster_card_found)
-						targeting_start_signal.emit(monster_card_found)
-						AudioManager.play_sound("CLICK")
-			
-			# Select ingredients cards
-			elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
-				var ingredient_card_found = point.collider.get_parent()
-				ingredient_card_found.ingredient_card_selected()
-				AudioManager.play_sound("CLICK")
+		# Find the point with highest z-index
+		var point = raycast_points[0]
+		for new_point in raycast_points:
+			if new_point.collider.get_parent().z_index > point.collider.get_parent().z_index:
+				point = new_point
+		var result_collision_mask = point.collider.collision_layer
+		
+		# Return if it is the ability button
+		if result_collision_mask == COLLISION_MASK_ABILITY_BUTTON:
+			return
+		
+		# Select monster cards
+		if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
+			var monster_card_found = point.collider.get_parent()
+			if monster_card_found and PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.IDLE:
+				if not monster_card_found.placed: # Find monster card in hand
+					card_manager_reference.start_drag(monster_card_found)
+					ingredient_card_manager.card_being_dragged = monster_card_found
+					AudioManager.play_sound("CLICK")
+					#break
+				elif monster_card_found.placed: # Find monster card in battle field
+					#select_placed_card.emit(monster_card_found)
+					targeting_start_signal.emit(monster_card_found)
+					AudioManager.play_sound("CLICK")
+		
+		# Select ingredients cards
+		elif result_collision_mask == COLLISION_MASK_INGREDIENT_CARD:
+			var ingredient_card_found = point.collider.get_parent()
+			ingredient_card_found.ingredient_card_selected()
+			AudioManager.play_sound("CLICK")
 
 
 # Handle right-click actions -> card info display

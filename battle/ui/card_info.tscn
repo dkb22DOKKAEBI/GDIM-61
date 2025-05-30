@@ -182,7 +182,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_tfdyk")
-region_rect = Rect2(120, 0, 8, 8)
+region_rect = Rect2(80, 64, 8, 8)
 
 [node name="AttackText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack"]
 modulate = Color(0, 0, 0, 1)

@@ -76,28 +76,6 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 	selected_card_in_slot = card
 
 
-# Player attack
-#func _on_player_attack():
-	#AudioManager.play_sound("ATTACK")
-	#if not selected_card_in_slot:
-		#return
-	#
-	#if not player_is_attacking and not selected_card_in_slot.attacked_this_turn:
-		#
-		#player_is_attacking = true
-		#selected_card_in_slot.attacked_this_turn = true
-		#
-		#monster_attack_boss_anim(selected_card_in_slot)
-		#await wait(0.5)
-		#if selected_card_in_slot.get_attack() > 0:
-			#enemy.get_child(0).boss_take_dmg(selected_card_in_slot.get_attack())
-		#
-		## Player attack end
-		#player_is_attacking = false;
-		#selected_card_in_slot.selected_label_vis(false)
-		#selected_card_in_slot = null
-		#temp_attack_message.visible = false
-
 func monster_attack_boss_anim(card):
 	#var new_pos_x = 440
 	#var new_pos_y = 0
@@ -209,19 +187,20 @@ func check_ability_cds():
 				continue  # Skip if nothing is in the slot
 			
 			var has_ability = has_an_abilities[card_name]
-			print("Card name:", card_name)
-			print("Ability data:", has_an_abilities[card_name])
+			#print("Card name:", card_name)
+			#print("Ability data:", has_an_abilities[card_name])
 			if has_ability:
 
 				var monster_card = cardslot.card_in_slot
 
 				if monster_card and monster_card.has_method("update_ability_button"):
-					monster_card.update_ability_button()
+					monster_card.update_ability_button(0)
 			else:
 				continue
 
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
+			cardslot.card_in_slot.update_ability_button(CardslotManager.cardslot_abilities[slot_id][1])
 
 
 func wait(wait_time):

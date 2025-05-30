@@ -16,7 +16,7 @@ var card_ability_cds = {
 	"Crepe"			: 0,
 	"Onigiri"		: 1,
 	"Charcuterie"	: 0
-	}
+}
 
 
 # Connect signals

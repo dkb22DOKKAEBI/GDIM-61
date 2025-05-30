@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xgexbvswx5v3"
-path="res://.godot/imported/Sushi.png-c20ad193d506dff7721ed8dd60e34ff8.ctex"
+uid="uid://bxlm2lgel16x3"
+path="res://.godot/imported/lighting.png-78398940091baf35618c477ff3bfeb87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/monsters/Sushi.png"
-dest_files=["res://.godot/imported/Sushi.png-c20ad193d506dff7721ed8dd60e34ff8.ctex"]
+source_file="res://art/ui_element/Icons/lighting.png"
+dest_files=["res://.godot/imported/lighting.png-78398940091baf35618c477ff3bfeb87.ctex"]
 
 [params]
 

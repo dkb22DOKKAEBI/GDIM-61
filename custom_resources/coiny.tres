@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bfogk1h6wa3x1"]
+
+[ext_resource type="FontFile" uid="uid://bvowq1ab14lg2" path="res://art/Coiny-Regular.ttf" id="1_x3f3n"]
+
+[resource]
+default_font = ExtResource("1_x3f3n")
