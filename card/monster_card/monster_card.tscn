@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://ibj8aersgrg6"]
+[gd_scene load_steps=10 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
-[ext_resource type="Texture2D" uid="uid://ug6kmbepjb6p" path="res://art/card_images/monsters/New_Pizza.png" id="2_dqe1h"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/ui_element/Icons/heart.png" id="4_ydfrr"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="5_316fr"]
@@ -14,14 +13,12 @@
 size = Vector2(78, 112)
 
 [node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("collision")]
-position = Vector2(183, 134)
 script = ExtResource("1_vtcvk")
 collision = NodePath("Area2D")
 
 [node name="CardImage" type="Sprite2D" parent="."]
 position = Vector2(0, -7.15256e-07)
 scale = Vector2(0.19, 0.195)
-texture = ExtResource("2_dqe1h")
 
 [node name="Area2D" type="Area2D" parent="."]
 
