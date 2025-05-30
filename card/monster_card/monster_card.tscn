@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
-[ext_resource type="Texture2D" uid="uid://cvf6g46vkg67f" path="res://art/card_images/monsters/New_Pizza.png" id="2_dqe1h"]
+[ext_resource type="Texture2D" uid="uid://dbanh8yosvo05" path="res://art/card_images/monsters/New_Pizza.png" id="2_dqe1h"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
 [ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="4_1m2nv"]
 
