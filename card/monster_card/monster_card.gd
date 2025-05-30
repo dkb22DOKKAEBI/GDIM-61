@@ -11,12 +11,16 @@ extends Card
 @export var attack_text: RichTextLabel
 @export var health_text: RichTextLabel
 @export var card_image: Sprite2D
+@export var cooldown_text: RichTextLabel
 
 # Monster card info
 var max_health: int
 var curr_health: int
 var attack_power: int
 var placed := false # Whether is placed onto the battlefield
+
+var ability_cooldown_color := Color(0.375, 0.375, 0.375)
+var ability_ready_color := Color(0.6, 1, 0.45)
 
 
 # Ready
@@ -29,9 +33,9 @@ func _ready() -> void:
 	ability_handler = preload("res://card/monster_card/ability_manager.gd").new()
 	ability_handler.set_cardslot_manager(cardslot_manager)
 	
-	ability_button.disabled = true # start disabled if needed
-	ability_button.hide()
-	ability_button.z_index = 10  # Higher than any sprites or labels
+	#ability_button.disabled = true # start disabled if needed
+	#ability_button.hide()
+	#ability_button.z_index = 10  # Higher than any sprites or labels
 
 
 # Initialize the monster card
@@ -48,16 +52,28 @@ func initialize_status() -> void:
 	ability_ui_parent.visible = false
 
 
-func update_ability_button():
-	if placed:
-		ability_button.show()
-		ability_button.disabled = false  # allow pressing
+func update_ability_button(curr_cooldown: int):
+	# Ability ready
+	if curr_cooldown == 0:
+		cooldown_text.text = "Ready!"
+		ability_button.modulate = ability_ready_color
+	# Ability not ready
 	else:
-		ability_button.hide()
-		ability_button.disabled = true  # prevent pressing just in case
+		cooldown_text.text = "in " + str(curr_cooldown) + " turns"
+	
+	#if placed:
+		#ability_button.show()
+		#ability_button.disabled = false  # allow pressing
+	#else:
+		#ability_button.hide()
+		#ability_button.disabled = true  # prevent pressing just in case
 
 
 func _on_ability_button_pressed():
+	# Return if the ability is still under cooldown
+	if CardslotManager.cardslot_abilities[card_slot_on.card_slot_number][1] != 0:
+		return
+	
 	if card_slot_on == null:
 		print("Error: Monster card is not placed in a slot.")
 		return
@@ -79,10 +95,11 @@ func _on_ability_button_pressed():
 
 	# Reset cooldown
 	cardslot_manager.cardslot_abilities[slot_id][1] = cardslot_manager.card_ability_cds.get(card_name_from_slot, 0)
+	update_ability_button(cardslot_manager.cardslot_abilities[slot_id][1])
 
 	# Disable button after use
-	ability_button.disabled = true
-	ability_button.hide()
+	#ability_button.disabled = true
+	#ability_button.hide()
 
 
 # Getters for attack power and current health

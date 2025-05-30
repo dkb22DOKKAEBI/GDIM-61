@@ -63,6 +63,7 @@ func finish_drag():
 		
 		card_being_dragged.placed = true
 		card_being_dragged.ability_ui_parent.visible = true
+		card_being_dragged.update_ability_button(CardslotManager.card_ability_cds[card_being_dragged.card_name])
 		card_slot_found.card_in_slot = card_being_dragged
 		CardslotManager.test() # Only for test purpose
 		card_being_dragged.card_slot_on = card_slot_found

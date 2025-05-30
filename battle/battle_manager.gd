@@ -216,12 +216,13 @@ func check_ability_cds():
 				var monster_card = cardslot.card_in_slot
 
 				if monster_card and monster_card.has_method("update_ability_button"):
-					monster_card.update_ability_button()
+					monster_card.update_ability_button(0)
 			else:
 				continue
 
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
+			cardslot.card_in_slot.update_ability_button(CardslotManager.cardslot_abilities[slot_id][1])
 
 
 func wait(wait_time):
