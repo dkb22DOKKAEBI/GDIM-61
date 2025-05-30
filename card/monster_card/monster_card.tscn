@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ibj8aersgrg6"]
+[gd_scene load_steps=11 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
@@ -11,6 +11,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(78, 112)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5mhw"]
+radius = 15.5952
 
 [node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("ability_button", "ability_ui_parent", "attack_text", "health_text", "card_image", "cooldown_text", "collision")]
 script = ExtResource("1_vtcvk")
@@ -156,8 +159,10 @@ offset_right = 57.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AbilityButtonParent" type="Control" parent="Ability"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,6 +176,14 @@ offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+
+[node name="Area2D" type="Area2D" parent="Ability/AbilityButtonParent"]
+position = Vector2(18.8889, 20)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ability/AbilityButtonParent/Area2D"]
+shape = SubResource("CircleShape2D_v5mhw")
 
 [node name="AbilityButton" type="Button" parent="Ability/AbilityButtonParent"]
 modulate = Color(0.377919, 0.377919, 0.377919, 1)
@@ -187,7 +200,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 focus_mode = 0
-mouse_filter = 2
 icon = ExtResource("7_bqkcq")
 flat = true
 

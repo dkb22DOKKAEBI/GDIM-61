@@ -14,6 +14,7 @@ const COLLISION_MASK_MONSTER_CARD = 1
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_INGREDIENT_CARD = 8
 const COLLISION_MASK_BOSS = 16
+const COLLISION_MASK_ABILITY_BUTTON = 32
 
 @export var card_manager_reference: Node2D
 @export var ingredient_card_manager: Node2D
@@ -54,7 +55,7 @@ func perform_left_click_action():
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_INGREDIENT_CARD
+	parameters.collision_mask = COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_INGREDIENT_CARD + COLLISION_MASK_ABILITY_BUTTON
 	var raycast_points := space_state.intersect_point(parameters)
 	
 	if raycast_points.size() > 0:
@@ -63,9 +64,12 @@ func perform_left_click_action():
 		for new_point in raycast_points:
 			if new_point.collider.get_parent().z_index > point.collider.get_parent().z_index:
 				point = new_point
-		
 		var result_collision_mask = point.collider.collision_layer
-				
+		
+		# Return if it is the ability button
+		if result_collision_mask == COLLISION_MASK_ABILITY_BUTTON:
+			return
+		
 		# Select monster cards
 		if result_collision_mask == COLLISION_MASK_MONSTER_CARD:
 			var monster_card_found = point.collider.get_parent()

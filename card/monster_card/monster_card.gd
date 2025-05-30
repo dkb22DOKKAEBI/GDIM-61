@@ -76,6 +76,7 @@ func update_ability_button(curr_cooldown: int):
 
 
 func _on_ability_button_pressed():
+	print("ability button pressed")
 	# Return if the ability is still under cooldown
 	if CardslotManager.cardslot_abilities[card_slot_on.card_slot_number][1] != 0:
 		return
