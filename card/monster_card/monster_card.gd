@@ -32,10 +32,6 @@ func _ready() -> void:
 	# Set up ability
 	ability_handler = preload("res://card/monster_card/ability_manager.gd").new()
 	ability_handler.set_cardslot_manager(cardslot_manager)
-	
-	#ability_button.disabled = true # start disabled if needed
-	#ability_button.hide()
-	#ability_button.z_index = 10  # Higher than any sprites or labels
 
 
 # Initialize the monster card
@@ -66,47 +62,35 @@ func update_ability_button(curr_cooldown: int):
 	else:
 		cooldown_text.text = "in " + str(curr_cooldown) + " turns"
 		ability_button.modulate = ability_cooldown_color
-	
-	#if placed:
-		#ability_button.show()
-		#ability_button.disabled = false  # allow pressing
-	#else:
-		#ability_button.hide()
-		#ability_button.disabled = true  # prevent pressing just in case
 
 
 func _on_ability_button_pressed():
-	print("ability button pressed")
 	# Return if the ability is still under cooldown
 	if CardslotManager.cardslot_abilities[card_slot_on.card_slot_number][1] != 0:
 		return
 	
 	if card_slot_on == null:
-		print("Error: Monster card is not placed in a slot.")
+		#print("Error: Monster card is not placed in a slot.")
 		return
 
 	var slot_id = card_slot_on.card_slot_number
 	var card_info = cardslot_manager.cardslot_abilities[slot_id]
 	var card_name_from_slot = card_info[0]
 
-	print("Ability activated for", card_name_from_slot, "in", slot_id)
+	#print("Ability activated for", card_name_from_slot, "in", slot_id)
 
 	# Configure the Ability instance
 	ability_handler.enemy = boss_node
 	var result = ability_handler.add_ability_card(card_name_from_slot, self)
 
-	if result == null:
-		print("No ability or ability not implemented.")
-	else:
-		print("Ability result:", result)
+	#if result == null:
+		#print("No ability or ability not implemented.")
+	#else:
+		#print("Ability result:", result)
 
 	# Reset cooldown
 	cardslot_manager.cardslot_abilities[slot_id][1] = cardslot_manager.card_ability_cds.get(card_name_from_slot, 0)
 	update_ability_button(cardslot_manager.cardslot_abilities[slot_id][1])
-
-	# Disable button after use
-	#ability_button.disabled = true
-	#ability_button.hide()
 
 
 # Getters for attack power and current health
