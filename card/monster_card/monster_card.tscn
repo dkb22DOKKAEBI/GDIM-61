@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ibj8aersgrg6"]
+[gd_scene load_steps=12 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
 [ext_resource type="Texture2D" uid="uid://ug6kmbepjb6p" path="res://art/card_images/monsters/New_Pizza.png" id="2_dqe1h"]
@@ -6,14 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="4_1m2nv"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="5_316fr"]
 [ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="6_hyyyl"]
+[ext_resource type="Texture2D" uid="uid://dds5hqksfjvsr" path="res://art/card_images/monsters/Screenshot 2025-05-29 212237.png" id="6_oliei"]
 [ext_resource type="Texture2D" uid="uid://cr85qemgwy2c7" path="res://art/card_images/monsters/ability_icon_inner.png" id="7_nkpla"]
 [ext_resource type="Texture2D" uid="uid://btwh62qvx7af" path="res://art/card_images/monsters/ability_icon_outer.png" id="7_v5mhw"]
+[ext_resource type="Texture2D" uid="uid://d0jlmscxpogdh" path="res://art/card_images/monsters/Screenshot 2025-05-29 212231.png" id="7_ydfrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(78, 112)
 
 [node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("collision")]
-position = Vector2(257, 229)
 script = ExtResource("1_vtcvk")
 collision = NodePath("Area2D")
 
@@ -48,6 +49,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Health" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = -9.0
@@ -89,6 +91,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Attack" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = -9.0
@@ -97,6 +100,7 @@ mouse_filter = 2
 
 [node name="AttackIcon" type="NinePatchRect" parent="Attack"]
 custom_minimum_size = Vector2(12, 12)
+layout_mode = 0
 offset_left = -37.0
 offset_top = -44.0
 offset_right = -27.0
@@ -115,6 +119,80 @@ offset_left = -30.0
 offset_top = -47.0
 offset_right = 51.0
 offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+theme = ExtResource("5_316fr")
+theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/normal_font_size = 50
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -9.0
+offset_bottom = -9.0
+mouse_filter = 2
+
+[node name="HealthIcon" type="Sprite2D" parent="Health2"]
+position = Vector2(27, -35)
+scale = Vector2(0.127737, 0.127737)
+texture = ExtResource("6_oliei")
+
+[node name="HealthTetxt" type="RichTextLabel" parent="Health2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = -44.0
+offset_right = 99.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+theme = ExtResource("5_316fr")
+theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/normal_font_size = 50
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -54.0
+offset_top = -9.0
+offset_right = -54.0
+offset_bottom = -9.0
+mouse_filter = 2
+
+[node name="AttackIcon" type="Sprite2D" parent="Attack2"]
+position = Vector2(27, -35)
+scale = Vector2(0.115481, 0.115481)
+texture = ExtResource("7_ydfrr")
+
+[node name="AttackText" type="RichTextLabel" parent="Attack2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -44.0
+offset_right = 98.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
