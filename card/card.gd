@@ -14,7 +14,6 @@ var is_monster_card: bool = false
 var is_in_animation: bool = false
 var is_highlighted: bool = false
 
-@export var selected_label: Label 
 @export var collision: CollisionObject2D
 
 
@@ -40,10 +39,6 @@ func _on_area_2d_mouse_exited():
 func set_card_z_index(index: int) -> void:
 	self.z_index = index
 	get_child(1).get_child(0).z_index = index
-
-
-func selected_label_vis(flag: bool):
-	selected_label.visible = flag
 
 
 func set_pickable(flag: bool):

@@ -1,82 +1,117 @@
-[gd_scene load_steps=4 format=3 uid="uid://ibj8aersgrg6"]
+[gd_scene load_steps=6 format=3 uid="uid://ibj8aersgrg6"]
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
+[ext_resource type="Texture2D" uid="uid://cvf6g46vkg67f" path="res://art/card_images/monsters/New_Pizza.png" id="2_dqe1h"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
+[ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="4_1m2nv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
-size = Vector2(72, 102)
+size = Vector2(78, 112)
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("selected_label", "collision")]
+[node name="MonsterCard" type="Node2D" node_paths=PackedStringArray("collision")]
 script = ExtResource("1_vtcvk")
-selected_label = NodePath("SelectedLabel")
 collision = NodePath("Area2D")
 
 [node name="CardImage" type="Sprite2D" parent="."]
 position = Vector2(0, -7.15256e-07)
-scale = Vector2(0.171429, 0.175862)
+scale = Vector2(0.19, 0.195)
+texture = ExtResource("2_dqe1h")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_xd4uy")
 
-[node name="Attack" type="RichTextLabel" parent="."]
+[node name="NameDisplay" type="RichTextLabel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = 58.0
+offset_left = -39.0
+offset_top = -54.0
+offset_right = 39.0
+offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(25, 25)
-mouse_filter = 2
 theme = ExtResource("3_2ufkr")
-theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
-theme_override_font_sizes/normal_font_size = 50
-text = "1
-"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 7
+text = "Pizza Ninja"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Health" type="RichTextLabel" parent="."]
+[node name="Health" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="HealthTetxt" type="RichTextLabel" parent="Health"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = -67.0
-offset_right = 112.0
-offset_bottom = 54.0
+offset_left = 5.0
+offset_top = -45.0
+offset_right = 86.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(25, 25)
 mouse_filter = 2
 theme = ExtResource("3_2ufkr")
 theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
-theme_override_font_sizes/normal_font_size = 50
-text = "1"
-horizontal_alignment = 1
+theme_override_font_sizes/normal_font_size = 32
+text = "20"
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SelectedLabel" type="Label" parent="."]
-visible = false
-offset_left = -28.0
-offset_top = -62.0
-offset_right = 28.0
-offset_bottom = -41.0
+[node name="HealthIcon" type="NinePatchRect" parent="Health"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+offset_left = 26.0
+offset_top = -44.0
+offset_right = 36.0
+offset_bottom = -34.0
+texture = ExtResource("4_1m2nv")
+region_rect = Rect2(64, 64, 8, 8)
+
+[node name="Attack" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="AttackText" type="RichTextLabel" parent="Attack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -45.0
+offset_right = 55.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
 theme = ExtResource("3_2ufkr")
-theme_override_colors/font_color = Color(0.339407, 0.726599, 0.479536, 1)
-theme_override_font_sizes/font_size = 12
-text = "Selected"
-horizontal_alignment = 1
+theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "20"
 vertical_alignment = 1
+
+[node name="AttackIcon" type="NinePatchRect" parent="Attack"]
+custom_minimum_size = Vector2(10, 10)
+offset_left = -37.0
+offset_top = -44.0
+offset_right = -27.0
+offset_bottom = -34.0
+texture = ExtResource("4_1m2nv")
+region_rect = Rect2(80, 64, 8, 8)
 
 [node name="UIContainer" type="Control" parent="."]
 z_index = 10

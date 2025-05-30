@@ -13,17 +13,18 @@ var attack_power: int
 
 
 func _ready() -> void:
-	super._ready()
-	is_monster_card = true
-	ability_button.connect("pressed", Callable(self, "_on_ability_button_pressed"))
-	
-	ability_handler = preload("res://card/monster_card/ability_manager.gd").new()
-	ability_handler.set_cardslot_manager(cardslot_manager)
-	
-	# Set up ability
-	ability_button.disabled = true # start disabled if needed
-	ability_button.hide()
-	ability_button.z_index = 10  # Higher than any sprites or labels
+	pass
+	#super._ready()
+	#is_monster_card = true
+	#ability_button.connect("pressed", Callable(self, "_on_ability_button_pressed"))
+	#
+	#ability_handler = preload("res://card/monster_card/ability_manager.gd").new()
+	#ability_handler.set_cardslot_manager(cardslot_manager)
+	#
+	## Set up ability
+	#ability_button.disabled = true # start disabled if needed
+	#ability_button.hide()
+	#ability_button.z_index = 10  # Higher than any sprites or labels
 
 
 func update_ability_button():
@@ -61,10 +62,6 @@ func _on_ability_button_pressed():
 	# Disable button after use
 	ability_button.disabled = true
 	ability_button.hide()
-
-
-func get_label_vis() -> bool:
-	return selected_label.visible
 
 
 func get_attack() -> int:
@@ -111,7 +108,3 @@ func heal(amount: int) -> void:
 func die():
 	card_slot_on.card_in_slot = null
 	queue_free()
-
-
-func test():
-	pass
