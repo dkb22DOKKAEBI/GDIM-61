@@ -60,6 +60,7 @@ func update_ability_button(curr_cooldown: int):
 	# Ability not ready
 	else:
 		cooldown_text.text = "in " + str(curr_cooldown) + " turns"
+		ability_button.modulate = ability_cooldown_color
 	
 	#if placed:
 		#ability_button.show()
