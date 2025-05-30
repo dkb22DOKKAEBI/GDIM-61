@@ -134,6 +134,8 @@ func health_change_animation(target_color: Color) -> void:
 # Monster card dies
 func die():
 	card_slot_on.card_in_slot = null
+	CardslotManager.cardslot_abilities[card_slot_on.card_slot_number][0] = "None"
+	CardslotManager.cardslot_abilities[card_slot_on.card_slot_number][1] = 0
 	queue_free()
 
 
