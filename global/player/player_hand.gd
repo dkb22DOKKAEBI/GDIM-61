@@ -6,7 +6,7 @@ const INGREDIENT_CARD_WIDTH = 85 # Ingredient card width
 const MONSTER_CARD_WIDTH = 100 # Monster card width
 const CARD_HEIGHT = 40 # Card height
 
-const HAND_Y_POSITION = 522 # Y position for ingredient card
+const HAND_Y_POSITION = 519 # Y position for ingredient card
 const MONSTER_CARD_Y_OFFSET = 90 # Y offset for monster cards' position in hand
 const MONSTER_CARD_UP_Y_OFFSET = 55 # Y offset for monster card when hovered over
 const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed
