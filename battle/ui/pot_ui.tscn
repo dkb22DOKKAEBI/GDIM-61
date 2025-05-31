@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvlk5m8v5p4ut"]
+[gd_scene load_steps=6 format=3 uid="uid://bvlk5m8v5p4ut"]
 
 [ext_resource type="Script" uid="uid://c5u2s7smdqdr4" path="res://battle/ui/pot_ui.gd" id="1_4rq33"]
 [ext_resource type="Texture2D" uid="uid://dat87b5x8g81i" path="res://art/pot-transparent-background.png" id="1_otwdq"]
 [ext_resource type="Theme" uid="uid://cwcffc7ex0icm" path="res://custom_resources/ingredient_grid.tres" id="4_3pefp"]
+[ext_resource type="Texture2D" uid="uid://b3owmj8f8k4u" path="res://art/kenney_ui_pack/Grey/Default/arrow_basic_s.png" id="5_3pefp"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="5_j7w88"]
 
 [node name="PotUi" type="Control" node_paths=PackedStringArray("grids", "food_result_text")]
@@ -20,15 +21,14 @@ food_result_text = NodePath("Pot/ResultName")
 [node name="Pot" type="NinePatchRect" parent="."]
 z_index = 1
 layout_mode = 0
-offset_left = 120.0
-offset_top = 463.0
-offset_right = 219.0
-offset_bottom = 602.0
+offset_left = 52.0
+offset_top = 462.0
+offset_right = 151.0
+offset_bottom = 601.0
 texture = ExtResource("1_otwdq")
 region_rect = Rect2(187, 227, 613, 891)
 
 [node name="ResultName" type="RichTextLabel" parent="Pot"]
-visible = false
 z_index = 2
 layout_mode = 0
 offset_left = 6.0
@@ -53,10 +53,10 @@ mouse_filter = 2
 [node name="IngredientGrid_1" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 181.0
-offset_top = 441.0
-offset_right = 226.0
-offset_bottom = 486.0
+offset_left = 105.0
+offset_top = 451.0
+offset_right = 150.0
+offset_bottom = 496.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -77,10 +77,10 @@ grow_vertical = 2
 [node name="IngredientGrid_2" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 122.0
-offset_top = 437.0
-offset_right = 167.0
-offset_bottom = 482.0
+offset_left = 56.0
+offset_top = 441.0
+offset_right = 101.0
+offset_bottom = 486.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -99,10 +99,10 @@ grow_vertical = 2
 [node name="IngredientGrid_3" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 75.0
-offset_top = 473.0
-offset_right = 120.0
-offset_bottom = 518.0
+offset_left = 13.0
+offset_top = 467.0
+offset_right = 58.0
+offset_bottom = 512.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -121,10 +121,10 @@ grow_vertical = 2
 [node name="IngredientGrid_4" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 68.0
-offset_top = 530.0
-offset_right = 113.0
-offset_bottom = 575.0
+offset_left = 6.0
+offset_top = 516.0
+offset_right = 51.0
+offset_bottom = 561.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -140,13 +140,14 @@ offset_bottom = -5.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="Polygon2D" parent="PotIngredients"]
-visible = false
-modulate = Color(0.0885599, 0.0885599, 0.0885599, 0.701961)
-z_index = 6
-position = Vector2(-108, 446)
-polygon = PackedVector2Array(123, 4, 318, 4, 318, 48, 300, 48, 292, 66, 284, 48, 123, 48)
-uv = PackedVector2Array(-144, -32, 393, -35, 394, 70, 305, 71, 291, 105, 270, 72, -141, 75)
+[node name="IngredientIndicator" type="NinePatchRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 89.0
+offset_top = 492.0
+offset_right = 106.0
+offset_bottom = 509.0
+texture = ExtResource("5_3pefp")
 
 [connection signal="pressed" from="PotIngredients/IngredientGrid_1" to="." method="on_disselect_ingredient_1"]
 [connection signal="pressed" from="PotIngredients/IngredientGrid_2" to="." method="on_disselect_ingredient_2"]
