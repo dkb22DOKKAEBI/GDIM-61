@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=23 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
 [ext_resource type="PackedScene" uid="uid://bvlk5m8v5p4ut" path="res://battle/ui/pot_ui.tscn" id="2_pyfix"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_e48mi"]
-[ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="5_ueicy"]
 [ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://battle/deck.gd" id="6_oiw7q"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://global/player/input_manager.gd" id="7_fisqk"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://menus/pause_menu.tscn" id="7_n5ix6"]
@@ -220,26 +219,10 @@ offset_top = 555.0
 offset_right = 116.0
 offset_bottom = 594.0
 focus_mode = 0
-theme = ExtResource("4_e48mi")
+theme = ExtResource("13_ju8jl")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Cook"
-flat = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/CookButton"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_ueicy")
-region_rect = Rect2(114, 4, 44, 26)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
 
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
@@ -249,27 +232,10 @@ offset_top = 507.0
 offset_right = 116.0
 offset_bottom = 545.0
 focus_mode = 0
-theme = ExtResource("4_e48mi")
+theme = ExtResource("13_ju8jl")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Recipe"
-flat = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/RecipeButton"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_ueicy")
-region_rect = Rect2(114, 4, 44, 26)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
 
 [node name="GameConditions" type="Control" parent="UI"]
 anchors_preset = 0
