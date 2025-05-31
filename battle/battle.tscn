@@ -154,6 +154,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PotUICover" type="ColorRect" parent="UI/BackgroundCovers"]
+visible = false
 modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
 z_index = 1
 layout_mode = 0
@@ -163,6 +164,7 @@ offset_bottom = 600.0
 mouse_filter = 2
 
 [node name="EndTurnCover" type="ColorRect" parent="UI/BackgroundCovers"]
+visible = false
 modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
 z_index = 1
 layout_mode = 0

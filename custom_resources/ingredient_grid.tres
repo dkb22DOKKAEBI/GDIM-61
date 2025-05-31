@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cwcffc7ex0icm"]
+
+[ext_resource type="Texture2D" uid="uid://dqtgy378gqp10" path="res://art/kenney_ui_pack/Grey/Default/button_square_gradient.png" id="1_epktf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3pefp"]
+texture = ExtResource("1_epktf")
+modulate_color = Color(0.941176, 0.941176, 0.941176, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y73x5"]
+texture = ExtResource("1_epktf")
+modulate_color = Color(0.843184, 0.843184, 0.843184, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3avwt"]
+texture = ExtResource("1_epktf")
+modulate_color = Color(0.803922, 0.803922, 0.803922, 1)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_3pefp")
+Button/styles/normal = SubResource("StyleBoxTexture_y73x5")
+Button/styles/pressed = SubResource("StyleBoxTexture_3avwt")
