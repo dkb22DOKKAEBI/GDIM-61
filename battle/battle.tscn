@@ -168,8 +168,9 @@ mouse_filter = 2
 
 [node name="PotUICover" type="Panel" parent="UI/BackgroundCovers"]
 z_index = 1
+layout_mode = 0
 offset_left = 2.0
-offset_top = 438.0
+offset_top = 445.0
 offset_right = 196.0
 offset_bottom = 600.0
 theme = ExtResource("11_as1q7")
