@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bmdwt0d0lr5sn"]
+
+[ext_resource type="Texture2D" uid="uid://djrkyyfgytset" path="res://art/kenney_ui_pack/Green/Default/button_rectangle_depth_flat.png" id="1_155eu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppfgm"]
+texture = ExtResource("1_155eu")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_vertical = 2
+modulate_color = Color(0.808998, 0.808998, 0.808998, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_282ap"]
+texture = ExtResource("1_155eu")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_vertical = 2
+modulate_color = Color(0.74558, 0.74558, 0.74558, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05gcl"]
+texture = ExtResource("1_155eu")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_vertical = 2
+modulate_color = Color(0.691357, 0.691357, 0.691357, 1)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_ppfgm")
+Button/styles/normal = SubResource("StyleBoxTexture_282ap")
+Button/styles/pressed = SubResource("StyleBoxTexture_05gcl")
