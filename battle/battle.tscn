@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=26 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://menus/pause_menu.tscn" id="7_n5ix6"]
 [ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://art/card_images/monsters/Deck.png" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://pr1np1molltl" path="res://battle/battle_manager.gd" id="9_agsc7"]
+[ext_resource type="Theme" uid="uid://2j3rac34a6bb" path="res://custom_resources/player_cover.tres" id="11_as1q7"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://card/monster_card/cooking_mechanic.gd" id="11_fisqk"]
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://card/card_manager/ingredient_card_manager.gd" id="11_icoan"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="12_icoan"]
@@ -155,27 +156,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PotUICover" type="ColorRect" parent="UI/BackgroundCovers"]
-visible = false
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
-z_index = 1
-layout_mode = 0
-offset_top = 442.0
-offset_right = 223.0
-offset_bottom = 600.0
-mouse_filter = 2
-
-[node name="EndTurnCover" type="ColorRect" parent="UI/BackgroundCovers"]
-visible = false
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
-z_index = 1
-layout_mode = 0
-offset_left = 827.0
-offset_top = 442.0
-offset_right = 959.0
-offset_bottom = 600.0
-mouse_filter = 2
-
 [node name="PlayerHand" type="ColorRect" parent="UI/BackgroundCovers"]
 modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
 z_index = 1
@@ -185,6 +165,14 @@ offset_top = 442.0
 offset_right = 813.0
 offset_bottom = 600.0
 mouse_filter = 2
+
+[node name="PotUICover" type="Panel" parent="UI/BackgroundCovers"]
+z_index = 1
+offset_left = 2.0
+offset_top = 438.0
+offset_right = 196.0
+offset_bottom = 600.0
+theme = ExtResource("11_as1q7")
 
 [node name="BattleUI" parent="UI" instance=ExtResource("1_156m4")]
 layout_mode = 1
@@ -217,9 +205,9 @@ text = "End Turn"
 [node name="CookButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 151.0
+offset_left = 153.0
 offset_top = 523.0
-offset_right = 186.0
+offset_right = 188.0
 offset_bottom = 558.0
 focus_mode = 0
 theme = ExtResource("13_ju8jl")
@@ -241,9 +229,9 @@ texture = ExtResource("14_xmbur")
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 151.0
+offset_left = 153.0
 offset_top = 562.0
-offset_right = 186.0
+offset_right = 188.0
 offset_bottom = 597.0
 focus_mode = 0
 theme = ExtResource("13_ju8jl")

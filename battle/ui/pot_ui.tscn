@@ -21,10 +21,10 @@ food_result_text = NodePath("Pot/ResultName")
 [node name="Pot" type="NinePatchRect" parent="."]
 z_index = 1
 layout_mode = 0
-offset_left = 52.0
-offset_top = 462.0
-offset_right = 151.0
-offset_bottom = 601.0
+offset_left = 55.0
+offset_top = 463.0
+offset_right = 154.0
+offset_bottom = 602.0
 texture = ExtResource("1_otwdq")
 region_rect = Rect2(187, 227, 613, 891)
 
@@ -53,10 +53,10 @@ mouse_filter = 2
 [node name="IngredientGrid_1" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 105.0
-offset_top = 451.0
-offset_right = 150.0
-offset_bottom = 496.0
+offset_left = 108.0
+offset_top = 452.0
+offset_right = 153.0
+offset_bottom = 497.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -77,10 +77,10 @@ grow_vertical = 2
 [node name="IngredientGrid_2" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 56.0
-offset_top = 441.0
-offset_right = 101.0
-offset_bottom = 486.0
+offset_left = 59.0
+offset_top = 442.0
+offset_right = 104.0
+offset_bottom = 487.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -99,10 +99,10 @@ grow_vertical = 2
 [node name="IngredientGrid_3" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 13.0
-offset_top = 467.0
-offset_right = 58.0
-offset_bottom = 512.0
+offset_left = 16.0
+offset_top = 468.0
+offset_right = 61.0
+offset_bottom = 513.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -121,10 +121,10 @@ grow_vertical = 2
 [node name="IngredientGrid_4" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 6.0
-offset_top = 516.0
-offset_right = 51.0
-offset_bottom = 561.0
+offset_left = 9.0
+offset_top = 517.0
+offset_right = 54.0
+offset_bottom = 562.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -140,13 +140,13 @@ offset_bottom = -5.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="IngredientIndicator" type="NinePatchRect" parent="."]
+[node name="IngredientIndicator" type="NinePatchRect" parent="PotIngredients"]
 z_index = 1
 layout_mode = 0
-offset_left = 89.0
-offset_top = 492.0
-offset_right = 106.0
-offset_bottom = 509.0
+offset_left = 92.0
+offset_top = 493.0
+offset_right = 109.0
+offset_bottom = 510.0
 texture = ExtResource("5_3pefp")
 
 [connection signal="pressed" from="PotIngredients/IngredientGrid_1" to="." method="on_disselect_ingredient_1"]
