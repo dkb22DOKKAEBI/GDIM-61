@@ -96,8 +96,7 @@ func update_hand_positions(speed, target_hand: Array):
 # Calculate new card x-position in hand
 func calculate_card_position(index, hand_size: int):
 	var total_width = (hand_size -1) * CARD_WIDTH
-	@warning_ignore("integer_division")
-	var x_offset = center_screen_x + index * CARD_WIDTH - total_width / 2
+	var x_offset = center_screen_x + index * CARD_WIDTH - total_width / 2.0
 	return x_offset
 
 
