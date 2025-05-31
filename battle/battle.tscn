@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://battle/deck.gd" id="6_oiw7q"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://global/player/input_manager.gd" id="7_fisqk"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://menus/pause_menu.tscn" id="7_n5ix6"]
-[ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://art/card_images/monsters/Deck.png" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://pr1np1molltl" path="res://battle/battle_manager.gd" id="9_agsc7"]
 [ext_resource type="Theme" uid="uid://2j3rac34a6bb" path="res://custom_resources/player_cover.tres" id="11_as1q7"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://card/monster_card/cooking_mechanic.gd" id="11_fisqk"]
@@ -25,6 +24,15 @@
 [ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="21_m24mv"]
 [ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="22_1x3g8"]
 [ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="23_01pft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmbur"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 9
+border_color = Color(0.945098, 0.760784, 0.196078, 1)
+expand_margin_bottom = 2.0
 
 [node name="NewBattle" type="Node2D"]
 
@@ -48,24 +56,66 @@ vertical_alignment = 1
 
 [node name="PlayerHand" type="Node2D" parent="."]
 
-[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
-position = Vector2(884, 543)
+[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "ingredient_card_manager")]
+position = Vector2(888, 538)
 script = ExtResource("6_oiw7q")
 deck_left_num_text = NodePath("DeckLeftNum")
-deck_sprite = NodePath("DeckSprite2D")
 ingredient_card_manager = NodePath("../IngredientCardManager")
 
-[node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
-z_index = 1
-scale = Vector2(0.383333, 0.383333)
-texture = ExtResource("7_py4tk")
+[node name="DeckImage" type="Panel" parent="PlayerHand/Deck"]
+offset_left = -22.0
+offset_top = -52.0
+offset_right = 46.0
+offset_bottom = 49.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmbur")
+
+[node name="DeckMiddle" type="ColorRect" parent="PlayerHand/Deck/DeckImage"]
+modulate = Color(0.972613, 0.790405, 0.253099, 1)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 56.0
+offset_bottom = 86.0
+
+[node name="DeckDepth" type="Control" parent="PlayerHand/Deck/DeckImage"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DeckDepth_1" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 95.0
+offset_right = 66.0
+offset_bottom = 95.6
+
+[node name="DeckDepth_2" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 97.0
+offset_right = 66.0
+offset_bottom = 97.6
+
+[node name="DeckDepth_3" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 99.0
+offset_right = 66.0
+offset_bottom = 99.6
+
+[node name="DeckDepth_4" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 101.0
+offset_right = 66.0
+offset_bottom = 101.6
 
 [node name="DeckLeftNum" type="RichTextLabel" parent="PlayerHand/Deck"]
 z_index = 2
-offset_left = -25.0
-offset_top = -26.0
-offset_right = 29.0
-offset_bottom = 28.0
+offset_left = -14.0
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = 23.0
 theme = ExtResource("4_e48mi")
 theme_override_font_sizes/normal_font_size = 32
 text = "0"
@@ -186,9 +236,9 @@ mouse_filter = 2
 z_index = 2
 layout_mode = 0
 offset_left = 842.0
-offset_top = 445.0
+offset_top = 436.0
 offset_right = 952.0
-offset_bottom = 482.0
+offset_bottom = 473.0
 focus_mode = 0
 theme = ExtResource("13_ju8jl")
 theme_override_font_sizes/font_size = 20
