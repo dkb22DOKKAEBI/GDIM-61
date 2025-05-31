@@ -156,15 +156,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PlayerHand" type="ColorRect" parent="UI/BackgroundCovers"]
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
+[node name="PlayerHandCover" type="Panel" parent="UI/BackgroundCovers"]
 z_index = 1
 layout_mode = 0
-offset_left = 239.0
-offset_top = 442.0
-offset_right = 813.0
+offset_left = 206.0
+offset_top = 445.0
+offset_right = 832.0
 offset_bottom = 600.0
-mouse_filter = 2
+theme = ExtResource("11_as1q7")
 
 [node name="PotUICover" type="Panel" parent="UI/BackgroundCovers"]
 z_index = 1
