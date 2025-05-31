@@ -28,6 +28,7 @@ texture = ExtResource("1_otwdq")
 region_rect = Rect2(187, 227, 613, 891)
 
 [node name="ResultName" type="RichTextLabel" parent="Pot"]
+visible = false
 z_index = 2
 layout_mode = 0
 offset_left = 6.0
@@ -52,32 +53,34 @@ mouse_filter = 2
 [node name="IngredientGrid_1" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 169.0
-offset_top = 453.0
-offset_right = 206.0
-offset_bottom = 490.0
+offset_left = 203.0
+offset_top = 399.0
+offset_right = 248.0
+offset_bottom = 444.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
 [node name="IngredientImage" type="NinePatchRect" parent="PotIngredients/IngredientGrid_1"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -17.0
+offset_right = 17.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="IngredientGrid_2" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 119.0
-offset_top = 453.0
-offset_right = 156.0
-offset_bottom = 490.0
+offset_left = 67.0
+offset_top = 406.0
+offset_right = 112.0
+offset_bottom = 451.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -86,20 +89,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
+offset_left = 5.5
+offset_top = 5.5
+offset_right = -5.5
+offset_bottom = -5.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="IngredientGrid_3" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 69.0
-offset_top = 453.0
-offset_right = 106.0
-offset_bottom = 490.0
+offset_left = 23.0
+offset_top = 466.0
+offset_right = 68.0
+offset_bottom = 511.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -108,20 +111,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
+offset_left = 5.5
+offset_top = 5.5
+offset_right = -5.5
+offset_bottom = -5.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="IngredientGrid_4" type="Button" parent="PotIngredients"]
 z_index = 7
 layout_mode = 0
-offset_left = 19.0
-offset_top = 453.0
-offset_right = 56.0
-offset_bottom = 490.0
+offset_left = 37.0
+offset_top = 528.0
+offset_right = 82.0
+offset_bottom = 573.0
 focus_mode = 0
 theme = ExtResource("4_3pefp")
 
@@ -130,14 +133,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
+offset_left = 5.5
+offset_top = 5.5
+offset_right = -5.5
+offset_bottom = -5.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="Polygon2D" parent="PotIngredients"]
+visible = false
 modulate = Color(0.0885599, 0.0885599, 0.0885599, 0.701961)
 z_index = 6
 position = Vector2(-108, 446)

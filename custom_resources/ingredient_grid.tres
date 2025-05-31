@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://cwcffc7ex0icm"]
 
-[ext_resource type="Texture2D" uid="uid://dqtgy378gqp10" path="res://art/kenney_ui_pack/Grey/Default/button_square_gradient.png" id="1_epktf"]
+[ext_resource type="Texture2D" uid="uid://dqe8ebxdt3522" path="res://art/kenney_ui_pack/Grey/Default/button_round_gradient.png" id="1_epktf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3pefp"]
 texture = ExtResource("1_epktf")
