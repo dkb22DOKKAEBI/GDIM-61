@@ -207,34 +207,31 @@ offset_right = 955.0
 offset_bottom = 482.0
 focus_mode = 0
 theme = ExtResource("13_ju8jl")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "End Turn"
 
 [node name="CookButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 25.0
-offset_top = 555.0
-offset_right = 116.0
-offset_bottom = 594.0
+offset_left = 23.0
+offset_top = 506.0
+offset_right = 114.0
+offset_bottom = 545.0
 focus_mode = 0
 theme = ExtResource("13_ju8jl")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 text = "Cook"
 
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 25.0
-offset_top = 507.0
-offset_right = 116.0
-offset_bottom = 545.0
+offset_left = 23.0
+offset_top = 553.0
+offset_right = 114.0
+offset_bottom = 591.0
 focus_mode = 0
 theme = ExtResource("13_ju8jl")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 text = "Recipe"
 
 [node name="GameConditions" type="Control" parent="UI"]

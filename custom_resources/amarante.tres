@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://nhnax5rta2hu"]
 
-[ext_resource type="FontFile" uid="uid://de12whysrujen" path="res://art/Amarante-Regular.ttf" id="1_nsfrb"]
+[ext_resource type="FontFile" uid="uid://de12whysrujen" path="res://art/font/Amarante-Regular.ttf" id="1_nsfrb"]
 
 [resource]
 default_font = ExtResource("1_nsfrb")

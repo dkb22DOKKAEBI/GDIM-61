@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bvowq1ab14lg2"
-path="res://.godot/imported/Coiny-Regular.ttf-4308ec514795b4c6c0730b47c7a2bd43.fontdata"
+uid="uid://bcusg2l7dxrg8"
+path="res://.godot/imported/ChangaOne-Regular.ttf-d7f2a6d90f3c65feefbf060d234bfa2b.fontdata"
 
 [deps]
 
-source_file="res://art/Coiny-Regular.ttf"
-dest_files=["res://.godot/imported/Coiny-Regular.ttf-4308ec514795b4c6c0730b47c7a2bd43.fontdata"]
+source_file="res://art/font/ChangaOne-Regular.ttf"
+dest_files=["res://.godot/imported/ChangaOne-Regular.ttf-d7f2a6d90f3c65feefbf060d234bfa2b.fontdata"]
 
 [params]
 

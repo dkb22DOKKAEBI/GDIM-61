@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://de12whysrujen"
-path="res://.godot/imported/Amarante-Regular.ttf-00d37ebcfa3ef02e7a11c585c6a316f7.fontdata"
+uid="uid://ukg8vfgn7fff"
+path="res://.godot/imported/DaysOne-Regular.ttf-7699e20da348a49c20a94382af9efd60.fontdata"
 
 [deps]
 
-source_file="res://art/Amarante-Regular.ttf"
-dest_files=["res://.godot/imported/Amarante-Regular.ttf-00d37ebcfa3ef02e7a11c585c6a316f7.fontdata"]
+source_file="res://art/font/DaysOne-Regular.ttf"
+dest_files=["res://.godot/imported/DaysOne-Regular.ttf-7699e20da348a49c20a94382af9efd60.fontdata"]
 
 [params]
 
