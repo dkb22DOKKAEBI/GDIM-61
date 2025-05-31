@@ -1,11 +1,11 @@
 extends Node2D
 
-const PLAYER_HAND_CENTER = 527 # Center of player's hand
+const PLAYER_HAND_CENTER = 516 # Center of player's hand
 const DECK_WIDTH = 40 # Deck width
 const CARD_WIDTH = 85 # Card width
 const CARD_HEIGHT = 40 # Card height
 
-const HAND_Y_POSITION = 515 # Y position for ingredient card
+const HAND_Y_POSITION = 522 # Y position for ingredient card
 const MONSTER_CARD_Y_OFFSET = 90 # Y offset for monster cards' position in hand
 const MONSTER_CARD_UP_Y_OFFSET = 55 # Y offset for monster card when hovered over
 const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed

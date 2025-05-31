@@ -163,6 +163,7 @@ offset_left = 206.0
 offset_top = 445.0
 offset_right = 832.0
 offset_bottom = 600.0
+mouse_filter = 2
 theme = ExtResource("11_as1q7")
 
 [node name="PotUICover" type="Panel" parent="UI/BackgroundCovers"]
@@ -172,6 +173,7 @@ offset_left = 2.0
 offset_top = 445.0
 offset_right = 196.0
 offset_bottom = 600.0
+mouse_filter = 2
 theme = ExtResource("11_as1q7")
 
 [node name="BattleUI" parent="UI" instance=ExtResource("1_156m4")]
