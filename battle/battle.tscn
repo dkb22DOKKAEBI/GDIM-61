@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=25 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://card/card_manager/ingredient_card_manager.gd" id="11_icoan"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="12_icoan"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="13_ju8jl"]
+[ext_resource type="Texture2D" uid="uid://itcaahwu7iiu" path="res://art/cooking_icon.png" id="14_xmbur"]
+[ext_resource type="Texture2D" uid="uid://bvh72by4c4tg1" path="res://art/recipe_icon.png" id="15_as1q7"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://battle/ui/recipe_book.tscn" id="15_n6gaa"]
 [ext_resource type="PackedScene" uid="uid://dhand73cgok5l" path="res://battle/ui/card_info.tscn" id="16_220ih"]
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://card/target_selection/card_target_selector.tscn" id="16_tnndc"]
@@ -223,6 +225,19 @@ focus_mode = 0
 theme = ExtResource("13_ju8jl")
 theme_override_font_sizes/font_size = 22
 
+[node name="CookingIcon" type="NinePatchRect" parent="UI/Buttons/CookButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = -4.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_xmbur")
+
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
@@ -233,6 +248,19 @@ offset_bottom = 597.0
 focus_mode = 0
 theme = ExtResource("13_ju8jl")
 theme_override_font_sizes/font_size = 22
+
+[node name="RecipeIcon" type="NinePatchRect" parent="UI/Buttons/RecipeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_as1q7")
 
 [node name="GameConditions" type="Control" parent="UI"]
 anchors_preset = 0
