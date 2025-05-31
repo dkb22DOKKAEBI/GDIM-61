@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvdm57iis6taf"
-path="res://.godot/imported/pot.png-299490d57af955de4ff8647e009e4c48.ctex"
+uid="uid://bvh72by4c4tg1"
+path="res://.godot/imported/recipe_icon.png-674a67efdd7047def03421196d417f59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/pot.png"
-dest_files=["res://.godot/imported/pot.png-299490d57af955de4ff8647e009e4c48.ctex"]
+source_file="res://art/recipe_icon.png"
+dest_files=["res://.godot/imported/recipe_icon.png-674a67efdd7047def03421196d417f59.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bguce6op0jbnu" path="res://menus/start_menu.gd" id="1_3kg5v"]
 [ext_resource type="Texture2D" uid="uid://cgyr4apq2bpu7" path="res://art/title_elements/gunner_png-removebg-preview.png" id="2_yhcmu"]
 [ext_resource type="Texture2D" uid="uid://bqubrg7bkepp6" path="res://art/title_elements/TOASTER-removebg-preview.png" id="3_ostuc"]
-[ext_resource type="Texture2D" uid="uid://5h5o5rgmefuf" path="res://art/BACKGROUND COOL.png" id="3_w3tic"]
+[ext_resource type="Texture2D" uid="uid://5h5o5rgmefuf" path="res://art/background.png" id="3_w3tic"]
 [ext_resource type="Texture2D" uid="uid://deukfuh5jul05" path="res://art/title_elements/trashgcan_-removebg-preview.png" id="4_54tpi"]
 [ext_resource type="Texture2D" uid="uid://badiiodv2fhrv" path="res://art/title_elements/BOSS-removebg-preview.png" id="5_h6phu"]
 [ext_resource type="Texture2D" uid="uid://cgpy4hgfv7b7x" path="res://art/title_elements/cheesecake_transparent-removebg-preview.png" id="5_kli5o"]

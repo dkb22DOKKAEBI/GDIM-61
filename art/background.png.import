@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5pr1hxh7t73e"
-path="res://.godot/imported/ingredient_grid_background.png-15ce7554d236f11978f3501e1d8a899c.ctex"
+uid="uid://5h5o5rgmefuf"
+path="res://.godot/imported/background.png-694afb2807fe739c9f0954541e14cf0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ingredient_grid_background.png"
-dest_files=["res://.godot/imported/ingredient_grid_background.png-15ce7554d236f11978f3501e1d8a899c.ctex"]
+source_file="res://art/background.png"
+dest_files=["res://.godot/imported/background.png-694afb2807fe739c9f0954541e14cf0b.ctex"]
 
 [params]
 

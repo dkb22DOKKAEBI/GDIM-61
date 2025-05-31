@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5h5o5rgmefuf"
-path="res://.godot/imported/BACKGROUND COOL.png-320eda2be6614967e7b275d496b80ef4.ctex"
+uid="uid://itcaahwu7iiu"
+path="res://.godot/imported/cooking_icon.png-eb34f34b100777fbf218521236d1c861.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/BACKGROUND COOL.png"
-dest_files=["res://.godot/imported/BACKGROUND COOL.png-320eda2be6614967e7b275d496b80ef4.ctex"]
+source_file="res://art/cooking_icon.png"
+dest_files=["res://.godot/imported/cooking_icon.png-eb34f34b100777fbf218521236d1c861.ctex"]
 
 [params]
 
