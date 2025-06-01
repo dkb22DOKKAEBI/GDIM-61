@@ -70,28 +70,13 @@ func spawn_bread_helper() -> Node2D:
 	
 	return boss
 
-# Ability 2: Attack
+# Ability 2: Regular Attack
 func toaster_attack() -> void:
-	# Choose target
+	# Regular attack
 	var target = choose_target()
-	var toster = get_node("BossBasic")
-	
-	var old_pos:Vector2 = self.global_position
-	if not target:
-		boss_attack_player_anim(toster)
-		await boss_attack_anim_finish_signal
-		battle_manager.player_take_dmg(1)
-	else:
-		boss_attack_monster_anim(target, toster)
-		await boss_attack_anim_finish_signal
-		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
-	
-	# Enemy return to original position
-	boss_return_pos_anim(old_pos, toster)
-	await boss_return_anim_finish_signal
-	
-	# Check whether player lose
-	battle_manager.player_check_dead()
+	var toaster = get_node("BossBasic")
+	regular_attack(target, toaster)
+	await boss_regular_attack_finish_signal
 	
 	# Signal boss attack finishes
 	toaster_action_finish_signal.emit()

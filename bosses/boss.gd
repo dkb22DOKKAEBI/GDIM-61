@@ -1,8 +1,9 @@
 class_name Boss
 extends Node
 
-signal boss_return_anim_finish_signal # Signals for animations
+signal boss_return_anim_finish_signal
 signal boss_attack_anim_finish_signal
+signal boss_regular_attack_finish_signal
 
 var boss_name: String # Name of the boss
 var boss_health_text: RichTextLabel
@@ -80,6 +81,28 @@ func boss_take_dmg(dmg: float):
 # Boss behavior logic
 func on_action() -> void:
 	pass
+
+
+# Boss regular attack
+# Target one of the cardslot (null means player); Attacker being the node for playing animation
+func regular_attack(target: Cardslot, attacker: Node = self) -> void:
+	var old_pos:Vector2 = attacker.global_position
+	if not target:
+		boss_attack_player_anim(attacker)
+		await boss_attack_anim_finish_signal
+		battle_manager.player_take_dmg(1)
+	else:
+		boss_attack_monster_anim(target, attacker)
+		await boss_attack_anim_finish_signal
+		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
+	
+	# Enemy return to original position
+	boss_return_pos_anim(old_pos, attacker)
+	await boss_return_anim_finish_signal
+	
+	# Check whether player lose
+	battle_manager.player_check_dead()
+	boss_regular_attack_finish_signal.emit()
 
 
 # Basic boss choosing target logic
