@@ -45,18 +45,6 @@ script = ExtResource("7_fisqk")
 card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
 ingredient_card_manager = NodePath("../../PlayerHand/IngredientCardManager")
 
-[node name="PlayerHealthOld" type="RichTextLabel" parent="Player"]
-visible = false
-z_index = 1
-offset_left = 343.0
-offset_top = 1.0
-offset_right = 521.0
-offset_bottom = 30.0
-theme = ExtResource("4_e48mi")
-theme_override_font_sizes/normal_font_size = 20
-text = "Player Health: 10"
-vertical_alignment = 1
-
 [node name="PlayerHand" type="Node2D" parent="."]
 
 [node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "ingredient_card_manager")]
@@ -160,13 +148,12 @@ card_slot_number = "cardslot3"
 [node name="Enemy" type="Node2D" parent="BattleField"]
 position = Vector2(820, 220)
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_attack_message")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "temp_attack_message")]
 script = ExtResource("9_agsc7")
 battle_timer = NodePath("BattleTimer")
 input_manager = NodePath("../Player/InputManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 enemy = NodePath("../BattleField/Enemy")
-player_health_text = NodePath("../Player/PlayerHealthOld")
 temp_attack_message = NodePath("../UI/TempAttackMessage")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]

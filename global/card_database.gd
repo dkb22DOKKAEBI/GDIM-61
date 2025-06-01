@@ -14,7 +14,7 @@ const BOSS_LEVEL = {
 
 
 # Stats for monster cards
-const CARDS = { #attack, health
+const CARDS = { #attack, health, cooldown
 	"Quesadilla" 	: [2, 3],
 	"Cheesecake" 	: [3, 4],
 	"Sandwich"	 	: [4, 5],
@@ -35,7 +35,7 @@ const CARDS = { #attack, health
 # Stats for boss
 const BOSS_STATS = {
 	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum"      : {"HP": 12, "Attack": 0, "CoolDown": 3, "Block": 3, "Elimination": 10},
+	"Vacuum"      : {"HP": 11, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
@@ -78,7 +78,7 @@ const DISPLAY_NAME = {
 	"Eclair"     : "Eclair Knight",
 	"Crepe"      : "Crepe",
 	"Onigiri"    : "Onigiri Rogue",
-	"Charcuterie": "Charcuterie Squadron",
+	"Charcuterie": "Charcuterie Board Spearlings",
 	"Tutorial"   : "Tutorial Boss",              # Bosses
 	"Vacuum"     : "Vacuum Boss",
 	"Toaster"    : "The Burnt Apostle",
@@ -101,8 +101,8 @@ const CHARACTER_DESCRIPTION = {
 	"Donut"       : "Stand down the doughnut machine gunner is here! He’ll mow down the enemies with a hailstorm of sprinkles get low or prepare to be caught in his path of destruction.",
 	"Eclair"      : "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle.",
 	"Crepe"       : "",
-	"Onigiri"     : "",
-	"Charcuterie" : "",
+	"Onigiri"     : "The onigiri rogue is a swift combatant ready to plunder all your goods. Hand them over or risk a quick defeat against his knives.",
+	"Charcuterie" : "This ragtag band of cheese and meats are here and ready to poke their way through any battle! Step aside or face their mighty toothpicks!",
 	"Tutorial"    : "A simple tutorial boss",                     # Bosses
 	"Vacuum"      : "Steer clear! The Insatiable Hunger is here ready to consume all in its path!",
 	"Toaster"     : "Arise......the breadspawn and their master the burnt apostle are here to terrorize any battle swaying the tides in a moment's notice.",

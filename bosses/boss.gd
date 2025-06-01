@@ -67,7 +67,6 @@ func boss_take_dmg(dmg: float):
 	# Check whether boss die and player win
 	if boss_health <= 0:
 		battle_manager.player_win()
-		#await battle_manager.wait(1)
 		SceneManager.defeat_boss()
 
 

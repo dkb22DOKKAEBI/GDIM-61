@@ -48,5 +48,6 @@ func new_game_started() -> void:
 	
 	# Initialize player status
 	player_health = STARTING_HEALTH
+	EventController.update_player_health_signal.emit(player_health)
 	is_on_player_turn = true
 	curr_player_status = PLAYER_STATUS.IDLE

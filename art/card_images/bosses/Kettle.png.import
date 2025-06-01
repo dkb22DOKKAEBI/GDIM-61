@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf3c8xmsadwep"
-path="res://.godot/imported/Vacuum_Boss.png-9fd978e37aab3dde5f60d90abd944dc2.ctex"
+uid="uid://dig53nigy5vrd"
+path="res://.godot/imported/Kettle.png-d280bc77967f52c18f5c185e45501b65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/bosses/Vacuum_Boss.png"
-dest_files=["res://.godot/imported/Vacuum_Boss.png-9fd978e37aab3dde5f60d90abd944dc2.ctex"]
+source_file="res://art/card_images/bosses/Kettle.png"
+dest_files=["res://.godot/imported/Kettle.png-d280bc77967f52c18f5c185e45501b65.ctex"]
 
 [params]
 

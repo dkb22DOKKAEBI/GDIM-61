@@ -35,7 +35,7 @@ func get_points() -> Array:
 	
 	# Get starting position <- middle of right edge
 	var start := curr_card.global_position
-	start.x += PlayerHand.CARD_WIDTH / 2.0
+	start.x += PlayerHand.MONSTER_CARD_WIDTH / 2.0
 	start.y += PlayerHand.CARD_HEIGHT / 2.0
 	
 	# Add in starting and middle points

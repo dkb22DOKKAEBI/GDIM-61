@@ -14,6 +14,8 @@ signal finish_defeat_boss_tutorial_signal()
 
 # Battle signals
 signal player_turn_end_signal()
+signal update_player_health_signal(health: int)
+#signal player_beating_level_signal() -> already one in the scene manager
 signal display_monster_card_info_signal(monster_card: MonsterCard) # Display info page for monster card or boss
 signal display_boss_info_signal(boss: Boss)
 
