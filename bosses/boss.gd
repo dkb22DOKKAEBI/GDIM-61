@@ -23,8 +23,8 @@ func _ready() -> void:
 	max_cool_down = CardDatabase.BOSS_STATS[boss_name]["CoolDown"]
 	curr_cool_down = max_cool_down
 	
-	boss_health_text = find_child("BossBasic").find_child("BossHealth")
-	boss_attack_text = find_child("BossBasic").find_child("BossAttack")
+	boss_health_text = find_child("BossBasic").find_child("BossHealth").find_child("BossHealthText")
+	boss_attack_text = find_child("BossBasic").find_child("BossAttack").find_child("BossAttackText")
 	
 	# Update boss card
 	boss_health_text.text = str(boss_health)
@@ -60,13 +60,13 @@ func boss_take_dmg(dmg: float):
 	boss_health_text.text = str(boss_health)
 	
 	# Change font to double size and red
-	boss_health_text.add_theme_font_size_override("normal_font_size", 40)
-	boss_health_text.modulate = Color.RED
+	boss_health_text.add_theme_font_size_override("normal_font_size", 42)
+	boss_health_text.add_theme_color_override("default_color", Color.RED)
 
 	# Play animation for health change
 	var tween = get_tree().create_tween()
-	tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
-	tween.tween_property(boss_health_text, "modulate", Color.BLACK, 1)
+	tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 21, 1)
+	tween.tween_property(boss_health_text, "theme_override_colors/default_color", Color.BLACK, 1)
 	
 	# Check whether boss die and player win
 	if boss_health <= 0:

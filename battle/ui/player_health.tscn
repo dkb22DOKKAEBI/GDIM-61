@@ -84,9 +84,9 @@ theme = SubResource("Theme_3f1qj")
 
 [node name="PlayerHealthText" type="RichTextLabel" parent="HealthBarOutline"]
 layout_mode = 0
-offset_left = 133.0
+offset_left = 124.0
 offset_top = -2.0
-offset_right = 167.0
+offset_right = 158.0
 offset_bottom = 18.0
 mouse_filter = 2
 theme = ExtResource("2_3f1qj")
@@ -100,9 +100,9 @@ vertical_alignment = 1
 
 [node name="PlayerMaxHealth" type="RichTextLabel" parent="HealthBarOutline"]
 layout_mode = 0
-offset_left = 170.0
+offset_left = 161.0
 offset_top = -2.0
-offset_right = 204.0
+offset_right = 195.0
 offset_bottom = 18.0
 mouse_filter = 2
 theme = ExtResource("2_3f1qj")
