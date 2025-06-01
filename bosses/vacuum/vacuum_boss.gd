@@ -30,7 +30,7 @@ func on_action() -> void:
 		await vacuum_elimination_finish_signal
 	else: # Defend or Regular attack
 		var check := randf_range(0.0, 1.0) # Determine whether to attack or slef heal with probability
-		if check <= (float(boss_health) / float(boss_max_health)) + 0.2:
+		if check <= (float(boss_health) / float(boss_max_health)) + 0.12:
 			var target = choose_target()
 			vacuum_attack(target)
 			await vacuum_regular_attack_finish_signal
@@ -59,6 +59,7 @@ func vacuum_defend():
 	if boss_health == CardDatabase.BOSS_STATS["Vacuum"]["HP"]:
 		var target = choose_target()
 		vacuum_attack(target)
+		await vacuum_regular_attack_finish_signal
 	else:
 		boss_health = min(boss_health + 3, CardDatabase.BOSS_STATS["Vacuum"]["HP"])
 		boss_health_text.text = str(boss_health)
@@ -71,6 +72,8 @@ func vacuum_defend():
 		var tween = get_tree().create_tween()
 		tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 21, 1)
 		tween.tween_property(boss_health_text, "theme_override_colors/default_color", Color.BLACK, 1)
+		
+		await tween.finished
 	
 	# Signal vacuum defend finish
 	vacuum_defend_finish_signal.emit()

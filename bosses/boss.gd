@@ -52,7 +52,7 @@ func boss_turn() -> void:
 	await boss_action_finish_signal
 	
 	# Boss aftermath waiting time
-	await get_tree().create_timer(1)
+	await get_tree().create_timer(0.6)
 	
 	# Boss turn ends
 	battle_manager.start_player_turn()
