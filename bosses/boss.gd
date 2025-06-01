@@ -4,6 +4,7 @@ extends Node
 signal boss_return_anim_finish_signal()
 signal boss_attack_anim_finish_signal()
 signal boss_regular_attack_finish_signal()
+signal boss_take_damage_finish_signal()
 signal boss_action_finish_signal()
 
 var boss_name: String # Name of the boss
@@ -52,7 +53,8 @@ func boss_turn() -> void:
 	await boss_action_finish_signal
 	
 	# Boss aftermath waiting time
-	await get_tree().create_timer(0.5).timeout
+	if get_tree():
+		await get_tree().create_timer(0.5).timeout
 	
 	# Boss turn ends
 	battle_manager.start_player_turn()
@@ -62,6 +64,15 @@ func boss_turn() -> void:
 func boss_take_dmg(dmg: float):
 	AudioManager.play_sound("ATTACK")
 	boss_health = max(0, boss_health - dmg)
+	# Check whether boss die and player win
+	if boss_health <= 0:
+		self.queue_free()
+		battle_manager.player_win()
+		SceneManager.defeat_boss()
+		boss_take_damage_finish_signal.emit()
+		return
+	
+	# Update boss health text
 	boss_health_text.text = str(boss_health)
 	
 	# Change font to double size and red
@@ -73,10 +84,7 @@ func boss_take_dmg(dmg: float):
 	tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 21, 1)
 	tween.tween_property(boss_health_text, "theme_override_colors/default_color", Color.BLACK, 1)
 	
-	# Check whether boss die and player win
-	if boss_health <= 0:
-		battle_manager.player_win()
-		SceneManager.defeat_boss()
+	boss_take_damage_finish_signal.emit()
 
 
 # Boss behavior logic

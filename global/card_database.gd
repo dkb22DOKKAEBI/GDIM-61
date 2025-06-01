@@ -5,11 +5,11 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	4: "Vacuum",
-	1: "Oven",
+	1: "Vacuum",
+	0: "Oven",
 	2: "Toaster",
 	3: "Blender",
-	0: "Kettle"
+	4: "Kettle"
 }
 
 
@@ -35,8 +35,8 @@ const CARDS = { #attack, health, cooldown
 # Stats for boss
 const BOSS_STATS = {
 	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0},
-	"Vacuum"      : {"HP": 11, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 99},
-	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
+	"Vacuum"      : {"HP": 1, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 99},
+	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 999},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
 	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.15, "RampAttack": 2},

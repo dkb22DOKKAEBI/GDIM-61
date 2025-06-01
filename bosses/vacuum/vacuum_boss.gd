@@ -72,10 +72,9 @@ func vacuum_defend():
 		var tween = get_tree().create_tween()
 		tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 21, 1)
 		tween.tween_property(boss_health_text, "theme_override_colors/default_color", Color.BLACK, 1)
-		
-		await tween.finished
 	
 	# Signal vacuum defend finish
+	await get_tree().create_timer(0.5).timeout
 	vacuum_defend_finish_signal.emit()
 
 

@@ -30,6 +30,8 @@ func on_action() -> void:
 	
 	# Self take damage
 	boss_take_dmg(self_dmg)
+	if boss_health <= 0:
+		await PlayerController.get_tree().create_timer(1000).timeout
 	
 	# Signal boss action finishs
 	boss_action_finish_signal.emit()
