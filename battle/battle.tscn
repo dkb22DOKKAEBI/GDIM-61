@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=28 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://card/card_manager/ingredient_card_manager.gd" id="11_icoan"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="12_icoan"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="13_ju8jl"]
+[ext_resource type="Theme" uid="uid://dj0a2u4psddf6" path="res://custom_resources/player_health_bg.tres" id="14_7njrs"]
 [ext_resource type="Texture2D" uid="uid://itcaahwu7iiu" path="res://art/cooking_icon.png" id="14_xmbur"]
 [ext_resource type="Texture2D" uid="uid://bvh72by4c4tg1" path="res://art/recipe_icon.png" id="15_as1q7"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://battle/ui/recipe_book.tscn" id="15_n6gaa"]
@@ -225,6 +226,17 @@ layout_mode = 1
 layout_mode = 1
 cooking_mechanics = NodePath("../../CookingMechanic")
 
+[node name="PlayerHealth" parent="UI" instance=ExtResource("18_as1q7")]
+layout_mode = 1
+
+[node name="PlayerHealthBg" type="Panel" parent="UI/PlayerHealth"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 410.0
+offset_bottom = 43.0
+mouse_filter = 2
+theme = ExtResource("14_7njrs")
+
 [node name="Buttons" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
@@ -350,9 +362,6 @@ visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
-
-[node name="PlayerHealth" parent="UI" instance=ExtResource("18_as1q7")]
-layout_mode = 1
 
 [node name="CardInfoLayer" type="CanvasLayer" parent="."]
 layer = 2

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dj0a2u4psddf6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_as1q7"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 0.807843)
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_as1q7")
