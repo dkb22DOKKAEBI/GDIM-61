@@ -78,7 +78,7 @@ const DISPLAY_NAME = {
 	"Eclair"     : "Eclair Knight",
 	"Crepe"      : "Crepe",
 	"Onigiri"    : "Onigiri Rogue",
-	"Charcuterie": "Charcuterie Squadron",
+	"Charcuterie": "Charcuterie Board Spearlings",
 	"Tutorial"   : "Tutorial Boss",              # Bosses
 	"Vacuum"     : "Vacuum Boss",
 	"Toaster"    : "The Burnt Apostle",
@@ -101,8 +101,8 @@ const CHARACTER_DESCRIPTION = {
 	"Donut"       : "Stand down the doughnut machine gunner is here! He’ll mow down the enemies with a hailstorm of sprinkles get low or prepare to be caught in his path of destruction.",
 	"Eclair"      : "The Eclair Knight charges into the frontlines with his trusty javelin and cracker horse! This legendary duo is sure to conquer any foe running them down and setting the tempo in any battle.",
 	"Crepe"       : "",
-	"Onigiri"     : "",
-	"Charcuterie" : "",
+	"Onigiri"     : "The onigiri rogue is a swift combatant ready to plunder all your goods. Hand them over or risk a quick defeat against his knives.",
+	"Charcuterie" : "This ragtag band of cheese and meats are here and ready to poke their way through any battle! Step aside or face their mighty toothpicks!",
 	"Tutorial"    : "A simple tutorial boss",                     # Bosses
 	"Vacuum"      : "Steer clear! The Insatiable Hunger is here ready to consume all in its path!",
 	"Toaster"     : "Arise......the breadspawn and their master the burnt apostle are here to terrorize any battle swaying the tides in a moment's notice.",
