@@ -28,6 +28,9 @@ func _ready() -> void:
 # Clear cardslots array when player completing a level
 func clear_cardslots() -> void:
 	cardslots.clear()
+	for cardslot_str in cardslot_abilities:
+		cardslot_abilities[cardslot_str][0] = "None"
+		cardslot_abilities[cardslot_str][1] = 0
 
 
 # Check whether there is monster cards on the battle field

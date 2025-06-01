@@ -200,6 +200,7 @@ func check_ability_cds():
 
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
+			print(CardslotManager.cardslot_abilities[slot_id][0])
 			cardslot.card_in_slot.update_ability_button(CardslotManager.cardslot_abilities[slot_id][1])
 
 

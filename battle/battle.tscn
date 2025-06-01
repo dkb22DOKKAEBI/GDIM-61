@@ -148,13 +148,12 @@ card_slot_number = "cardslot3"
 [node name="Enemy" type="Node2D" parent="BattleField"]
 position = Vector2(820, 220)
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_attack_message")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "temp_attack_message")]
 script = ExtResource("9_agsc7")
 battle_timer = NodePath("BattleTimer")
 input_manager = NodePath("../Player/InputManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 enemy = NodePath("../BattleField/Enemy")
-player_health_text = NodePath("")
 temp_attack_message = NodePath("../UI/TempAttackMessage")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
