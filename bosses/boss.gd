@@ -1,6 +1,9 @@
 class_name Boss
 extends Node
 
+signal boss_return_anim_finish_signal # Signals for animations
+signal boss_attack_anim_finish_signal
+
 var boss_name: String # Name of the boss
 var boss_health_text: RichTextLabel
 var boss_attack_text: RichTextLabel
@@ -96,29 +99,40 @@ func choose_target() -> Cardslot:
 
 # Boss attack animations
 func boss_attack_player_anim():
+	# Start animation
 	var new_pos_x = 280
 	var new_pos = Vector2(new_pos_x, self.global_position.y)
-	#battle_manager.enemy.z_index = 5
 	boss_attack_text.visible = false
 	boss_health_text.visible = false
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", new_pos, 0.5)
+	
+	# Signal boss attack animation finished
+	await tween.finished
+	boss_attack_anim_finish_signal.emit()
 
 func boss_attack_monster_anim(target):
+	# Start animation
 	var new_pos_x = target.global_position.x
 	var new_pos_y = target.global_position.y
 	var new_pos = Vector2(new_pos_x, new_pos_y)
-	#battle_manager.enemy.z_index = 5
 	boss_attack_text.visible = false
 	boss_health_text.visible = false
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", new_pos, 0.5)
+	
+	# Signal boss attack animation finished
+	await tween.finished
+	boss_attack_anim_finish_signal.emit()
 
 func boss_return_pos_anim(old_pos: Vector2):
+	# Start animation
 	AudioManager.play_sound("ATTACK")
-	#battle_manager.enemy.z_index = 0
-	var tween2 = get_tree().create_tween()
-	tween2.tween_property(self, "global_position", old_pos, 0.5)
-	await battle_manager.wait(0.5)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", old_pos, 0.5)
 	boss_attack_text.visible = true
 	boss_health_text.visible = true
+	
+	# Signal boss return animation finished
+	await tween.finished
+	boss_return_anim_finish_signal.emit()

@@ -35,7 +35,7 @@ func on_action() -> void:
 		await breadspwan_1.get_child(0).breadspawn_attack_finish_signal
 	if breadspwan_2.get_child_count() != 0:
 		breadspwan_2.get_child(0).breadspawn_attack()
-		await breadspwan_1.get_child(0).breadspawn_attack_finish_signal
+		await breadspwan_2.get_child(0).breadspawn_attack_finish_signal
 	
 	# Toaster action
 	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0:
