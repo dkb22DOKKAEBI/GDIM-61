@@ -84,17 +84,19 @@ func on_action() -> void:
 
 
 # Boss regular attack
-# Target one of the cardslot (null means player); Attacker is the node for playing animation; Dmg_to_player is how many dmg the player supposed to take
-func regular_attack(target: Cardslot, attacker: Node = self, dmg_to_player: int = 1) -> void:
+# Target one of the cardslot (null means player); Attacker is the node for playing animation
+# dmg_to_player is how many damag the player supposed to take
+# dmg_coeff is the multiplier for damage
+func regular_attack(target: Cardslot, attacker: Node = self, dmg_to_player: int = 1, dmg_coeff: int = 1) -> void:
 	var old_pos:Vector2 = attacker.global_position
 	if not target:
 		boss_attack_player_anim(attacker)
 		await boss_attack_anim_finish_signal
-		battle_manager.player_take_dmg(dmg_to_player)
+		battle_manager.player_take_dmg(dmg_to_player * dmg_coeff)
 	else:
 		boss_attack_monster_anim(target, attacker)
 		await boss_attack_anim_finish_signal
-		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
+		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack * dmg_coeff)
 	
 	# Enemy return to original position
 	boss_return_pos_anim(old_pos, attacker)
