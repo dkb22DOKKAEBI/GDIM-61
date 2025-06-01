@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=27 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dhand73cgok5l" path="res://battle/ui/card_info.tscn" id="16_220ih"]
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://card/target_selection/card_target_selector.tscn" id="16_tnndc"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://battle/on_level_start.gd" id="17_k6ux7"]
+[ext_resource type="PackedScene" uid="uid://b8daicbe0q3hy" path="res://battle/ui/player_health.tscn" id="18_as1q7"]
 [ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="19_kavl5"]
 [ext_resource type="AudioStream" uid="uid://d2sbgkufk663o" path="res://audio/music/stardew valley soundtrack.mp3" id="21_ihybe"]
 [ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="21_m24mv"]
@@ -43,7 +44,8 @@ script = ExtResource("7_fisqk")
 card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
 ingredient_card_manager = NodePath("../../PlayerHand/IngredientCardManager")
 
-[node name="PlayerHealth" type="RichTextLabel" parent="Player"]
+[node name="PlayerHealthOld" type="RichTextLabel" parent="Player"]
+visible = false
 z_index = 1
 offset_left = 343.0
 offset_top = 1.0
@@ -163,7 +165,7 @@ battle_timer = NodePath("BattleTimer")
 input_manager = NodePath("../Player/InputManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 enemy = NodePath("../BattleField/Enemy")
-player_health_text = NodePath("../Player/PlayerHealth")
+player_health_text = NodePath("../Player/PlayerHealthOld")
 temp_attack_message = NodePath("../UI/TempAttackMessage")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
@@ -348,6 +350,9 @@ visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
+
+[node name="PlayerHealth" parent="UI" instance=ExtResource("18_as1q7")]
+layout_mode = 1
 
 [node name="CardInfoLayer" type="CanvasLayer" parent="."]
 layer = 2
