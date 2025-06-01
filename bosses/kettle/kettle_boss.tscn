@@ -1,53 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci4hsjxb7e8y4"]
+[gd_scene load_steps=4 format=3 uid="uid://ci4hsjxb7e8y4"]
 
-[ext_resource type="Texture2D" uid="uid://co2kmu1oc6pc8" path="res://art/card_images/bosses/Kettle_Boss.png" id="1_08any"]
-[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_mbcu7"]
 [ext_resource type="Script" uid="uid://cn7so74e1fvwm" path="res://bosses/kettle/kettle_boss.gd" id="1_v7hv2"]
+[ext_resource type="PackedScene" uid="uid://c60d87i0v4h8r" path="res://bosses/boss_basic.tscn" id="2_v7hv2"]
 [ext_resource type="Texture2D" uid="uid://2wf6x1nuvcgr" path="res://art/steam.png" id="4_24wve"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
-size = Vector2(164, 228)
-
-[node name="Kettle" type="Node2D" node_paths=PackedStringArray("boss_health_text", "boss_attack_text")]
+[node name="Kettle" type="Node2D"]
 script = ExtResource("1_v7hv2")
-boss_health_text = NodePath("BossHealth")
-boss_attack_text = NodePath("BossAttack")
 
-[node name="BossSprite2D" type="Sprite2D" parent="."]
-z_index = 1
-scale = Vector2(0.39, 0.39)
-texture = ExtResource("1_08any")
-
-[node name="Area2D" type="Area2D" parent="."]
-z_index = 1
-collision_layer = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_7xtgf")
-
-[node name="BossHealth" type="RichTextLabel" parent="."]
-modulate = Color(0, 0, 0, 1)
-z_index = 2
-offset_left = 28.0
-offset_top = -105.0
-offset_right = 87.0
-offset_bottom = -46.0
-theme = ExtResource("1_mbcu7")
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BossAttack" type="RichTextLabel" parent="."]
-modulate = Color(0, 0, 0, 1)
-z_index = 2
-offset_left = -76.0
-offset_top = -91.0
-offset_right = -36.0
-offset_bottom = -51.0
-theme = ExtResource("1_mbcu7")
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="BossBasic" parent="." instance=ExtResource("2_v7hv2")]
 
 [node name="Steam" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.698039)

@@ -49,6 +49,7 @@ func initialize_status() -> void:
 	ability_ui_parent.visible = false
 
 
+# Update the status for the ability button
 func update_ability_button(curr_cooldown: int):
 	# Edge case when the monster does not have an ability
 	if CardslotManager.card_ability_cds[card_name] == 0:
@@ -71,23 +72,15 @@ func _on_ability_button_pressed():
 		return
 	
 	if card_slot_on == null:
-		#print("Error: Monster card is not placed in a slot.")
 		return
 
 	var slot_id = card_slot_on.card_slot_number
 	var card_info = cardslot_manager.cardslot_abilities[slot_id]
 	var card_name_from_slot = card_info[0]
 
-	#print("Ability activated for", card_name_from_slot, "in", slot_id)
-
 	# Configure the Ability instance
 	ability_handler.enemy = boss_node
 	var result = ability_handler.add_ability_card(card_name_from_slot, self)
-
-	#if result == null:
-		#print("No ability or ability not implemented.")
-	#else:
-		#print("Ability result:", result)
 
 	# Reset cooldown
 	cardslot_manager.cardslot_abilities[slot_id][1] = cardslot_manager.card_ability_cds.get(card_name_from_slot, 0)
@@ -105,7 +98,7 @@ func get_health() -> int:
 # Monster card being attacked
 func take_damage(dmg: int) -> void:
 	var new_health = max(0, get_health() - dmg)
-	if (new_health == 0):
+	if (new_health <= 0):
 		die()
 	health_text.text = str(new_health)
 	health_change_animation(Color.RED)

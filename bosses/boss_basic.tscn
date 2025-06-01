@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c60d87i0v4h8r"]
+[gd_scene load_steps=5 format=3 uid="uid://c60d87i0v4h8r"]
 
-[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="1_dgf3a"]
+[ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="2_sdpyj"]
+[ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="3_sdpyj"]
+[ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="4_jukir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
 size = Vector2(164, 228)
 
-[node name="Boss" type="Node2D"]
+[node name="BossBasic" type="Node2D"]
 
-[node name="BossSprite2D" type="Sprite2D" parent="."]
+[node name="BossImage" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.39, 0.39)
 
@@ -18,26 +20,82 @@ collision_layer = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_7xtgf")
 
-[node name="BossHealth" type="RichTextLabel" parent="."]
-modulate = Color(0, 0, 0, 1)
+[node name="BossHealth" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthIcon" type="NinePatchRect" parent="BossHealth"]
+z_index = 1
+custom_minimum_size = Vector2(12, 12)
+offset_left = 69.0
+offset_top = -82.0
+offset_right = 93.0
+offset_bottom = -58.0
+texture = ExtResource("2_sdpyj")
+region_rect = Rect2(0, -1, 499, 501)
+
+[node name="BossHealthText" type="RichTextLabel" parent="BossHealth"]
 z_index = 2
-offset_left = 28.0
-offset_top = -105.0
-offset_right = 87.0
-offset_bottom = -46.0
-theme = ExtResource("1_dgf3a")
-text = "0"
+offset_left = 39.0
+offset_top = -91.0
+offset_right = 81.0
+offset_bottom = -49.0
+theme = ExtResource("3_sdpyj")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 21
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BossAttack" type="RichTextLabel" parent="."]
-modulate = Color(0, 0, 0, 1)
+[node name="BossAttack" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AttackIcon" type="NinePatchRect" parent="BossAttack"]
+z_index = 1
+custom_minimum_size = Vector2(12, 12)
+offset_left = -50.0
+offset_top = -82.0
+offset_right = -26.0
+offset_bottom = -58.0
+texture = ExtResource("4_jukir")
+region_rect = Rect2(0, -1, 499, 501)
+
+[node name="BossAttackText" type="RichTextLabel" parent="BossAttack"]
 z_index = 2
-offset_left = -76.0
+offset_left = -38.0
 offset_top = -91.0
-offset_right = -36.0
-offset_bottom = -51.0
-theme = ExtResource("1_dgf3a")
-text = "0"
+offset_right = 4.0
+offset_bottom = -49.0
+theme = ExtResource("3_sdpyj")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/normal_font_size = 21
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1

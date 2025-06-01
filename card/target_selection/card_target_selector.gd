@@ -105,7 +105,7 @@ func _on_targeting_canceled() -> void:
 
 # Detect boss card entered and update boss target
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	target_boss = area.get_parent()
+	target_boss = area.get_parent().get_parent()
 
 
 # Detect boss card entered and update boss target
