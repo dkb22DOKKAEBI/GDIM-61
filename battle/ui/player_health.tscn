@@ -76,6 +76,7 @@ mouse_filter = 2
 theme = SubResource("Theme_fhjc0")
 
 [node name="HealthBar" type="Panel" parent="HealthBarOutline"]
+layout_mode = 0
 offset_right = 344.0
 offset_bottom = 15.0
 mouse_filter = 2
@@ -98,6 +99,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="PlayerHealthText" type="RichTextLabel" parent="HealthBarOutline"]
+layout_mode = 0
 offset_left = 170.0
 offset_top = -2.0
 offset_right = 204.0
