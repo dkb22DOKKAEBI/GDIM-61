@@ -1,6 +1,8 @@
 class_name Breadspawn
 extends Boss
 
+signal breadspawn_attack_finish_signal() # Signal the finish of the breadspawn attack
+
 
 # Initialization of boss stats
 func _ready():
@@ -56,3 +58,6 @@ func breadspawn_attack() -> void:
 	
 	# Check whether player lose
 	battle_manager.player_check_dead()
+	
+	# Signal attack finished
+	breadspawn_attack_finish_signal.emit()

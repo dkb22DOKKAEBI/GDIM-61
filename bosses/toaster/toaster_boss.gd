@@ -32,8 +32,10 @@ func on_action() -> void:
 	# Breadspawn attack
 	if breadspwan_1.get_child_count() != 0:
 		breadspwan_1.get_child(0).breadspawn_attack()
+		await breadspwan_1.get_child(0).breadspawn_attack_finish_signal
 	if breadspwan_2.get_child_count() != 0:
 		breadspwan_2.get_child(0).breadspawn_attack()
+		await breadspwan_1.get_child(0).breadspawn_attack_finish_signal
 	
 	# Toaster action
 	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0:
@@ -63,8 +65,6 @@ func spawn_bread_helper() -> Node2D:
 	var boss: Node2D = boss_scene.instantiate()
 	boss.boss_name ="Breadspawn"
 	boss.battle_manager = battle_manager
-	if not battle_manager:
-		print("NO Battle manager")
 	
 	return boss
 

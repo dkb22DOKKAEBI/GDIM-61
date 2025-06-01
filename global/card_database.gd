@@ -38,7 +38,7 @@ const BOSS_STATS = {
 	"Vacuum"      : {"HP": 11, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
-	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
+	"Breadspawn"  : {"HP": 1, "Attack": 1, "CoolDown": 0},
 	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.15, "RampAttack": 2},
 	"Kettle"      : {"HP": 20, "Attack": 3, "CoolDown": 3, "RangeAttackPower": 2, "SteamAttackPower": 1}
 }
