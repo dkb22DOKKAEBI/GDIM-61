@@ -1,6 +1,7 @@
 class_name Toaster
 extends Boss
 
+signal toaster_action_finish_signal()
 
 var spawn_max_cool_down: int
 var curr_spawn_cool_down: int
@@ -48,6 +49,7 @@ func on_action() -> void:
 			toaster_exchange_health(breadspwan_2.get_child(0))
 	else:
 		toaster_attack()
+		await toaster_action_finish_signal
 	
 
 
@@ -72,22 +74,27 @@ func spawn_bread_helper() -> Node2D:
 func toaster_attack() -> void:
 	# Choose target
 	var target = choose_target()
+	var toster = get_node("BossBasic")
 	
 	var old_pos:Vector2 = self.global_position
 	if not target:
-		boss_attack_player_anim()
-		await battle_manager.wait(0.5)
+		boss_attack_player_anim(toster)
+		await boss_attack_anim_finish_signal
 		battle_manager.player_take_dmg(1)
 	else:
-		boss_attack_monster_anim(target)
-		await battle_manager.wait(0.5)
+		boss_attack_monster_anim(target, toster)
+		await boss_attack_anim_finish_signal
 		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
 	
 	# Enemy return to original position
-	boss_return_pos_anim(old_pos)
+	boss_return_pos_anim(old_pos, toster)
+	await boss_return_anim_finish_signal
 	
 	# Check whether player lose
 	battle_manager.player_check_dead()
+	
+	# Signal boss attack finishes
+	toaster_action_finish_signal.emit()
 
 # Ability 3: Exchange breadspawn for health
 func toaster_exchange_health(breadspawn: Breadspawn) -> void:

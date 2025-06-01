@@ -98,20 +98,20 @@ func choose_target() -> Cardslot:
 
 
 # Boss attack animations
-func boss_attack_player_anim():
+func boss_attack_player_anim(performer: Node = self):
 	# Start animation
 	var new_pos_x = 280
-	var new_pos = Vector2(new_pos_x, self.global_position.y)
+	var new_pos = Vector2(new_pos_x, performer.global_position.y)
 	boss_attack_text.visible = false
 	boss_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", new_pos, 0.5)
+	tween.tween_property(performer, "global_position", new_pos, 0.5)
 	
 	# Signal boss attack animation finished
 	await tween.finished
 	boss_attack_anim_finish_signal.emit()
 
-func boss_attack_monster_anim(target):
+func boss_attack_monster_anim(target, performer: Node = self):
 	# Start animation
 	var new_pos_x = target.global_position.x
 	var new_pos_y = target.global_position.y
@@ -119,17 +119,17 @@ func boss_attack_monster_anim(target):
 	boss_attack_text.visible = false
 	boss_health_text.visible = false
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", new_pos, 0.5)
+	tween.tween_property(performer, "global_position", new_pos, 0.5)
 	
 	# Signal boss attack animation finished
 	await tween.finished
 	boss_attack_anim_finish_signal.emit()
 
-func boss_return_pos_anim(old_pos: Vector2):
+func boss_return_pos_anim(old_pos: Vector2, performer: Node = self):
 	# Start animation
 	AudioManager.play_sound("ATTACK")
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", old_pos, 0.5)
+	tween.tween_property(performer, "global_position", old_pos, 0.5)
 	boss_attack_text.visible = true
 	boss_health_text.visible = true
 	
