@@ -37,6 +37,7 @@ func on_hovered_over_card(card):
 	card.is_highlighted = true
 	card.scale *= 1.2
 	card.set_card_z_index(2)
+	card.update_display_name(true)
 	
 	# Check whether is monster card to move it up
 	if card.is_monster_card and not card.placed:
@@ -74,6 +75,7 @@ func on_hovered_off_card(card):
 	card.is_highlighted = false
 	card.scale /= 1.2
 	card.set_card_z_index(0)
+	card.update_display_name(false)
 	
 	# Check whether is monster card
 	if card.is_monster_card and not card.placed:

@@ -14,6 +14,7 @@ var is_in_animation: bool = false
 var is_highlighted: bool = false
 
 @export var collision: CollisionObject2D
+@export var display_name_text: RichTextLabel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,3 +38,8 @@ func set_card_z_index(index: int) -> void:
 
 func set_pickable(flag: bool):
 	collision.input_pickable = flag
+
+
+func update_display_name(flag: bool) -> void:
+	display_name_text.text = card_name
+	display_name_text.visible = flag
