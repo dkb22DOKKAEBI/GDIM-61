@@ -38,6 +38,7 @@ mouse_filter = 2
 [node name="HealthIcon" type="NinePatchRect" parent="BossHealth"]
 z_index = 1
 custom_minimum_size = Vector2(12, 12)
+layout_mode = 0
 offset_left = 69.0
 offset_top = -82.0
 offset_right = 93.0
@@ -47,6 +48,7 @@ region_rect = Rect2(0, -1, 499, 501)
 
 [node name="BossHealthText" type="RichTextLabel" parent="BossHealth"]
 z_index = 2
+layout_mode = 0
 offset_left = 39.0
 offset_top = -91.0
 offset_right = 81.0
@@ -78,6 +80,7 @@ mouse_filter = 2
 [node name="AttackIcon" type="NinePatchRect" parent="BossAttack"]
 z_index = 1
 custom_minimum_size = Vector2(12, 12)
+layout_mode = 0
 offset_left = -50.0
 offset_top = -82.0
 offset_right = -26.0
@@ -87,6 +90,7 @@ region_rect = Rect2(0, -1, 499, 501)
 
 [node name="BossAttackText" type="RichTextLabel" parent="BossAttack"]
 z_index = 2
+layout_mode = 0
 offset_left = -38.0
 offset_top = -91.0
 offset_right = 4.0
