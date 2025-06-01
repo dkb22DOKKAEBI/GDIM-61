@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8daicbe0q3hy"]
+[gd_scene load_steps=9 format=3 uid="uid://b8daicbe0q3hy"]
 
+[ext_resource type="Script" uid="uid://2n83qv8dr8rg" path="res://battle/ui/player_health.gd" id="1_3f1qj"]
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="1_53byh"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="2_3f1qj"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_fhjc0"]
@@ -36,7 +37,7 @@ expand_margin_bottom = 1.0
 [sub_resource type="Theme" id="Theme_3f1qj"]
 Panel/styles/panel = SubResource("StyleBoxFlat_fhjc0")
 
-[node name="PlayerHealth" type="Control"]
+[node name="PlayerHealth" type="Control" node_paths=PackedStringArray("player_health_bar", "player_health_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +48,9 @@ offset_bottom = -557.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_3f1qj")
+player_health_bar = NodePath("HealthBarOutline/HealthBar")
+player_health_text = NodePath("HealthBarOutline/PlayerHealthText")
 
 [node name="HealthIcon" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -82,7 +86,7 @@ offset_bottom = 15.0
 mouse_filter = 2
 theme = SubResource("Theme_3f1qj")
 
-[node name="PlayerHealthNum" type="RichTextLabel" parent="HealthBarOutline"]
+[node name="PlayerHealthText" type="RichTextLabel" parent="HealthBarOutline"]
 layout_mode = 0
 offset_left = 133.0
 offset_top = -2.0
@@ -98,7 +102,7 @@ text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="PlayerHealthText" type="RichTextLabel" parent="HealthBarOutline"]
+[node name="PlayerMaxHealth" type="RichTextLabel" parent="HealthBarOutline"]
 layout_mode = 0
 offset_left = 170.0
 offset_top = -2.0

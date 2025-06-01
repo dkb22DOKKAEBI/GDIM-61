@@ -148,9 +148,9 @@ func enable_end_turn_button(enable: bool) -> void:
 
 
 # Player being attacked
-func player_take_dmg(boss_attack: float) -> void:
+func player_take_dmg(boss_attack: int) -> void:
 	PlayerController.player_health = max(0, PlayerController.player_health - boss_attack)
-	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
+	EventController.player_being_hit_signal.emit(PlayerController.player_health)
 
 
 # Check whether player dead
