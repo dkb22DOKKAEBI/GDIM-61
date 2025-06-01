@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=29 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://2j3rac34a6bb" path="res://custom_resources/player_cover.tres" id="11_as1q7"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://card/monster_card/cooking_mechanic.gd" id="11_fisqk"]
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://card/card_manager/ingredient_card_manager.gd" id="11_icoan"]
+[ext_resource type="Script" uid="uid://cre1c46xv5h0x" path="res://battle/ui/player_hand_ui.gd" id="12_2t7ue"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="12_icoan"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="13_ju8jl"]
 [ext_resource type="Theme" uid="uid://dj0a2u4psddf6" path="res://custom_resources/player_health_bg.tres" id="14_7njrs"]
@@ -209,7 +210,7 @@ theme = ExtResource("11_as1q7")
 [node name="BattleUI" parent="UI" instance=ExtResource("1_156m4")]
 layout_mode = 1
 
-[node name="PlayerHandUI" type="Control" parent="UI"]
+[node name="PlayerHandUI" type="Control" parent="UI" node_paths=PackedStringArray("ingredient_num_text", "monster_num_text")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -218,6 +219,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("12_2t7ue")
+ingredient_num_text = NodePath("IngredientCardNum")
+monster_num_text = NodePath("MonsterCardNum")
 
 [node name="IngredientCardNum" type="RichTextLabel" parent="UI/PlayerHandUI"]
 layout_mode = 0
