@@ -7,7 +7,7 @@ extends Node
 
 # Ready
 func _ready() -> void:
-	EventController.connect("player_being_hit_signal", update_player_health)
+	EventController.connect("update_player_health_signal", update_player_health)
 
 
 # Update the player health UI

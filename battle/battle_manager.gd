@@ -41,7 +41,7 @@ var card_starting_position: Vector2 = Vector2(100, 525)
 # ready function
 func _ready() -> void:
 	# Display player starting health for each level
-	player_health_text.text = player_health_text_prefix + str(PlayerController.player_health)
+	EventController.update_player_health_signal.emit(PlayerController.player_health)
 	player_cards_on_battlefield = {CardslotManager.cardslots[0]: null, CardslotManager.cardslots[1]: null, CardslotManager.cardslots[2]: null}
 	
 	# Connect signal for player input manager
@@ -150,7 +150,7 @@ func enable_end_turn_button(enable: bool) -> void:
 # Player being attacked
 func player_take_dmg(boss_attack: int) -> void:
 	PlayerController.player_health = max(0, PlayerController.player_health - boss_attack)
-	EventController.player_being_hit_signal.emit(PlayerController.player_health)
+	EventController.update_player_health_signal.emit(PlayerController.player_health)
 
 
 # Check whether player dead
