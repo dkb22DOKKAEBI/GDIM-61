@@ -97,21 +97,19 @@ func get_health() -> int:
 
 # Monster card being attacked
 func take_damage(dmg: int) -> void:
-	var new_health = max(0, get_health() - dmg)
-	if (new_health <= 0):
+	curr_health = max(0, get_health() - dmg)
+	if (curr_health <= 0):
 		die()
-	health_text.text = str(new_health)
+	
+	# Update health text
+	health_text.text = str(curr_health)
 	health_change_animation(Color.RED)
 
 
 # Monster card being healed
 func heal(amount: int) -> void:
-	var current_health = get_health()
-	if current_health >= max_health:
-		return
-
-	var new_health = min(current_health + amount, max_health)
-	health_text.text = str(new_health)
+	curr_health = min(curr_health + amount, max_health)
+	health_text.text = str(curr_health)
 	health_change_animation(Color.GREEN)
 
 

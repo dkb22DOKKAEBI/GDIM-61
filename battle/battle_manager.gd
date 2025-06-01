@@ -187,12 +187,8 @@ func check_ability_cds():
 				continue  # Skip if nothing is in the slot
 			
 			var has_ability = has_an_abilities[card_name]
-			#print("Card name:", card_name)
-			#print("Ability data:", has_an_abilities[card_name])
 			if has_ability:
-
 				var monster_card = cardslot.card_in_slot
-
 				if monster_card and monster_card.has_method("update_ability_button"):
 					monster_card.update_ability_button(0)
 			else:
@@ -200,7 +196,6 @@ func check_ability_cds():
 
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
-			print(CardslotManager.cardslot_abilities[slot_id][0])
 			cardslot.card_in_slot.update_ability_button(CardslotManager.cardslot_abilities[slot_id][1])
 
 

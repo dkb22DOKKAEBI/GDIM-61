@@ -9,6 +9,7 @@ breadspwan_1 = NodePath("Breadspawn_1")
 breadspwan_2 = NodePath("Breadspawn_2")
 
 [node name="BossBasic" parent="." instance=ExtResource("2_ctj6o")]
+z_index = 1
 
 [node name="Breadspawn_1" type="Node2D" parent="."]
 position = Vector2(-180, -100)

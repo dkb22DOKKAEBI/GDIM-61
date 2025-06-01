@@ -1,6 +1,8 @@
 class_name Breadspawn
 extends Boss
 
+signal breadspawn_attack_finish_signal() # Signal the finish of the breadspawn attack
+
 
 # Initialization of boss stats
 func _ready():
@@ -38,21 +40,10 @@ func boss_take_dmg(dmg: float):
 # Boss abilities
 # Ability 1: Regular attack
 func breadspawn_attack() -> void:
-	# Choose target
+	# Regular Attack
 	var target = choose_target()
+	regular_attack(target)
+	await boss_regular_attack_finish_signal
 	
-	var old_pos:Vector2 = self.global_position
-	if not target:
-		boss_attack_player_anim()
-		await battle_manager.wait(0.5)
-		battle_manager.player_take_dmg(1)
-	else:
-		boss_attack_monster_anim(target)
-		await battle_manager.wait(0.5)
-		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
-	
-	# Enemy return to original position
-	boss_return_pos_anim(old_pos)
-	
-	# Check whether player lose
-	battle_manager.player_check_dead()
+	# Signal attack finished
+	breadspawn_attack_finish_signal.emit()

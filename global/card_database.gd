@@ -5,9 +5,9 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	2: "Vacuum",
+	0: "Vacuum",
 	1: "Oven",
-	0: "Toaster",
+	2: "Toaster",
 	3: "Blender",
 	4: "Kettle"
 }
@@ -34,12 +34,12 @@ const CARDS = { #attack, health, cooldown
 
 # Stats for boss
 const BOSS_STATS = {
-	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0}, # Tutorial Boss
-	"Vacuum"      : {"HP": 11, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 10},
+	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0},
+	"Vacuum"      : {"HP": 11, "Attack": 3, "CoolDown": 3, "Block": 3, "Elimination": 99},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
-	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.15, "RampAttack": 2},
+	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.3, "RampAttack": 2},
 	"Kettle"      : {"HP": 20, "Attack": 3, "CoolDown": 3, "RangeAttackPower": 2, "SteamAttackPower": 1}
 }
 
@@ -146,7 +146,7 @@ const ABILITY_DESCRIPTION = {
 					 "Overheat: " + ability_text_color_code + "Gain high attack and health, but self damage 200 health every turn (passive)"],
 	"Blender"     : ["Axe Rush: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy and has a chance of doubling damge(regular)",
 					 "Whirlwind Pull: " + ability_text_color_code + "Blend spins and drags the backline units to the front (2 turns CD)",
-					 "Slushy Surge: " + ability_text_color_code + "Ramp up attack after every turn (passive)"],
+					 "Slushy Surge: " + ability_text_color_code + "Chance of ramping up attack after each turn (passive)"],
 	"Kettle"      : ["Vial Toss : " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					 "Final Geyser: "  + ability_text_color_code + "Deals an AOE hit to all party (3 turns CD)",
 					 "Scalding stream: " + ability_text_color_code + "Sprays a stream of scalding hot liquids at the backline dealing damage overtime (passive)"]
