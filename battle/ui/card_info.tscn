@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhand73cgok5l"]
+[gd_scene load_steps=7 format=3 uid="uid://dhand73cgok5l"]
 
 [ext_resource type="Script" uid="uid://cocxex075gfxd" path="res://battle/ui/card_info.gd" id="1_2qdcr"]
 [ext_resource type="Texture2D" uid="uid://c7183oxakh1ry" path="res://art/ui_element/GUI/GUI_2x.png" id="2_luj7x"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_tfdyk"]
 [ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="3_tfdyk"]
+[ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="5_1kd4d"]
+[ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="6_1kd4d"]
 
 [node name="CardInfo" type="Control" node_paths=PackedStringArray("character_image", "character_name_text", "character_attack_text", "character_health_text", "character_ability_texts", "character_description_text")]
 layout_mode = 3
@@ -149,28 +151,6 @@ layout_mode = 2
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="Health" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats"]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="HealthIcon" type="NinePatchRect" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_tfdyk")
-region_rect = Rect2(64, 64, 8, 8)
-
-[node name="HealthText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
-modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(65, 30)
-layout_mode = 2
-theme = ExtResource("2_tfdyk")
-theme_override_font_sizes/normal_font_size = 22
-text = "100"
-vertical_alignment = 1
-
 [node name="Attack" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
@@ -181,10 +161,32 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_tfdyk")
-region_rect = Rect2(80, 64, 8, 8)
+texture = ExtResource("5_1kd4d")
+region_rect = Rect2(1, 2, 498, 500)
 
 [node name="AttackText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Attack"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme = ExtResource("2_tfdyk")
+theme_override_font_sizes/normal_font_size = 22
+text = "100"
+vertical_alignment = 1
+
+[node name="Health" type="HBoxContainer" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HealthIcon" type="NinePatchRect" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_1kd4d")
+region_rect = Rect2(-1, 2, 514, 511)
+
+[node name="HealthText" type="RichTextLabel" parent="CardInfoBox/HBoxContainer/InfoSection/VBoxContainer/Stats/Health"]
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(65, 30)
 layout_mode = 2
