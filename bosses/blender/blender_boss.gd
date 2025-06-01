@@ -88,6 +88,7 @@ func blender_swap_front_back_line() -> void:
 	battle_manager.update_player_cards_on_battlefield()
 	
 	# Signal ability finish
+	await get_tree().create_timer(0.5).timeout
 	blender_swap_finish_signal.emit()
 
 # Ability 3: Ramping up attack

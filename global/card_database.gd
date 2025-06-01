@@ -5,10 +5,10 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	0: "Vacuum",
+	3: "Vacuum",
 	1: "Oven",
 	2: "Toaster",
-	3: "Blender",
+	0: "Blender",
 	4: "Kettle"
 }
 
