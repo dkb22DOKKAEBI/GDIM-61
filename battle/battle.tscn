@@ -209,6 +209,38 @@ theme = ExtResource("11_as1q7")
 [node name="BattleUI" parent="UI" instance=ExtResource("1_156m4")]
 layout_mode = 1
 
+[node name="PlayerHandUI" type="Control" parent="UI"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IngredientCardNum" type="RichTextLabel" parent="UI/PlayerHandUI"]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 451.0
+offset_right = 826.0
+offset_bottom = 478.0
+theme = ExtResource("4_e48mi")
+theme_override_font_sizes/normal_font_size = 15
+text = "0 / 6 ingredients"
+horizontal_alignment = 2
+
+[node name="MonsterCardNum" type="RichTextLabel" parent="UI/PlayerHandUI"]
+offset_left = 631.0
+offset_top = 571.0
+offset_right = 826.0
+offset_bottom = 598.0
+theme = ExtResource("4_e48mi")
+theme_override_font_sizes/normal_font_size = 15
+text = "0 / 4 monsters"
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="PotUi" parent="UI" node_paths=PackedStringArray("cooking_mechanics") instance=ExtResource("2_pyfix")]
 layout_mode = 1
 cooking_mechanics = NodePath("../../CookingMechanic")
