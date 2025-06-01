@@ -1,11 +1,12 @@
 extends Node2D
 
-const PLAYER_HAND_CENTER = 527 # Center of player's hand
+const PLAYER_HAND_CENTER = 516 # Center of player's hand
 const DECK_WIDTH = 40 # Deck width
-const CARD_WIDTH = 85 # Card width
+const INGREDIENT_CARD_WIDTH = 85 # Ingredient card width
+const MONSTER_CARD_WIDTH = 100 # Monster card width
 const CARD_HEIGHT = 40 # Card height
 
-const HAND_Y_POSITION = 515 # Y position for ingredient card
+const HAND_Y_POSITION = 519 # Y position for ingredient card
 const MONSTER_CARD_Y_OFFSET = 90 # Y offset for monster cards' position in hand
 const MONSTER_CARD_UP_Y_OFFSET = 55 # Y offset for monster card when hovered over
 const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed
@@ -82,7 +83,7 @@ func add_card_to_hand(card: Node2D, speed, flag: int):
 func update_hand_positions(speed, target_hand: Array):
 	for i in range(target_hand.size()):
 		# Get new card position based on index passed in
-		var new_position = Vector2(calculate_card_position(i, target_hand.size()), HAND_Y_POSITION) 
+		var new_position = Vector2(calculate_card_position(i, target_hand.size(), target_hand), HAND_Y_POSITION) 
 		
 		# Check whether is mosnter card
 		if target_hand == player_monster_hand:
@@ -94,9 +95,17 @@ func update_hand_positions(speed, target_hand: Array):
 
 
 # Calculate new card x-position in hand
-func calculate_card_position(index, hand_size: int):
-	var total_width = (hand_size -1) * CARD_WIDTH
-	var x_offset = center_screen_x + index * CARD_WIDTH - total_width / 2.0
+func calculate_card_position(index, hand_size: int, target_hand: Array):
+	# Determine which card width to use
+	var card_width: int
+	if target_hand == player_ingredient_hand:
+		card_width = INGREDIENT_CARD_WIDTH
+	else:
+		card_width = MONSTER_CARD_WIDTH
+	
+	# Calculate position
+	var total_width = (hand_size -1) * card_width
+	var x_offset = center_screen_x + index * card_width - total_width / 2.0
 	return x_offset
 
 

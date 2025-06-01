@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://4kjoq8ess2as" path="res://card/monster_card/monster_card.gd" id="1_vtcvk"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="3_2ufkr"]
-[ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/ui_element/Icons/heart.png" id="4_ydfrr"]
+[ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="4_ydfrr"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="5_316fr"]
-[ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/ui_element/Icons/sword.png" id="6_bqkcq"]
-[ext_resource type="Texture2D" uid="uid://dfih4yocvcl7g" path="res://art/ui_element/Icons/ability_icon_inner.png" id="7_bqkcq"]
-[ext_resource type="Texture2D" uid="uid://doiv62f311qbc" path="res://art/ui_element/Icons/ability_icon_outer.png" id="10_oliei"]
-[ext_resource type="Texture2D" uid="uid://bxlm2lgel16x3" path="res://art/ui_element/Icons/lighting.png" id="10_p5jr6"]
+[ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="6_bqkcq"]
+[ext_resource type="Texture2D" uid="uid://dfih4yocvcl7g" path="res://art/icons/ability_icon_inner.png" id="7_bqkcq"]
+[ext_resource type="Texture2D" uid="uid://doiv62f311qbc" path="res://art/icons/ability_icon_outer.png" id="10_oliei"]
+[ext_resource type="Texture2D" uid="uid://bxlm2lgel16x3" path="res://art/icons/lighting.png" id="10_p5jr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4uy"]
 size = Vector2(78, 112)

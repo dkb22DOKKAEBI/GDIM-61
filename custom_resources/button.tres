@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bmdwt0d0lr5sn"]
+
+[ext_resource type="FontFile" uid="uid://de12whysrujen" path="res://art/font/Amarante-Regular.ttf" id="1_rq6wu"]
+[ext_resource type="Texture2D" uid="uid://dn4wh0jd7q7q6" path="res://art/kenney_ui_pack/Yellow/Default/button_rectangle_depth_gradient.png" id="2_rq6wu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_155eu"]
+texture = ExtResource("2_rq6wu")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_vertical = 2
+modulate_color = Color(0.982343, 0.982342, 0.982342, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_282ap"]
+texture = ExtResource("2_rq6wu")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_vertical = 2
+modulate_color = Color(0.881937, 0.881937, 0.881936, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rq6wu"]
+texture = ExtResource("2_rq6wu")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_vertical = 2
+modulate_color = Color(0.830335, 0.830335, 0.830335, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_rq6wu")
+Button/styles/hover = SubResource("StyleBoxTexture_155eu")
+Button/styles/normal = SubResource("StyleBoxTexture_282ap")
+Button/styles/pressed = SubResource("StyleBoxTexture_rq6wu")

@@ -1,27 +1,40 @@
-[gd_scene load_steps=23 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=28 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
 [ext_resource type="PackedScene" uid="uid://bvlk5m8v5p4ut" path="res://battle/ui/pot_ui.tscn" id="2_pyfix"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_e48mi"]
-[ext_resource type="Texture2D" uid="uid://c43e7w56dvsu2" path="res://art/ui_element/Buttons/buttons_2x.png" id="5_ueicy"]
 [ext_resource type="Script" uid="uid://bty8228mbp4mr" path="res://battle/deck.gd" id="6_oiw7q"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://global/player/input_manager.gd" id="7_fisqk"]
 [ext_resource type="PackedScene" uid="uid://dq042lqhdg00i" path="res://menus/pause_menu.tscn" id="7_n5ix6"]
-[ext_resource type="Texture2D" uid="uid://dlapp75shcsrg" path="res://art/card_images/monsters/Deck.png" id="7_py4tk"]
 [ext_resource type="Script" uid="uid://pr1np1molltl" path="res://battle/battle_manager.gd" id="9_agsc7"]
+[ext_resource type="Theme" uid="uid://2j3rac34a6bb" path="res://custom_resources/player_cover.tres" id="11_as1q7"]
 [ext_resource type="Script" uid="uid://waqufgaxshwe" path="res://card/monster_card/cooking_mechanic.gd" id="11_fisqk"]
 [ext_resource type="Script" uid="uid://dbpol38hmfa5t" path="res://card/card_manager/ingredient_card_manager.gd" id="11_icoan"]
 [ext_resource type="Script" uid="uid://cm5fblon3lnjk" path="res://card/card_manager/monster_card_manager.gd" id="12_icoan"]
+[ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="13_ju8jl"]
+[ext_resource type="Theme" uid="uid://dj0a2u4psddf6" path="res://custom_resources/player_health_bg.tres" id="14_7njrs"]
+[ext_resource type="Texture2D" uid="uid://itcaahwu7iiu" path="res://art/cooking_icon.png" id="14_xmbur"]
+[ext_resource type="Texture2D" uid="uid://bvh72by4c4tg1" path="res://art/recipe_icon.png" id="15_as1q7"]
 [ext_resource type="PackedScene" uid="uid://cddrlenmm4hcd" path="res://battle/ui/recipe_book.tscn" id="15_n6gaa"]
 [ext_resource type="PackedScene" uid="uid://dhand73cgok5l" path="res://battle/ui/card_info.tscn" id="16_220ih"]
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://card/target_selection/card_target_selector.tscn" id="16_tnndc"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://battle/on_level_start.gd" id="17_k6ux7"]
+[ext_resource type="PackedScene" uid="uid://b8daicbe0q3hy" path="res://battle/ui/player_health.tscn" id="18_as1q7"]
 [ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="19_kavl5"]
 [ext_resource type="AudioStream" uid="uid://d2sbgkufk663o" path="res://audio/music/stardew valley soundtrack.mp3" id="21_ihybe"]
 [ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="21_m24mv"]
 [ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="22_1x3g8"]
 [ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="23_01pft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmbur"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 9
+border_color = Color(0.945098, 0.760784, 0.196078, 1)
+expand_margin_bottom = 2.0
 
 [node name="NewBattle" type="Node2D"]
 
@@ -32,7 +45,8 @@ script = ExtResource("7_fisqk")
 card_manager_reference = NodePath("../../PlayerHand/MonsterCardManager")
 ingredient_card_manager = NodePath("../../PlayerHand/IngredientCardManager")
 
-[node name="PlayerHealth" type="RichTextLabel" parent="Player"]
+[node name="PlayerHealthOld" type="RichTextLabel" parent="Player"]
+visible = false
 z_index = 1
 offset_left = 343.0
 offset_top = 1.0
@@ -45,54 +59,86 @@ vertical_alignment = 1
 
 [node name="PlayerHand" type="Node2D" parent="."]
 
-[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
-position = Vector2(884, 543)
+[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "ingredient_card_manager")]
+position = Vector2(888, 538)
 script = ExtResource("6_oiw7q")
 deck_left_num_text = NodePath("DeckLeftNum")
-deck_sprite = NodePath("DeckSprite2D")
 ingredient_card_manager = NodePath("../IngredientCardManager")
 
-[node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
-z_index = 1
-scale = Vector2(0.383333, 0.383333)
-texture = ExtResource("7_py4tk")
+[node name="DeckImage" type="Panel" parent="PlayerHand/Deck"]
+offset_left = -22.0
+offset_top = -52.0
+offset_right = 46.0
+offset_bottom = 49.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmbur")
+
+[node name="DeckMiddle" type="ColorRect" parent="PlayerHand/Deck/DeckImage"]
+modulate = Color(0.972613, 0.790405, 0.253099, 1)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 56.0
+offset_bottom = 86.0
+
+[node name="DeckDepth" type="Control" parent="PlayerHand/Deck/DeckImage"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DeckDepth_1" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 95.0
+offset_right = 66.0
+offset_bottom = 95.6
+
+[node name="DeckDepth_2" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 97.0
+offset_right = 66.0
+offset_bottom = 97.6
+
+[node name="DeckDepth_3" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 99.0
+offset_right = 66.0
+offset_bottom = 99.6
+
+[node name="DeckDepth_4" type="ColorRect" parent="PlayerHand/Deck/DeckImage/DeckDepth"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 101.0
+offset_right = 66.0
+offset_bottom = 101.6
 
 [node name="DeckLeftNum" type="RichTextLabel" parent="PlayerHand/Deck"]
 z_index = 2
-offset_left = -25.0
-offset_top = -26.0
-offset_right = 29.0
-offset_bottom = 28.0
+offset_left = -14.0
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = 23.0
 theme = ExtResource("4_e48mi")
 theme_override_font_sizes/normal_font_size = 32
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui", "cover")]
+[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui", "player_hand_cover")]
 z_index = 7
 script = ExtResource("12_icoan")
 input_manager = NodePath("../../Player/InputManager")
 battle_manager = NodePath("../../BattleManager")
 temp_ui = NodePath("../../UI")
-cover = NodePath("../IngredientCardManager/Cover")
+player_hand_cover = NodePath("../../UI/BackgroundCovers/PlayerHandCover")
 
-[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "cover")]
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "player_hand_cover")]
 z_index = 1
 script = ExtResource("11_icoan")
 deck = NodePath("../Deck")
 temp_ui = NodePath("../../UI")
-cover = NodePath("Cover")
-
-[node name="Cover" type="ColorRect" parent="PlayerHand/IngredientCardManager"]
-visible = false
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
-z_index = 1
-offset_left = 240.0
-offset_top = 442.0
-offset_right = 814.0
-offset_bottom = 600.0
-mouse_filter = 2
+player_hand_cover = NodePath("../../UI/BackgroundCovers/PlayerHandCover")
 
 [node name="BattleField" type="Node2D" parent="."]
 
@@ -100,15 +146,15 @@ mouse_filter = 2
 z_index = 1
 
 [node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("2_pll4o")]
-position = Vector2(261, 230)
+position = Vector2(252, 236)
 card_slot_number = "cardslot1"
 
 [node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("2_pll4o")]
-position = Vector2(111, 320)
+position = Vector2(110, 321)
 card_slot_number = "cardslot2"
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("2_pll4o")]
-position = Vector2(112, 144)
+position = Vector2(110, 141)
 card_slot_number = "cardslot3"
 
 [node name="Enemy" type="Node2D" parent="BattleField"]
@@ -120,7 +166,7 @@ battle_timer = NodePath("BattleTimer")
 input_manager = NodePath("../Player/InputManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 enemy = NodePath("../BattleField/Enemy")
-player_health_text = NodePath("../Player/PlayerHealth")
+player_health_text = NodePath("../Player/PlayerHealthOld")
 temp_attack_message = NodePath("../UI/TempAttackMessage")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
@@ -153,34 +199,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PotUICover" type="ColorRect" parent="UI/BackgroundCovers"]
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
+[node name="PlayerHandCover" type="Panel" parent="UI/BackgroundCovers"]
 z_index = 1
 layout_mode = 0
-offset_top = 442.0
-offset_right = 223.0
+offset_left = 206.0
+offset_top = 445.0
+offset_right = 832.0
 offset_bottom = 600.0
 mouse_filter = 2
+theme = ExtResource("11_as1q7")
 
-[node name="EndTurnCover" type="ColorRect" parent="UI/BackgroundCovers"]
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
+[node name="PotUICover" type="Panel" parent="UI/BackgroundCovers"]
 z_index = 1
 layout_mode = 0
-offset_left = 827.0
-offset_top = 442.0
-offset_right = 959.0
+offset_left = 2.0
+offset_top = 445.0
+offset_right = 196.0
 offset_bottom = 600.0
 mouse_filter = 2
-
-[node name="PlayerHand" type="ColorRect" parent="UI/BackgroundCovers"]
-modulate = Color(0.270222, 0.270222, 0.270222, 0.529412)
-z_index = 1
-layout_mode = 0
-offset_left = 239.0
-offset_top = 442.0
-offset_right = 813.0
-offset_bottom = 600.0
-mouse_filter = 2
+theme = ExtResource("11_as1q7")
 
 [node name="BattleUI" parent="UI" instance=ExtResource("1_156m4")]
 layout_mode = 1
@@ -188,6 +225,17 @@ layout_mode = 1
 [node name="PotUi" parent="UI" node_paths=PackedStringArray("cooking_mechanics") instance=ExtResource("2_pyfix")]
 layout_mode = 1
 cooking_mechanics = NodePath("../../CookingMechanic")
+
+[node name="PlayerHealth" parent="UI" instance=ExtResource("18_as1q7")]
+layout_mode = 1
+
+[node name="PlayerHealthBg" type="Panel" parent="UI/PlayerHealth"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 410.0
+offset_bottom = 43.0
+mouse_filter = 2
+theme = ExtResource("14_7njrs")
 
 [node name="Buttons" type="Control" parent="UI"]
 layout_mode = 1
@@ -201,122 +249,62 @@ mouse_filter = 2
 [node name="EndTurnButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 845.0
-offset_top = 445.0
-offset_right = 955.0
-offset_bottom = 482.0
+offset_left = 842.0
+offset_top = 436.0
+offset_right = 952.0
+offset_bottom = 473.0
 focus_mode = 0
-theme = ExtResource("4_e48mi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("13_ju8jl")
 theme_override_font_sizes/font_size = 20
 text = "End Turn"
-flat = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/EndTurnButton"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_ueicy")
-region_rect = Rect2(114, 4, 44, 26)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="SwitchHandButton" type="Button" parent="UI/Buttons"]
-visible = false
-z_index = 2
-layout_mode = 0
-offset_left = 249.0
-offset_top = 452.0
-offset_right = 292.0
-offset_bottom = 492.0
-focus_mode = 0
-theme = ExtResource("4_e48mi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Switch
-Hand"
-flat = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/SwitchHandButton"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_ueicy")
-region_rect = Rect2(114, 4, 44, 26)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
 
 [node name="CookButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 25.0
-offset_top = 555.0
-offset_right = 116.0
-offset_bottom = 594.0
+offset_left = 153.0
+offset_top = 523.0
+offset_right = 188.0
+offset_bottom = 558.0
 focus_mode = 0
-theme = ExtResource("4_e48mi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "Cook"
-flat = true
+theme = ExtResource("13_ju8jl")
+theme_override_font_sizes/font_size = 22
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/CookButton"]
-z_index = -1
+[node name="CookingIcon" type="NinePatchRect" parent="UI/Buttons/CookButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = -4.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_ueicy")
-region_rect = Rect2(114, 4, 44, 26)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+texture = ExtResource("14_xmbur")
 
 [node name="RecipeButton" type="Button" parent="UI/Buttons"]
 z_index = 2
 layout_mode = 0
-offset_left = 25.0
-offset_top = 507.0
-offset_right = 116.0
-offset_bottom = 545.0
+offset_left = 153.0
+offset_top = 562.0
+offset_right = 188.0
+offset_bottom = 597.0
 focus_mode = 0
-theme = ExtResource("4_e48mi")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Recipe"
-flat = true
+theme = ExtResource("13_ju8jl")
+theme_override_font_sizes/font_size = 22
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Buttons/RecipeButton"]
-z_index = -1
+[node name="RecipeIcon" type="NinePatchRect" parent="UI/Buttons/RecipeButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 2.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_ueicy")
-region_rect = Rect2(114, 4, 44, 26)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+texture = ExtResource("15_as1q7")
 
 [node name="GameConditions" type="Control" parent="UI"]
 anchors_preset = 0

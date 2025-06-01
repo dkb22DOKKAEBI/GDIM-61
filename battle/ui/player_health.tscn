@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8daicbe0q3hy"]
+
+[ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="1_53byh"]
+[ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="2_3f1qj"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_fhjc0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqeuh"]
+bg_color = Color(0.215902, 0.215902, 0.215902, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="Theme" id="Theme_fhjc0"]
+Panel/styles/panel = SubResource("StyleBoxFlat_qqeuh")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhjc0"]
+bg_color = Color(1, 0.313726, 0.243137, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Theme" id="Theme_3f1qj"]
+Panel/styles/panel = SubResource("StyleBoxFlat_fhjc0")
+
+[node name="PlayerHealth" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 278.0
+offset_right = -279.0
+offset_bottom = -557.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthIcon" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 41.0
+texture = ExtResource("1_53byh")
+
+[node name="HealthTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_right = 135.0
+offset_bottom = 16.0
+mouse_filter = 2
+theme = ExtResource("2_fhjc0")
+theme_override_font_sizes/normal_font_size = 12
+text = "Player Health"
+
+[node name="HealthBarOutline" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 18.0
+offset_right = 396.0
+offset_bottom = 33.0
+mouse_filter = 2
+theme = SubResource("Theme_fhjc0")
+
+[node name="HealthBar" type="Panel" parent="HealthBarOutline"]
+layout_mode = 0
+offset_right = 344.0
+offset_bottom = 15.0
+mouse_filter = 2
+theme = SubResource("Theme_3f1qj")
+
+[node name="PlayerHealthNum" type="RichTextLabel" parent="HealthBarOutline"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = -2.0
+offset_right = 167.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme = ExtResource("2_3f1qj")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 14
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerHealthText" type="RichTextLabel" parent="HealthBarOutline"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -2.0
+offset_right = 204.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme = ExtResource("2_3f1qj")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 14
+text = "/ 10"
+vertical_alignment = 1

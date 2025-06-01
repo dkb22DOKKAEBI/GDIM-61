@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://wrkrwvu00sun" path="res://card/card_slot/cardslot.gd" id="1_uggls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lc470"]
-size = Vector2(78, 116)
+size = Vector2(82, 124)
 
 [node name="Cardslot" type="Node2D"]
 light_mask = 2
@@ -12,7 +12,7 @@ visibility_layer = 2
 script = ExtResource("1_uggls")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.48, 0.48)
 texture = ExtResource("1_lc470")
 
 [node name="Area2D" type="Area2D" parent="."]

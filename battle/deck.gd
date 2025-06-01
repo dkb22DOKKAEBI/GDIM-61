@@ -54,7 +54,6 @@ func instantiate_ingredient_card_helper(ingredient_name: String) -> Node2D:
 	new_card.position = card_starting_position
 	new_card.starting_position = card_starting_position
 	new_card.card_name = ingredient_name
-	new_card.ingredient_name_label.text = ingredient_name
 	
 	# Return
 	return new_card

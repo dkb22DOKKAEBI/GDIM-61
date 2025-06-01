@@ -9,7 +9,7 @@ const DEFAULT_CARD_MOVE_SPEED = 0.1
 var card_being_dragged # Card type
 var screen_size
 @export var temp_ui: Control
-@export var cover: ColorRect
+@export var player_hand_cover: Panel
 @onready var clicksfx: AudioStreamPlayer = $clicksfx
 
 
@@ -46,7 +46,6 @@ func on_hovered_over_card(card):
 		# Disable all detection for ingredient cards hover
 		for ingredient_card in PlayerHand.player_ingredient_hand:
 			if ingredient_card.scale.x == 1.2:
-				#highlight_card(ingredient_card, false)
 				on_hovered_off_card(ingredient_card)
 			ingredient_card.set_pickable(false)
 		
@@ -57,7 +56,7 @@ func on_hovered_over_card(card):
 		
 		# Make cover for ingredient cards visible
 		if PlayerHand.hovering_monster_num != 0:
-			cover.visible = true
+			player_hand_cover.z_index = 12
 		
 
 
@@ -92,4 +91,4 @@ func on_hovered_off_card(card):
 		
 		# Make cover for ingredient cards invisible if no monster card hovered over
 		if PlayerHand.hovering_monster_num == 0:
-			cover.visible = false
+			player_hand_cover.z_index = 1

@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://2j3rac34a6bb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf4mk"]
+bg_color = Color(0, 0, 0, 0.215686)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.564962, 0.564962, 0.564961, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+shadow_color = Color(0, 0, 0, 0.419608)
+shadow_size = 1
+shadow_offset = Vector2(0.75, 0)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_mf4mk")
