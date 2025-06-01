@@ -49,9 +49,9 @@ region_rect = Rect2(0, -1, 499, 501)
 [node name="BossHealthText" type="RichTextLabel" parent="BossHealth"]
 z_index = 2
 layout_mode = 0
-offset_left = 31.0
+offset_left = 11.0
 offset_top = -100.0
-offset_right = 90.0
+offset_right = 109.0
 offset_bottom = -41.0
 theme = ExtResource("3_sdpyj")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
