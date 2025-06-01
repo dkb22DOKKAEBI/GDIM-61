@@ -71,13 +71,13 @@ func vacuum_defend():
 		boss_health_text.text = str(boss_health)
 		
 		# Change font to double size and green
-		boss_health_text.add_theme_font_size_override("normal_font_size", 40)
-		boss_health_text.modulate = Color.GREEN
+		boss_health_text.add_theme_font_size_override("normal_font_size", 42)
+		boss_health_text.add_theme_color_override("default_color", Color.GREEN)
 	
 		# Play animation for health change
 		var tween = get_tree().create_tween()
-		tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 16, 1)
-		tween.tween_property(boss_health_text, "modulate", Color.BLACK, 1)
+		tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 21, 1)
+		tween.tween_property(boss_health_text, "theme_override_colors/default_color", Color.BLACK, 1)
 
 
 # Ability 3: Boss eliminate
