@@ -26,6 +26,7 @@ signal selected_ingredient_change_signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	center_screen_x = PLAYER_HAND_CENTER
 	SceneManager.connect("game_end_signal", clear_player_legacy)
 

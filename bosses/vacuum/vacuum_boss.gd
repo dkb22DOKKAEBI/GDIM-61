@@ -22,40 +22,26 @@ func on_action() -> void:
 	super.on_action()
 	
 	# Choose ability to use
-	var skill = randi() % 3
-	if curr_cool_down == 0:
-		skill = 3
-	var target = choose_target()
-	
-	match skill:
-		0 :
+	if curr_cool_down == 0 and not CardslotManager.check_battlefield_empty():
+		vacuum_eliminate()
+		curr_cool_down = max_cool_down
+	else:
+		# Determine whether to attack or slef heal with probability
+		var check := randf_range(0.0, 1.0)
+		print(str(check) + " " + str((float(boss_health) / float(boss_max_health)) + 0.2))
+		if check <= (float(boss_health) / float(boss_max_health)) + 0.2:
+			var target = choose_target()
 			vacuum_attack(target)
-		1:
-			vacuum_attack(target)
-		2:
+		else:
 			vacuum_defend()
-		3:
-			vacuum_eliminate()
-			curr_cool_down = max_cool_down
-		_:
-			print("Skill out of range")
 
 
 # Boss abilities
 # Ability 1: Boss attack
 func vacuum_attack(target):
 	var old_pos:Vector2 = self.global_position
-	if not target:
-		boss_attack_player_anim()
-		await battle_manager.wait(0.5)
-		battle_manager.player_take_dmg(1)
-	else:
-		boss_attack_monster_anim(target)
-		await battle_manager.wait(0.5)
-		battle_manager.player_cards_on_battlefield[target].take_damage(boss_attack)
-	
-	# Enemy return to original position
-	boss_return_pos_anim(old_pos)
+	regular_attack(target)
+	await boss_regular_attack_finish_signal
 	
 	# Check whether player lose
 	battle_manager.player_check_dead()
