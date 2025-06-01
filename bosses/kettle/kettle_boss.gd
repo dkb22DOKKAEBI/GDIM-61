@@ -38,7 +38,7 @@ func on_action() -> void:
 func kettle_attack() -> void:
 	# Regular attack
 	var target = choose_target()
-	regular_attack(target)
+	regular_attack(target, get_node("BossBasic"))
 	await boss_regular_attack_finish_signal
 	
 	# Signal boss action finish
