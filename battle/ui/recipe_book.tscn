@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://battle/button/recipe_book.gd" id="1_wjb6r"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_udx60"]
-[ext_resource type="Texture2D" uid="uid://bl35v0cv1b2ek" path="res://art/card_images/ingredients/Drawing-3.sketchpad.png" id="4_gt85e"]
+[ext_resource type="Texture2D" uid="uid://cy1mpfd21qo7d" path="res://art/card_images/monsters/Drawing-3.sketchpad.png" id="4_gt85e"]
 [ext_resource type="Texture2D" uid="uid://lwhna8gnne1w" path="res://art/ui_element/GUI/GUI_1x.png" id="5_ajw2t"]
 
 [node name="RecipeBook" type="Control"]
@@ -11,10 +11,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 145.0
-offset_top = 44.9
-offset_right = -65.0
-offset_bottom = 19.9
+offset_left = 70.835
+offset_top = 45.0
+offset_right = 24.835
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.885, 0.885)
@@ -22,7 +22,6 @@ mouse_filter = 2
 script = ExtResource("1_wjb6r")
 
 [node name="RecipeBookVisible" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
