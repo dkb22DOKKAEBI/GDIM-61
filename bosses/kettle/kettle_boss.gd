@@ -63,4 +63,5 @@ func kettle_aoe_attack() -> void:
 			cardslot.card_in_slot.take_damage(range_attack_power)
 	
 	# Signal ability finish
+	await get_tree().create_timer(0.5).timeout
 	kettle_aoe_attack_finish_signal.emit()
