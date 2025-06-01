@@ -146,15 +146,15 @@ player_hand_cover = NodePath("../../UI/BackgroundCovers/PlayerHandCover")
 z_index = 1
 
 [node name="Cardslot1" parent="BattleField/Cardslots" instance=ExtResource("2_pll4o")]
-position = Vector2(261, 230)
+position = Vector2(235, 244)
 card_slot_number = "cardslot1"
 
 [node name="Cardslot2" parent="BattleField/Cardslots" instance=ExtResource("2_pll4o")]
-position = Vector2(111, 320)
+position = Vector2(94, 319)
 card_slot_number = "cardslot2"
 
 [node name="Cardslot3" parent="BattleField/Cardslots" instance=ExtResource("2_pll4o")]
-position = Vector2(112, 144)
+position = Vector2(123, 145)
 card_slot_number = "cardslot3"
 
 [node name="Enemy" type="Node2D" parent="BattleField"]
