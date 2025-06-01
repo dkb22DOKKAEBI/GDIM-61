@@ -2,8 +2,8 @@ class_name Boss
 extends Node
 
 var boss_name: String # Name of the boss
-@export var boss_health_text: RichTextLabel
-@export var boss_attack_text: RichTextLabel
+var boss_health_text: RichTextLabel
+var boss_attack_text: RichTextLabel
 var boss_max_health: int
 var boss_health: int
 var boss_attack: int
@@ -23,9 +23,13 @@ func _ready() -> void:
 	max_cool_down = CardDatabase.BOSS_STATS[boss_name]["CoolDown"]
 	curr_cool_down = max_cool_down
 	
-	# Update boss health and attack text
+	boss_health_text = find_child("BossBasic").find_child("BossHealth")
+	boss_attack_text = find_child("BossBasic").find_child("BossAttack")
+	
+	# Update boss card
 	boss_health_text.text = str(boss_health)
 	boss_attack_text.text = str(boss_attack)
+	find_child("BossBasic").find_child("BossImage").texture = ResourceLoader.load("res://art/card_images/bosses/" + boss_name + "_Boss.png")
 
 
 # Boss's behavoir functions turn

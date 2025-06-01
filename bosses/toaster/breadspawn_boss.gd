@@ -6,6 +6,9 @@ extends Boss
 func _ready():
 	# Boss basic stats
 	super._ready()
+	
+	# Adjust breadspawn scale
+	self.scale = Vector2(0.6, 0.6)
 
 
 func boss_turn() -> void:

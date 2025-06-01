@@ -5,9 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
 size = Vector2(164, 228)
 
-[node name="Boss" type="Node2D"]
+[node name="BossBasic" type="Node2D"]
 
-[node name="BossSprite2D" type="Sprite2D" parent="."]
+[node name="BossImage" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.39, 0.39)
 
