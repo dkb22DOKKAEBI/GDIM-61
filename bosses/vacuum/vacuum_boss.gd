@@ -28,7 +28,6 @@ func on_action() -> void:
 	else:
 		# Determine whether to attack or slef heal with probability
 		var check := randf_range(0.0, 1.0)
-		print(str(check) + " " + str((float(boss_health) / float(boss_max_health)) + 0.2))
 		if check <= (float(boss_health) / float(boss_max_health)) + 0.2:
 			var target = choose_target()
 			vacuum_attack(target)
