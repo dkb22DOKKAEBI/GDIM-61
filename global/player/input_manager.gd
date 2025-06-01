@@ -110,7 +110,7 @@ func perform_right_click_action() -> void:
 		var point := raycast_points[0]
 		if point.collider.collision_layer == COLLISION_MASK_BOSS:
 			PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.CHECKING_INFO
-			EventController.display_boss_info_signal.emit(point.collider.get_parent())
+			EventController.display_boss_info_signal.emit(point.collider.get_parent().get_parent())
 		elif point.collider.collision_layer == COLLISION_MASK_MONSTER_CARD:
 			PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.CHECKING_INFO
 			EventController.display_monster_card_info_signal.emit(point.collider.get_parent())
