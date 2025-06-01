@@ -23,7 +23,7 @@ func on_action() -> void:
 	if curr_cool_down == 0 and (CardslotManager.cardslots[1].card_in_slot or CardslotManager.cardslots[2].card_in_slot): # Swap front and backline
 		blender_swap_front_back_line()
 		curr_cool_down = max_cool_down
-	else:
+	else: # Regular attack
 		blender_attack()
 	await blender_action_finish_signal
 	

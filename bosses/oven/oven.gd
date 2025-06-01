@@ -19,10 +19,10 @@ func on_action() -> void:
 	super.on_action()
 	
 	# Choose ability to perform
-	if curr_cool_down == 0:
+	if curr_cool_down == 0: # Multi-attack
 		oven_multi_attack()
 		curr_cool_down = max_cool_down
-	else:
+	else: # Regular attack
 		oven_attack()
 	await oven_action_finish_signal
 	

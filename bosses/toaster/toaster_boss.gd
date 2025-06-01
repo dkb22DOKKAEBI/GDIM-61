@@ -39,18 +39,17 @@ func on_action() -> void:
 		await breadspwan_2.get_child(0).breadspawn_attack_finish_signal
 	
 	# Toaster action
-	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0:
+	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0: # Spawn new breads
 		spawn_bread()
 		curr_spawn_cool_down = spawn_max_cool_down
-	elif boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0):
+	elif boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
 		if breadspwan_1.get_child_count() != 0:
 			toaster_exchange_health(breadspwan_1.get_child(0))
 		else:
 			toaster_exchange_health(breadspwan_2.get_child(0))
-	else:
+	else: # Regular attack
 		toaster_attack()
 		await toaster_action_finish_signal
-	
 
 
 # Boss abilities
