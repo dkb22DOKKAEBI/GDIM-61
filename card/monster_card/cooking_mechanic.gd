@@ -47,6 +47,8 @@ func _on_cook() -> void:
 		PlayerHand.selected_ingredients.clear()
 		
 		PlayerHand.selected_ingredient_change_signal.emit()
+		EventController.update_ingredient_num_indicator_signal.emit()
+		EventController.update_monster_num_indicator_signal.emit()
 		pot_ui.clear_after_cook()
 
 

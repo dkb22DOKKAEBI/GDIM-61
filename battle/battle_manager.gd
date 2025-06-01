@@ -167,6 +167,7 @@ func start_player_turn():
 	var ingredient_num := PlayerHand.player_ingredient_hand.size() + PlayerHand.selected_ingredients.size()
 	for i in range(PlayerController.MAX_INGREDIENT_HAND_NUM - ingredient_num):
 		$"../PlayerHand/Deck".draw_card()
+	EventController.update_ingredient_num_indicator_signal.emit()
 	
 	reset_cards_attack()
 	PlayerController.is_on_player_turn = true
