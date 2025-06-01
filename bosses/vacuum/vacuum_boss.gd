@@ -1,10 +1,12 @@
 class_name Vacuum
 extends Boss
 
+signal vacuum_regular_attack_finish_signal()
+signal vacuum_defend_finish_signal()
+signal vacuum_elimination_finish_signal()
+
 var boss_block: float
 var boss_elimination: float
-@onready var new_battle: Node2D = $"."
-@onready var attacksfx = new_battle.get_node("attacksfx")
 
 
 # Initialization of boss stats
@@ -25,21 +27,31 @@ func on_action() -> void:
 	if curr_cool_down == 0 and not CardslotManager.check_battlefield_empty(): # Elimination
 		vacuum_eliminate()
 		curr_cool_down = max_cool_down
+		await vacuum_elimination_finish_signal
 	else: # Defend or Regular attack
 		var check := randf_range(0.0, 1.0) # Determine whether to attack or slef heal with probability
 		if check <= (float(boss_health) / float(boss_max_health)) + 0.2:
 			var target = choose_target()
 			vacuum_attack(target)
+			await vacuum_regular_attack_finish_signal
 		else:
 			vacuum_defend()
+			await vacuum_defend_finish_signal
+	
+	# Signal boss action finishs
+	boss_action_finish_signal.emit()
 
 
 # Boss abilities
 # Ability 1: Boss attack
 func vacuum_attack(target):
+	# Regular attack
 	var old_pos:Vector2 = self.global_position
 	regular_attack(target)
 	await boss_regular_attack_finish_signal
+	
+	# Signal vacuum regular attack finish
+	vacuum_regular_attack_finish_signal.emit()
 
 
 # Ability 2: Boss defend
@@ -59,6 +71,9 @@ func vacuum_defend():
 		var tween = get_tree().create_tween()
 		tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 21, 1)
 		tween.tween_property(boss_health_text, "theme_override_colors/default_color", Color.BLACK, 1)
+	
+	# Signal vacuum defend finish
+	vacuum_defend_finish_signal.emit()
 
 
 # Ability 3: Boss eliminate
@@ -81,3 +96,6 @@ func vacuum_eliminate():
 		boss_return_pos_anim(old_pos)
 	else:
 		vacuum_attack(null)
+	
+	# Signal vacuum elimination finish
+	vacuum_elimination_finish_signal.emit()

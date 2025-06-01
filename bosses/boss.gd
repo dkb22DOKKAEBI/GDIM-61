@@ -1,9 +1,10 @@
 class_name Boss
 extends Node
 
-signal boss_return_anim_finish_signal
-signal boss_attack_anim_finish_signal
-signal boss_regular_attack_finish_signal
+signal boss_return_anim_finish_signal()
+signal boss_attack_anim_finish_signal()
+signal boss_regular_attack_finish_signal()
+signal boss_action_finish_signal()
 
 var boss_name: String # Name of the boss
 var boss_health_text: RichTextLabel
@@ -40,18 +41,18 @@ func _ready() -> void:
 func boss_turn() -> void:
 	# Disable end turn button
 	battle_manager.enable_end_turn_button(false)
+	
 	# Boss thinking waiting time
-	battle_manager.battle_timer.start()
-	await battle_manager.battle_timer.timeout
+	await get_tree().create_timer(1.5)
 	
 	# Boss action
 	if curr_cool_down != 0:
 		curr_cool_down -= 1
 	on_action()
+	await boss_action_finish_signal
 	
 	# Boss aftermath waiting time
-	battle_manager.battle_timer.start()
-	await battle_manager.battle_timer.timeout
+	await get_tree().create_timer(1)
 	
 	# Boss turn ends
 	battle_manager.start_player_turn()

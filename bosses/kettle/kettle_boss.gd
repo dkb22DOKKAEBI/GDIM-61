@@ -1,7 +1,8 @@
 class_name Kettle
 extends Boss
 
-signal kettle_action_finish_signal
+signal kettle_regular_attack_finish_signal()
+signal kettle_aoe_attack_finish_signal()
 
 var steam_attack_power: int
 var range_attack_power: int
@@ -28,9 +29,13 @@ func on_action() -> void:
 	if curr_cool_down == 0 and not CardslotManager.check_battlefield_empty(): # AOE attack
 		kettle_aoe_attack()
 		curr_cool_down = max_cool_down
+		await kettle_aoe_attack_finish_signal
 	else: # Regular attack
 		kettle_attack()
-	await kettle_action_finish_signal
+		await kettle_regular_attack_finish_signal
+	
+	# Signal boss action finishs
+	boss_action_finish_signal.emit()
 
 
 # Boss abilities
@@ -41,8 +46,8 @@ func kettle_attack() -> void:
 	regular_attack(target, get_node("BossBasic"))
 	await boss_regular_attack_finish_signal
 	
-	# Signal boss action finish
-	kettle_action_finish_signal.emit()
+	# Signal ability finish
+	kettle_regular_attack_finish_signal.emit()
 
 # Ability 2: Scalding Steam
 func kettle_scalding_steam() -> void:
@@ -57,5 +62,5 @@ func kettle_aoe_attack() -> void:
 		if cardslot.card_in_slot:
 			cardslot.card_in_slot.take_damage(range_attack_power)
 	
-	# Signal boss action finish
-	kettle_action_finish_signal.emit()
+	# Signal ability finish
+	kettle_aoe_attack_finish_signal.emit()

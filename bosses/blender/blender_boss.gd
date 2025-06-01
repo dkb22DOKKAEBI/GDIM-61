@@ -1,7 +1,8 @@
 class_name Blender
 extends Boss
 
-signal blender_action_finish_signal()
+signal blender_regular_attack_finish_signal()
+signal blender_swap_finish_signal()
 
 var double_hit_chance: float
 
@@ -23,12 +24,16 @@ func on_action() -> void:
 	if curr_cool_down == 0 and (CardslotManager.cardslots[1].card_in_slot or CardslotManager.cardslots[2].card_in_slot): # Swap front and backline
 		blender_swap_front_back_line()
 		curr_cool_down = max_cool_down
+		await blender_swap_finish_signal
 	else: # Regular attack
 		blender_attack()
-	await blender_action_finish_signal
+		await blender_regular_attack_finish_signal
 	
 	# Boss ramping attack
 	blender_ramp_up_attack()
+	
+	# Signal boss action finishs
+	boss_action_finish_signal.emit()
 	
 
 
@@ -46,8 +51,8 @@ func blender_attack() -> void:
 	regular_attack(target, self, 1, coefficient)
 	await boss_regular_attack_finish_signal
 	
-	# Signal boss action finish
-	blender_action_finish_signal.emit()
+	# Signal ability finish
+	blender_regular_attack_finish_signal.emit()
 
 # Ability 2: Swap frontline with backline
 func blender_swap_front_back_line() -> void:
@@ -82,8 +87,8 @@ func blender_swap_front_back_line() -> void:
 	# Update player_cards_on_battlefield in battle manager
 	battle_manager.update_player_cards_on_battlefield()
 	
-	# Signal boss action finish
-	blender_action_finish_signal.emit()
+	# Signal ability finish
+	blender_swap_finish_signal.emit()
 
 # Ability 3: Ramping up attack
 func blender_ramp_up_attack() -> void:

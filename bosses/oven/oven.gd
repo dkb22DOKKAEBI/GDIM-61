@@ -1,7 +1,8 @@
 class_name Oven
 extends Boss
 
-signal oven_action_finish_signal()
+signal oven_regular_attack_finish_signal()
+signal oven_multi_attack_finish_signal()
 
 var self_dmg: int
 
@@ -22,12 +23,16 @@ func on_action() -> void:
 	if curr_cool_down == 0: # Multi-attack
 		oven_multi_attack()
 		curr_cool_down = max_cool_down
+		await oven_multi_attack_finish_signal
 	else: # Regular attack
 		oven_attack()
-	await oven_action_finish_signal
+		await oven_regular_attack_finish_signal
 	
 	# Self take damage
 	boss_take_dmg(self_dmg)
+	
+	# Signal boss action finishs
+	boss_action_finish_signal.emit()
 
 
 # Boss abilities
@@ -39,7 +44,7 @@ func oven_attack() -> void:
 	await boss_regular_attack_finish_signal
 	
 	# Signal action over
-	oven_action_finish_signal.emit()
+	oven_regular_attack_finish_signal.emit()
 
 # Ability 2: Multiple attacks
 func oven_multi_attack() -> void:
@@ -50,7 +55,7 @@ func oven_multi_attack() -> void:
 		await boss_regular_attack_finish_signal
 	
 	# Signal action over
-	oven_action_finish_signal.emit()
+	oven_multi_attack_finish_signal.emit()
 
 func multi_attack_choose_target() -> Cardslot:
 	if CardslotManager.cardslots[0].card_in_slot:

@@ -1,7 +1,9 @@
 class_name Toaster
 extends Boss
 
-signal toaster_action_finish_signal()
+signal toaster_spawn_bread_finish_signal()
+signal toaster_regular_attack_finish_signal()
+signal toaster_exchange_health_finish_signal()
 
 var spawn_max_cool_down: int
 var curr_spawn_cool_down: int
@@ -42,14 +44,19 @@ func on_action() -> void:
 	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0: # Spawn new breads
 		spawn_bread()
 		curr_spawn_cool_down = spawn_max_cool_down
+		await toaster_spawn_bread_finish_signal
 	elif boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
 		if breadspwan_1.get_child_count() != 0:
 			toaster_exchange_health(breadspwan_1.get_child(0))
 		else:
 			toaster_exchange_health(breadspwan_2.get_child(0))
+		await toaster_exchange_health_finish_signal
 	else: # Regular attack
 		toaster_attack()
-		await toaster_action_finish_signal
+		await toaster_regular_attack_finish_signal
+	
+	# Signal boss action finishs
+	boss_action_finish_signal.emit()
 
 
 # Boss abilities
@@ -60,6 +67,9 @@ func spawn_bread() -> void:
 		breadspwan_1.add_child(spawn_bread_helper())
 	if breadspwan_2.get_child_count() == 0:
 		breadspwan_2.add_child(spawn_bread_helper())
+	
+	# Signal ability finish
+	toaster_spawn_bread_finish_signal.emit()
 
 func spawn_bread_helper() -> Node2D:
 	var boss_scene = load(CardDatabase.BOSS_PATH["Breadspawn"])
@@ -77,8 +87,8 @@ func toaster_attack() -> void:
 	regular_attack(target, toaster)
 	await boss_regular_attack_finish_signal
 	
-	# Signal boss attack finishes
-	toaster_action_finish_signal.emit()
+	# Signal ability finish
+	toaster_regular_attack_finish_signal.emit()
 
 # Ability 3: Exchange breadspawn for health
 func toaster_exchange_health(breadspawn: Breadspawn) -> void:
@@ -98,3 +108,6 @@ func toaster_exchange_health(breadspawn: Breadspawn) -> void:
 	
 	# Delete breadspawn
 	breadspawn.queue_free()
+	
+	# Signal ability finish
+	toaster_exchange_health_finish_signal.emit()
