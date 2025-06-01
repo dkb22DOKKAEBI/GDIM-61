@@ -43,7 +43,7 @@ func boss_turn() -> void:
 	battle_manager.enable_end_turn_button(false)
 	
 	# Boss thinking waiting time
-	await get_tree().create_timer(1.5)
+	await get_tree().create_timer(0.5).timeout
 	
 	# Boss action
 	if curr_cool_down != 0:
@@ -52,7 +52,7 @@ func boss_turn() -> void:
 	await boss_action_finish_signal
 	
 	# Boss aftermath waiting time
-	await get_tree().create_timer(0.6)
+	await get_tree().create_timer(0.5).timeout
 	
 	# Boss turn ends
 	battle_manager.start_player_turn()

@@ -1,7 +1,6 @@
 class_name Toaster
 extends Boss
 
-signal toaster_spawn_bread_finish_signal()
 signal toaster_regular_attack_finish_signal()
 signal toaster_exchange_health_finish_signal()
 
@@ -44,7 +43,7 @@ func on_action() -> void:
 	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0: # Spawn new breads
 		spawn_bread()
 		curr_spawn_cool_down = spawn_max_cool_down
-		await toaster_spawn_bread_finish_signal
+		await get_tree().create_timer(0.5).timeout
 	elif boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
 		if breadspwan_1.get_child_count() != 0:
 			toaster_exchange_health(breadspwan_1.get_child(0))
@@ -67,9 +66,6 @@ func spawn_bread() -> void:
 		breadspwan_1.add_child(spawn_bread_helper())
 	if breadspwan_2.get_child_count() == 0:
 		breadspwan_2.add_child(spawn_bread_helper())
-	
-	# Signal ability finish
-	toaster_spawn_bread_finish_signal.emit()
 
 func spawn_bread_helper() -> Node2D:
 	var boss_scene = load(CardDatabase.BOSS_PATH["Breadspawn"])
@@ -92,6 +88,9 @@ func toaster_attack() -> void:
 
 # Ability 3: Exchange breadspawn for health
 func toaster_exchange_health(breadspawn: Breadspawn) -> void:
+	# Delete breadspawn
+	breadspawn.queue_free()
+	
 	# Restore health
 	boss_health += breadspawn.boss_health
 	boss_health = min(boss_health, CardDatabase.BOSS_STATS["Toaster"]["HP"])
@@ -106,8 +105,6 @@ func toaster_exchange_health(breadspawn: Breadspawn) -> void:
 	tween.tween_property(boss_health_text, "theme_override_font_sizes/normal_font_size", 21, 1)
 	tween.tween_property(boss_health_text, "theme_override_colors/default_color", Color.BLACK, 1)
 	
-	# Delete breadspawn
-	breadspawn.queue_free()
-	
 	# Signal ability finish
+	await get_tree().create_timer(0.7).timeout
 	toaster_exchange_health_finish_signal.emit()
