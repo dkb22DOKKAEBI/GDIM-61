@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf3c8xmsadwep"
-path="res://.godot/imported/Vacuum_Boss.png-9fd978e37aab3dde5f60d90abd944dc2.ctex"
+uid="uid://crl63ruv8scww"
+path="res://.godot/imported/Oven.png-922c4b3cf6505e5acdbf556bc97a458c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/card_images/bosses/Vacuum_Boss.png"
-dest_files=["res://.godot/imported/Vacuum_Boss.png-9fd978e37aab3dde5f60d90abd944dc2.ctex"]
+source_file="res://art/card_images/bosses/Oven.png"
+dest_files=["res://.godot/imported/Oven.png-922c4b3cf6505e5acdbf556bc97a458c.ctex"]
 
 [params]
 
