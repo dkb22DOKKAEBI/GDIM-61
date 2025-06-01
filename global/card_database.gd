@@ -5,11 +5,11 @@ extends Node
 # Change order here to change level order
 # eg. Level 1 has index of 0
 const BOSS_LEVEL = {
-	3: "Vacuum",
+	4: "Vacuum",
 	1: "Oven",
 	2: "Toaster",
-	0: "Blender",
-	4: "Kettle"
+	3: "Blender",
+	0: "Kettle"
 }
 
 
@@ -146,7 +146,7 @@ const ABILITY_DESCRIPTION = {
 					 "Overheat: " + ability_text_color_code + "Gain high attack and health, but self damage 200 health every turn (passive)"],
 	"Blender"     : ["Axe Rush: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy and has a chance of doubling damge(regular)",
 					 "Whirlwind Pull: " + ability_text_color_code + "Blend spins and drags the backline units to the front (2 turns CD)",
-					 "Slushy Surge: " + ability_text_color_code + "Ramp up attack after every turn (passive)"],
+					 "Slushy Surge: " + ability_text_color_code + "Chance of ramping up attack after each turn (passive)"],
 	"Kettle"      : ["Vial Toss : " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					 "Final Geyser: "  + ability_text_color_code + "Deals an AOE hit to all party (3 turns CD)",
 					 "Scalding stream: " + ability_text_color_code + "Sprays a stream of scalding hot liquids at the backline dealing damage overtime (passive)"]

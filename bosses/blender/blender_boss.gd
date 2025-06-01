@@ -93,5 +93,7 @@ func blender_swap_front_back_line() -> void:
 
 # Ability 3: Ramping up attack
 func blender_ramp_up_attack() -> void:
-	boss_attack += 1
-	boss_attack_text.text = str(boss_attack)
+	var check := randf_range(0.0, 1.0)
+	if check >= 0.5:
+		boss_attack += 1
+		boss_attack_text.text = str(boss_attack)
