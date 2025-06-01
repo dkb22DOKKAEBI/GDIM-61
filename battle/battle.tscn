@@ -230,7 +230,7 @@ offset_top = 451.0
 offset_right = 826.0
 offset_bottom = 478.0
 theme = ExtResource("4_e48mi")
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 13
 text = "0 / 6 ingredients"
 horizontal_alignment = 2
 
@@ -240,7 +240,7 @@ offset_top = 571.0
 offset_right = 826.0
 offset_bottom = 598.0
 theme = ExtResource("4_e48mi")
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 13
 text = "0 / 4 monsters"
 horizontal_alignment = 2
 vertical_alignment = 2
