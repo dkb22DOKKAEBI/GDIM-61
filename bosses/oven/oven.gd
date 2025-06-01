@@ -4,8 +4,6 @@ extends Boss
 signal oven_action_finish_signal()
 
 var self_dmg: int
-@onready var new_battle: Node2D = $"."
-@onready var attacksfx = new_battle.get_node("attacksfx")
 
 # Initialization of boss stats
 func _ready():
@@ -37,7 +35,7 @@ func on_action() -> void:
 func oven_attack() -> void:
 	# Regular attack
 	var target = choose_target()
-	regular_attack(target)
+	regular_attack(target, self, 2)
 	await boss_regular_attack_finish_signal
 	
 	# Signal action over
@@ -48,7 +46,7 @@ func oven_multi_attack() -> void:
 	# Attack three times with monsters as priority
 	for i in range(3):
 		var target = multi_attack_choose_target()
-		regular_attack(target)
+		regular_attack(target, self, 2)
 		await boss_regular_attack_finish_signal
 	
 	# Signal action over
