@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl76ut3dauh2e"
-path="res://.godot/imported/sword.png-e627fac8349841f66d2d5f648f770948.ctex"
+uid="uid://be2lnlrdjrxp5"
+path="res://.godot/imported/strength.png-ea23048c2093e8755e693d1b4ba73ec9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui_element/Icons/sword.png"
-dest_files=["res://.godot/imported/sword.png-e627fac8349841f66d2d5f648f770948.ctex"]
+source_file="res://art/icons/strength.png"
+dest_files=["res://.godot/imported/strength.png-ea23048c2093e8755e693d1b4ba73ec9.ctex"]
 
 [params]
 

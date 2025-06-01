@@ -1,25 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bol8kb55nhy11"]
+[gd_scene load_steps=2 format=3 uid="uid://bol8kb55nhy11"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ormcf"]
-bg_color = Color(0.833476, 0.133741, 0.182721, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_size = 1
-shadow_offset = Vector2(0.25, 0.25)
-
-[sub_resource type="Theme" id="Theme_s37md"]
-Panel/styles/panel = SubResource("StyleBoxFlat_ormcf")
+[ext_resource type="Theme" uid="uid://nh0jws7h0pm0" path="res://custom_resources/healthbar_grid.tres" id="1_s37md"]
 
 [node name="HealthBarGrid" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -28,10 +14,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -20.0
-offset_right = 10.0
-offset_bottom = 20.0
+offset_left = -6.5
+offset_top = -11.5
+offset_right = 6.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_s37md")
+mouse_filter = 2
+theme = ExtResource("1_s37md")
