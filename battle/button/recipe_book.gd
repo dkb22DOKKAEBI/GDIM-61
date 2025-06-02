@@ -1,7 +1,6 @@
 extends Control
 
 @onready var recipe_book_visible: PanelContainer = $RecipeBookVisible
-@onready var clicksfx: AudioStreamPlayer = $"../../clicksfx"
 
 func _ready() -> void:
 	recipe_book_visible.visible = false
