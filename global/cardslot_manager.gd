@@ -10,7 +10,7 @@ var card_ability_cds = {
 	"Salad"			: 2,
 	"Taco"			: 0,
 	"Trashcan"		: 0,
-	"Ecalir"		: 0,
+	"Eclair"		: 0,
 	"Donut"			: 0,
 	"Sushi"			: 0,
 	"Crepe"			: 0,
