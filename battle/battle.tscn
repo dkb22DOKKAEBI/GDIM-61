@@ -28,7 +28,6 @@
 [ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="23_01pft"]
 [ext_resource type="AudioStream" uid="uid://hq782d7rv331" path="res://audio/music/bg-music-tuff.mp3" id="26_7njrs"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmbur"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 2
@@ -236,6 +235,7 @@ text = "0 / 6 ingredients"
 horizontal_alignment = 2
 
 [node name="MonsterCardNum" type="RichTextLabel" parent="UI/PlayerHandUI"]
+layout_mode = 0
 offset_left = 631.0
 offset_top = 571.0
 offset_right = 826.0
