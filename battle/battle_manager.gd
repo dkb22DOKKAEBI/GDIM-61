@@ -163,17 +163,16 @@ func player_check_dead() -> void:
 func start_player_turn():
 	enable_end_turn_button(true)
 	
-	# Refill ingredient hand at the start of the player turn
+	# Redraw ingredients in the player's hand
 	var ingredient_num := PlayerHand.player_ingredient_hand.size() + PlayerHand.selected_ingredients.size()
 	for i in range(PlayerController.MAX_INGREDIENT_HAND_NUM - ingredient_num):
 		$"../PlayerHand/Deck".draw_card()
 	EventController.update_ingredient_num_indicator_signal.emit()
 	
+	# Update player' and monster cards' status
 	reset_cards_attack()
 	PlayerController.is_on_player_turn = true
 	check_ability_cds()
-	
-	# Update player status
 	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 
 

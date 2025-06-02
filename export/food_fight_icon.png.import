@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dexwprqstayq0"
-path="res://.godot/imported/game_icon.png-aa6a7bbf2903aeefd24ba8b2956547de.ctex"
+uid="uid://bvs1w00xmx2vt"
+path="res://.godot/imported/food_fight_icon.png-8d0045708565030dd59b91286397045b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://custom_resources/game_icon.png"
-dest_files=["res://.godot/imported/game_icon.png-aa6a7bbf2903aeefd24ba8b2956547de.ctex"]
+source_file="res://export/food_fight_icon.png"
+dest_files=["res://.godot/imported/food_fight_icon.png-8d0045708565030dd59b91286397045b.ctex"]
 
 [params]
 
