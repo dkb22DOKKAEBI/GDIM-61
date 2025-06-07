@@ -10,14 +10,12 @@ const MAX_MONSTER_HAND_NUM = 4 # Maximum number of monster cards in hand
 enum PLAYER_STATUS {IDLE, TARGETING, CHECKING_INFO, WAITING_TURN}
 
 # Player's deck -> initially 28
-#const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
-#"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla", "Dough", 
-#"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla",
-#"Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", 
-#"Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
-#"Chocolate", "Grain", "Grain", "Grain", "Grain"]
 const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
-"Tomato", "Sugar", "Mystery_Meat"]
+"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla", "Dough", 
+"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla",
+"Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", 
+"Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
+"Chocolate", "Grain", "Grain", "Grain", "Grain"]
 
 # Reference to other scripts
 var battle_manager: Node2D
