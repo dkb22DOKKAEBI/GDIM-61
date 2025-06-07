@@ -70,6 +70,7 @@ func redraw_clear_hand() -> void:
 	for ingredient_card in player_ingredient_hand:
 		ingredient_card.queue_free()
 	player_ingredient_hand.clear()
+	await get_tree().create_timer(0.05).timeout
 	
 	# Signal returning ingredients end
 	return_ingredients_finished_signal.emit()
