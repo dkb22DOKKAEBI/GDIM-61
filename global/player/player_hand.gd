@@ -10,6 +10,7 @@ const HAND_Y_POSITION = 519 # Y position for ingredient card
 const MONSTER_CARD_Y_OFFSET = 90 # Y offset for monster cards' position in hand
 const MONSTER_CARD_UP_Y_OFFSET = 55 # Y offset for monster card when hovered over
 const DEFAULT_CARD_MOVE_SPEED = 0.1 # Default card animation speed
+const DECK_POSITION := Vector2(900, 540)
 
 var player_monster_hand: Array[Card] = [] # Player's monster hand
 var player_ingredient_hand: Array[Card] = [] # Player's ingredient hand
@@ -21,7 +22,8 @@ var legacy_ingredient_hand: Array[String] = [] # Record of player's ingredient h
 var hovering_monster_num: int = 0 # 0 indicates no monster card hovered over
 var center_screen_x
 
-signal selected_ingredient_change_signal
+signal selected_ingredient_change_signal()
+signal return_ingredients_finished_signal() # Signal the end of returning ingredient cards at the start of the turn
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +55,25 @@ func clear_player_legacy() -> void:
 	legacy_monster_hand.clear()
 	player_ingredient_hand.clear()
 	player_monster_hand.clear()
+
+
+# Clear ingredient cards in player's hand at the start of the turn to redraw ingredients
+func redraw_clear_hand() -> void:
+	var return_speed := 0.15
+	
+	# Return ingredients
+	for ingredient_card in player_ingredient_hand:
+		PlayerController.deck.insert(randi_range(0, PlayerController.deck.size()), ingredient_card.card_name)
+		animate_card_to_position(ingredient_card, DECK_POSITION, return_speed)
+	
+	await get_tree().create_timer(return_speed).timeout
+	for ingredient_card in player_ingredient_hand:
+		ingredient_card.queue_free()
+	player_ingredient_hand.clear()
+	await get_tree().create_timer(0.05).timeout
+	
+	# Signal returning ingredients end
+	return_ingredients_finished_signal.emit()
 
 
 # Get desired player hand
