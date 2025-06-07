@@ -161,15 +161,16 @@ func player_check_dead() -> void:
 
 # Player's turn starts
 func start_player_turn():
-	# Return ingredients in player's hand
-	PlayerHand.redraw_clear_hand()
-	await PlayerHand.return_ingredients_finished_signal
-	
-	# Redraw ingredients
-	var ingredient_num := PlayerHand.selected_ingredients.size()
-	for i in range(PlayerController.MAX_INGREDIENT_HAND_NUM - ingredient_num):
-		$"../PlayerHand/Deck".draw_card()
-	EventController.update_ingredient_num_indicator_signal.emit()
+	if PlayerController.deck.size() > 0:
+		# Return ingredients in player's hand
+		PlayerHand.redraw_clear_hand()
+		await PlayerHand.return_ingredients_finished_signal
+		
+		# Redraw ingredients
+		var ingredient_num := PlayerHand.selected_ingredients.size()
+		for i in range(PlayerController.MAX_INGREDIENT_HAND_NUM - ingredient_num):
+			$"../PlayerHand/Deck".draw_card()
+		EventController.update_ingredient_num_indicator_signal.emit()
 	
 	# Update player' and monster cards' status
 	reset_cards_attack()
