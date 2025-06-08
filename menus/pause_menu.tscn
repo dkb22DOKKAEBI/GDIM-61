@@ -12,16 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fwndu")
 
-[node name="Background" type="ColorRect" parent="."]
-modulate = Color(0.74558, 0.74558, 0.74558, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GameTitle" type="MarginContainer" parent="."]
+[node name="MenuTitle" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 10
@@ -30,7 +21,7 @@ offset_bottom = 300.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 67
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameTitle"]
+[node name="MenuTitleText" type="RichTextLabel" parent="MenuTitle"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
@@ -61,14 +52,14 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 25
-text = "Resume Game"
+text = "Resume"
 
-[node name="StartMenuButton" type="Button" parent="Buttons/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 25
-text = "Start Menu"
+text = "Main Menu"
 
 [connection signal="pressed" from="Buttons/VBoxContainer/ResumeGameButton" to="." method="on_resume_game"]
-[connection signal="pressed" from="Buttons/VBoxContainer/StartMenuButton" to="." method="on_return_start_menu"]
+[connection signal="pressed" from="Buttons/VBoxContainer/MainMenuButton" to="." method="on_return_start_menu"]
