@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://brp1j03t3o0ko" path="res://custom_resources/window_box.tres" id="4_ywm57"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="5_vn846"]
 
-[node name="Reward" type="Control"]
+[node name="Reward" type="Control" node_paths=PackedStringArray("menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hp86r")
+menu = NodePath("Menu")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
 modulate = Color(0.151276, 0.151276, 0.151276, 0.678431)
@@ -24,7 +25,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuTitle" type="MarginContainer" parent="."]
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 300)
+mouse_filter = 2
+
+[node name="MenuTitle" type="MarginContainer" parent="Menu"]
 z_index = 1
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 1
@@ -40,11 +51,11 @@ offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MenuTitle"]
+[node name="Panel" type="Panel" parent="Menu/MenuTitle"]
 layout_mode = 2
 theme = ExtResource("2_wn5u1")
 
-[node name="TitleText" type="RichTextLabel" parent="MenuTitle"]
+[node name="TitleText" type="RichTextLabel" parent="Menu/MenuTitle"]
 layout_mode = 2
 theme = ExtResource("3_0iaa4")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -53,7 +64,7 @@ text = "Reward"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menu" type="MarginContainer" parent="."]
+[node name="MenuBox" type="MarginContainer" parent="Menu"]
 custom_minimum_size = Vector2(550, 365)
 layout_mode = 1
 anchors_preset = 8
@@ -61,25 +72,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -275.0
+offset_top = -182.5
+offset_right = 275.0
+offset_bottom = 182.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Menu"]
+[node name="Panel" type="Panel" parent="Menu/MenuBox"]
 layout_mode = 2
 theme = ExtResource("4_ywm57")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuBox"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 28
 
-[node name="RewardText" type="RichTextLabel" parent="Menu/VBoxContainer"]
+[node name="RewardText" type="RichTextLabel" parent="Menu/MenuBox/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme = ExtResource("3_0iaa4")
@@ -90,17 +101,17 @@ You gain 5 more ingredients as the reward."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="MarginContainer" parent="Menu/VBoxContainer"]
+[node name="Buttons" type="MarginContainer" parent="Menu/MenuBox/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/VBoxContainer/Buttons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MenuBox/VBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="NextLevelButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
+[node name="NextLevelButton" type="Button" parent="Menu/MenuBox/VBoxContainer/Buttons/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_mode = 0
@@ -108,4 +119,4 @@ theme = ExtResource("5_vn846")
 theme_override_font_sizes/font_size = 25
 text = "Next Level"
 
-[connection signal="pressed" from="Menu/VBoxContainer/Buttons/VBoxContainer/NextLevelButton" to="." method="on_next_level"]
+[connection signal="pressed" from="Menu/MenuBox/VBoxContainer/Buttons/VBoxContainer/NextLevelButton" to="." method="on_next_level"]

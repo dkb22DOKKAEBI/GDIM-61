@@ -4,6 +4,8 @@ extends Node
 const rewards: Array[String] = ["Cheese", "Dough", "Lettuce", "Tortilla", "Tomato",
    "Sugar", "Mystery_Meat", "Grain", "Chocolate"]
 
+@export var menu: Control # The reward menu window
+
 
 # Ready
 func _ready() -> void:
@@ -12,8 +14,14 @@ func _ready() -> void:
 
 # Show the reward scene
 func display_reward() -> void:
+	# Update player status
 	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.REWARD
+	
+	# Display reward window 
+	menu.scale = Vector2(0.1, 0.1)
 	self.visible = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(menu, "scale", Vector2(1, 1), 0.3)
 	
 	# Get 5 new ingredients as the reward
 	for i in range(5):
