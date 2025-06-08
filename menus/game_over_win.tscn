@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://xngs7548ir70" path="res://menus/game_over_menu.gd" id="1_g8mfb"]
 
-
 [node name="PlayerLose" type="Control"]
 layout_mode = 3
 anchors_preset = 15

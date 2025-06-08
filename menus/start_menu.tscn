@@ -31,45 +31,45 @@ mouse_filter = 2
 [node name="DonutImage" type="TextureRect" parent="Background"]
 z_index = 40
 layout_mode = 0
-offset_left = 179.56
-offset_top = 403.795
-offset_right = 693.865
-offset_bottom = 794.295
+offset_left = 166.0
+offset_top = 424.0
+offset_right = 680.305
+offset_bottom = 814.5
 scale = Vector2(0.455, 0.455)
 texture = ExtResource("2_yhcmu")
-
-[node name="ToasterImage" type="TextureRect" parent="Background"]
-z_index = 20
-layout_mode = 0
-offset_left = 565.0
-offset_top = 270.0
-offset_right = 1098.0
-offset_bottom = 803.0
-scale = Vector2(0.475, 0.475)
-texture = ExtResource("3_ostuc")
-expand_mode = 4
-stretch_mode = 3
-
-[node name="TrashcanImage" type="TextureRect" parent="Background"]
-z_index = 35
-layout_mode = 0
-offset_left = 211.0
-offset_top = 406.0
-offset_right = 1155.0
-offset_bottom = 1804.0
-scale = Vector2(0.115, 0.115)
-texture = ExtResource("4_54tpi")
 
 [node name="CheesecakeImage" type="TextureRect" parent="Background"]
 z_index = 45
 layout_mode = 0
-offset_left = 34.97
-offset_top = 420.875
-offset_right = 546.97
-offset_bottom = 765.165
+offset_left = -36.0
+offset_top = 431.0
+offset_right = 476.0
+offset_bottom = 775.29
 scale = Vector2(0.455, 0.455)
 texture = ExtResource("5_kli5o")
 flip_h = true
+
+[node name="TrashcanImage" type="TextureRect" parent="Background"]
+z_index = 35
+layout_mode = 0
+offset_left = 114.0
+offset_top = 388.0
+offset_right = 1058.0
+offset_bottom = 1786.0
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("4_54tpi")
+
+[node name="ToasterImage" type="TextureRect" parent="Background"]
+z_index = 20
+layout_mode = 0
+offset_left = 556.0
+offset_top = 277.0
+offset_right = 1089.0
+offset_bottom = 810.0
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("3_ostuc")
+expand_mode = 4
+stretch_mode = 3
 
 [node name="BackgroundImage" type="TextureRect" parent="Background"]
 layout_mode = 0

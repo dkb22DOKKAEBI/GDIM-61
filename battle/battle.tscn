@@ -329,40 +329,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_as1q7")
 
-[node name="GameConditions" type="Control" parent="UI"]
-anchors_preset = 0
-mouse_filter = 2
-
-[node name="WinCondition" type="RichTextLabel" parent="UI/GameConditions"]
-visible = false
-z_index = 100
-layout_mode = 0
-offset_left = 125.0
-offset_top = 189.0
-offset_right = 885.0
-offset_bottom = 379.0
-theme = ExtResource("4_e48mi")
-theme_override_colors/default_color = Color(0.690196, 0.788235, 0, 1)
-theme_override_font_sizes/normal_font_size = 130
-text = "YOU WIN !!!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LoseCondition" type="RichTextLabel" parent="UI/GameConditions"]
-visible = false
-z_index = 100
-layout_mode = 0
-offset_left = 125.0
-offset_top = 189.0
-offset_right = 885.0
-offset_bottom = 379.0
-theme = ExtResource("4_e48mi")
-theme_override_colors/default_color = Color(0.690196, 0.247059, 0, 1)
-theme_override_font_sizes/normal_font_size = 130
-text = "YOU LOSE !!!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="RecipeBook" parent="UI" instance=ExtResource("15_n6gaa")]
 z_index = 100
 layout_mode = 1

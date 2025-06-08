@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2dgii780av33"]
+[gd_scene load_steps=6 format=3 uid="uid://b2dgii780av33"]
 
 [ext_resource type="Script" uid="uid://xngs7548ir70" path="res://menus/game_over_menu.gd" id="1_hrjq8"]
-
+[ext_resource type="Texture2D" uid="uid://5h5o5rgmefuf" path="res://art/background.png" id="2_kjysv"]
+[ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="3_3u2pm"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_1iesm"]
+[ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="4_ujbgb"]
 
 [node name="PlayerLose" type="Control"]
 layout_mode = 3
@@ -12,27 +15,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hrjq8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(0.712129, 0.712129, 0.712129, 1)
+[node name="Background" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
+offset_left = 980.0
+offset_top = 844.0
+offset_right = 2645.0
+offset_bottom = 1966.0
+rotation = 3.14159
+texture = ExtResource("2_kjysv")
+flip_h = true
+flip_v = true
 
 [node name="GameOverTitle" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_top = -31.0
+offset_bottom = 269.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 67
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameOverTitle"]
+[node name="GameOverText" type="RichTextLabel" parent="GameOverTitle"]
 layout_mode = 2
+theme = ExtResource("3_3u2pm")
+theme_override_colors/font_outline_color = Color(0.909804, 0.345098, 0.0117647, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 60
+theme_override_constants/outline_size = 27
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 31
+theme_override_font_sizes/normal_font_size = 102
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -40,16 +61,30 @@ vertical_alignment = 1
 [node name="GameOverText" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 0
-offset_top = 140.0
+offset_top = 216.0
 offset_right = 960.0
-offset_bottom = 340.0
-grow_horizontal = 2
-theme_override_constants/margin_top = 67
+offset_bottom = 416.0
+theme = ExtResource("4_1iesm")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameOverText"]
+[node name="Texts" type="VBoxContainer" parent="GameOverText"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 30
+theme_override_constants/separation = 40
+
+[node name="GameOverText" type="RichTextLabel" parent="GameOverText/Texts"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 33
 text = "Plan Carefully Next Time!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreText" type="RichTextLabel" parent="GameOverText/Texts"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 33
+text = "Your score this game is XXXX"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -62,9 +97,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = 100.0
+offset_top = 185.0
 offset_right = 100.0
-offset_bottom = 150.0
+offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -72,7 +107,8 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 focus_mode = 0
+theme = ExtResource("4_ujbgb")
 theme_override_font_sizes/font_size = 25
-text = "Start Menu"
+text = "Main Menu"
 
 [connection signal="pressed" from="Buttons/ReturnButton" to="." method="on_return_to_start_menu"]
