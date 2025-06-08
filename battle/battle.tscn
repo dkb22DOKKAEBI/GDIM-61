@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=25 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://card/target_selection/card_target_selector.tscn" id="16_tnndc"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://battle/on_level_start.gd" id="17_k6ux7"]
 [ext_resource type="PackedScene" uid="uid://b8daicbe0q3hy" path="res://battle/ui/player_health.tscn" id="18_as1q7"]
+[ext_resource type="PackedScene" uid="uid://bygysgvppteqj" path="res://menus/reward.tscn" id="21_ju8jl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmbur"]
 bg_color = Color(1, 1, 1, 1)
@@ -255,6 +256,10 @@ offset_bottom = 43.0
 mouse_filter = 2
 theme = ExtResource("14_7njrs")
 
+[node name="RecipeBook" parent="UI" instance=ExtResource("15_n6gaa")]
+z_index = 100
+layout_mode = 1
+
 [node name="Buttons" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
@@ -324,15 +329,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_as1q7")
 
-[node name="RecipeBook" parent="UI" instance=ExtResource("15_n6gaa")]
-z_index = 100
-layout_mode = 1
-
 [node name="PauseMenu" parent="UI" node_paths=PackedStringArray("input_manager") instance=ExtResource("7_n5ix6")]
 visible = false
 z_index = 20
 layout_mode = 1
 input_manager = NodePath("../../Player/InputManager")
+
+[node name="Reward" parent="UI" instance=ExtResource("21_ju8jl")]
+visible = false
+z_index = 14
+layout_mode = 1
 
 [node name="CardInfoLayer" type="CanvasLayer" parent="."]
 layer = 2

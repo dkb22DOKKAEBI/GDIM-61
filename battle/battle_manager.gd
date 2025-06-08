@@ -164,9 +164,9 @@ func start_player_turn():
 	reset_cards_attack()
 	PlayerController.is_on_player_turn = true
 	check_ability_cds()
-	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	
 	# Player's turn start
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	enable_end_turn_button(true)
 
 

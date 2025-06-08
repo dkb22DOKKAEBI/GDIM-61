@@ -7,7 +7,7 @@ const MAX_INGREDIENT_HAND_NUM = 6 # Maximum number of ingredient cards in hand
 const MAX_MONSTER_HAND_NUM = 4 # Maximum number of monster cards in hand
 
 # Player status
-enum PLAYER_STATUS {IDLE, TARGETING, CHECKING_INFO, WAITING_TURN}
+enum PLAYER_STATUS {IDLE, TARGETING, CHECKING_INFO, WAITING_TURN, REWARD}
 
 # Player's deck -> initially 28
 const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",

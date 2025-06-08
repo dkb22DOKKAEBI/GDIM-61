@@ -1,6 +1,25 @@
 class_name RewardMenu
 extends Node
 
+const rewards: Array[String] = ["Cheese", "Dough", "Lettuce", "Tortilla", "Tomato",
+   "Sugar", "Mystery_Meat", "Grain", "Chocolate"]
+
+
+# Ready
+func _ready() -> void:
+	EventController.connect("forward_to_reward_signal", display_reward)
+
+
+# Show the reward scene
+func display_reward() -> void:
+	self.visible = true
+	
+	# Get 5 new ingredients as the reward
+	for i in range(5):
+		var new_ingredient = rewards[randi_range(0, 8)]
+		PlayerController.deck.insert(randi_range(0, PlayerController.deck.size()), new_ingredient)
+
+
 # Attached to Next Level button
 # Proceed to the next level
 func on_next_level() -> void:

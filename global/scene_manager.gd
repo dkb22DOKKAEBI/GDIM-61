@@ -42,7 +42,7 @@ func defeat_boss() -> void:
 	elif level_index >= CardDatabase.BOSS_LEVEL.size(): # Player wins
 		transfer_to_game_over_win()
 	else: # Still left bosses
-		transfer_to_reward()
+		EventController.forward_to_reward_signal.emit()
 
 
 # Transfer to the reward scene
