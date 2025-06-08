@@ -18,6 +18,7 @@ var max_health: int
 var curr_health: int
 var attack_power: int
 var placed := false # Whether is placed onto the battlefield
+var dead := false
 
 var number_color := Color(0.2, 0.2, 0.2) # Color for the attack and health text
 var ability_cooldown_color := Color(0.375, 0.375, 0.375)
@@ -73,18 +74,19 @@ func _on_ability_button_pressed():
 	
 	if card_slot_on == null:
 		return
-
+	
 	var slot_id = card_slot_on.card_slot_number
 	var card_info = cardslot_manager.cardslot_abilities[slot_id]
 	var card_name_from_slot = card_info[0]
-
+	
 	# Configure the Ability instance
 	ability_handler.enemy = boss_node
 	var result = ability_handler.add_ability_card(card_name_from_slot, self)
-
+	
 	# Reset cooldown
-	cardslot_manager.cardslot_abilities[slot_id][1] = cardslot_manager.card_ability_cds.get(card_name_from_slot, 0)
-	update_ability_button(cardslot_manager.cardslot_abilities[slot_id][1])
+	if not dead:
+		cardslot_manager.cardslot_abilities[slot_id][1] = cardslot_manager.card_ability_cds.get(card_name_from_slot, 0)
+		update_ability_button(cardslot_manager.cardslot_abilities[slot_id][1])
 
 
 # Getters for attack power and current health
@@ -124,6 +126,7 @@ func health_change_animation(target_color: Color) -> void:
 
 # Monster card dies
 func die():
+	dead = true
 	card_slot_on.card_in_slot = null
 	CardslotManager.cardslot_abilities[card_slot_on.card_slot_number][0] = "None"
 	CardslotManager.cardslot_abilities[card_slot_on.card_slot_number][1] = 0

@@ -27,6 +27,12 @@ func _ready() -> void:
 
 # Clear cardslots array when player completing a level
 func clear_cardslots() -> void:
+	# Clear all the mosnter cards on the field
+	for cardslot in cardslots:
+		if cardslot.card_in_slot:
+			cardslot.card_in_slot.die()
+	
+	# Update tracker
 	cardslots.clear()
 	for cardslot_str in cardslot_abilities:
 		cardslot_abilities[cardslot_str][0] = "None"
