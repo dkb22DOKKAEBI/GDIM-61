@@ -22,6 +22,7 @@ func play_sound(sfx_name: String, sfx_db: float = 0) -> void:
 		var new_2d_audio = AudioStreamPlayer2D.new()
 		self.add_child(new_2d_audio)
 		new_2d_audio.stream = sfx_dic[sfx_name]
+		new_2d_audio.bus = AudioServer.get_bus_index("SFX")
 		new_2d_audio.volume_db = sfx_db
 		new_2d_audio.finished.connect(new_2d_audio.queue_free) # Destroy when finish playing
 		

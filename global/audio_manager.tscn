@@ -29,3 +29,4 @@ bus = &"Music"
 [node name="MainMenuBgMusic" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 autoplay = true
+bus = &"Music"
