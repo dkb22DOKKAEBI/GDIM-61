@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://8gojvjgg4uec"]
+[gd_scene load_steps=9 format=3 uid="uid://8gojvjgg4uec"]
 
 [ext_resource type="Script" uid="uid://xngs7548ir70" path="res://menus/game_over_menu.gd" id="1_g8mfb"]
 [ext_resource type="Texture2D" uid="uid://5h5o5rgmefuf" path="res://art/background.png" id="2_q2o4m"]
+[ext_resource type="Texture2D" uid="uid://cgyr4apq2bpu7" path="res://art/title_elements/gunner_png-removebg-preview.png" id="3_5vd5a"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="3_uyts6"]
+[ext_resource type="Texture2D" uid="uid://cgpy4hgfv7b7x" path="res://art/title_elements/cheesecake_transparent-removebg-preview.png" id="4_5dhlc"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_7bscs"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="5_5vd5a"]
+[ext_resource type="Texture2D" uid="uid://deukfuh5jul05" path="res://art/title_elements/trashgcan_-removebg-preview.png" id="5_utnnk"]
 
 [node name="PlayerWin" type="Control"]
 layout_mode = 3
@@ -33,6 +36,35 @@ rotation = 3.14159
 texture = ExtResource("2_q2o4m")
 flip_h = true
 flip_v = true
+
+[node name="DonutImage" type="TextureRect" parent="Background"]
+z_index = 40
+offset_left = 460.0
+offset_top = 337.0
+offset_right = 974.0
+offset_bottom = 727.0
+scale = Vector2(-0.455, 0.455)
+pivot_offset = Vector2(257, 195)
+texture = ExtResource("3_5vd5a")
+
+[node name="CheesecakeImage" type="TextureRect" parent="Background"]
+z_index = 45
+offset_left = 164.0
+offset_top = 443.0
+offset_right = 676.0
+offset_bottom = 787.29
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("4_5dhlc")
+flip_h = true
+
+[node name="TrashcanImage" type="TextureRect" parent="Background"]
+z_index = 35
+offset_left = 600.0
+offset_top = 384.0
+offset_right = 1544.0
+offset_bottom = 1782.0
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("5_utnnk")
 
 [node name="GameOverTitle" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)

@@ -28,6 +28,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = -688.0
+offset_top = -446.0
+offset_right = 977.0
+offset_bottom = 676.0
+texture = ExtResource("3_w3tic")
+flip_h = true
+flip_v = true
+
 [node name="DonutImage" type="TextureRect" parent="Background"]
 z_index = 40
 layout_mode = 0
@@ -70,16 +80,6 @@ scale = Vector2(0.475, 0.475)
 texture = ExtResource("3_ostuc")
 expand_mode = 4
 stretch_mode = 3
-
-[node name="BackgroundImage" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = -688.0
-offset_top = -446.0
-offset_right = 977.0
-offset_bottom = 676.0
-texture = ExtResource("3_w3tic")
-flip_h = true
-flip_v = true
 
 [node name="BlenderImage" type="Sprite2D" parent="Background"]
 position = Vector2(831, 322)

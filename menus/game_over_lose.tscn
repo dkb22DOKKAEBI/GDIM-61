@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2dgii780av33"]
+[gd_scene load_steps=8 format=3 uid="uid://b2dgii780av33"]
 
 [ext_resource type="Script" uid="uid://xngs7548ir70" path="res://menus/game_over_menu.gd" id="1_hrjq8"]
 [ext_resource type="Texture2D" uid="uid://5h5o5rgmefuf" path="res://art/background.png" id="2_kjysv"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="3_3u2pm"]
+[ext_resource type="Texture2D" uid="uid://bqubrg7bkepp6" path="res://art/title_elements/TOASTER-removebg-preview.png" id="3_5cfuu"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_1iesm"]
+[ext_resource type="Texture2D" uid="uid://badiiodv2fhrv" path="res://art/title_elements/BOSS-removebg-preview.png" id="4_bsfvm"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="4_ujbgb"]
 
 [node name="PlayerLose" type="Control"]
@@ -25,6 +27,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BackgroundImage" type="TextureRect" parent="Background"]
+layout_mode = 0
 offset_left = 980.0
 offset_top = 844.0
 offset_right = 2645.0
@@ -33,6 +36,23 @@ rotation = 3.14159
 texture = ExtResource("2_kjysv")
 flip_h = true
 flip_v = true
+
+[node name="ToasterImage" type="TextureRect" parent="Background"]
+z_index = 20
+offset_left = -24.0
+offset_top = 248.0
+offset_right = 510.0
+offset_bottom = 782.0
+scale = Vector2(-0.475, 0.475)
+pivot_offset = Vector2(267, 267)
+texture = ExtResource("3_5cfuu")
+expand_mode = 4
+stretch_mode = 3
+
+[node name="BlenderImage" type="Sprite2D" parent="Background"]
+position = Vector2(732, 480)
+scale = Vector2(0.767521, 0.767521)
+texture = ExtResource("4_bsfvm")
 
 [node name="GameOverTitle" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
