@@ -149,13 +149,12 @@ card_slot_number = "cardslot3"
 [node name="Enemy" type="Node2D" parent="BattleField"]
 position = Vector2(820, 220)
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "temp_attack_message")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy")]
 script = ExtResource("9_agsc7")
 battle_timer = NodePath("BattleTimer")
 input_manager = NodePath("../Player/InputManager")
 monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 enemy = NodePath("../BattleField/Enemy")
-temp_attack_message = NodePath("../UI/TempAttackMessage")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
 one_shot = true
@@ -367,19 +366,6 @@ vertical_alignment = 1
 [node name="RecipeBook" parent="UI" instance=ExtResource("15_n6gaa")]
 z_index = 100
 layout_mode = 1
-
-[node name="TempAttackMessage" type="RichTextLabel" parent="UI"]
-visible = false
-layout_mode = 0
-offset_left = 421.0
-offset_top = 410.0
-offset_right = 725.0
-offset_bottom = 450.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 24
-text = "Press SPACE to Attack"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PauseMenu" parent="UI" node_paths=PackedStringArray("input_manager") instance=ExtResource("7_n5ix6")]
 visible = false
