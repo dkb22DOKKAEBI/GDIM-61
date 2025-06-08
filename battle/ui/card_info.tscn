@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="5_1kd4d"]
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="6_1kd4d"]
 
-[node name="CardInfo" type="Control" node_paths=PackedStringArray("character_image", "character_name_text", "character_attack_text", "character_health_text", "character_ability_texts", "character_description_text")]
+[node name="CardInfo" type="Control" node_paths=PackedStringArray("character_image", "character_name_text", "character_attack_text", "character_health_text", "character_ability_texts", "character_description_text", "card_info")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,15 +15,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2qdcr")
-character_image = NodePath("CardInfoBox/Info/CardImage/Image")
-character_name_text = NodePath("CardInfoBox/Info/InfoSection/VBoxContainer/Name")
-character_attack_text = NodePath("CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Attack/AttackText")
-character_health_text = NodePath("CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Health/HealthText")
-character_ability_texts = [NodePath("CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_1"), NodePath("CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_2"), NodePath("CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_3")]
-character_description_text = NodePath("CardInfoBox/Info/InfoSection/VBoxContainer/Description")
+character_image = NodePath("CardInfo/CardInfoBox/Info/CardImage/Image")
+character_name_text = NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Name")
+character_attack_text = NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Attack/AttackText")
+character_health_text = NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Health/HealthText")
+character_ability_texts = [NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_1"), NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_2"), NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer/Ability_3")]
+character_description_text = NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Description")
+card_info = NodePath("CardInfo")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
-modulate = Color(0.2484, 0.2484, 0.2484, 0.678431)
+modulate = Color(0.212305, 0.212305, 0.212305, 0.678431)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +32,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CardInfoTitle" type="MarginContainer" parent="."]
+[node name="CardInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 300)
+mouse_filter = 2
+
+[node name="CardInfoTitle" type="MarginContainer" parent="CardInfo"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -46,11 +57,11 @@ offset_bottom = -151.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CardInfoTitle"]
+[node name="Panel" type="Panel" parent="CardInfo/CardInfoTitle"]
 layout_mode = 2
 theme = ExtResource("3_yr2eo")
 
-[node name="Title" type="RichTextLabel" parent="CardInfoTitle"]
+[node name="Title" type="RichTextLabel" parent="CardInfo/CardInfoTitle"]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
@@ -59,7 +70,7 @@ text = "Information"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardInfoBox" type="MarginContainer" parent="."]
+[node name="CardInfoBox" type="MarginContainer" parent="CardInfo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,32 +84,32 @@ offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CardInfoBox"]
+[node name="Panel" type="Panel" parent="CardInfo/CardInfoBox"]
 layout_mode = 2
 theme = ExtResource("4_1kd4d")
 
-[node name="Info" type="HBoxContainer" parent="CardInfoBox"]
+[node name="Info" type="HBoxContainer" parent="CardInfo/CardInfoBox"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="CardImage" type="MarginContainer" parent="CardInfoBox/Info"]
+[node name="CardImage" type="MarginContainer" parent="CardInfo/CardInfoBox/Info"]
 custom_minimum_size = Vector2(215, 0)
 layout_mode = 2
 
-[node name="Image" type="Sprite2D" parent="CardInfoBox/Info/CardImage"]
+[node name="Image" type="Sprite2D" parent="CardInfo/CardInfoBox/Info/CardImage"]
 position = Vector2(109, 162)
 scale = Vector2(0.403869, 0.403869)
 
-[node name="InfoSection" type="MarginContainer" parent="CardInfoBox/Info"]
+[node name="InfoSection" type="MarginContainer" parent="CardInfo/CardInfoBox/Info"]
 custom_minimum_size = Vector2(310, 0)
 layout_mode = 2
 theme_override_constants/margin_top = 27
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/Info/InfoSection"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CardInfo/CardInfoBox/Info/InfoSection"]
 layout_mode = 2
 theme_override_constants/separation = 7
 
-[node name="Name" type="RichTextLabel" parent="CardInfoBox/Info/InfoSection/VBoxContainer"]
+[node name="Name" type="RichTextLabel" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
@@ -108,17 +119,17 @@ text = "Card / Boss Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stats" type="HBoxContainer" parent="CardInfoBox/Info/InfoSection/VBoxContainer"]
+[node name="Stats" type="HBoxContainer" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="Attack" type="HBoxContainer" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Stats"]
+[node name="Attack" type="HBoxContainer" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="AttackIcon" type="NinePatchRect" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Attack"]
+[node name="AttackIcon" type="NinePatchRect" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Attack"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -126,7 +137,7 @@ size_flags_vertical = 4
 texture = ExtResource("5_1kd4d")
 region_rect = Rect2(1, 2, 498, 500)
 
-[node name="AttackText" type="RichTextLabel" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Attack"]
+[node name="AttackText" type="RichTextLabel" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Attack"]
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(65, 30)
 layout_mode = 2
@@ -135,12 +146,12 @@ theme_override_font_sizes/normal_font_size = 22
 text = "100"
 vertical_alignment = 1
 
-[node name="Health" type="HBoxContainer" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Stats"]
+[node name="Health" type="HBoxContainer" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="HealthIcon" type="NinePatchRect" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Health"]
+[node name="HealthIcon" type="NinePatchRect" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Health"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -148,7 +159,7 @@ size_flags_vertical = 4
 texture = ExtResource("6_1kd4d")
 region_rect = Rect2(-1, 2, 514, 511)
 
-[node name="HealthText" type="RichTextLabel" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Health"]
+[node name="HealthText" type="RichTextLabel" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Stats/Health"]
 modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(65, 30)
 layout_mode = 2
@@ -157,16 +168,16 @@ theme_override_font_sizes/normal_font_size = 22
 text = "100"
 vertical_alignment = 1
 
-[node name="Abilities" type="MarginContainer" parent="CardInfoBox/Info/InfoSection/VBoxContainer"]
+[node name="Abilities" type="MarginContainer" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer"]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 theme_override_constants/margin_top = 13
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Abilities"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Abilities"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Ability_1" type="RichTextLabel" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+[node name="Ability_1" type="RichTextLabel" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
@@ -177,7 +188,7 @@ bbcode_enabled = true
 text = "Ability 1: "
 fit_content = true
 
-[node name="Ability_2" type="RichTextLabel" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+[node name="Ability_2" type="RichTextLabel" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
@@ -187,7 +198,7 @@ bbcode_enabled = true
 text = "Ability 2:"
 fit_content = true
 
-[node name="Ability_3" type="RichTextLabel" parent="CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
+[node name="Ability_3" type="RichTextLabel" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer/Abilities/VBoxContainer"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("2_tfdyk")
@@ -197,7 +208,7 @@ bbcode_enabled = true
 text = "Ability 3"
 fit_content = true
 
-[node name="Description" type="RichTextLabel" parent="CardInfoBox/Info/InfoSection/VBoxContainer"]
+[node name="Description" type="RichTextLabel" parent="CardInfo/CardInfoBox/Info/InfoSection/VBoxContainer"]
 modulate = Color(0.404511, 0.404511, 0.404511, 1)
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
