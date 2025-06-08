@@ -51,12 +51,7 @@ func perform_left_click_action():
 		return
 	
 	# Get all cards at left click position
-	var space_state = get_world_2d().direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_global_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_INGREDIENT_CARD + COLLISION_MASK_ABILITY_BUTTON
-	var raycast_points := space_state.intersect_point(parameters)
+	var raycast_points := get_raycast_points(COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_INGREDIENT_CARD + COLLISION_MASK_ABILITY_BUTTON)
 	
 	if raycast_points.size() > 0:
 		# Find the point with highest z-index
@@ -98,12 +93,7 @@ func perform_right_click_action() -> void:
 		return
 	
 	# Get all cards at left click position
-	var space_state = get_world_2d().direct_space_state
-	var parameters = PhysicsPointQueryParameters2D.new()
-	parameters.position = get_global_mouse_position()
-	parameters.collide_with_areas = true
-	parameters.collision_mask = COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_BOSS
-	var raycast_points := space_state.intersect_point(parameters) # Should be size 1
+	var raycast_points := get_raycast_points(COLLISION_MASK_MONSTER_CARD + COLLISION_MASK_BOSS)
 	
 	# Display monster card or boss info
 	if raycast_points.size() > 0:
@@ -114,6 +104,18 @@ func perform_right_click_action() -> void:
 		elif point.collider.collision_layer == COLLISION_MASK_MONSTER_CARD:
 			PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.CHECKING_INFO
 			EventController.display_monster_card_info_signal.emit(point.collider.get_parent())
+
+
+# On mouse click, use raycast to detect the points at the click position with the given collision masks
+func get_raycast_points(collision_mask: int) -> Array[Dictionary]:
+	# Get points
+	var space_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = get_global_mouse_position()
+	parameters.collide_with_areas = true
+	parameters.collision_mask = collision_mask
+	
+	return space_state.intersect_point(parameters)
 
 
 # Quick fix for ingredient cards still hoverable when dragging monster card
