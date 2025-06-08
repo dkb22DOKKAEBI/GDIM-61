@@ -17,7 +17,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3kg5v")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DonutImage" type="TextureRect" parent="Background"]
 z_index = 40
 layout_mode = 0
 offset_left = 179.56
@@ -27,7 +36,7 @@ offset_bottom = 794.295
 scale = Vector2(0.455, 0.455)
 texture = ExtResource("2_yhcmu")
 
-[node name="TextureRect4" type="TextureRect" parent="."]
+[node name="ToasterImage" type="TextureRect" parent="Background"]
 z_index = 20
 layout_mode = 0
 offset_left = 565.0
@@ -39,17 +48,17 @@ texture = ExtResource("3_ostuc")
 expand_mode = 4
 stretch_mode = 3
 
-[node name="TextureRect5" type="TextureRect" parent="."]
+[node name="TrashcanImage" type="TextureRect" parent="Background"]
 z_index = 35
 layout_mode = 0
-offset_left = 2.01
-offset_top = 409.76
-offset_right = 946.01
-offset_bottom = 1807.76
+offset_left = 211.0
+offset_top = 406.0
+offset_right = 1155.0
+offset_bottom = 1804.0
 scale = Vector2(0.115, 0.115)
 texture = ExtResource("4_54tpi")
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="CheesecakeImage" type="TextureRect" parent="Background"]
 z_index = 45
 layout_mode = 0
 offset_left = 34.97
@@ -60,7 +69,7 @@ scale = Vector2(0.455, 0.455)
 texture = ExtResource("5_kli5o")
 flip_h = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
 layout_mode = 0
 offset_left = -688.0
 offset_top = -446.0
@@ -70,15 +79,10 @@ texture = ExtResource("3_w3tic")
 flip_h = true
 flip_v = true
 
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-modulate = Color(0.886896, 0.702931, 0.636388, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="BlenderImage" type="Sprite2D" parent="Background"]
+position = Vector2(831, 322)
+scale = Vector2(0.997471, 0.997471)
+texture = ExtResource("5_h6phu")
 
 [node name="GameTitle" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
@@ -136,11 +140,6 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 25
 text = "Exit Game"
-
-[node name="Boss" type="Sprite2D" parent="."]
-position = Vector2(831, 322)
-scale = Vector2(0.997471, 0.997471)
-texture = ExtResource("5_h6phu")
 
 [connection signal="pressed" from="Buttons/VBoxContainer/StartGameButton" to="." method="on_start_game"]
 [connection signal="pressed" from="Buttons/VBoxContainer/TutorialButton" to="." method="on_enter_tutorial"]
