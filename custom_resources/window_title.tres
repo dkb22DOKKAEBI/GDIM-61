@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dundev66ouoo6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_komxg"]
+bg_color = Color(0.892433, 0.706036, 0.441977, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.88969, 0.53118, 0.389363, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_komxg")
