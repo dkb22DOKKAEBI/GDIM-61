@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8me27agp6vuk"]
+[gd_scene load_steps=9 format=3 uid="uid://b8me27agp6vuk"]
 
 [ext_resource type="Script" uid="uid://bguce6op0jbnu" path="res://menus/start_menu.gd" id="1_3kg5v"]
 [ext_resource type="Texture2D" uid="uid://cgyr4apq2bpu7" path="res://art/title_elements/gunner_png-removebg-preview.png" id="2_yhcmu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://deukfuh5jul05" path="res://art/title_elements/trashgcan_-removebg-preview.png" id="4_54tpi"]
 [ext_resource type="Texture2D" uid="uid://badiiodv2fhrv" path="res://art/title_elements/BOSS-removebg-preview.png" id="5_h6phu"]
 [ext_resource type="Texture2D" uid="uid://cgpy4hgfv7b7x" path="res://art/title_elements/cheesecake_transparent-removebg-preview.png" id="5_kli5o"]
+[ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="8_ostuc"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -93,10 +94,14 @@ offset_bottom = 300.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 67
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameTitle"]
+[node name="GameTitleText" type="RichTextLabel" parent="GameTitle"]
 layout_mode = 2
+theme = ExtResource("8_ostuc")
+theme_override_colors/font_outline_color = Color(0.909804, 0.345098, 0.0117647, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 60
+theme_override_constants/outline_size = 27
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/normal_font_size = 80
 text = "Food Fight"
 horizontal_alignment = 1
 vertical_alignment = 1
