@@ -163,4 +163,5 @@ text = "Exit"
 
 [connection signal="pressed" from="Buttons/VBoxContainer/StartButton" to="." method="on_start_game"]
 [connection signal="pressed" from="Buttons/VBoxContainer/TutorialButton" to="." method="on_enter_tutorial"]
+[connection signal="pressed" from="Buttons/VBoxContainer/CreditButton" to="." method="on_enter_credit"]
 [connection signal="pressed" from="Buttons/VBoxContainer/ExitButton" to="." method="on_exit_game"]

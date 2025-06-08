@@ -3,10 +3,10 @@ extends Node
 const START_MENU_PATH = "res://menus/start_menu.tscn" # Path to start menu scene
 const BATTLE_SCENE_PATH = "res://battle/battle.tscn" # Path to battle scene
 const TUTORIAL_SCENE_PATH = "res://tutorial/tutorial.tscn" # Path to tutorial scene
-const REWARD_SCENE_PATH = "res://menus/reward.tscn" # Path to reward scene
+const CREDIT_SCENE_PATH = "res://menus/credit_page.tscn" # Path to reward scene
 
-const GAME_OVER_WIN = "res://menus/game_over_win.tscn" # Path to game over win scene
-const GAME_OVER_LOSE = "res://menus/game_over_lose.tscn" # Path to game over lose scene
+const GAME_OVER_WIN_SCENE_PATH = "res://menus/game_over_win.tscn" # Path to game over win scene
+const GAME_OVER_LOSE_SCENE_PATH = "res://menus/game_over_lose.tscn" # Path to game over lose scene
 
 var level_index: int # Level index
 
@@ -45,11 +45,6 @@ func defeat_boss() -> void:
 		EventController.forward_to_reward_signal.emit()
 
 
-# Transfer to the reward scene
-func transfer_to_reward() -> void:
-	get_tree().change_scene_to_file(REWARD_SCENE_PATH)
-
-
 # Proceed to the next level
 func proceed_to_next_level() -> void:
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
@@ -64,11 +59,15 @@ func back_to_start_menu() -> void:
 
 # Game over and player wins
 func transfer_to_game_over_win() -> void:
-	get_tree().change_scene_to_file(GAME_OVER_WIN)
+	get_tree().change_scene_to_file(GAME_OVER_WIN_SCENE_PATH)
 
 
 # Game over and player loses
 func transfer_to_game_over_lose() -> void:
 	# Emit signal of completing a level
 	player_complete_level_signal.emit()
-	get_tree().change_scene_to_file(GAME_OVER_LOSE)
+	get_tree().change_scene_to_file(GAME_OVER_LOSE_SCENE_PATH)
+
+
+func transfer_to_credit_page() -> void:
+	get_tree().change_scene_to_file(CREDIT_SCENE_PATH)

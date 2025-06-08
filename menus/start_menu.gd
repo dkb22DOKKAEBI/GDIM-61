@@ -14,6 +14,12 @@ func on_enter_tutorial() -> void:
 	SceneManager.start_tutorial()
 
 
+# Attached to Credit button
+# Enter the credit page
+func on_enter_credit() -> void:
+	SceneManager.transfer_to_credit_page()
+
+
 # Attached to Exit Game button
 # Exit game
 func on_exit_game() -> void:
