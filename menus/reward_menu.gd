@@ -12,6 +12,7 @@ func _ready() -> void:
 
 # Show the reward scene
 func display_reward() -> void:
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.REWARD
 	self.visible = true
 	
 	# Get 5 new ingredients as the reward
