@@ -91,12 +91,9 @@ func monster_attack_boss_anim(card):
 	
 
 func player_win():
-	$"../UI/GameConditions/WinCondition".visible = true
 	enemy.visible = false
 
 func player_lose():
-	$"../UI/GameConditions/LoseCondition".visible = true
-	
 	# Change scene to Game Over Win scene
 	await wait(1)
 	SceneManager.transfer_to_game_over_lose()
