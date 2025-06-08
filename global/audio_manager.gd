@@ -2,7 +2,7 @@ extends Node
 
 # Sound stream resource dictionary
 # String(UpperCase) -> AudioStream
-# All sfx: CLICK
+# All sfx: CLICK, ATTACK, DRAW_CARD, END_TURN, COOKING
 @export var sfx_dic: Dictionary
 
 

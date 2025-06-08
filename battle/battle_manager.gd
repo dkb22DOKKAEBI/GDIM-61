@@ -30,13 +30,8 @@ var has_an_abilities = {
 @export var player_health_text: RichTextLabel
 var player_health_text_prefix: String = "Player Health: "
 
-# Temp for Week 6 build
-@export var temp_attack_message: RichTextLabel
-
 @export var ability_manager: Node2D # never used
 var card_starting_position: Vector2 = Vector2(100, 525)
-@onready var endturnsfx: AudioStreamPlayer = $"../endturnsfx"
-@onready var attacksfx: AudioStreamPlayer = $"../attacksfx"
 
 # ready function
 func _ready() -> void:
@@ -52,7 +47,6 @@ func _ready() -> void:
 
 
 func _player_select_placed_card(card: MonsterCard) -> void:
-	
 	# If AbilityManager is in heal targeting mode, send the clicked card to it
 	if ability_manager.waiting_for_heal_target:
 		ability_manager.handle_target_selection(card)
@@ -62,12 +56,10 @@ func _player_select_placed_card(card: MonsterCard) -> void:
 		return
 	
 	card.selected_label_vis(!card.get_label_vis())
-	temp_attack_message.visible = true
 	
 	# Same card being selected
 	if not card.get_label_vis():
 		selected_card_in_slot = null
-		temp_attack_message.visible = false
 		return
 	
 	# Disable select for previous selected card
@@ -114,7 +106,7 @@ func player_lose():
 func _on_end_turn_button_pressed() -> void:
 	EventController.player_turn_end_signal.emit()
 	# Check whether the player is attacking
-	endturnsfx.play()
+	AudioManager.play_sound("END_TURN")
 	if player_is_attacking:
 		return
 	
@@ -122,7 +114,6 @@ func _on_end_turn_button_pressed() -> void:
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
-		temp_attack_message.visible = false
 	PlayerController.is_on_player_turn = false
 	
 	# Opponent Turn

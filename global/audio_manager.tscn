@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cshovo18iagie"]
+[gd_scene load_steps=7 format=3 uid="uid://cshovo18iagie"]
 
 [ext_resource type="Script" uid="uid://bspu037ji6ikp" path="res://global/audio_manager.gd" id="1_5jhky"]
 [ext_resource type="AudioStream" uid="uid://cd5bd43x3avc3" path="res://audio/SFX/select.mp3" id="2_drlug"]
 [ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="3_hjth8"]
+[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="4_2gpri"]
+[ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="5_alawa"]
+[ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="6_6na8m"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_5jhky")
 sfx_dic = {
 "ATTACK": ExtResource("3_hjth8"),
-"CLICK": ExtResource("2_drlug")
+"CLICK": ExtResource("2_drlug"),
+"COOKING": ExtResource("5_alawa"),
+"DRAW_CARD": ExtResource("4_2gpri"),
+"END_TURN": ExtResource("6_6na8m")
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bebj6ltb2dusn"]
+[gd_scene load_steps=24 format=3 uid="uid://bebj6ltb2dusn"]
 
 [ext_resource type="PackedScene" uid="uid://do6s602x65ika" path="res://battle/ui/battle_ui.tscn" id="1_156m4"]
 [ext_resource type="PackedScene" uid="uid://v65sweb65wh" path="res://card/card_slot/cardslot.tscn" id="2_pll4o"]
@@ -22,11 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://b566xs2vmuxjj" path="res://card/target_selection/card_target_selector.tscn" id="16_tnndc"]
 [ext_resource type="Script" uid="uid://bposbq16v10av" path="res://battle/on_level_start.gd" id="17_k6ux7"]
 [ext_resource type="PackedScene" uid="uid://b8daicbe0q3hy" path="res://battle/ui/player_health.tscn" id="18_as1q7"]
-[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="19_kavl5"]
-[ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="21_m24mv"]
-[ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="22_1x3g8"]
-[ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="23_01pft"]
-[ext_resource type="AudioStream" uid="uid://hq782d7rv331" path="res://audio/music/bg-music-tuff.mp3" id="26_7njrs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmbur"]
 bg_color = Color(1, 1, 1, 1)
@@ -348,25 +343,6 @@ visible = false
 [node name="OnLevelStart" type="Node2D" parent="." node_paths=PackedStringArray("boss_parent")]
 script = ExtResource("17_k6ux7")
 boss_parent = NodePath("../BattleField/Enemy")
-
-[node name="drawsfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_kavl5")
-
-[node name="cookingsfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("21_m24mv")
-
-[node name="endturnsfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_1x3g8")
-
-[node name="attacksfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("23_01pft")
-volume_db = -10.0
-
-[node name="bgmusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("26_7njrs")
-volume_db = -13.441
-autoplay = true
-parameters/looping = true
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="CookingMechanic" method="_on_cook"]

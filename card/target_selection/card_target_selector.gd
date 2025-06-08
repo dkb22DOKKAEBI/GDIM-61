@@ -5,7 +5,6 @@ const ARC_POINTS: int = 11 # How many points aiming arc line2d has besides end p
 @export var area_2d: Area2D
 @export var aiming_arc: Line2D
 @export var input_manager: Node2D
-@onready var attacksfx: AudioStreamPlayer = $AudioStreamPlayer
 
 var curr_card: MonsterCard # The card that is targeting
 var target_boss: Boss = null # The boss to be attacked
