@@ -45,6 +45,7 @@ ingredient_card_manager = NodePath("../../PlayerHand/IngredientCardManager")
 [node name="PlayerHand" type="Node2D" parent="."]
 
 [node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "ingredient_card_manager")]
+z_index = 8
 position = Vector2(888, 538)
 script = ExtResource("6_oiw7q")
 deck_left_num_text = NodePath("DeckLeftNum")
@@ -337,7 +338,7 @@ input_manager = NodePath("../../Player/InputManager")
 
 [node name="Reward" parent="UI" instance=ExtResource("21_ju8jl")]
 visible = false
-z_index = 14
+z_index = 20
 layout_mode = 1
 
 [node name="CardInfoLayer" type="CanvasLayer" parent="."]
