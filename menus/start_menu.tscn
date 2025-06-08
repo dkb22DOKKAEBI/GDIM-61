@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8me27agp6vuk"]
+[gd_scene load_steps=10 format=3 uid="uid://b8me27agp6vuk"]
 
 [ext_resource type="Script" uid="uid://bguce6op0jbnu" path="res://menus/start_menu.gd" id="1_3kg5v"]
 [ext_resource type="Texture2D" uid="uid://cgyr4apq2bpu7" path="res://art/title_elements/gunner_png-removebg-preview.png" id="2_yhcmu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://badiiodv2fhrv" path="res://art/title_elements/BOSS-removebg-preview.png" id="5_h6phu"]
 [ext_resource type="Texture2D" uid="uid://cgpy4hgfv7b7x" path="res://art/title_elements/cheesecake_transparent-removebg-preview.png" id="5_kli5o"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="8_ostuc"]
+[ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="9_54tpi"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -90,7 +91,8 @@ custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 300.0
+offset_top = -30.0
+offset_bottom = 270.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 67
 
@@ -107,7 +109,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(200, 250)
+custom_minimum_size = Vector2(175, 250)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,7 +118,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
 offset_top = -6.0
-offset_right = 100.0
+offset_right = 75.0
 offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -129,6 +131,7 @@ theme_override_constants/separation = 30
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_mode = 0
+theme = ExtResource("9_54tpi")
 theme_override_font_sizes/font_size = 25
 text = "Start Game"
 
@@ -136,6 +139,7 @@ text = "Start Game"
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_mode = 0
+theme = ExtResource("9_54tpi")
 theme_override_font_sizes/font_size = 25
 text = "Tutorial"
 
@@ -143,6 +147,7 @@ text = "Tutorial"
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_mode = 0
+theme = ExtResource("9_54tpi")
 theme_override_font_sizes/font_size = 25
 text = "Exit Game"
 
