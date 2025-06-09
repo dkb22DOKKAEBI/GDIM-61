@@ -39,6 +39,7 @@ flip_v = true
 
 [node name="ToasterImage" type="TextureRect" parent="Background"]
 z_index = 20
+layout_mode = 0
 offset_left = -24.0
 offset_top = 248.0
 offset_right = 510.0
@@ -93,19 +94,66 @@ theme_override_constants/separation = 40
 [node name="GameOverText" type="RichTextLabel" parent="GameOverText/Texts"]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.843137, 0.419608, 0.113725, 1)
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 33
 text = "Plan Carefully Next Time!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreText" type="RichTextLabel" parent="GameOverText/Texts"]
-custom_minimum_size = Vector2(0, 55)
+[node name="Score" type="VBoxContainer" parent="GameOverText/Texts"]
 layout_mode = 2
+
+[node name="HighScore" type="HBoxContainer" parent="GameOverText/Texts/Score"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ScoreText" type="RichTextLabel" parent="GameOverText/Texts/Score/HighScore"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme = ExtResource("4_1iesm")
+theme_override_colors/font_outline_color = Color(0.843137, 0.419608, 0.113725, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 30
+text = "High Score:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScoreNum" type="RichTextLabel" parent="GameOverText/Texts/Score/HighScore"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("4_1iesm")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 33
-text = "Your score this game is XXXX"
-horizontal_alignment = 1
+theme_override_font_sizes/normal_font_size = 25
+text = "XXXXX"
+vertical_alignment = 1
+
+[node name="NewScore" type="HBoxContainer" parent="GameOverText/Texts/Score"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ScoreText" type="RichTextLabel" parent="GameOverText/Texts/Score/NewScore"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme = ExtResource("4_1iesm")
+theme_override_colors/font_outline_color = Color(0.843137, 0.419608, 0.113725, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 30
+text = "Score:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScoreNum" type="RichTextLabel" parent="GameOverText/Texts/Score/NewScore"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("4_1iesm")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "XXXXX"
 vertical_alignment = 1
 
 [node name="Buttons" type="MarginContainer" parent="."]

@@ -128,14 +128,14 @@ grow_vertical = 2
 
 [node name="Texts" type="HBoxContainer" parent="HighScore"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="ScoreText" type="RichTextLabel" parent="HighScore/Texts"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 theme = ExtResource("9_kli5o")
-theme_override_colors/font_outline_color = Color(0.71967, 0.418123, 0.112419, 1)
+theme_override_colors/font_outline_color = Color(0.843137, 0.419608, 0.113725, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 30
 text = "High Score:"
@@ -148,7 +148,7 @@ layout_mode = 2
 theme = ExtResource("9_kli5o")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
-text = "1000"
+text = "XXXXX"
 vertical_alignment = 1
 
 [node name="Buttons" type="MarginContainer" parent="."]
