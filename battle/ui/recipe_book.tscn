@@ -73,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="MarginContainer" parent="RecipeBookVisible"]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(200, 53)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -284,6 +284,7 @@ monster_name = "Trashcan"
 
 [node name="RecipeInfo" type="MarginContainer" parent="RecipeBookVisible"]
 visible = false
+z_index = 1
 layout_mode = 2
 
 [node name="Background" type="Panel" parent="RecipeBookVisible/RecipeInfo"]
