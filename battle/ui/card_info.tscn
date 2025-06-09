@@ -24,7 +24,7 @@ character_description_text = NodePath("CardInfo/CardInfoBox/Info/InfoSection/VBo
 card_info = NodePath("CardInfo")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
-modulate = Color(0.212305, 0.212305, 0.212305, 0.678431)
+modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.784314)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
