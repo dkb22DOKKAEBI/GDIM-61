@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cddrlenmm4hcd"]
+[gd_scene load_steps=10 format=3 uid="uid://cddrlenmm4hcd"]
 
-[ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://battle/button/recipe_book.gd" id="1_wjb6r"]
+[ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://battle/ui/recipe_book.gd" id="1_wjb6r"]
 [ext_resource type="Theme" uid="uid://dbnmargrheryh" path="res://custom_resources/card_info_box.tres" id="2_2iedo"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_udx60"]
 [ext_resource type="Theme" uid="uid://dundev66ouoo6" path="res://custom_resources/card_info_title.tres" id="3_87m4c"]
 [ext_resource type="Texture2D" uid="uid://cy1mpfd21qo7d" path="res://art/card_images/monsters/Drawing-3.sketchpad.png" id="4_gt85e"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="5_87m4c"]
+[ext_resource type="Script" uid="uid://cmkf0jio3qj4i" path="res://battle/ui/recipe_book_button.gd" id="7_w3oxx"]
 [ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="8_w3oxx"]
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="9_w1fum"]
 
-[node name="RecipeBook" type="Control" node_paths=PackedStringArray("background", "card_content")]
+[node name="RecipeBook" type="Control" node_paths=PackedStringArray("recipe_book_visible", "background", "card_content")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -24,6 +25,7 @@ grow_vertical = 2
 scale = Vector2(0.885, 0.885)
 mouse_filter = 2
 script = ExtResource("1_wjb6r")
+recipe_book_visible = NodePath("RecipeBookVisible")
 background = NodePath("CoverBackground")
 card_content = NodePath("RecipeBookVisible/RecipeInfo")
 
@@ -37,9 +39,9 @@ offset_right = 1179.85
 offset_bottom = 857.627
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="RecipeBookVisible" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,6 +79,7 @@ theme = ExtResource("3_87m4c")
 
 [node name="Background" type="Panel" parent="RecipeBookVisible"]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_2iedo")
 
 [node name="RecipeImage" type="VBoxContainer" parent="RecipeBookVisible"]
@@ -141,82 +144,100 @@ layout_mode = 2
 [node name="CardButtons" type="MarginContainer" parent="RecipeBookVisible"]
 z_index = -1
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 80
 
 [node name="VerticalContainer" type="VBoxContainer" parent="RecipeBookVisible/CardButtons"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 60
 
 [node name="ButtonRow1" type="HBoxContainer" parent="RecipeBookVisible/CardButtons/VerticalContainer"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 58
 alignment = 1
 
 [node name="ButtonPizza" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Pizza"
 
 [node name="ButtonSandwich" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonSalad" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonQuesadilla" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonCheesecake" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonOnigiri" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonRow2" type="HBoxContainer" parent="RecipeBookVisible/CardButtons/VerticalContainer"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 58
 alignment = 1
 
 [node name="ButtonTaco" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonEclair" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonSushi" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonDonut" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonCharcuterie" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="ButtonTrashcan" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [node name="RecipeInfo" type="MarginContainer" parent="RecipeBookVisible"]
@@ -225,6 +246,7 @@ layout_mode = 2
 
 [node name="Background" type="Panel" parent="RecipeBookVisible/RecipeInfo"]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_2iedo")
 
 [node name="ContentParent" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo"]
@@ -387,3 +409,4 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
 [connection signal="pressed" from="RecipeBookVisible/Buttons/VBoxContainer/ExitBook" to="." method="_on_exit_book_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonPizza" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonPizza" method="_on_button_pressed"]
