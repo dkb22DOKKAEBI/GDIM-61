@@ -12,6 +12,7 @@ extends Control
 # Ready
 func _ready() -> void:
 	recipe_book_visible.visible = false
+	EventController.connect("recipe_display_card_info_signal", on_display_recipe_card_info)
 
 
 # Attached to Recipe button in battle scene
@@ -33,5 +34,12 @@ func _on_exit_book_pressed() -> void:
 
 
 # Display card info inside the recipe book
-func _on_display_recipe_card_info() -> void:
-	pass
+func on_display_recipe_card_info(monster_name: String) -> void:
+	print("Display Info " + monster_name)
+	card_content.visible = true
+
+
+# Attached to Back button in recipe card info page
+# Return back to the recipe book main page
+func _on_exit_recipe_info() -> void:
+	card_content.visible = false

@@ -42,6 +42,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="RecipeBookVisible" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,7 +247,6 @@ layout_mode = 2
 
 [node name="Background" type="Panel" parent="RecipeBookVisible/RecipeInfo"]
 layout_mode = 2
-mouse_filter = 2
 theme = ExtResource("2_2iedo")
 
 [node name="ContentParent" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo"]
@@ -410,3 +410,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="RecipeBookVisible/Buttons/VBoxContainer/ExitBook" to="." method="_on_exit_book_pressed"]
 [connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonPizza" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonPizza" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/RecipeInfo/ContentParent/Button/BackButton" to="." method="_on_exit_recipe_info"]

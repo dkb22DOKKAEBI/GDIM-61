@@ -5,4 +5,4 @@ extends Node
 
 
 func _on_button_pressed() -> void:
-	print(monster_name)
+	EventController.recipe_display_card_info_signal.emit(monster_name)
