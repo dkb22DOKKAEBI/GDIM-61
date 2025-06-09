@@ -16,18 +16,18 @@ const BOSS_LEVEL = {
 # Stats for monster cards
 const CARDS = { #attack, health, cooldown
 	"Quesadilla" 	: [2, 3],
-	"Cheesecake" 	: [3, 4],
-	"Sandwich"	 	: [4, 5],
+	"Cheesecake" 	: [3, 6],
+	"Sandwich"	 	: [5, 9],
 	"Trashcan"		: [0, 3],
-	"Pizza"			: [1, 2],
+	"Pizza"			: [2, 4],
 	"Salad"			: [1, 3],
-	"Taco"			: [1, 6],
+	"Taco"			: [1, 8],
 	"Bunuelos"		: [0, 4],
-	"Donut"			: [3, 1],
-	"Eclair"		: [5, 2],
+	"Donut"			: [3, 3],
+	"Eclair"		: [6, 5],
 	"Sushi"			: [2, 1],
 	"Crepe"			: [3, 3],
-	"Onigiri"		: [4, 2],
+	"Onigiri"		: [7, 4],
 	"Charcuterie"	: [1, 4]
 }
 
