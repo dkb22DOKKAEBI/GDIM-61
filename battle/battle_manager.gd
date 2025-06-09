@@ -28,11 +28,7 @@ var card_starting_position: Vector2 = Vector2(100, 525)
 # ready function
 func _ready() -> void:
 	# Display player starting health for each level
-	EventController.update_player_health_signal.emit(PlayerController.player_health)
 	player_cards_on_battlefield = {CardslotManager.cardslots[0]: null, CardslotManager.cardslots[1]: null, CardslotManager.cardslots[2]: null}
-	
-	# Player act first
-	start_player_turn()
 
 
 func monster_attack_boss_anim(card):
@@ -125,14 +121,17 @@ func start_player_turn():
 			$"../PlayerHand/Deck".draw_card()
 		EventController.update_ingredient_num_indicator_signal.emit()
 	
-	# Update player' and monster cards' status
+	# Update player's and monster cards' status
 	reset_cards_attack()
 	PlayerController.is_on_player_turn = true
+	PlayerController.turn_num += 1
 	check_ability_cds()
 	
 	# Player's turn start
 	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	enable_end_turn_button(true)
+	
+	print("Turn is: " + str(PlayerController.turn_num))
 
 
 func check_ability_cds():
