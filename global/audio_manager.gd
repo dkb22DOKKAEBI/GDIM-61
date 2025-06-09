@@ -7,6 +7,9 @@ extends Node
 @export var main_menu_background_music: AudioStreamPlayer2D
 @export var battle_background_music: AudioStreamPlayer2D
 
+var background_music_volume: float = 100 # Value of background music in range 0 to 100
+var sound_effect_volume: float = 100 # Value of sound effect in range 0 to 100
+
 
 # Ready
 func _ready() -> void:
