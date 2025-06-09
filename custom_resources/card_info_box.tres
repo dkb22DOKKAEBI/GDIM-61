@@ -1,11 +1,11 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dbnmargrheryh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr2eo"]
-bg_color = Color(0.917647, 0.831373, 0.666667, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 6
+bg_color = Color(0.864729, 0.746749, 0.519739, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 8
 border_color = Color(0.890196, 0.529412, 0.388235, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2

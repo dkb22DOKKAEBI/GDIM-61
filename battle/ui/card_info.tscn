@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cocxex075gfxd" path="res://battle/ui/card_info.gd" id="1_2qdcr"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="2_tfdyk"]
 [ext_resource type="Theme" uid="uid://dundev66ouoo6" path="res://custom_resources/card_info_title.tres" id="3_yr2eo"]
-[ext_resource type="Theme" uid="uid://dbnmargrheryh" path="res://battle/ui/card_info_box.tres" id="4_1kd4d"]
+[ext_resource type="Theme" uid="uid://dbnmargrheryh" path="res://custom_resources/card_info_box.tres" id="4_1kd4d"]
 [ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="5_1kd4d"]
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="6_1kd4d"]
 
