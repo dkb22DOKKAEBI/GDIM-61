@@ -21,4 +21,15 @@ func _ready() -> void:
 
 # Calculate score
 func calculate_score() -> int:
-	return -1
+	var result: int
+	
+	# Calculate level points
+	
+	
+	# Calculate turn points
+	
+	
+	# Calculate ingredient points
+	
+	
+	return result

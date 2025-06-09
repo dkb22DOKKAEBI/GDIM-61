@@ -27,6 +27,7 @@ var player_health: int # Player health
 var is_on_player_turn: bool = true # Whether is on player's turn
 var is_on_tutorial: bool = false # Whether the player is in totorial
 var curr_player_status: PLAYER_STATUS = PLAYER_STATUS.IDLE # Current player status
+var turn_num: int = 0 # Which turn the player is on
 
 
 # Ready function
