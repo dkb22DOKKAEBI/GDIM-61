@@ -19,6 +19,8 @@ signal game_end_signal # Signal emited when game is over
 func start_new_game() -> void:
 	new_game_started_signal.emit()
 	level_index = 0;
+	SceneTransition.transition_out()
+	await EventController.scene_transition_animation_finished_signal
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 

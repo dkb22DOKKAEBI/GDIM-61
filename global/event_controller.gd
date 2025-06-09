@@ -23,3 +23,6 @@ signal forward_to_reward_signal()
 
 # Pause game
 signal pause_game_signal()
+
+# Scene transition
+signal scene_transition_animation_finished_signal() # Signal the scene transition animation finished
