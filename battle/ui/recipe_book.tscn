@@ -36,7 +36,6 @@ character_ability_texts = [NodePath("RecipeBookVisible/RecipeInfo/ContentParent/
 character_description_text = NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Description")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
-visible = false
 modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.784314)
 layout_mode = 2
 offset_left = -220.153
@@ -47,8 +46,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CoverBackground"]
+z_index = 1
+layout_mode = 0
+offset_left = 541.243
+offset_top = 571.752
+offset_right = 841.243
+offset_bottom = 606.752
+mouse_filter = 2
+theme = ExtResource("2_udx60")
+text = "Click on the card to view detailed info"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RecipeBookVisible" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
