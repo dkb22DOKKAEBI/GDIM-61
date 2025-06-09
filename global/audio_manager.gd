@@ -40,6 +40,19 @@ func play_battle_background_music() -> void:
 	battle_background_music.play()
 
 
+# Stop battle background music and Play main menu background music
 func play_main_menu_background_music() -> void:
 	battle_background_music.stop()
 	main_menu_background_music.play()
+
+
+# Change the background music volume
+func change_background_music_volume(new_volumn: float) -> void:
+	background_music_volume = new_volumn
+	AudioServer.set_bus_volume_linear(1, background_music_volume)
+
+
+# Change the sound effect volume
+func change_sound_effect_volume(new_volume: float) -> void:
+	sound_effect_volume = new_volume
+	AudioServer.set_bus_volume_linear(2, sound_effect_volume)
