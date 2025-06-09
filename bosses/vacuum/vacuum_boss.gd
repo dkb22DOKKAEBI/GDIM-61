@@ -8,9 +8,9 @@ signal vacuum_elimination_finish_signal()
 var boss_block: float
 var boss_elimination: float
 
-# Boss moves
-enum VACCUM_MOVES {REGULAR_ATTACK, DEFEND, ELIMINATE}
-var next_move := VACCUM_MOVES.REGULAR_ATTACK
+# Boss abilities
+enum VACCUM_ABILITIES {REGULAR_ATTACK, DEFEND, ELIMINATE}
+var next_move := VACCUM_ABILITIES.REGULAR_ATTACK
 
 
 # Initialization of boss stats
@@ -29,14 +29,14 @@ func on_action() -> void:
 	
 	# Perform ability
 	match next_move:
-		VACCUM_MOVES.REGULAR_ATTACK:
+		VACCUM_ABILITIES.REGULAR_ATTACK:
 			var target = choose_target()
 			vacuum_attack(target)
 			await vacuum_regular_attack_finish_signal
-		VACCUM_MOVES.DEFEND:
+		VACCUM_ABILITIES.DEFEND:
 			vacuum_defend()
 			await vacuum_defend_finish_signal
-		VACCUM_MOVES.ELIMINATE:
+		VACCUM_ABILITIES.ELIMINATE:
 			vacuum_eliminate()
 			curr_cool_down = max_cool_down
 			await vacuum_elimination_finish_signal
@@ -52,13 +52,13 @@ func on_action() -> void:
 func update_next_move() -> void:
 	# Choose ability to use
 	if curr_cool_down == 0 and not CardslotManager.check_battlefield_empty(): # Elimination
-		next_move = VACCUM_MOVES.ELIMINATE
+		next_move = VACCUM_ABILITIES.ELIMINATE
 	else: # Defend or Regular attack
 		var check := randf_range(0.0, 1.0) # Determine whether to attack or slef heal with probability
 		if check <= (float(boss_health) / float(boss_max_health)) + 0.12:
-			next_move = VACCUM_MOVES.REGULAR_ATTACK
+			next_move = VACCUM_ABILITIES.REGULAR_ATTACK
 		else:
-			next_move = VACCUM_MOVES.DEFEND
+			next_move = VACCUM_ABILITIES.DEFEND
 	
 	# Update display text
 	update_intended_move_text()
@@ -66,11 +66,11 @@ func update_next_move() -> void:
 # Return boss next move's display name
 func get_intended_move_name() -> String:
 	match next_move:
-		VACCUM_MOVES.REGULAR_ATTACK:
+		VACCUM_ABILITIES.REGULAR_ATTACK:
 			return "Power Cord Whip"
-		VACCUM_MOVES.DEFEND:
+		VACCUM_ABILITIES.DEFEND:
 			return "Power Surge Shield"
-		VACCUM_MOVES.ELIMINATE:
+		VACCUM_ABILITIES.ELIMINATE:
 			return "Last Supper"
 		_:
 			push_error("Vacuum ability not found")

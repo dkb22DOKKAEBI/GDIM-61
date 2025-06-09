@@ -10,6 +10,11 @@ var low_hp_line: int = 7
 @export var breadspwan_1: Node2D
 @export var breadspwan_2: Node2D
 
+# Boss abilities
+enum TOASTER_ABILITES {REGULAR_ATTACK, SPAWN_BREAD, EXCHANGE_HEALTH}
+var next_move := TOASTER_ABILITES.REGULAR_ATTACK
+
+
 # Initialization of boss stats
 func _ready():
 	# Boss basic stats
@@ -39,24 +44,56 @@ func on_action() -> void:
 		breadspwan_2.get_child(0).breadspawn_attack()
 		await breadspwan_2.get_child(0).breadspawn_attack_finish_signal
 	
-	# Toaster action
-	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0: # Spawn new breads
-		spawn_bread()
-		curr_spawn_cool_down = spawn_max_cool_down
-		await get_tree().create_timer(0.5).timeout
-	elif curr_cool_down == 0 and boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
-		if breadspwan_1.get_child_count() != 0:
-			toaster_exchange_health(breadspwan_1.get_child(0))
-		else:
-			toaster_exchange_health(breadspwan_2.get_child(0))
-		curr_cool_down = max_cool_down
-		await toaster_exchange_health_finish_signal
-	else: # Regular attack
-		toaster_attack()
-		await toaster_regular_attack_finish_signal
+	# Perform bread ability
+	match next_move:
+		TOASTER_ABILITES.REGULAR_ATTACK:
+			toaster_attack()
+			await toaster_regular_attack_finish_signal
+		TOASTER_ABILITES.SPAWN_BREAD:
+			spawn_bread()
+			curr_spawn_cool_down = spawn_max_cool_down
+			await get_tree().create_timer(0.5).timeout
+		TOASTER_ABILITES.EXCHANGE_HEALTH:
+			if breadspwan_1.get_child_count() != 0:
+				toaster_exchange_health(breadspwan_1.get_child(0))
+			else:
+				toaster_exchange_health(breadspwan_2.get_child(0))
+			curr_cool_down = max_cool_down
+			await toaster_exchange_health_finish_signal
+		_:
+			push_error("Toaster ability not found")
 	
 	# Signal boss action finishs
 	boss_action_finish_signal.emit()
+
+
+# Boss next move methods
+# Update boss next move with logic
+func update_next_move() -> void:
+	# Choose ability to use
+	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0: # Spawn new breads
+		next_move = TOASTER_ABILITES.SPAWN_BREAD
+	elif curr_cool_down == 0 and boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
+		next_move = TOASTER_ABILITES.EXCHANGE_HEALTH
+	else: # Regular attack
+		next_move = TOASTER_ABILITES.REGULAR_ATTACK
+	
+	# Update display text
+	update_intended_move_text()
+
+
+# Return boss next move's display name
+func get_intended_move_name() -> String:
+	match next_move:
+		TOASTER_ABILITES.REGULAR_ATTACK:
+			return "Regular Attack"
+		TOASTER_ABILITES.SPAWN_BREAD:
+			return "Bread Spawn"
+		TOASTER_ABILITES.EXCHANGE_HEALTH:
+			return "Ritual of the Unbread"
+		_:
+			push_error("Toaster ability not found")
+			return "---"
 
 
 # Boss abilities

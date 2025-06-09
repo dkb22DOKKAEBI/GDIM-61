@@ -47,3 +47,11 @@ func breadspawn_attack() -> void:
 	
 	# Signal attack finished
 	breadspawn_attack_finish_signal.emit()
+
+
+func update_next_move() -> void:
+	update_intended_move_text()
+
+# Return the display name for the boss's next move
+func get_intended_move_name() -> String:
+	return "Regular Attack"

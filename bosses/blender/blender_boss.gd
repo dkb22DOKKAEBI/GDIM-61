@@ -6,6 +6,10 @@ signal blender_swap_finish_signal()
 
 var double_hit_chance: float
 
+# Boss abilities
+enum BLENDER_ABILITIES {REGULAR_ATTACK, SWAP}
+var next_move := BLENDER_ABILITIES.REGULAR_ATTACK
+
 
 # Initialization of boss stats
 func _ready():
@@ -20,21 +24,47 @@ func _ready():
 func on_action() -> void:
 	super.on_action()
 	
-	# Choose ability to perform
-	if curr_cool_down == 0 and (CardslotManager.cardslots[1].card_in_slot or CardslotManager.cardslots[2].card_in_slot): # Swap front and backline
-		blender_swap_front_back_line()
-		curr_cool_down = max_cool_down
-		await blender_swap_finish_signal
-	else: # Regular attack
-		blender_attack()
-		await blender_regular_attack_finish_signal
+	# Perform ability
+	match next_move:
+		BLENDER_ABILITIES.REGULAR_ATTACK:
+			blender_attack()
+			await blender_regular_attack_finish_signal
+		BLENDER_ABILITIES.SWAP:
+			blender_swap_front_back_line()
+			curr_cool_down = max_cool_down
+			await blender_swap_finish_signal
+		_:
+			push_error("Blender ability not found")
 	
 	# Boss ramping attack
 	blender_ramp_up_attack()
 	
 	# Signal boss action finishs
 	boss_action_finish_signal.emit()
+
+
+# Boss next move methods
+# Update boss next move with logic
+func update_next_move() -> void:
+	# Choose ability to use
+	if curr_cool_down == 0 and (CardslotManager.cardslots[1].card_in_slot or CardslotManager.cardslots[2].card_in_slot): # Swap front and backline
+		next_move = BLENDER_ABILITIES.SWAP
+	else: # Regular attack
+		next_move = BLENDER_ABILITIES.REGULAR_ATTACK
 	
+	# Update display text
+	update_intended_move_text()
+
+# Return boss next move's display name
+func get_intended_move_name() -> String:
+	match next_move:
+		BLENDER_ABILITIES.REGULAR_ATTACK:
+			return "Axe Rush"
+		BLENDER_ABILITIES.SWAP:
+			return "Whirlwind Pull"
+		_:
+			push_error("Blender ability not found")
+			return "---"
 
 
 # Boss abilities
