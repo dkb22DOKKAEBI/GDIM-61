@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cddrlenmm4hcd"]
+[gd_scene load_steps=9 format=3 uid="uid://cddrlenmm4hcd"]
 
 [ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://battle/button/recipe_book.gd" id="1_wjb6r"]
 [ext_resource type="Theme" uid="uid://dbnmargrheryh" path="res://custom_resources/card_info_box.tres" id="2_2iedo"]
@@ -6,7 +6,6 @@
 [ext_resource type="Theme" uid="uid://dundev66ouoo6" path="res://custom_resources/card_info_title.tres" id="3_87m4c"]
 [ext_resource type="Texture2D" uid="uid://cy1mpfd21qo7d" path="res://art/card_images/monsters/Drawing-3.sketchpad.png" id="4_gt85e"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="5_87m4c"]
-[ext_resource type="Texture2D" uid="uid://drwlfv4djxggi" path="res://art/card_images/monsters/Cheesecake.png" id="7_vchna"]
 [ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="8_w3oxx"]
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="9_w1fum"]
 
@@ -29,6 +28,7 @@ background = NodePath("CoverBackground")
 card_content = NodePath("RecipeBookVisible/RecipeInfo")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.784314)
 layout_mode = 2
 offset_left = -220.153
@@ -39,6 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RecipeBookVisible" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +62,7 @@ theme_override_constants/margin_bottom = 17
 [node name="TitleText" type="RichTextLabel" parent="RecipeBookVisible/Title"]
 z_index = 1
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_udx60")
 theme_override_font_sizes/normal_font_size = 40
 text = "RECIPE"
@@ -70,6 +72,7 @@ vertical_alignment = 1
 [node name="Panel" type="Panel" parent="RecipeBookVisible/Title"]
 custom_minimum_size = Vector2(200, 53)
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("3_87m4c")
 
 [node name="Background" type="Panel" parent="RecipeBookVisible"]
@@ -135,7 +138,89 @@ layout_mode = 2
 [node name="Control" type="Control" parent="RecipeBookVisible/Buttons"]
 layout_mode = 2
 
+[node name="CardButtons" type="MarginContainer" parent="RecipeBookVisible"]
+z_index = -1
+layout_mode = 2
+theme_override_constants/margin_top = 80
+
+[node name="VerticalContainer" type="VBoxContainer" parent="RecipeBookVisible/CardButtons"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="ButtonRow1" type="HBoxContainer" parent="RecipeBookVisible/CardButtons/VerticalContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme_override_constants/separation = 58
+alignment = 1
+
+[node name="ButtonPizza" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonSandwich" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonSalad" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonQuesadilla" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonCheesecake" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonOnigiri" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonRow2" type="HBoxContainer" parent="RecipeBookVisible/CardButtons/VerticalContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme_override_constants/separation = 58
+alignment = 1
+
+[node name="ButtonTaco" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonEclair" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonSushi" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonDonut" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonCharcuterie" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
+[node name="ButtonTrashcan" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+flat = true
+
 [node name="RecipeInfo" type="MarginContainer" parent="RecipeBookVisible"]
+visible = false
 layout_mode = 2
 
 [node name="Background" type="Panel" parent="RecipeBookVisible/RecipeInfo"]
@@ -182,7 +267,6 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardImage"]
 custom_minimum_size = Vector2(0, 345)
 layout_mode = 2
-texture = ExtResource("7_vchna")
 expand_mode = 4
 
 [node name="CardInfo" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent"]
