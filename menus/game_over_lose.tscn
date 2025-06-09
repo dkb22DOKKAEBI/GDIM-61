@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://badiiodv2fhrv" path="res://art/title_elements/BOSS-removebg-preview.png" id="4_bsfvm"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="4_ujbgb"]
 
-[node name="PlayerLose" type="Control"]
+[node name="PlayerLose" type="Control" node_paths=PackedStringArray("high_score_num", "new_score_num")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +16,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hrjq8")
+high_score_num = NodePath("GameOverText/Texts/Score/HighScore/HighScoreNum")
+new_score_num = NodePath("GameOverText/Texts/Score/NewScore/NewScoreNum")
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 1
@@ -110,7 +112,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ScoreText" type="RichTextLabel" parent="GameOverText/Texts/Score/HighScore"]
+[node name="HighScoreText" type="RichTextLabel" parent="GameOverText/Texts/Score/HighScore"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 theme = ExtResource("4_1iesm")
@@ -121,7 +123,7 @@ text = "High Score:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScoreNum" type="RichTextLabel" parent="GameOverText/Texts/Score/HighScore"]
+[node name="HighScoreNum" type="RichTextLabel" parent="GameOverText/Texts/Score/HighScore"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = ExtResource("4_1iesm")
@@ -136,7 +138,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ScoreText" type="RichTextLabel" parent="GameOverText/Texts/Score/NewScore"]
+[node name="NewScoreText" type="RichTextLabel" parent="GameOverText/Texts/Score/NewScore"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 theme = ExtResource("4_1iesm")
@@ -147,7 +149,7 @@ text = "Score:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ScoreNum" type="RichTextLabel" parent="GameOverText/Texts/Score/NewScore"]
+[node name="NewScoreNum" type="RichTextLabel" parent="GameOverText/Texts/Score/NewScore"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = ExtResource("4_1iesm")

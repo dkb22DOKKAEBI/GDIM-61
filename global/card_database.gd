@@ -4,12 +4,15 @@ extends Node
 # Level index to boss name
 # Change order here to change level order
 # eg. Level 1 has index of 0
+#const BOSS_LEVEL = {
+	#0: "Vacuum",
+	#1: "Oven",
+	#2: "Toaster",
+	#3: "Blender",
+	#4: "Kettle"
+#}
 const BOSS_LEVEL = {
 	0: "Vacuum",
-	1: "Oven",
-	2: "Toaster",
-	3: "Blender",
-	4: "Kettle"
 }
 
 
