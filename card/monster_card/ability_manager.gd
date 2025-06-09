@@ -79,26 +79,18 @@ func check_block_ability(name, card: Node2D):
 			return apply_self_heal(card, 1, name)
 
 
-func apply_self_heal(card: Node2D, amount: int, monster_name: String):
-	var current_health = card.get_health()
-	var max_health = card.max_health
-
-	if current_health == current_health:
-		var new_health = min(current_health + amount)
-		card.get_node("Health").text = str(new_health)
-
-		# Optional animation
-		card.get_node("Health").add_theme_font_size_override("normal_font_size", 40)
-		card.get_node("Health").modulate = Color.GREEN
-		var tween = card.get_tree().create_tween()
-		tween.tween_property(card.get_node("Health"), "theme_override_font_sizes/normal_font_size", 16, 1)
-		tween.tween_property(card.get_node("Health"), "modulate", Color.BLACK, 1)
-
-		print(monster_name + " healed for " + str(amount))
-	else:
+func apply_self_heal(card: MonsterCard, amount: int, monster_name: String):
+	if not card or not card.has_method("heal"):
+		push_error("Invalid card or card does not support healing")
+		return
+	
+	var was_full = card.curr_health >= card.max_health
+	card.heal(amount)
+	
+	if was_full:
 		print(monster_name + " is already at full health")
-
-	return ["HealedSelf", amount]
+	else:
+		print(monster_name + " healed for " + str(amount))
 
 func apply_heal_all(amount: int, monster_name):
 	var healed_cards = []
