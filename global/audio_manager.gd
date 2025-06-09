@@ -7,6 +7,9 @@ extends Node
 @export var main_menu_background_music: AudioStreamPlayer2D
 @export var battle_background_music: AudioStreamPlayer2D
 
+var background_music_volume: float = 100 # Value of background music in range 0 to 100
+var sound_effect_volume: float = 100 # Value of sound effect in range 0 to 100
+
 
 # Ready
 func _ready() -> void:
@@ -37,6 +40,19 @@ func play_battle_background_music() -> void:
 	battle_background_music.play()
 
 
+# Stop battle background music and Play main menu background music
 func play_main_menu_background_music() -> void:
 	battle_background_music.stop()
 	main_menu_background_music.play()
+
+
+# Change the background music volume
+func change_background_music_volume(new_volumn: float) -> void:
+	background_music_volume = new_volumn
+	AudioServer.set_bus_volume_linear(1, background_music_volume)
+
+
+# Change the sound effect volume
+func change_sound_effect_volume(new_volume: float) -> void:
+	sound_effect_volume = new_volume
+	AudioServer.set_bus_volume_linear(2, sound_effect_volume)

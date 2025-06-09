@@ -44,11 +44,12 @@ func on_action() -> void:
 		spawn_bread()
 		curr_spawn_cool_down = spawn_max_cool_down
 		await get_tree().create_timer(0.5).timeout
-	elif boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
+	elif curr_cool_down == 0 and boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
 		if breadspwan_1.get_child_count() != 0:
 			toaster_exchange_health(breadspwan_1.get_child(0))
 		else:
 			toaster_exchange_health(breadspwan_2.get_child(0))
+		curr_cool_down = max_cool_down
 		await toaster_exchange_health_finish_signal
 	else: # Regular attack
 		toaster_attack()

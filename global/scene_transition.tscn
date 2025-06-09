@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci2lkw3k1ghv7"]
+
+[ext_resource type="Script" uid="uid://bidh3t31hj57v" path="res://global/scene_transition.gd" id="1_ywopy"]
+
+[node name="SceneTransition" type="Control" node_paths=PackedStringArray("cover")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ywopy")
+cover = NodePath("Cover")
+
+[node name="Cover" type="ColorRect" parent="."]
+process_mode = 3
+modulate = Color(0, 0, 0, 1)
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

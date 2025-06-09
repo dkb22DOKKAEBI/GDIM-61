@@ -19,7 +19,7 @@ high_score_text = NodePath("Menu/MenuBox/BoxContent/Content/Score/HighScore/High
 new_score_text = NodePath("Menu/MenuBox/BoxContent/Content/Score/NewScore/NewScoreNum")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
-modulate = Color(0.151276, 0.151276, 0.151276, 0.678431)
+modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.862745)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -6,6 +6,9 @@ extends Node
 func _ready() -> void:
 	# Update player high score
 	high_score_num.text = str(PlayerController.high_score)
+	
+	# Fade in scene
+	SceneTransition.transition_into()
 
 
 # Attached to Start Game button
