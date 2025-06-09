@@ -17,8 +17,8 @@ var boss_attack: int
 var max_cool_down: int # Boss ability cool down
 var curr_cool_down: int
 
+var intended_move_text: RichTextLabel
 var battle_manager: Node2D # Battle manager of the level -> initialized in OnSceneStart
-@export var intended_move_text: RichTextLabel
 
 
 # Initialization
@@ -33,16 +33,24 @@ func _ready() -> void:
 	boss_health_text = find_child("BossBasic").find_child("BossHealth").find_child("BossHealthText")
 	boss_attack_text = find_child("BossBasic").find_child("BossAttack").find_child("BossAttackText")
 	
+	intended_move_text = find_child("BossBasic").find_child("IntendedMoveText")
+	if not intended_move_text:
+		print("NO")
+	else:
+		print("YES")
+	
 	# Update boss card
 	boss_health_text.text = str(boss_health)
 	boss_attack_text.text = str(boss_attack)
 	find_child("BossBasic").find_child("BossImage").texture = ResourceLoader.load("res://art/card_images/bosses/" + boss_name + "_Boss.png")
+	update_next_move()
 
 
 # Boss's behavoir functions turn
 func boss_turn() -> void:
-	# Disable end turn button
+	# Enter boss turn
 	battle_manager.enable_end_turn_button(false)
+	intended_move_text.visible = false
 	
 	# Boss thinking waiting time
 	await get_tree().create_timer(0.5).timeout
@@ -58,6 +66,8 @@ func boss_turn() -> void:
 		await get_tree().create_timer(0.5).timeout
 	
 	# Boss turn ends
+	intended_move_text.visible = true
+	update_next_move()
 	battle_manager.start_player_turn()
 
 
@@ -132,12 +142,19 @@ func choose_target() -> Cardslot:
 		return null # Means the target is the player
 
 
-# Boss update intended move
-func update_intended_move() -> void:
+# Boss update intended move methods
+# Update boss's next move using enum
+func update_next_move() -> void:
+	push_error("update_next_move() in Boss.gd NEEDS IMPLEMENTATION")
+
+# Update the text display for the boss's intended move
+func update_intended_move() -> void: 
 	intended_move_text.text = get_intended_move_text()
 
+# Return the display name for the boss's next move
 func get_intended_move_text() -> String:
-	return "Need Implementation"
+	push_error("get_intended_move_text() in Boss.gd NEEDS IMPLEMENTATION")
+	return "----"
 
 
 # Boss attack animations
