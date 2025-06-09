@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cddrlenmm4hcd"]
+[gd_scene load_steps=10 format=3 uid="uid://cddrlenmm4hcd"]
 
 [ext_resource type="Script" uid="uid://cf34p2j2d1mhb" path="res://battle/button/recipe_book.gd" id="1_wjb6r"]
 [ext_resource type="Theme" uid="uid://dbnmargrheryh" path="res://custom_resources/card_info_box.tres" id="2_2iedo"]
@@ -6,8 +6,11 @@
 [ext_resource type="Theme" uid="uid://dundev66ouoo6" path="res://custom_resources/card_info_title.tres" id="3_87m4c"]
 [ext_resource type="Texture2D" uid="uid://cy1mpfd21qo7d" path="res://art/card_images/monsters/Drawing-3.sketchpad.png" id="4_gt85e"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="5_87m4c"]
+[ext_resource type="Texture2D" uid="uid://drwlfv4djxggi" path="res://art/card_images/monsters/Cheesecake.png" id="7_vchna"]
+[ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="8_w3oxx"]
+[ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="9_w1fum"]
 
-[node name="RecipeBook" type="Control" node_paths=PackedStringArray("background")]
+[node name="RecipeBook" type="Control" node_paths=PackedStringArray("background", "card_content")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -23,9 +26,9 @@ scale = Vector2(0.885, 0.885)
 mouse_filter = 2
 script = ExtResource("1_wjb6r")
 background = NodePath("CoverBackground")
+card_content = NodePath("RecipeBookVisible/RecipeInfo")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
-visible = false
 modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.784314)
 layout_mode = 2
 offset_left = -220.153
@@ -35,8 +38,7 @@ offset_bottom = 857.627
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RecipeBookVisible" type="PanelContainer" parent="."]
-visible = false
+[node name="RecipeBookVisible" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,63 +76,230 @@ theme = ExtResource("3_87m4c")
 layout_mode = 2
 theme = ExtResource("2_2iedo")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="RecipeBookVisible"]
+[node name="RecipeImage" type="VBoxContainer" parent="RecipeBookVisible"]
 layout_mode = 2
 
-[node name="seperator2" type="Control" parent="RecipeBookVisible/VBoxContainer2"]
+[node name="seperator2" type="Control" parent="RecipeBookVisible/RecipeImage"]
 layout_mode = 2
 
-[node name="seperator" type="Control" parent="RecipeBookVisible/VBoxContainer2"]
+[node name="seperator" type="Control" parent="RecipeBookVisible/RecipeImage"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="RecipeBookVisible/VBoxContainer2"]
+[node name="Label" type="Label" parent="RecipeBookVisible/RecipeImage"]
 layout_mode = 2
 theme = ExtResource("2_udx60")
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="RecipeBookVisible/VBoxContainer2"]
+[node name="Control" type="Control" parent="RecipeBookVisible/RecipeImage"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="RecipeBookVisible/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="RecipeBookVisible/RecipeImage"]
 custom_minimum_size = Vector2(100, 370)
 layout_mode = 2
 texture = ExtResource("4_gt85e")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RecipeBookVisible"]
+[node name="Buttons" type="HBoxContainer" parent="RecipeBookVisible"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RecipeBookVisible/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipeBookVisible/Buttons"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Control4" type="Control" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+[node name="Control4" type="Control" parent="RecipeBookVisible/Buttons/VBoxContainer"]
 layout_mode = 2
 
-[node name="Control3" type="Control" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+[node name="Control3" type="Control" parent="RecipeBookVisible/Buttons/VBoxContainer"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="RecipeBookVisible/Buttons/VBoxContainer"]
 layout_mode = 2
 
-[node name="ExitBook" type="Button" parent="RecipeBookVisible/HBoxContainer/VBoxContainer"]
+[node name="ExitBook" type="Button" parent="RecipeBookVisible/Buttons/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_87m4c")
 theme_override_font_sizes/font_size = 30
 text = "Exit
 "
 
-[node name="Control3" type="Control" parent="RecipeBookVisible/HBoxContainer"]
+[node name="Control3" type="Control" parent="RecipeBookVisible/Buttons"]
 layout_mode = 2
 
-[node name="Control2" type="Control" parent="RecipeBookVisible/HBoxContainer"]
+[node name="Control2" type="Control" parent="RecipeBookVisible/Buttons"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="RecipeBookVisible/HBoxContainer"]
+[node name="Control" type="Control" parent="RecipeBookVisible/Buttons"]
 layout_mode = 2
 
-[connection signal="pressed" from="RecipeBookVisible/HBoxContainer/VBoxContainer/ExitBook" to="." method="_on_exit_book_pressed"]
+[node name="RecipeInfo" type="MarginContainer" parent="RecipeBookVisible"]
+layout_mode = 2
+
+[node name="Background" type="Panel" parent="RecipeBookVisible/RecipeInfo"]
+layout_mode = 2
+theme = ExtResource("2_2iedo")
+
+[node name="ContentParent" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BeginSeparator" type="MarginContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent"]
+layout_mode = 2
+
+[node name="Button" type="HBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" type="Button" parent="RecipeBookVisible/RecipeInfo/ContentParent/Button"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme = ExtResource("5_87m4c")
+theme_override_font_sizes/font_size = 18
+text = "BACK"
+
+[node name="EndSeparator" type="MarginContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/Button"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="CardContent" type="HBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent"]
+custom_minimum_size = Vector2(0, 390)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="LeftSeparator" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="CardImage" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardImage"]
+custom_minimum_size = Vector2(0, 345)
+layout_mode = 2
+texture = ExtResource("7_vchna")
+expand_mode = 4
+
+[node name="CardInfo" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme = ExtResource("2_udx60")
+theme_override_font_sizes/normal_font_size = 26
+text = "Card / Boss Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="HBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Attack" type="HBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="AttackIcon" type="NinePatchRect" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats/Attack"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_w3oxx")
+region_rect = Rect2(1, 2, 498, 500)
+
+[node name="AttackText" type="RichTextLabel" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats/Attack"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme = ExtResource("2_udx60")
+theme_override_font_sizes/normal_font_size = 22
+text = "100"
+vertical_alignment = 1
+
+[node name="Health" type="HBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HealthIcon" type="NinePatchRect" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats/Health"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_w1fum")
+region_rect = Rect2(-1, 2, 514, 511)
+
+[node name="HealthText" type="RichTextLabel" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats/Health"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+theme = ExtResource("2_udx60")
+theme_override_font_sizes/normal_font_size = 22
+text = "100"
+vertical_alignment = 1
+
+[node name="Abilities" type="MarginContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_constants/margin_top = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Abilities"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Ability_1" type="RichTextLabel" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_udx60")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -3
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Ability 1: "
+fit_content = true
+
+[node name="Ability_2" type="RichTextLabel" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_udx60")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Ability 2:"
+fit_content = true
+
+[node name="Ability_3" type="RichTextLabel" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Abilities/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("2_udx60")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Ability 3"
+fit_content = true
+
+[node name="Description" type="RichTextLabel" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo"]
+modulate = Color(0.404511, 0.404511, 0.404511, 1)
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = ExtResource("2_udx60")
+theme_override_font_sizes/normal_font_size = 12
+text = "Card / Boss Description"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RightSeparator" type="VBoxContainer" parent="RecipeBookVisible/RecipeInfo/ContentParent/CardContent"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="RecipeBookVisible/Buttons/VBoxContainer/ExitBook" to="." method="_on_exit_book_pressed"]

@@ -3,6 +3,12 @@ extends Control
 @onready var recipe_book_visible: PanelContainer = $RecipeBookVisible
 @export var background: ColorRect
 
+# Card Information
+@export var card_content: MarginContainer
+
+
+
+
 func _ready() -> void:
 	recipe_book_visible.visible = false
 
