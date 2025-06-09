@@ -48,7 +48,7 @@ func on_action() -> void:
 
 
 # Boss next move methods
-# Update boss next move
+# Update boss next move with logic
 func update_next_move() -> void:
 	# Choose ability to use
 	if curr_cool_down == 0 and not CardslotManager.check_battlefield_empty(): # Elimination
@@ -64,7 +64,7 @@ func update_next_move() -> void:
 	update_intended_move_text()
 
 # Return boss next move's display name
-func get_intended_move_text() -> String:
+func get_intended_move_name() -> String:
 	match next_move:
 		VACCUM_MOVES.REGULAR_ATTACK:
 			return "Power Cord Whip"

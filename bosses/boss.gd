@@ -82,8 +82,9 @@ func boss_take_dmg(dmg: float):
 		boss_take_damage_finish_signal.emit()
 		return
 	
-	# Update boss health text
+	# Update boss health text and next move
 	boss_health_text.text = str(boss_health)
+	update_next_move()
 	
 	# Change font to double size and red
 	boss_health_text.add_theme_font_size_override("normal_font_size", 42)
@@ -144,14 +145,17 @@ func choose_target() -> Cardslot:
 # Boss update intended move methods
 # Update boss's next move using enum
 func update_next_move() -> void:
+	# Follow below instructions:
+	# 1. Boss logic implementation
+	# 2. update_intended_move_text()
 	push_error("update_next_move() in Boss.gd NEEDS IMPLEMENTATION")
 
 # Update the text display for the boss's intended move -> should be called inside update_next_move() method
 func update_intended_move_text() -> void: 
-	intended_move_text.text = get_intended_move_text()
+	intended_move_text.text = get_intended_move_name()
 
 # Return the display name for the boss's next move
-func get_intended_move_text() -> String:
+func get_intended_move_name() -> String:
 	push_error("get_intended_move_text() in Boss.gd NEEDS IMPLEMENTATION")
 	return "----"
 
