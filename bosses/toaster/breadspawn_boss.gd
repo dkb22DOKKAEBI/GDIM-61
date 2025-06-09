@@ -34,6 +34,7 @@ func boss_take_dmg(dmg: float):
 	
 	# Check whether boss die and player win
 	if boss_health <= 0:
+		EventController.update_enemy_intended_move_signal.emit()
 		self.queue_free()
 
 
@@ -46,6 +47,7 @@ func breadspawn_attack() -> void:
 	await boss_regular_attack_finish_signal
 	
 	# Signal attack finished
+	intended_move_text.visible = true
 	breadspawn_attack_finish_signal.emit()
 
 

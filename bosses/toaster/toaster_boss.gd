@@ -22,16 +22,20 @@ func _ready():
 	
 	# Boss unique stats
 	spawn_max_cool_down = CardDatabase.BOSS_STATS["Toaster"]["SpawnCoolDown"]
-	curr_spawn_cool_down = spawn_max_cool_down
-	
-	# Spawn breads at the beginning
-	spawn_bread()
+	curr_spawn_cool_down = 0 # Spawn bread in the first turn
 
 
 
 # Boss behavior logic
 func on_action() -> void:
 	super.on_action()
+	# Disable bread spawn attack indicator
+	# Show again after attack in breadspawn_boss.gd
+	if breadspwan_1.get_child_count() != 0:
+		breadspwan_1.get_child(0).intended_move_text.visible = false
+	if breadspwan_2.get_child_count() != 0:
+		breadspwan_2.get_child(0).intended_move_text.visible = false
+	
 	# Update cool down
 	if curr_spawn_cool_down != 0:
 		curr_spawn_cool_down -= 1
@@ -71,7 +75,7 @@ func on_action() -> void:
 # Update boss next move with logic
 func update_next_move() -> void:
 	# Choose ability to use
-	if breadspwan_1.get_child_count() == 0 and breadspwan_2.get_child_count() == 0 and curr_spawn_cool_down == 0: # Spawn new breads
+	if (breadspwan_1.get_child_count() == 0 or breadspwan_2.get_child_count() == 0) and curr_spawn_cool_down == 0: # Spawn new breads
 		next_move = TOASTER_ABILITES.SPAWN_BREAD
 	elif curr_cool_down == 0 and boss_health < low_hp_line and (breadspwan_1.get_child_count() != 0 or breadspwan_2.get_child_count() != 0): # Exchange health
 		next_move = TOASTER_ABILITES.EXCHANGE_HEALTH
