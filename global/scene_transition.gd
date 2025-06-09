@@ -8,9 +8,13 @@ func transition_out() -> void:
 	# Fade in cover
 	cover.modulate = Color(0, 0, 0, 0)
 	var tween := get_tree().create_tween()
-	tween.tween_property(cover, "modulate", Color(0, 0, 0, 1), 0.5)
-	await tween.finished
+	tween.tween_property(cover, "modulate", Color(0, 0, 0, 1), 0.7)
+	tween.set_pause_mode(2)
+	get_tree().paused = true
 	
+	# Animation finished
+	await tween.finished
+	get_tree().paused = false
 	EventController.scene_transition_animation_finished_signal.emit()
 
 
@@ -19,4 +23,10 @@ func transition_into() -> void:
 	# Fade out cover
 	cover.modulate = Color(0, 0, 0, 1)
 	var tween := get_tree().create_tween()
-	tween.tween_property(cover, "modulate", Color(0, 0, 0, 0), 0.5)
+	tween.tween_property(cover, "modulate", Color(0, 0, 0, 0), 0.7)
+	tween.set_pause_mode(2)
+	get_tree().paused = true
+	
+	# Animation finished
+	await tween.finished
+	get_tree().paused = false

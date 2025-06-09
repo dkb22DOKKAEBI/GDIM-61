@@ -50,6 +50,8 @@ func defeat_boss() -> void:
 
 # Proceed to the next level
 func proceed_to_next_level() -> void:
+	SceneTransition.transition_out()
+	await EventController.scene_transition_animation_finished_signal
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 

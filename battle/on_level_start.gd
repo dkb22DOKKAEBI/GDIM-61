@@ -23,6 +23,7 @@ func _ready() -> void:
 	EventController.update_ingredient_num_indicator_signal.emit()
 	EventController.update_monster_num_indicator_signal.emit()
 	EventController.update_player_health_signal.emit(PlayerController.player_health)
+	SceneTransition.transition_into()
 	
 	# Start player turn
 	PlayerController.turn_num = 0
