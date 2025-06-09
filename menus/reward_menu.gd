@@ -24,7 +24,7 @@ func display_reward() -> void:
 	tween.tween_property(menu, "scale", Vector2(1, 1), 0.3)
 	
 	# Get 5 new ingredients as the reward
-	for i in range(5):
+	for i in range(PlayerController.REWARD_INGREDIENT_NUM):
 		var new_ingredient = rewards[randi_range(0, 8)]
 		PlayerController.deck.insert(randi_range(0, PlayerController.deck.size()), new_ingredient)
 

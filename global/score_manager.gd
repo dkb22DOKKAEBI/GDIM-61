@@ -1,10 +1,10 @@
 extends Node
 
 # Scores for beating levels, turn used, and ingredients left
-const level_scores: Array[int] = [300, 400, 600, 900, 1200]
-const turn_base_score: int = 150
-const turn_deduction_score: int = 10
-const ingredient_base_score: int = 200
+const LEVEL_SCORES: Array[int] = [300, 400, 600, 900, 1200]
+const TURN_BASE_SCORE: int = 150
+const TURN_DEDUCTION_SCORE: int = 10
+const INGREDIENT_BASE_SCORE: int = 200
 
 var start_ingredient_num: int
 var reward_ingredient_num: int
@@ -15,7 +15,8 @@ var curr_score: int = 0
 
 # Ready
 func _ready() -> void:
-	pass
+	start_ingredient_num = PlayerController.ORIGINAL_DECK.size()
+	reward_ingredient_num = PlayerController.REWARD_INGREDIENT_NUM
 
 
 # Calculate score

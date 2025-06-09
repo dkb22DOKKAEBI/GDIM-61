@@ -1,10 +1,11 @@
 # Player hand check player hand autoloaded
 extends Node
 
-const STARTING_HEALTH = 10
-const STARTING_HAND_SIZE = 0
-const MAX_INGREDIENT_HAND_NUM = 6 # Maximum number of ingredient cards in hand
-const MAX_MONSTER_HAND_NUM = 4 # Maximum number of monster cards in hand
+const STARTING_HEALTH := 10
+const STARTING_HAND_SIZE := 0
+const MAX_INGREDIENT_HAND_NUM := 6 # Maximum number of ingredient cards in hand
+const MAX_MONSTER_HAND_NUM := 4 # Maximum number of monster cards in hand
+const REWARD_INGREDIENT_NUM := 5
 
 # Player status
 enum PLAYER_STATUS {IDLE, TARGETING, CHECKING_INFO, WAITING_TURN, REWARD}
