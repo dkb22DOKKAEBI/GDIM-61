@@ -31,6 +31,7 @@ func start_tutorial() -> void:
 # Player defeat boss -> Update level index and check whether player wins
 func defeat_boss() -> void:
 	# Emit signal of completing a level
+	PlayerController.update_player_score(level_index)
 	player_complete_level_signal.emit()
 	
 	# Update level

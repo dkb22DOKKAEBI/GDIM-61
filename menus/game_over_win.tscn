@@ -195,3 +195,5 @@ focus_mode = 0
 theme = ExtResource("5_5vd5a")
 theme_override_font_sizes/font_size = 25
 text = "Main Menu"
+
+[connection signal="pressed" from="Buttons/ReturnButton" to="." method="on_return_to_start_menu"]
