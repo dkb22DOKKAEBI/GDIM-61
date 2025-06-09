@@ -14,7 +14,7 @@ const BOSS_LEVEL = {
 
 
 # Stats for monster cards
-const CARDS = { #attack, health, cooldown
+const CARDS = { #attack, health
 	"Quesadilla" 	: [2, 3],
 	"Cheesecake" 	: [3, 6],
 	"Sandwich"	 	: [5, 9],

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="8_w3oxx"]
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="9_w1fum"]
 
-[node name="RecipeBook" type="Control" node_paths=PackedStringArray("recipe_book_visible", "background", "card_content")]
+[node name="RecipeBook" type="Control" node_paths=PackedStringArray("recipe_book_visible", "background", "card_content", "character_image", "character_name_text", "character_attack_text", "character_health_text", "character_ability_texts", "character_description_text")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -28,6 +28,12 @@ script = ExtResource("1_wjb6r")
 recipe_book_visible = NodePath("RecipeBookVisible")
 background = NodePath("CoverBackground")
 card_content = NodePath("RecipeBookVisible/RecipeInfo")
+character_image = NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardImage/TextureRect")
+character_name_text = NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Name")
+character_attack_text = NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats/Attack/AttackText")
+character_health_text = NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Stats/Health/HealthText")
+character_ability_texts = [NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Abilities/VBoxContainer/Ability_1"), NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Abilities/VBoxContainer/Ability_2"), NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Abilities/VBoxContainer/Ability_3")]
+character_description_text = NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Description")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
 visible = false
