@@ -11,7 +11,7 @@
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="9_54tpi"]
 [ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="9_kli5o"]
 
-[node name="StartMenu" type="Control"]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("high_score_num")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3kg5v")
+high_score_num = NodePath("HighScore/Texts/ScoreNum")
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 1
