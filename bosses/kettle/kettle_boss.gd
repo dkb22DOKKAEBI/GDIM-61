@@ -7,6 +7,10 @@ signal kettle_aoe_attack_finish_signal()
 var steam_attack_power: int
 var range_attack_power: int
 
+# Boss abilities
+enum KETTLE_ABILITIES {REGULAR_ATTACK, AOE_ATTACK}
+var next_move := KETTLE_ABILITIES.REGULAR_ATTACK
+
 
 # Initialization of boss stats
 func _ready():
@@ -25,17 +29,44 @@ func on_action() -> void:
 	# Steam attack the backline
 	kettle_scalding_steam()
 	
-	# Boss actions
-	if curr_cool_down == 0 and not CardslotManager.check_battlefield_empty(): # AOE attack
-		kettle_aoe_attack()
-		curr_cool_down = max_cool_down
-		await kettle_aoe_attack_finish_signal
-	else: # Regular attack
-		kettle_attack()
-		await kettle_regular_attack_finish_signal
+	# Perform ability
+	match next_move:
+		KETTLE_ABILITIES.REGULAR_ATTACK:
+			kettle_attack()
+			await kettle_regular_attack_finish_signal
+		KETTLE_ABILITIES.AOE_ATTACK:
+			kettle_aoe_attack()
+			curr_cool_down = max_cool_down
+			await kettle_aoe_attack_finish_signal
+		_:
+			push_error("Kettle ability not found")
 	
 	# Signal boss action finishs
 	boss_action_finish_signal.emit()
+
+
+# Boss next move methods
+# Update boss next move with logic
+func update_next_move() -> void:
+	# Choose ability to use
+	if curr_cool_down == 0 and kettle_aoe_attack_check(): # AOE attack
+		next_move = KETTLE_ABILITIES.AOE_ATTACK
+	else: # Regular attack
+		next_move = KETTLE_ABILITIES.REGULAR_ATTACK
+	
+	# Update display text
+	update_intended_move_text()
+
+# Return boss next move's display name
+func get_intended_move_name() -> String:
+	match next_move:
+		KETTLE_ABILITIES.REGULAR_ATTACK:
+			return "Vial Toss"
+		KETTLE_ABILITIES.AOE_ATTACK:
+			return "Final Geyser"
+		_:
+			push_error("Kettle ability not found")
+			return "---"
 
 
 # Boss abilities
@@ -65,3 +96,15 @@ func kettle_aoe_attack() -> void:
 	# Signal ability finish
 	await get_tree().create_timer(0.5).timeout
 	kettle_aoe_attack_finish_signal.emit()
+
+func kettle_aoe_attack_check() -> bool: # Check whether should perform aoe attack
+	# Return true if either there is a monster in the front line
+	# Or the backline has a monster hp greater than 1
+	if CardslotManager.cardslots[0].card_in_slot:
+		return true
+	if CardslotManager.cardslots[1].card_in_slot and CardslotManager.cardslots[1].card_in_slot.curr_health > 1:
+		return true
+	if CardslotManager.cardslots[2].card_in_slot and CardslotManager.cardslots[2].card_in_slot.curr_health > 1:
+		return true
+	
+	return false

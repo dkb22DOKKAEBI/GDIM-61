@@ -6,6 +6,11 @@ signal oven_multi_attack_finish_signal()
 
 var self_dmg: int
 
+# Boss abilities
+enum OVEN_ABILITIES {REGULAR_ATTACK, MULTI_ATTACk}
+var next_move :=  OVEN_ABILITIES.REGULAR_ATTACK
+
+
 # Initialization of boss stats
 func _ready():
 	# Boss basic stats
@@ -19,14 +24,17 @@ func _ready():
 func on_action() -> void:
 	super.on_action()
 	
-	# Choose ability to perform
-	if curr_cool_down == 0: # Multi-attack
-		oven_multi_attack()
-		curr_cool_down = max_cool_down
-		await oven_multi_attack_finish_signal
-	else: # Regular attack
-		oven_attack()
-		await oven_regular_attack_finish_signal
+	# Perform ability
+	match next_move:
+		OVEN_ABILITIES.REGULAR_ATTACK:
+			oven_attack()
+			await oven_regular_attack_finish_signal
+		OVEN_ABILITIES.MULTI_ATTACk:
+			oven_multi_attack()
+			curr_cool_down = max_cool_down
+			await oven_multi_attack_finish_signal
+		_:
+			push_error("Oven ability not found")
 	
 	# Self take damage
 	boss_take_dmg(self_dmg)
@@ -35,6 +43,30 @@ func on_action() -> void:
 	
 	# Signal boss action finishs
 	boss_action_finish_signal.emit()
+
+
+# Boss next move methods
+# Update boss next move with logic
+func update_next_move() -> void:
+	# Choose ability to use
+	if curr_cool_down == 0: # Multi-attack
+		next_move = OVEN_ABILITIES.MULTI_ATTACk
+	else: # Regular attack
+		next_move = OVEN_ABILITIES.REGULAR_ATTACK
+	
+	# Update display text
+	update_intended_move_text()
+
+# Return boss next move's display name
+func get_intended_move_name() -> String:
+	match next_move:
+		OVEN_ABILITIES.REGULAR_ATTACK:
+			return "Regular Attack"
+		OVEN_ABILITIES.MULTI_ATTACk:
+			return "Multi Attack"
+		_:
+			push_error("Oven ability not found")
+			return "---"
 
 
 # Boss abilities

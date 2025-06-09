@@ -327,11 +327,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_as1q7")
 
-[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("input_manager") instance=ExtResource("7_n5ix6")]
+[node name="PauseMenu" type="CanvasLayer" parent="UI"]
+layer = 3
+
+[node name="PauseMenu" parent="UI/PauseMenu" node_paths=PackedStringArray("input_manager") instance=ExtResource("7_n5ix6")]
 visible = false
+visibility_layer = 4
 z_index = 20
-layout_mode = 1
-input_manager = NodePath("../../Player/InputManager")
+input_manager = NodePath("../../../Player/InputManager")
 
 [node name="Reward" parent="UI" instance=ExtResource("21_ju8jl")]
 visible = false

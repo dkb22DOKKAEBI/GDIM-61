@@ -69,6 +69,7 @@ func finish_drag():
 		card_being_dragged.card_slot_on = card_slot_found
 		battle_manager.player_cards_on_battlefield[card_slot_found] = card_being_dragged
 		EventController.update_monster_num_indicator_signal.emit()
+		EventController.update_enemy_intended_move_signal.emit()
 	else:
 		# Card goes back to player's hand
 		PlayerHand.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED, 1)

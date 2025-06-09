@@ -14,7 +14,7 @@ const BOSS_LEVEL = {
 
 
 # Stats for monster cards
-const CARDS = { #attack, health, cooldown
+const CARDS = { #attack, health
 	"Quesadilla" 	: [2, 3],
 	"Cheesecake" 	: [3, 6],
 	"Sandwich"	 	: [5, 9],
@@ -37,7 +37,7 @@ const BOSS_STATS = {
 	"Tutorial"    : {"HP": 2, "Attack": 0, "CoolDown": 0},
 	"Vacuum"      : {"HP": 11, "Attack": 1, "CoolDown": 3, "Block": 3, "Elimination": 99},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
-	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 4},
+	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 5},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
 	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.3, "RampAttack": 2},
 	"Kettle"      : {"HP": 20, "Attack": 3, "CoolDown": 3, "RangeAttackPower": 2, "SteamAttackPower": 1}
@@ -137,7 +137,7 @@ const ABILITY_DESCRIPTION = {
 	"Vacuum"      : ["Power Cord Whip: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					 "Power Surge Shield: " + ability_text_color_code + "Self restore 3 health (regular)",
 					 "Last Supper: " + ability_text_color_code + "Deal 10 damage to one enemy (3 turns CD)"],
-	"Toaster"     : ["Breadspawn: " + ability_text_color_code + "Summons up to 2 undead toasts onto the field (4 turns CD)",
+	"Toaster"     : ["Breadspawn: " + ability_text_color_code + "Summons up to 2 undead toasts onto the field (5 turns CD)",
 					 "Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)",
 					 "Ritual of the Unbread: " + ability_text_color_code + "Devours one of the bread summons in exchange for health (3 turns CD)"],
 	"Breadspawn"  : ["Attack: " + ability_text_color_code + "Inflict damage equal to the attack power to one enemy (regular)"],

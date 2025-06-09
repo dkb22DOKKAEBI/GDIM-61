@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://c60d87i0v4h8r"]
+[gd_scene load_steps=8 format=3 uid="uid://c60d87i0v4h8r"]
 
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="2_sdpyj"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="3_sdpyj"]
 [ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="4_jukir"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_q5tp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
 size = Vector2(164, 228)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5tp3"]
+bg_color = Color(0.219608, 0.219608, 0.219608, 0.835294)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.79023, 0.201128, 0.346337, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_sdpyj"]
+Panel/styles/panel = SubResource("StyleBoxFlat_q5tp3")
 
 [node name="BossBasic" type="Node2D"]
 
@@ -103,3 +120,37 @@ theme_override_font_sizes/normal_font_size = 21
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="IntendedMoveText" type="RichTextLabel" parent="."]
+z_index = 1
+offset_left = -82.0
+offset_top = 80.0
+offset_right = 82.0
+offset_bottom = 114.0
+mouse_filter = 2
+theme = ExtResource("4_q5tp3")
+text = "Intended Move"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Panel" type="Panel" parent="IntendedMoveText"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_sdpyj")
+
+[node name="NextText" type="RichTextLabel" parent="IntendedMoveText"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_colors/font_outline_color = Color(0.708793, 0.197893, 0.188459, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "NEXT:"

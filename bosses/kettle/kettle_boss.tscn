@@ -11,7 +11,7 @@ script = ExtResource("1_v7hv2")
 
 [node name="Steam" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.698039)
-z_index = 100
+z_index = 9
 position = Vector2(-706, 84)
 scale = Vector2(0.16575, 0.2365)
 texture = ExtResource("4_24wve")
