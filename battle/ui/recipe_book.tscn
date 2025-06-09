@@ -173,30 +173,40 @@ custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Sandwich"
 
 [node name="ButtonSalad" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Salad"
 
 [node name="ButtonQuesadilla" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Quesadilla"
 
 [node name="ButtonCheesecake" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Cheesecake"
 
 [node name="ButtonOnigiri" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Onigiri"
 
 [node name="ButtonRow2" type="HBoxContainer" parent="RecipeBookVisible/CardButtons/VerticalContainer"]
 custom_minimum_size = Vector2(0, 125)
@@ -210,36 +220,48 @@ custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Taco"
 
 [node name="ButtonEclair" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Eclair"
 
 [node name="ButtonSushi" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Sushi"
 
 [node name="ButtonDonut" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Donut"
 
 [node name="ButtonCharcuterie" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Charcuterie"
 
 [node name="ButtonTrashcan" type="Button" parent="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2"]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 focus_mode = 0
 flat = true
+script = ExtResource("7_w3oxx")
+monster_name = "Trashcan"
 
 [node name="RecipeInfo" type="MarginContainer" parent="RecipeBookVisible"]
 visible = false
@@ -410,4 +432,15 @@ layout_mode = 2
 
 [connection signal="pressed" from="RecipeBookVisible/Buttons/VBoxContainer/ExitBook" to="." method="_on_exit_book_pressed"]
 [connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonPizza" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonPizza" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonSandwich" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonSandwich" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonSalad" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonSalad" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonQuesadilla" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonQuesadilla" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonCheesecake" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonCheesecake" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonOnigiri" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow1/ButtonOnigiri" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonTaco" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonTaco" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonEclair" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonEclair" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonSushi" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonSushi" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonDonut" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonDonut" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonCharcuterie" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonCharcuterie" method="_on_button_pressed"]
+[connection signal="pressed" from="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonTrashcan" to="RecipeBookVisible/CardButtons/VerticalContainer/ButtonRow2/ButtonTrashcan" method="_on_button_pressed"]
 [connection signal="pressed" from="RecipeBookVisible/RecipeInfo/ContentParent/Button/BackButton" to="." method="_on_exit_recipe_info"]
