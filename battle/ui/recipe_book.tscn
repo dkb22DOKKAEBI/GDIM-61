@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cy1mpfd21qo7d" path="res://art/card_images/monsters/Drawing-3.sketchpad.png" id="4_gt85e"]
 [ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="5_87m4c"]
 
-[node name="RecipeBook" type="Control"]
+[node name="RecipeBook" type="Control" node_paths=PackedStringArray("background")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -22,14 +22,28 @@ grow_vertical = 2
 scale = Vector2(0.885, 0.885)
 mouse_filter = 2
 script = ExtResource("1_wjb6r")
+background = NodePath("CoverBackground")
+
+[node name="CoverBackground" type="ColorRect" parent="."]
+visible = false
+modulate = Color(0.151276, 0.151276, 0.151276, 0.678431)
+layout_mode = 2
+offset_left = -220.153
+offset_top = -142.373
+offset_right = 1179.85
+offset_bottom = 857.627
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="RecipeBookVisible" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.5
-offset_bottom = -136.595
+offset_top = -3.0
+offset_right = 1.0
+offset_bottom = -111.0
 grow_horizontal = 2
 grow_vertical = 2
 
