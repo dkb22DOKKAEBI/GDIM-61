@@ -61,7 +61,7 @@ func update_next_move() -> void:
 			next_move = VACCUM_MOVES.DEFEND
 	
 	# Update display text
-	update_intended_move()
+	update_intended_move_text()
 
 # Return boss next move's display name
 func get_intended_move_text() -> String:

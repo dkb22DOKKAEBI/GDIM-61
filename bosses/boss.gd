@@ -34,16 +34,15 @@ func _ready() -> void:
 	boss_attack_text = find_child("BossBasic").find_child("BossAttack").find_child("BossAttackText")
 	
 	intended_move_text = find_child("BossBasic").find_child("IntendedMoveText")
-	if not intended_move_text:
-		print("NO")
-	else:
-		print("YES")
 	
 	# Update boss card
 	boss_health_text.text = str(boss_health)
 	boss_attack_text.text = str(boss_attack)
 	find_child("BossBasic").find_child("BossImage").texture = ResourceLoader.load("res://art/card_images/bosses/" + boss_name + "_Boss.png")
 	update_next_move()
+	
+	# Connect signals
+	EventController.connect("update_enemy_intended_move_signal", update_next_move)
 
 
 # Boss's behavoir functions turn
@@ -147,8 +146,8 @@ func choose_target() -> Cardslot:
 func update_next_move() -> void:
 	push_error("update_next_move() in Boss.gd NEEDS IMPLEMENTATION")
 
-# Update the text display for the boss's intended move
-func update_intended_move() -> void: 
+# Update the text display for the boss's intended move -> should be called inside update_next_move() method
+func update_intended_move_text() -> void: 
 	intended_move_text.text = get_intended_move_text()
 
 # Return the display name for the boss's next move
