@@ -130,8 +130,6 @@ func start_player_turn():
 	# Player's turn start
 	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	enable_end_turn_button(true)
-	
-	print("Turn is: " + str(PlayerController.turn_num))
 
 
 func check_ability_cds():
