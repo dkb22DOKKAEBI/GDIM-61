@@ -24,6 +24,7 @@ const LEVEL_SCORES: Array[int] = [300, 400, 600, 900, 1200]
 const TURN_BASE_SCORE: int = 150
 const TURN_DEDUCTION_SCORE: int = 10
 const INGREDIENT_BASE_SCORE: int = 200
+const PLAYER_HEALTH_UNIT_SCORE: int = 10
 
 # Reference to other scripts
 var battle_manager: Node2D
@@ -69,11 +70,12 @@ func new_game_started() -> void:
 # Update player score
 func update_player_score(level_index: int):
 	# Update current score
-	curr_score += LEVEL_SCORES[level_index]        # Level score
-	curr_score += max(0, (150 - 10 * turn_num))    # Turn score
+	curr_score += LEVEL_SCORES[level_index]                  # Level score
+	curr_score += max(0, (150 - 10 * turn_num))              # Turn score
 	var fraction := (float(deck.size() + PlayerHand.selected_ingredients.size() + PlayerHand.player_ingredient_hand.size())
-					/ float(ORIGINAL_DECK.size() + level_index * 5))
-	curr_score += int(200 * fraction)              # Ingredient score
+					/ float(ORIGINAL_DECK.size() + (level_index - 1) * 5))
+	curr_score += int(INGREDIENT_BASE_SCORE * fraction)                       # Ingredient score
+	curr_score += PLAYER_HEALTH_UNIT_SCORE * player_health   # Player health score
 	
 	# Update high score
 	if curr_score > high_score:

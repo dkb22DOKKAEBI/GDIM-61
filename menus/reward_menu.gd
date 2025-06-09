@@ -5,6 +5,8 @@ const rewards: Array[String] = ["Cheese", "Dough", "Lettuce", "Tortilla", "Tomat
    "Sugar", "Mystery_Meat", "Grain", "Chocolate"]
 
 @export var menu: Control # The reward menu window
+@export var high_score_text: RichTextLabel
+@export var new_score_text: RichTextLabel
 
 
 # Ready
@@ -14,8 +16,10 @@ func _ready() -> void:
 
 # Show the reward scene
 func display_reward() -> void:
-	# Update player status
+	# Update player status and scores
 	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.REWARD
+	high_score_text.text = str(PlayerController.high_score)
+	new_score_text.text = str(PlayerController.curr_score)
 	
 	# Display reward window 
 	menu.scale = Vector2(0.1, 0.1)
