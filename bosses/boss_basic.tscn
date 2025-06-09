@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c60d87i0v4h8r"]
+[gd_scene load_steps=6 format=3 uid="uid://c60d87i0v4h8r"]
 
 [ext_resource type="Texture2D" uid="uid://d3tc4pwjoib2d" path="res://art/icons/heart.png" id="2_sdpyj"]
 [ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="3_sdpyj"]
 [ext_resource type="Texture2D" uid="uid://dl76ut3dauh2e" path="res://art/icons/sword.png" id="4_jukir"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="4_q5tp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xtgf"]
 size = Vector2(164, 228)
@@ -101,5 +102,16 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 9
 theme_override_font_sizes/normal_font_size = 21
 text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntendedMoveText" type="RichTextLabel" parent="."]
+offset_left = -82.0
+offset_top = -138.0
+offset_right = 81.0
+offset_bottom = -117.0
+mouse_filter = 2
+theme = ExtResource("4_q5tp3")
+text = "Intended Move"
 horizontal_alignment = 1
 vertical_alignment = 1

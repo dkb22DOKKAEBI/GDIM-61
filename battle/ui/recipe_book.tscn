@@ -36,6 +36,7 @@ character_ability_texts = [NodePath("RecipeBookVisible/RecipeInfo/ContentParent/
 character_description_text = NodePath("RecipeBookVisible/RecipeInfo/ContentParent/CardContent/CardInfo/Description")
 
 [node name="CoverBackground" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.784314)
 layout_mode = 2
 offset_left = -220.153
@@ -60,6 +61,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RecipeBookVisible" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

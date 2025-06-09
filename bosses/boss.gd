@@ -18,6 +18,7 @@ var max_cool_down: int # Boss ability cool down
 var curr_cool_down: int
 
 var battle_manager: Node2D # Battle manager of the level -> initialized in OnSceneStart
+@export var intended_move_text: RichTextLabel
 
 
 # Initialization
@@ -129,6 +130,14 @@ func choose_target() -> Cardslot:
 			return CardslotManager.cardslots[2]
 	else:
 		return null # Means the target is the player
+
+
+# Boss update intended move
+func update_intended_move() -> void:
+	intended_move_text.text = get_intended_move_text()
+
+func get_intended_move_text() -> String:
+	return "Need Implementation"
 
 
 # Boss attack animations
