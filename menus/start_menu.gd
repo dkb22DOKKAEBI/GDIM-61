@@ -1,5 +1,11 @@
 extends Node
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
+@export var high_score_num: RichTextLabel
+
+# Ready
+func _ready() -> void:
+	# Update player high score
+	high_score_num.text = str(PlayerController.high_score)
 
 
 # Attached to Start Game button
@@ -12,6 +18,12 @@ func on_start_game() -> void:
 # Enter the tutorial level
 func on_enter_tutorial() -> void:
 	SceneManager.start_tutorial()
+
+
+# Attached to Credit button
+# Enter the credit page
+func on_enter_credit() -> void:
+	SceneManager.transfer_to_credit_page()
 
 
 # Attached to Exit Game button

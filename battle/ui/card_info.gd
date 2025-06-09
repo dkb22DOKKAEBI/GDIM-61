@@ -8,6 +8,8 @@ extends Node
 @export var character_ability_texts: Array[RichTextLabel] # Of size 3
 @export var character_description_text: RichTextLabel
 
+@export var card_info: Control # Card Info window
+
 
 # Ready
 func _ready() -> void:
@@ -32,7 +34,8 @@ func display_monster_card_info(monster_card: MonsterCard) -> void:
 		character_ability_texts[2 - i].text = ""
 	character_description_text.text = CardDatabase.CHARACTER_DESCRIPTION[monster_name]
 	
-	self.visible = true
+	# Display info
+	display_info_helper()
 
 
 # Display info for boss
@@ -49,7 +52,15 @@ func display_boss_info(boss: Boss) -> void:
 		character_ability_texts[2 - i].text = ""
 	character_description_text.text = CardDatabase.CHARACTER_DESCRIPTION[boss_name]
 	
+	# Display info
+	display_info_helper()
+
+# Helper function for display the info window with animation
+func display_info_helper() -> void:
+	card_info.scale = Vector2(0.1, 0.1)
 	self.visible = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(card_info, "scale", Vector2(1, 1), 0.1)
 
 
 # End displaying info

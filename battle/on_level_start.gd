@@ -22,3 +22,8 @@ func _ready() -> void:
 	PlayerHand.selected_ingredient_change_signal.emit()
 	EventController.update_ingredient_num_indicator_signal.emit()
 	EventController.update_monster_num_indicator_signal.emit()
+	EventController.update_player_health_signal.emit(PlayerController.player_health)
+	
+	# Start player turn
+	PlayerController.turn_num = 0
+	$"../BattleManager".start_player_turn()

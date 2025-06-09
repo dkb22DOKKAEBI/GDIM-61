@@ -83,17 +83,17 @@ func vacuum_eliminate():
 	var old_pos:Vector2 = battle_manager.enemy.global_position
 	if CardslotManager.cardslots[0].card_in_slot:
 		boss_attack_monster_anim(CardslotManager.cardslots[0])
-		await battle_manager.wait(0.5)
+		await get_tree().create_timer(0.5).timeout
 		battle_manager.player_cards_on_battlefield[CardslotManager.cardslots[0]].die()
 		boss_return_pos_anim(old_pos)
 	elif CardslotManager.cardslots[1].card_in_slot:
 		boss_attack_monster_anim(CardslotManager.cardslots[1])
-		await battle_manager.wait(0.5)
+		await get_tree().create_timer(0.5).timeout
 		battle_manager.player_cards_on_battlefield[CardslotManager.cardslots[1]].die()
 		boss_return_pos_anim(old_pos)
 	elif CardslotManager.cardslots[2].card_in_slot:
 		boss_attack_monster_anim(CardslotManager.cardslots[2])
-		await battle_manager.wait(0.5)
+		await get_tree().create_timer(0.5).timeout
 		battle_manager.player_cards_on_battlefield[CardslotManager.cardslots[2]].die()
 		boss_return_pos_anim(old_pos)
 	else:

@@ -42,16 +42,20 @@ func disselect_all_ingredient() -> void:
 # Attached to Pot UI ingredent buttons with corresponding indexes
 # Disselect ingredient and add card view back to player's hand
 func on_disselect_ingredient_1() -> void:
-	disselect_ingredient(0)
+	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.IDLE:
+		disselect_ingredient(0)
 
 func on_disselect_ingredient_2() -> void:
-	disselect_ingredient(1)
+	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.IDLE:
+		disselect_ingredient(1)
 
 func on_disselect_ingredient_3() -> void:
-	disselect_ingredient(2)
+	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.IDLE:
+		disselect_ingredient(2)
 
 func on_disselect_ingredient_4() -> void:
-	disselect_ingredient(3)
+	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.IDLE:
+		disselect_ingredient(3)
 
 
 # Helper function for disselect ingredients

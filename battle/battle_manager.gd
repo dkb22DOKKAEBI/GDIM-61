@@ -21,64 +21,17 @@ var has_an_abilities = {
 	}
 
 
-@export var battle_timer: Timer
-
-@export var input_manager: Node2D
-@export var monster_card_manager: Node2D
-
 @export var enemy: Node2D
-@export var player_health_text: RichTextLabel
-var player_health_text_prefix: String = "Player Health: "
 
-# Temp for Week 6 build
-@export var temp_attack_message: RichTextLabel
-
-@export var ability_manager: Node2D # never used
 var card_starting_position: Vector2 = Vector2(100, 525)
-@onready var endturnsfx: AudioStreamPlayer = $"../endturnsfx"
-@onready var attacksfx: AudioStreamPlayer = $"../attacksfx"
 
 # ready function
 func _ready() -> void:
 	# Display player starting health for each level
-	EventController.update_player_health_signal.emit(PlayerController.player_health)
 	player_cards_on_battlefield = {CardslotManager.cardslots[0]: null, CardslotManager.cardslots[1]: null, CardslotManager.cardslots[2]: null}
-	
-	# Connect signal for player input manager
-	input_manager.connect("select_placed_card", _player_select_placed_card)
-	
-	# Player act first
-	start_player_turn()
-
-
-func _player_select_placed_card(card: MonsterCard) -> void:
-	
-	# If AbilityManager is in heal targeting mode, send the clicked card to it
-	if ability_manager.waiting_for_heal_target:
-		ability_manager.handle_target_selection(card)
-		return
-	# Return if this card has attacked this turn OR another card is attaking
-	if card.attacked_this_turn or player_is_attacking:
-		return
-	
-	card.selected_label_vis(!card.get_label_vis())
-	temp_attack_message.visible = true
-	
-	# Same card being selected
-	if not card.get_label_vis():
-		selected_card_in_slot = null
-		temp_attack_message.visible = false
-		return
-	
-	# Disable select for previous selected card
-	if selected_card_in_slot:
-		selected_card_in_slot.selected_label_vis(false)
-	selected_card_in_slot = card
 
 
 func monster_attack_boss_anim(card):
-	#var new_pos_x = 440
-	#var new_pos_y = 0
 	var old_pos_x = card.position.x
 	var old_pos_y = card.position.y
 	#var new_pos = Vector2(new_pos_x, new_pos_y)
@@ -88,25 +41,22 @@ func monster_attack_boss_anim(card):
 	# Monster go attacking
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "global_position", new_pos, 0.5)
-	await wait(0.5)
+	await get_tree().create_timer(0.5).timeout
 	
 	# Monster Returning to original position
 	var old_pos = Vector2(old_pos_x, old_pos_y)
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(card, "position", old_pos, 0.5)
 	card.z_index = 1
-	await wait(0.5)
+	await get_tree().create_timer(0.5).timeout
 	
 
 func player_win():
-	$"../UI/GameConditions/WinCondition".visible = true
 	enemy.visible = false
 
 func player_lose():
-	$"../UI/GameConditions/LoseCondition".visible = true
-	
 	# Change scene to Game Over Win scene
-	await wait(1)
+	await get_tree().create_timer(0.5).timeout
 	SceneManager.transfer_to_game_over_lose()
 
 
@@ -114,7 +64,7 @@ func player_lose():
 func _on_end_turn_button_pressed() -> void:
 	EventController.player_turn_end_signal.emit()
 	# Check whether the player is attacking
-	endturnsfx.play()
+	AudioManager.play_sound("END_TURN")
 	if player_is_attacking:
 		return
 	
@@ -122,7 +72,6 @@ func _on_end_turn_button_pressed() -> void:
 	if selected_card_in_slot:
 		selected_card_in_slot.selected_label_vis(false)
 		selected_card_in_slot = null
-		temp_attack_message.visible = false
 	PlayerController.is_on_player_turn = false
 	
 	# Opponent Turn
@@ -172,13 +121,14 @@ func start_player_turn():
 			$"../PlayerHand/Deck".draw_card()
 		EventController.update_ingredient_num_indicator_signal.emit()
 	
-	# Update player' and monster cards' status
+	# Update player's and monster cards' status
 	reset_cards_attack()
 	PlayerController.is_on_player_turn = true
+	PlayerController.turn_num += 1
 	check_ability_cds()
-	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	
 	# Player's turn start
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	enable_end_turn_button(true)
 
 
@@ -203,12 +153,6 @@ func check_ability_cds():
 		else:
 			CardslotManager.cardslot_abilities[slot_id][1] -= 1
 			cardslot.card_in_slot.update_ability_button(CardslotManager.cardslot_abilities[slot_id][1])
-
-
-func wait(wait_time):
-	battle_timer.wait_time = wait_time
-	battle_timer.start()
-	await battle_timer.timeout
 
 
 func check_field():

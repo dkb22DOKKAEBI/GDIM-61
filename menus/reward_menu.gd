@@ -1,29 +1,39 @@
+class_name RewardMenu
 extends Node
 
-const ingredient_reward_deck: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",
-"Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla", "Dough", 
-"Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", "Tortilla",
-"Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Chocolate", 
-"Tortilla", "Dough", "Cheese", "Tomato", "Sugar", "Mystery_Meat", "Lettuce", 
-"Chocolate"]
+const rewards: Array[String] = ["Cheese", "Dough", "Lettuce", "Tortilla", "Tomato",
+   "Sugar", "Mystery_Meat", "Grain", "Chocolate"]
 
-var reward_claimed: bool = false
+@export var menu: Control # The reward menu window
+@export var high_score_text: RichTextLabel
+@export var new_score_text: RichTextLabel
+
+
+# Ready
+func _ready() -> void:
+	EventController.connect("forward_to_reward_signal", display_reward)
+
+
+# Show the reward scene
+func display_reward() -> void:
+	# Update player status and scores
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.REWARD
+	high_score_text.text = str(PlayerController.high_score)
+	new_score_text.text = str(PlayerController.curr_score)
+	
+	# Display reward window 
+	menu.scale = Vector2(0.1, 0.1)
+	self.visible = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(menu, "scale", Vector2(1, 1), 0.3)
+	
+	# Get 5 new ingredients as the reward
+	for i in range(PlayerController.REWARD_INGREDIENT_NUM):
+		var new_ingredient = rewards[randi_range(0, 8)]
+		PlayerController.deck.insert(randi_range(0, PlayerController.deck.size()), new_ingredient)
+
 
 # Attached to Next Level button
 # Proceed to the next level
 func on_next_level() -> void:
 	SceneManager.proceed_to_next_level()
-
-
-# Attached to Claim Reward button
-# Claim reward from completion of previous level
-func on_claim_reward() -> void:
-	# Check whether reward claimed
-	if not reward_claimed:
-		reward_claimed = true
-		
-		# Add 5 random ingredient rewards to player's deck
-		ingredient_reward_deck.shuffle()
-		for i in range(5):
-			PlayerController.deck.append(ingredient_reward_deck[i])
-		PlayerController.deck.shuffle()

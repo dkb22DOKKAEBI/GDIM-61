@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8me27agp6vuk"]
+[gd_scene load_steps=11 format=3 uid="uid://b8me27agp6vuk"]
 
 [ext_resource type="Script" uid="uid://bguce6op0jbnu" path="res://menus/start_menu.gd" id="1_3kg5v"]
 [ext_resource type="Texture2D" uid="uid://cgyr4apq2bpu7" path="res://art/title_elements/gunner_png-removebg-preview.png" id="2_yhcmu"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://deukfuh5jul05" path="res://art/title_elements/trashgcan_-removebg-preview.png" id="4_54tpi"]
 [ext_resource type="Texture2D" uid="uid://badiiodv2fhrv" path="res://art/title_elements/BOSS-removebg-preview.png" id="5_h6phu"]
 [ext_resource type="Texture2D" uid="uid://cgpy4hgfv7b7x" path="res://art/title_elements/cheesecake_transparent-removebg-preview.png" id="5_kli5o"]
+[ext_resource type="Theme" uid="uid://bfogk1h6wa3x1" path="res://custom_resources/coiny.tres" id="8_ostuc"]
+[ext_resource type="Theme" uid="uid://bmdwt0d0lr5sn" path="res://custom_resources/button.tres" id="9_54tpi"]
+[ext_resource type="Theme" uid="uid://nhnax5rta2hu" path="res://custom_resources/amarante.tres" id="9_kli5o"]
 
-[node name="StartMenu" type="Control"]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("high_score_num")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,51 +19,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3kg5v")
+high_score_num = NodePath("HighScore/Texts/ScoreNum")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = 40
-layout_mode = 0
-offset_left = 179.56
-offset_top = 403.795
-offset_right = 693.865
-offset_bottom = 794.295
-scale = Vector2(0.455, 0.455)
-texture = ExtResource("2_yhcmu")
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="TextureRect4" type="TextureRect" parent="."]
-z_index = 20
-layout_mode = 0
-offset_left = 565.0
-offset_top = 270.0
-offset_right = 1098.0
-offset_bottom = 803.0
-scale = Vector2(0.475, 0.475)
-texture = ExtResource("3_ostuc")
-expand_mode = 4
-stretch_mode = 3
-
-[node name="TextureRect5" type="TextureRect" parent="."]
-z_index = 35
-layout_mode = 0
-offset_left = 2.01
-offset_top = 409.76
-offset_right = 946.01
-offset_bottom = 1807.76
-scale = Vector2(0.115, 0.115)
-texture = ExtResource("4_54tpi")
-
-[node name="TextureRect3" type="TextureRect" parent="."]
-z_index = 45
-layout_mode = 0
-offset_left = 34.97
-offset_top = 420.875
-offset_right = 546.97
-offset_bottom = 765.165
-scale = Vector2(0.455, 0.455)
-texture = ExtResource("5_kli5o")
-flip_h = true
-
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
 layout_mode = 0
 offset_left = -688.0
 offset_top = -446.0
@@ -70,78 +40,170 @@ texture = ExtResource("3_w3tic")
 flip_h = true
 flip_v = true
 
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-modulate = Color(0.886896, 0.702931, 0.636388, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="DonutImage" type="TextureRect" parent="Background"]
+z_index = 40
+layout_mode = 0
+offset_left = 166.0
+offset_top = 424.0
+offset_right = 680.305
+offset_bottom = 814.5
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("2_yhcmu")
+
+[node name="CheesecakeImage" type="TextureRect" parent="Background"]
+z_index = 45
+layout_mode = 0
+offset_left = -36.0
+offset_top = 431.0
+offset_right = 476.0
+offset_bottom = 775.29
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("5_kli5o")
+flip_h = true
+
+[node name="TrashcanImage" type="TextureRect" parent="Background"]
+z_index = 35
+layout_mode = 0
+offset_left = 114.0
+offset_top = 388.0
+offset_right = 1058.0
+offset_bottom = 1786.0
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("4_54tpi")
+
+[node name="ToasterImage" type="TextureRect" parent="Background"]
+z_index = 20
+layout_mode = 0
+offset_left = 556.0
+offset_top = 277.0
+offset_right = 1089.0
+offset_bottom = 810.0
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("3_ostuc")
+expand_mode = 4
+stretch_mode = 3
+
+[node name="BlenderImage" type="Sprite2D" parent="Background"]
+position = Vector2(831, 322)
+scale = Vector2(0.997471, 0.997471)
+texture = ExtResource("5_h6phu")
 
 [node name="GameTitle" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 300.0
+offset_top = -23.0
+offset_bottom = 277.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 67
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameTitle"]
+[node name="GameTitleText" type="RichTextLabel" parent="GameTitle"]
 layout_mode = 2
+theme = ExtResource("8_ostuc")
+theme_override_colors/font_outline_color = Color(0.909804, 0.345098, 0.0117647, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 60
-text = "Food Fight"
+theme_override_constants/outline_size = 27
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 31
+theme_override_font_sizes/normal_font_size = 102
+text = "Food  Fight"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(200, 250)
+[node name="HighScore" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(500, 60)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -6.0
-offset_right = 100.0
-offset_bottom = 244.0
+offset_left = -250.0
+offset_top = -65.0
+offset_right = 250.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Texts" type="HBoxContainer" parent="HighScore"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ScoreText" type="RichTextLabel" parent="HighScore/Texts"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+theme = ExtResource("9_kli5o")
+theme_override_colors/font_outline_color = Color(0.843137, 0.419608, 0.113725, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 30
+text = "High Score:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScoreNum" type="RichTextLabel" parent="HighScore/Texts"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("9_kli5o")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "XXXXX"
+vertical_alignment = 1
+
+[node name="Buttons" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 41.0
+offset_right = 75.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 23
 
-[node name="StartGameButton" type="Button" parent="Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="StartButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 25
-text = "Start Game"
+theme = ExtResource("9_54tpi")
+theme_override_font_sizes/font_size = 22
+text = "Start"
 
 [node name="TutorialButton" type="Button" parent="Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("9_54tpi")
+theme_override_font_sizes/font_size = 22
 text = "Tutorial"
 
-[node name="ExitGameButton" type="Button" parent="Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="CreditButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 25
-text = "Exit Game"
+theme = ExtResource("9_54tpi")
+theme_override_font_sizes/font_size = 22
+text = "Credit"
 
-[node name="Boss" type="Sprite2D" parent="."]
-position = Vector2(831, 322)
-scale = Vector2(0.997471, 0.997471)
-texture = ExtResource("5_h6phu")
+[node name="ExitButton" type="Button" parent="Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("9_54tpi")
+theme_override_font_sizes/font_size = 22
+text = "Exit"
 
-[connection signal="pressed" from="Buttons/VBoxContainer/StartGameButton" to="." method="on_start_game"]
+[connection signal="pressed" from="Buttons/VBoxContainer/StartButton" to="." method="on_start_game"]
 [connection signal="pressed" from="Buttons/VBoxContainer/TutorialButton" to="." method="on_enter_tutorial"]
-[connection signal="pressed" from="Buttons/VBoxContainer/ExitGameButton" to="." method="on_exit_game"]
+[connection signal="pressed" from="Buttons/VBoxContainer/CreditButton" to="." method="on_enter_credit"]
+[connection signal="pressed" from="Buttons/VBoxContainer/ExitButton" to="." method="on_exit_game"]
