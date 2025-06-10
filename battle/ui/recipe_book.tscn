@@ -45,7 +45,6 @@ offset_right = 1179.85
 offset_bottom = 857.627
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CoverBackground"]
 z_index = 1
