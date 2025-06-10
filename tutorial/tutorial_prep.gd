@@ -7,6 +7,7 @@ const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Tortilla",
 @export var curr_message: TutorialMessage # Current tutorial message
 
 var cooking_mechanics: Node2D # Reference to cooking mechanics
+var battle_manager: Node2D
 var cook_button: Button # Buttons
 var recipe_button: Button
 var end_turn_button: Button
@@ -22,6 +23,7 @@ var end_turn_pressed: bool = false
 func _ready():
 	# Initialize
 	cooking_mechanics = get_parent().find_child("CookingMechanic")
+	battle_manager = get_parent().find_child("BattleManager")
 	cook_button = get_parent().find_child("CookButton")
 	recipe_button = get_parent().find_child("RecipeButton")
 	end_turn_button = get_parent().find_child("EndTurnButton")
@@ -90,8 +92,7 @@ func start_defeat_boss_tutorial(text: String) -> void:
 	task_text.visible = true
 	task_text.text = text
 	
-	print("Enable end turn button")
-	end_turn_button.disabled = false
+	end_turn_button.connect("pressed", battle_manager._on_end_turn_button_pressed)
 
 func finish_defeat_boss_tutorial() -> void:
 	PlayerController.is_on_tutorial = false
@@ -113,7 +114,6 @@ func back_to_start_menu() -> void:
 
 # Tutorial "overriden" functions
 func tutorial_on_cook() -> void:
-	print("YES")
 	if not cooked:
 		if PlayerHand.selected_ingredients.size() == 0:
 			return
