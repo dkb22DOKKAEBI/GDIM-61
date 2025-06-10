@@ -3,19 +3,19 @@ extends Node
 const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Tortilla",
 "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Cheese", "Dough"]
 
-@export var cooking_mechanics: Node2D # Reference to cooking mechanics
 @export var task_text: RichTextLabel # Reference to task text
-@export var win_condition: RichTextLabel
-
 @export var curr_message: TutorialMessage # Current tutorial message
+
+@export var cooking_mechanics: Node2D # Reference to cooking mechanics
+@export var cook_button: Button # Buttons
+@export var recipe_button: Button
+@export var end_turn_button: Button
+
 var cooked: bool = false
 var pizza: MonsterCard = null
 var pizza_placed: bool = false
 var end_turn_pressed: bool = false
 
-@export var cook_button: Button # Buttons
-@export var recipe_button: Button
-@export var end_turn_button: Button
 
 
 # Ready
@@ -34,7 +34,6 @@ func _ready():
 	PlayerHand.legacy_monster_hand.clear()
 	PlayerController.deck = TUTORIAL_DECK.duplicate()
 	PlayerController.is_on_tutorial = true
-	win_condition.text = ""
 	
 	# Disable buttons
 	cook_button.disabled = true

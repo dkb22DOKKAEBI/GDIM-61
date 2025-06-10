@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1ha1u603qeyd"]
+[gd_scene load_steps=23 format=3 uid="uid://b1ha1u603qeyd"]
 
 [ext_resource type="Script" uid="uid://c2dd877msfpqm" path="res://tutorial/tutorial_prep.gd" id="1_cmspm"]
 [ext_resource type="Script" uid="uid://cn2nfmdik6f0v" path="res://global/player/input_manager.gd" id="2_ikfo1"]
@@ -22,21 +22,14 @@
 [ext_resource type="Script" uid="uid://clpdlvl6fmebs" path="res://tutorial/tutorial_start.gd" id="19_ikfo1"]
 [ext_resource type="Script" uid="uid://wpqnwkn5db8" path="res://tutorial/tutorial_message_place_monster.gd" id="20_bl2xa"]
 [ext_resource type="Script" uid="uid://col1tigqpy5rw" path="res://tutorial/tutorial_message_defeat_boss.gd" id="21_15kfc"]
-[ext_resource type="AudioStream" uid="uid://d2sbgkufk663o" path="res://audio/music/stardew valley soundtrack.mp3" id="23_gxgfo"]
-[ext_resource type="AudioStream" uid="uid://d5kdltgj87e4" path="res://audio/SFX/card draw.mp3" id="24_sbw1o"]
-[ext_resource type="AudioStream" uid="uid://cd5bd43x3avc3" path="res://audio/SFX/select.mp3" id="25_06rsu"]
-[ext_resource type="AudioStream" uid="uid://b5jqosxu12t8v" path="res://audio/SFX/cooking.mp3" id="26_4gq6d"]
-[ext_resource type="AudioStream" uid="uid://dbu12jgdt6ha3" path="res://audio/SFX/end_turn.mp3" id="27_mjrbb"]
-[ext_resource type="AudioStream" uid="uid://c0rbess3tjx4o" path="res://audio/SFX/boss_attack.mp3" id="28_7kfc1"]
 
 [node name="Tutorial" type="Node2D"]
 
-[node name="TutorialPrep" type="Node2D" parent="." node_paths=PackedStringArray("cooking_mechanics", "task_text", "win_condition", "curr_message", "cook_button", "recipe_button", "end_turn_button")]
+[node name="TutorialPrep" type="Node2D" parent="." node_paths=PackedStringArray("task_text", "curr_message", "cooking_mechanics", "cook_button", "recipe_button", "end_turn_button")]
 script = ExtResource("1_cmspm")
-cooking_mechanics = NodePath("../CookingMechanic")
 task_text = NodePath("../TutorialTask")
-win_condition = NodePath("../UI/GameConditions/WinCondition")
 curr_message = NodePath("../TutorialMessages/TutMessage_1")
+cooking_mechanics = NodePath("../CookingMechanic")
 cook_button = NodePath("../UI/Buttons/CookButton")
 recipe_button = NodePath("../UI/Buttons/RecipeButton")
 end_turn_button = NodePath("../UI/Buttons/EndTurnButton")
@@ -61,11 +54,10 @@ vertical_alignment = 1
 
 [node name="PlayerHand" type="Node2D" parent="."]
 
-[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "deck_sprite", "ingredient_card_manager")]
+[node name="Deck" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck_left_num_text", "ingredient_card_manager")]
 position = Vector2(884, 543)
 script = ExtResource("4_bl2xa")
 deck_left_num_text = NodePath("DeckLeftNum")
-deck_sprite = NodePath("DeckSprite2D")
 ingredient_card_manager = NodePath("../IngredientCardManager")
 
 [node name="DeckSprite2D" type="Sprite2D" parent="PlayerHand/Deck"]
@@ -85,20 +77,18 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui", "cover")]
+[node name="MonsterCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("input_manager", "battle_manager", "temp_ui")]
 z_index = 7
 script = ExtResource("6_7a100")
 input_manager = NodePath("../../Player/InputManager")
 battle_manager = NodePath("../../BattleManager")
 temp_ui = NodePath("../../UI")
-cover = NodePath("../IngredientCardManager/Cover")
 
-[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui", "cover")]
+[node name="IngredientCardManager" type="Node2D" parent="PlayerHand" node_paths=PackedStringArray("deck", "temp_ui")]
 z_index = 1
 script = ExtResource("7_feaue")
 deck = NodePath("../Deck")
 temp_ui = NodePath("../../UI")
-cover = NodePath("Cover")
 
 [node name="Cover" type="ColorRect" parent="PlayerHand/IngredientCardManager"]
 visible = false
@@ -130,14 +120,9 @@ card_slot_number = "cardslot3"
 [node name="Enemy" type="Node2D" parent="BattleField"]
 position = Vector2(820, 220)
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_timer", "input_manager", "monster_card_manager", "enemy", "player_health_text", "temp_attack_message")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
 script = ExtResource("9_5qvs7")
-battle_timer = NodePath("BattleTimer")
-input_manager = NodePath("../Player/InputManager")
-monster_card_manager = NodePath("../PlayerHand/MonsterCardManager")
 enemy = NodePath("../BattleField/Enemy")
-player_health_text = NodePath("../Player/PlayerHealth")
-temp_attack_message = NodePath("../UI/TempAttackMessage")
 
 [node name="BattleTimer" type="Timer" parent="BattleManager"]
 one_shot = true
@@ -1163,32 +1148,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OnTutorialStart" type="Node2D" parent="." node_paths=PackedStringArray("tutorial_prep", "boss_parent", "end_turn_button")]
+[node name="OnTutorialStart" type="Node2D" parent="." node_paths=PackedStringArray("tutorial_prep")]
 script = ExtResource("19_ikfo1")
 tutorial_prep = NodePath("../TutorialPrep")
-boss_parent = NodePath("../BattleField/Enemy")
-end_turn_button = NodePath("../UI/Buttons/EndTurnButton")
-
-[node name="bgmusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("23_gxgfo")
-volume_db = -15.315
-autoplay = true
-
-[node name="drawsfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_sbw1o")
-
-[node name="clicksfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_06rsu")
-
-[node name="cookingsfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("26_4gq6d")
-
-[node name="endturnsfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_mjrbb")
-
-[node name="attacksfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("28_7kfc1")
-volume_db = -10.0
 
 [connection signal="pressed" from="UI/Buttons/EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="UI/Buttons/CookButton" to="TutorialPrep" method="tutorial_on_cook"]

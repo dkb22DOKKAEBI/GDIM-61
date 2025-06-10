@@ -29,6 +29,10 @@ func start_new_game() -> void:
 # Start tutorial level
 func start_tutorial() -> void:
 	new_game_started_signal.emit()
+	
+	# Transfer scene
+	SceneTransition.transition_out()
+	await EventController.scene_transition_animation_finished_signal
 	get_tree().change_scene_to_file(TUTORIAL_SCENE_PATH)
 
 
