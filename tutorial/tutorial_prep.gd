@@ -6,10 +6,10 @@ const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Tortilla",
 @export var task_text: RichTextLabel # Reference to task text
 @export var curr_message: TutorialMessage # Current tutorial message
 
-@export var cooking_mechanics: Node2D # Reference to cooking mechanics
-@export var cook_button: Button # Buttons
-@export var recipe_button: Button
-@export var end_turn_button: Button
+var cooking_mechanics: Node2D # Reference to cooking mechanics
+var cook_button: Button # Buttons
+var recipe_button: Button
+var end_turn_button: Button
 
 var cooked: bool = false
 var pizza: MonsterCard = null
@@ -20,6 +20,12 @@ var end_turn_pressed: bool = false
 
 # Ready
 func _ready():
+	# Initialize
+	cooking_mechanics = get_parent().find_child("CookingMechanic")
+	cook_button = get_parent().find_child("CookButton")
+	recipe_button = get_parent().find_child("RecipeButton")
+	end_turn_button = get_parent().find_child("EndTurnButton")
+	
 	# Connect signals
 	EventController.connect("preceed_tutorial_signal", update_curr_message)
 	EventController.connect("start_cook_tutorial_signal", start_cook_tutorial)
@@ -107,6 +113,7 @@ func back_to_start_menu() -> void:
 
 # Tutorial "overriden" functions
 func tutorial_on_cook() -> void:
+	print("YES")
 	if not cooked:
 		if PlayerHand.selected_ingredients.size() == 0:
 			return

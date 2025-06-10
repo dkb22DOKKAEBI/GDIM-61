@@ -12,6 +12,7 @@ var recipe = []
 
 # Cook to create new monster card
 func _on_cook() -> void:
+	print("NO")
 	# Check player monster hand size
 	if PlayerHand.player_monster_hand.size() >= 4:
 		return
