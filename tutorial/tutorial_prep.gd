@@ -3,23 +3,31 @@ extends Node
 const TUTORIAL_DECK: Array[String] = ["Tomato", "Dough", "Cheese", "Tortilla",
 "Tomato", "Sugar", "Mystery_Meat", "Lettuce", "Cheese", "Dough"]
 
-@export var cooking_mechanics: Node2D # Reference to cooking mechanics
 @export var task_text: RichTextLabel # Reference to task text
-@export var win_condition: RichTextLabel
-
 @export var curr_message: TutorialMessage # Current tutorial message
+
+var cooking_mechanics: Node2D # Reference to cooking mechanics
+var battle_manager: Node2D
+var cook_button: Button # Buttons
+var recipe_button: Button
+var end_turn_button: Button
+
 var cooked: bool = false
 var pizza: MonsterCard = null
 var pizza_placed: bool = false
 var end_turn_pressed: bool = false
 
-@export var cook_button: Button # Buttons
-@export var recipe_button: Button
-@export var end_turn_button: Button
 
 
 # Ready
 func _ready():
+	# Initialize
+	cooking_mechanics = get_parent().find_child("CookingMechanic")
+	battle_manager = get_parent().find_child("BattleManager")
+	cook_button = get_parent().find_child("CookButton")
+	recipe_button = get_parent().find_child("RecipeButton")
+	end_turn_button = get_parent().find_child("EndTurnButton")
+	
 	# Connect signals
 	EventController.connect("preceed_tutorial_signal", update_curr_message)
 	EventController.connect("start_cook_tutorial_signal", start_cook_tutorial)
@@ -34,7 +42,6 @@ func _ready():
 	PlayerHand.legacy_monster_hand.clear()
 	PlayerController.deck = TUTORIAL_DECK.duplicate()
 	PlayerController.is_on_tutorial = true
-	win_condition.text = ""
 	
 	# Disable buttons
 	cook_button.disabled = true
@@ -85,8 +92,7 @@ func start_defeat_boss_tutorial(text: String) -> void:
 	task_text.visible = true
 	task_text.text = text
 	
-	print("Enable end turn button")
-	end_turn_button.disabled = false
+	end_turn_button.connect("pressed", battle_manager._on_end_turn_button_pressed)
 
 func finish_defeat_boss_tutorial() -> void:
 	PlayerController.is_on_tutorial = false

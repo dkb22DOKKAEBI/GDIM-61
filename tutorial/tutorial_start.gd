@@ -1,23 +1,14 @@
 extends Node
 
 @export var tutorial_prep: Node2D
-@export var boss_parent: Node2D
-@export var end_turn_button: Button
+
 
 func _ready() -> void:
-	# Instantiate boss
-	var boss_name = "Tutorial"
-	var boss_scene = load(CardDatabase.BOSS_PATH[boss_name])
-	var boss: Node2D = boss_scene.instantiate()
-	boss.boss_name = boss_name
+	# Tutorial additional settings
+	tutorial_prep.end_turn_button.disconnect("pressed", tutorial_prep.battle_manager._on_end_turn_button_pressed)
+	tutorial_prep.cook_button.disconnect("pressed", tutorial_prep.cooking_mechanics._on_cook)
 	
-	# Add boss as child of Enemy node
-	boss_parent.add_child(boss)
+	tutorial_prep.cook_button.connect("pressed", tutorial_prep.tutorial_on_cook)
 	
-	boss.battle_manager = $"../BattleManager"
-	
-	# Start Tutorial
-	end_turn_button.disabled = true
-	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.5).timeout
 	tutorial_prep.curr_message.activate_self()

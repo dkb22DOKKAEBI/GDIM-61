@@ -12,6 +12,14 @@ func _ready() -> void:
 func _input(event) -> void:
 	# Close pause Menu
 	if Input.is_action_just_pressed("pause_game_switch"):
+		# Check whether on tutorial
+		if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.TUTORIAL and self.visible:
+			self.visible = false
+			return
+		elif PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.TUTORIAL and not self.visible:
+			self.visible = true
+			return
+		
 		await get_tree().create_timer(0.05).timeout
 		on_resume_game()
 
@@ -30,6 +38,11 @@ func switch_pause_menu_on():
 # Attached to Resume Game button
 # Switch off pause menu
 func on_resume_game() -> void:
+	# Check whether on tutorial
+	if PlayerController.curr_player_status == PlayerController.PLAYER_STATUS.TUTORIAL:
+		self.visible = false
+		return
+	
 	get_tree().paused = false
 	self.visible = false
 
@@ -40,6 +53,10 @@ func on_return_start_menu() -> void:
 	get_tree().paused = false
 	SceneManager.back_to_start_menu()
 	#self.visible = false
+	
+	# Exit tutorial level if is on
+	if PlayerController.is_on_tutorial:
+		PlayerController.is_on_tutorial = false
 
 
 # Attached to Background Music Slider

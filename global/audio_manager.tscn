@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://hq782d7rv331" path="res://audio/music/bg-music-tuff.mp3" id="7_alawa"]
 
 [node name="AudioManager" type="Node2D" node_paths=PackedStringArray("main_menu_background_music", "battle_background_music")]
+process_mode = 3
 script = ExtResource("1_5jhky")
 sfx_dic = {
 "ATTACK": ExtResource("3_hjth8"),
