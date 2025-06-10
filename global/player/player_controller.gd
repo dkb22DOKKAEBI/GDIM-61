@@ -9,7 +9,7 @@ const MAX_MONSTER_HAND_NUM := 4 # Maximum number of monster cards in hand
 const REWARD_INGREDIENT_NUM := 5
 
 # Player status
-enum PLAYER_STATUS {IDLE, TARGETING, CHECKING_INFO, WAITING_TURN, REWARD}
+enum PLAYER_STATUS {IDLE, TARGETING, CHECKING_INFO, WAITING_TURN, REWARD, TUTORIAL}
 
 # Player's deck -> initially 37
 const ORIGINAL_DECK: Array[String] = ["Tortilla", "Dough", "Cheese", "Lettuce",

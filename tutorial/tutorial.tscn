@@ -573,7 +573,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("18_ikfo1")
-next_message = NodePath("../TutMessage_12")
+next_message = NodePath("../TutMessage_11")
 activate_next = true
 
 [node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_10"]
@@ -593,7 +593,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("3_dwom6")
 theme_override_font_sizes/normal_font_size = 35
-text = "But Remember, each monster can attack only once per turn, and enemy usually attack the monster in the frontline first."
+text = "But Remember, each monster can attack only once per turn, and enemy usually attacks the monster in the frontline first."
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -621,6 +621,65 @@ theme = ExtResource("5_7d2fe")
 theme_override_font_sizes/font_size = 20
 text = "OK"
 
+[node name="TutMessage_11" type="Control" parent="TutorialMessages" node_paths=PackedStringArray("next_message")]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("18_ikfo1")
+next_message = NodePath("../TutMessage_12")
+activate_next = true
+
+[node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_11"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -152.0
+offset_right = 330.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_dwom6")
+theme_override_font_sizes/normal_font_size = 35
+text = "The enemy usually only attacks the backline if the backline is full. Each enemy attack will only damage the player by 1 health."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBackground" type="Panel" parent="TutorialMessages/TutMessage_11/MessageText"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("9_rcm07")
+
+[node name="Button" type="Button" parent="TutorialMessages/TutMessage_11"]
+z_index = 1
+layout_mode = 0
+offset_left = 781.0
+offset_top = 318.0
+offset_right = 814.0
+offset_bottom = 352.0
+focus_mode = 0
+theme = ExtResource("5_7d2fe")
+theme_override_font_sizes/font_size = 20
+text = "OK"
+
 [node name="TutMessage_12" type="Control" parent="TutorialMessages" node_paths=PackedStringArray("next_message")]
 process_mode = 2
 visible = false
@@ -631,10 +690,69 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("21_15kfc")
+script = ExtResource("18_ikfo1")
 next_message = NodePath("../TutMessage_13")
+activate_next = true
 
 [node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_12"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -152.0
+offset_right = 330.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_dwom6")
+theme_override_font_sizes/normal_font_size = 35
+text = "You can also hold right mouse button on enemies or food monsters to check their detailed information."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBackground" type="Panel" parent="TutorialMessages/TutMessage_12/MessageText"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("9_rcm07")
+
+[node name="Button" type="Button" parent="TutorialMessages/TutMessage_12"]
+z_index = 1
+layout_mode = 0
+offset_left = 781.0
+offset_top = 318.0
+offset_right = 814.0
+offset_bottom = 352.0
+focus_mode = 0
+theme = ExtResource("5_7d2fe")
+theme_override_font_sizes/font_size = 20
+text = "OK"
+
+[node name="TutMessage_13" type="Control" parent="TutorialMessages" node_paths=PackedStringArray("next_message")]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("21_15kfc")
+next_message = NodePath("../TutMessage_14")
+
+[node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_13"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -656,64 +774,6 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextBackground" type="Panel" parent="TutorialMessages/TutMessage_12/MessageText"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("9_rcm07")
-
-[node name="Button" type="Button" parent="TutorialMessages/TutMessage_12"]
-z_index = 1
-layout_mode = 0
-offset_left = 774.0
-offset_top = 380.0
-offset_right = 807.0
-offset_bottom = 414.0
-focus_mode = 0
-theme = ExtResource("5_7d2fe")
-theme_override_font_sizes/font_size = 20
-text = "OK"
-
-[node name="TutMessage_13" type="Control" parent="TutorialMessages" node_paths=PackedStringArray("next_message")]
-process_mode = 2
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("18_ikfo1")
-next_message = NodePath("../TutMessage_14")
-
-[node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_13"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -66.0
-offset_top = -76.0
-offset_right = 434.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("3_dwom6")
-theme_override_font_sizes/normal_font_size = 35
-text = "At the start of each turn, player's hand refills to 6 ingredient cards"
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TextBackground" type="Panel" parent="TutorialMessages/TutMessage_13/MessageText"]
 z_index = -1
 layout_mode = 1
@@ -728,6 +788,64 @@ theme = ExtResource("9_rcm07")
 [node name="Button" type="Button" parent="TutorialMessages/TutMessage_13"]
 z_index = 1
 layout_mode = 0
+offset_left = 774.0
+offset_top = 380.0
+offset_right = 807.0
+offset_bottom = 414.0
+focus_mode = 0
+theme = ExtResource("5_7d2fe")
+theme_override_font_sizes/font_size = 20
+text = "OK"
+
+[node name="TutMessage_14" type="Control" parent="TutorialMessages" node_paths=PackedStringArray("next_message")]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("18_ikfo1")
+next_message = NodePath("../TutMessage_15")
+
+[node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_14"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -76.0
+offset_right = 434.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_dwom6")
+theme_override_font_sizes/normal_font_size = 35
+text = "At the start of each turn, player's hand will refill to 6 ingredients in total by redrawing only ingredients in the hand but not the pot"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBackground" type="Panel" parent="TutorialMessages/TutMessage_14/MessageText"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("9_rcm07")
+
+[node name="Button" type="Button" parent="TutorialMessages/TutMessage_14"]
+z_index = 1
+layout_mode = 0
 offset_left = 879.0
 offset_top = 388.0
 offset_right = 912.0
@@ -737,7 +855,7 @@ theme = ExtResource("5_7d2fe")
 theme_override_font_sizes/font_size = 20
 text = "OK"
 
-[node name="TutMessage_14" type="Control" parent="TutorialMessages"]
+[node name="TutMessage_15" type="Control" parent="TutorialMessages"]
 process_mode = 2
 visible = false
 z_index = 200
@@ -750,7 +868,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("18_ikfo1")
 
-[node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_14"]
+[node name="MessageText" type="RichTextLabel" parent="TutorialMessages/TutMessage_15"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -773,7 +891,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextBackground" type="Panel" parent="TutorialMessages/TutMessage_14/MessageText"]
+[node name="TextBackground" type="Panel" parent="TutorialMessages/TutMessage_15/MessageText"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -784,7 +902,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("9_rcm07")
 
-[node name="Button" type="Button" parent="TutorialMessages/TutMessage_14"]
+[node name="Button" type="Button" parent="TutorialMessages/TutMessage_15"]
 z_index = 1
 layout_mode = 0
 offset_left = 603.0
@@ -830,6 +948,8 @@ tutorial_prep = NodePath("../TutorialPrep")
 [connection signal="pressed" from="TutorialMessages/TutMessage_8/Button" to="TutorialMessages/TutMessage_8" method="_on_preceed_to_next_tutorial"]
 [connection signal="pressed" from="TutorialMessages/TutMessage_9/Button" to="TutorialMessages/TutMessage_9" method="_on_preceed_to_next_tutorial"]
 [connection signal="pressed" from="TutorialMessages/TutMessage_10/Button" to="TutorialMessages/TutMessage_10" method="_on_preceed_to_next_tutorial"]
+[connection signal="pressed" from="TutorialMessages/TutMessage_11/Button" to="TutorialMessages/TutMessage_11" method="_on_preceed_to_next_tutorial"]
 [connection signal="pressed" from="TutorialMessages/TutMessage_12/Button" to="TutorialMessages/TutMessage_12" method="_on_preceed_to_next_tutorial"]
 [connection signal="pressed" from="TutorialMessages/TutMessage_13/Button" to="TutorialMessages/TutMessage_13" method="_on_preceed_to_next_tutorial"]
-[connection signal="pressed" from="TutorialMessages/TutMessage_14/Button" to="TutorialPrep" method="back_to_start_menu"]
+[connection signal="pressed" from="TutorialMessages/TutMessage_14/Button" to="TutorialMessages/TutMessage_14" method="_on_preceed_to_next_tutorial"]
+[connection signal="pressed" from="TutorialMessages/TutMessage_15/Button" to="TutorialPrep" method="back_to_start_menu"]

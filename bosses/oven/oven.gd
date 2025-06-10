@@ -74,7 +74,7 @@ func get_intended_move_name() -> String:
 func oven_attack() -> void:
 	# Regular attack
 	var target = choose_target()
-	regular_attack(target, self, 2)
+	regular_attack(target, self, 1)
 	await boss_regular_attack_finish_signal
 	
 	# Signal action over

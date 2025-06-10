@@ -22,6 +22,8 @@ func _on_preceed_to_next_tutorial():
 	# Check whether activate next tutorial message
 	if activate_next:
 		next_message.activate_self()
+	else:
+		PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.IDLE
 	
 	# Destroy self
 	self.queue_free()
@@ -31,5 +33,6 @@ func _on_preceed_to_next_tutorial():
 func activate_self() -> void:
 	self.visible = true
 	self.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	PlayerController.curr_player_status = PlayerController.PLAYER_STATUS.TUTORIAL
 	
 	get_tree().paused = true
