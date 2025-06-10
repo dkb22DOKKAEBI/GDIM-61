@@ -5,8 +5,8 @@ extends Card
 @export var ability_ui_parent: Control
 @onready var battle_manager = get_node("/root/NewBattle")
 @onready var cardslot_manager = get_node("/root/CardslotManager")
-@onready var ability_handler = preload("res://card/monster_card/ability_manager.gd").new()  # assuming the path is correct
-@onready var boss_node = get_node("/root/NewBattle/BattleField/Enemy")  # or whatever path to the boss
+@onready var ability_handler = preload("res://card/monster_card/ability_manager.gd").new()
+@onready var boss_node = get_node("/root/Battle/BattleField/Enemy")
 
 @export var attack_text: RichTextLabel
 @export var health_text: RichTextLabel
