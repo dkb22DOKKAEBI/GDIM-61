@@ -35,12 +35,12 @@ const CARDS = { #attack, health
 # Stats for boss
 const BOSS_STATS = {
 	"Tutorial"    : {"HP": 4, "Attack": 0, "CoolDown": 0},
-	"Vacuum"      : {"HP": 11, "Attack": 1, "CoolDown": 3, "Block": 3, "Elimination": 99},
+	"Vacuum"      : {"HP": 15, "Attack": 1, "CoolDown": 3, "Block": 3, "Elimination": 99},
 	"Oven"        : {"HP": 999, "Attack": 999, "CoolDown": 3, "Self_dmg": 200},
 	"Toaster"     : {"HP": 20, "Attack": 2, "CoolDown": 3, "SpawnCoolDown": 5},
 	"Breadspawn"  : {"HP": 5, "Attack": 1, "CoolDown": 0},
-	"Blender"     : {"HP": 20, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.3, "RampAttack": 2},
-	"Kettle"      : {"HP": 20, "Attack": 3, "CoolDown": 3, "RangeAttackPower": 2, "SteamAttackPower": 1}
+	"Blender"     : {"HP": 25, "Attack": 1, "CoolDown": 2, "RampCoolDown": 3, "DoubleHitChance": 0.3, "RampAttack": 2},
+	"Kettle"      : {"HP": 30, "Attack": 3, "CoolDown": 3, "RangeAttackPower": 2, "SteamAttackPower": 1}
 }
 
 
