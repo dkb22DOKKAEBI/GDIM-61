@@ -38,8 +38,8 @@ func on_resume_game() -> void:
 # Return to start menu
 func on_return_start_menu() -> void:
 	get_tree().paused = false
-	self.visible = false
 	SceneManager.back_to_start_menu()
+	#self.visible = false
 
 
 # Attached to Background Music Slider

@@ -19,6 +19,8 @@ signal game_end_signal # Signal emited when game is over
 func start_new_game() -> void:
 	new_game_started_signal.emit()
 	level_index = 0;
+	
+	# Transfer scene
 	SceneTransition.transition_out()
 	await EventController.scene_transition_animation_finished_signal
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
@@ -50,6 +52,7 @@ func defeat_boss() -> void:
 
 # Proceed to the next level
 func proceed_to_next_level() -> void:
+	# Transfer scene
 	SceneTransition.transition_out()
 	await EventController.scene_transition_animation_finished_signal
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
@@ -59,6 +62,10 @@ func proceed_to_next_level() -> void:
 func back_to_start_menu() -> void:
 	player_complete_level_signal.emit()
 	game_end_signal.emit()
+	
+	# Transfer scene
+	SceneTransition.transition_out()
+	await EventController.scene_transition_animation_finished_signal
 	get_tree().change_scene_to_file(START_MENU_PATH)
 
 
@@ -75,4 +82,7 @@ func transfer_to_game_over_lose() -> void:
 
 
 func transfer_to_credit_page() -> void:
+	# Transfer scene
+	SceneTransition.transition_out()
+	await EventController.scene_transition_animation_finished_signal
 	get_tree().change_scene_to_file(CREDIT_SCENE_PATH)

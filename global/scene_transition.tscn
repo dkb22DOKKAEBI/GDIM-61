@@ -12,13 +12,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ywopy")
-cover = NodePath("Cover")
+cover = NodePath("CoverLayer/Cover")
 
-[node name="Cover" type="ColorRect" parent="."]
+[node name="CoverLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Cover" type="ColorRect" parent="CoverLayer"]
 process_mode = 3
 modulate = Color(0, 0, 0, 1)
 z_index = 100
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
