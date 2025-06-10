@@ -124,6 +124,7 @@ func regular_attack(target: Cardslot, attacker: Node = self, dmg_to_player: int 
 	
 	# Check whether player lose
 	battle_manager.player_check_dead()
+	await EventController.player_alive_signal
 	boss_regular_attack_finish_signal.emit()
 
 

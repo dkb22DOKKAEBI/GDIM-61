@@ -106,6 +106,9 @@ func player_take_dmg(boss_attack: int) -> void:
 func player_check_dead() -> void:
 	if PlayerController.player_health <= 0:
 		player_lose()
+	else:
+		await get_tree().create_timer(0.1).timeout
+		EventController.player_alive_signal.emit()
 
 
 # Player's turn starts

@@ -23,6 +23,7 @@ func start_new_game() -> void:
 	# Transfer scene
 	SceneTransition.transition_out()
 	await EventController.scene_transition_animation_finished_signal
+	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 
@@ -33,6 +34,7 @@ func start_tutorial() -> void:
 	# Transfer scene
 	SceneTransition.transition_out()
 	await EventController.scene_transition_animation_finished_signal
+	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file(TUTORIAL_SCENE_PATH)
 
 
@@ -63,6 +65,7 @@ func proceed_to_next_level() -> void:
 	# Transfer scene
 	SceneTransition.transition_out()
 	await EventController.scene_transition_animation_finished_signal
+	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file(BATTLE_SCENE_PATH)
 
 
@@ -74,11 +77,16 @@ func back_to_start_menu() -> void:
 	# Transfer scene
 	SceneTransition.transition_out()
 	await EventController.scene_transition_animation_finished_signal
+	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file(START_MENU_PATH)
 
 
 # Game over and player wins
 func transfer_to_game_over_win() -> void:
+	# Transfer scene
+	SceneTransition.transition_out()
+	await EventController.scene_transition_animation_finished_signal
+	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file(GAME_OVER_WIN_SCENE_PATH)
 
 
@@ -86,6 +94,11 @@ func transfer_to_game_over_win() -> void:
 func transfer_to_game_over_lose() -> void:
 	# Emit signal of completing a level
 	player_complete_level_signal.emit()
+	
+	# Transfer scene
+	SceneTransition.transition_out()
+	await EventController.scene_transition_animation_finished_signal
+	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file(GAME_OVER_LOSE_SCENE_PATH)
 
 
@@ -93,4 +106,5 @@ func transfer_to_credit_page() -> void:
 	# Transfer scene
 	SceneTransition.transition_out()
 	await EventController.scene_transition_animation_finished_signal
+	get_tree().unload_current_scene()
 	get_tree().change_scene_to_file(CREDIT_SCENE_PATH)

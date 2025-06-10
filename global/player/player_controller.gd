@@ -74,7 +74,7 @@ func update_player_score(level_index: int):
 	curr_score += max(0, (150 - 10 * turn_num))              # Turn score
 	var fraction := (float(deck.size() + PlayerHand.selected_ingredients.size() + PlayerHand.player_ingredient_hand.size())
 					/ float(ORIGINAL_DECK.size() + (level_index - 1) * 5))
-	curr_score += int(INGREDIENT_BASE_SCORE * fraction)                       # Ingredient score
+	curr_score += int(INGREDIENT_BASE_SCORE * fraction)      # Ingredient score
 	curr_score += PLAYER_HEALTH_UNIT_SCORE * player_health   # Player health score
 	
 	# Update high score

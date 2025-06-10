@@ -85,7 +85,7 @@ func oven_multi_attack() -> void:
 	# Attack three times with monsters as priority
 	for i in range(3):
 		var target = multi_attack_choose_target()
-		regular_attack(target, self, 2)
+		regular_attack(target, self, 1)
 		await boss_regular_attack_finish_signal
 	
 	# Signal action over

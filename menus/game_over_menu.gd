@@ -7,6 +7,7 @@ extends Node
 # Ready
 func _ready() -> void:
 	# Update high and new score texts
+	SceneTransition.transition_into()
 	high_score_num.text = str(PlayerController.high_score)
 	new_score_num.text = str(PlayerController.curr_score)
 

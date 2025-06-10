@@ -22,6 +22,7 @@ signal update_ingredient_num_indicator_signal()
 signal update_monster_num_indicator_signal()
 signal forward_to_reward_signal()
 signal update_enemy_intended_move_signal()
+signal player_alive_signal()
 
 # Pause game
 signal pause_game_signal()
